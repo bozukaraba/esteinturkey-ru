@@ -183,17 +183,24 @@
   position: relative;
   overflow: hidden;
 }
-/* Full-bleed background image — right side of viewport */
+/* Full-bleed background video — right side of viewport */
 .eit-hero-image-bg {
   position: absolute;
   top: 0; right: 0;
   width: 58%;
   height: 100%;
-  background-image: url('http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B4%D0%BA%D0%B0-%D0%B2%D0%BE%D0%BB%D0%BE%D1%81.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
+  overflow: hidden;
   z-index: 0;
+}
+.eit-hero-image-bg iframe {
+  position: absolute;
+  top: 50%; left: 50%;
+  /* Cover: scale to fill tall container with 16:9 video */
+  width: max(100%, calc(100vh * 16 / 9));
+  height: max(100%, 100vh);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: 0;
 }
 /* Gradient overlay: cream fades into transparent toward the right */
 .eit-hero-overlay {
@@ -1551,7 +1558,14 @@
      SECTION 1: HERO
      ============================================================ -->
 <section class="eit-section eit-hero" aria-labelledby="eit-hero-heading">
-  <div class="eit-hero-image-bg" aria-hidden="true"></div>
+  <div class="eit-hero-image-bg" aria-hidden="true">
+    <iframe
+      src="https://www.youtube.com/embed/5QqRSIlyp3I?autoplay=1&mute=1&loop=1&playlist=5QqRSIlyp3I&controls=0&rel=0&modestbranding=1&playsinline=1"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      title=""
+    ></iframe>
+  </div>
   <div class="eit-hero-overlay" aria-hidden="true"></div>
   <div class="eit-wrap">
     <div class="eit-hero-inner">
