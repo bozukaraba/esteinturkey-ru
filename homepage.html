@@ -277,11 +277,11 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #fff;
+  color: #fff !important;
   font-weight: 700;
   font-size: 15px;
 }
-.eit-hero-phone svg { width: 18px; height: 18px; stroke: #fff; fill: none; }
+.eit-hero-phone svg { width: 18px; height: 18px; stroke: #fff !important; fill: none; }
 
 /* Old image column styles removed — image is now full-bleed via .eit-hero-image-bg */
 
@@ -1521,8 +1521,6 @@
 
 }
 @media (max-width: 768px) {
-  .eit-hero-image-bg { display: none; }
-  .eit-hero-overlay { display: none; }
   .eit-hero { background: linear-gradient(135deg, var(--eit-primary-dark) 0%, var(--eit-primary) 60%, var(--eit-primary-mid) 100%); }
 }
 @media (max-width: 480px) {
