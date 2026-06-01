@@ -1,0 +1,557 @@
+<!-- ============================================================
+     ДО / ПОСЛЕ — Стоматология | Este in Turkey
+     Prefix: eit-dps-
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-dps-page *, .eit-dps-page *::before, .eit-dps-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.eit-dps-page { font-family: var(--eit-font); color: var(--eit-text); line-height: 1.6; }
+
+.eit-dps-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* fade */
+.eit-dps-fade { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+.eit-dps-fade.eit-dps-visible { opacity: 1; transform: none; }
+.eit-dps-d1 { transition-delay: .08s; }
+.eit-dps-d2 { transition-delay: .16s; }
+.eit-dps-d3 { transition-delay: .24s; }
+.eit-dps-d4 { transition-delay: .32s; }
+
+/* ══════════════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════════════ */
+.eit-dps-hero {
+  background: linear-gradient(135deg, var(--eit-primary-dark) 0%, var(--eit-primary) 55%, var(--eit-primary-mid) 100%);
+  padding: 72px 0 64px; position: relative; overflow: hidden;
+}
+.eit-dps-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.eit-dps-hero-inner { position: relative; z-index: 1; text-align: center; }
+.eit-dps-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 40px; margin-bottom: 18px;
+}
+.eit-dps-hero-badge::before {
+  content: ''; width: 7px; height: 7px;
+  background: var(--eit-accent-light); border-radius: 50%;
+}
+.eit-dps-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; color: #fff;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.eit-dps-hero h1 span { color: var(--eit-accent-light); }
+.eit-dps-hero-sub {
+  color: rgba(255,255,255,.75); font-size: 1rem;
+  max-width: 540px; margin: 0 auto 32px; line-height: 1.65;
+}
+.eit-dps-hero-stats {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 8px;
+}
+.eit-dps-hero-stat { text-align: center; }
+.eit-dps-hero-stat-num {
+  font-size: 1.7rem; font-weight: 900; color: #fff; display: block;
+}
+.eit-dps-hero-stat-num span { color: var(--eit-accent-light); }
+.eit-dps-hero-stat-lbl { font-size: .75rem; color: rgba(255,255,255,.6); font-weight: 500; }
+.eit-dps-breadcrumb {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 32px;
+}
+.eit-dps-breadcrumb a { color: rgba(255,255,255,.65); text-decoration: none; }
+.eit-dps-breadcrumb a:hover { color: #fff; }
+.eit-dps-breadcrumb svg { width: 12px; height: 12px; opacity: .45; }
+
+/* ══════════════════════════════════════════════════════════════
+   GALLERY SECTION
+══════════════════════════════════════════════════════════════ */
+.eit-dps-gallery-section { padding: 72px 0 88px; background: var(--eit-cream); }
+
+.eit-dps-section-head { text-align: center; margin-bottom: 52px; }
+.eit-dps-tag {
+  display: inline-block;
+  background: rgba(46,139,139,.12); color: var(--eit-accent);
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 40px; margin-bottom: 12px;
+}
+.eit-dps-h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800;
+  color: var(--eit-text); line-height: 1.2; margin-bottom: 12px;
+}
+.eit-dps-h2 span { color: var(--eit-accent); }
+.eit-dps-section-sub {
+  color: var(--eit-text-muted); font-size: .95rem; max-width: 560px; margin: 0 auto;
+}
+.eit-dps-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  border-radius: 2px; margin: 14px auto 20px;
+}
+
+/* gallery grid */
+.eit-dps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.eit-dps-item {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(29,92,92,.08);
+  border: 1px solid rgba(29,92,92,.06);
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+  position: relative;
+}
+.eit-dps-item:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(29,92,92,.14); }
+
+.eit-dps-item-img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
+  transition: transform .4s ease;
+}
+.eit-dps-item:hover .eit-dps-item-img { transform: scale(1.04); }
+
+.eit-dps-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(21,68,68,.65) 0%, transparent 50%);
+  opacity: 0; transition: opacity .3s;
+  display: flex; align-items: flex-end; padding: 18px;
+}
+.eit-dps-item:hover .eit-dps-item-overlay { opacity: 1; }
+.eit-dps-item-overlay-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.2); border: 1.5px solid rgba(255,255,255,.4);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; margin-left: auto;
+}
+.eit-dps-item-overlay-icon svg { width: 18px; height: 18px; }
+
+.eit-dps-item-num {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--eit-primary); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+  padding: 4px 10px; border-radius: 20px;
+}
+
+@media (max-width: 900px) { .eit-dps-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .eit-dps-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHTBOX
+══════════════════════════════════════════════════════════════ */
+.eit-dps-lightbox {
+  display: none; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(10,30,30,.92); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.eit-dps-lightbox.is-open { display: flex; }
+.eit-dps-lb-inner {
+  position: relative; max-width: 900px; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+}
+.eit-dps-lb-img {
+  max-width: 100%; max-height: 82vh; border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5); display: block;
+  object-fit: contain;
+}
+.eit-dps-lb-close {
+  position: absolute; top: -14px; right: -14px;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--eit-primary); box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  transition: background .2s;
+}
+.eit-dps-lb-close:hover { background: var(--eit-cream); }
+.eit-dps-lb-close svg { width: 18px; height: 18px; }
+.eit-dps-lb-nav {
+  display: flex; gap: 12px; margin-top: 16px;
+}
+.eit-dps-lb-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.eit-dps-lb-btn:hover { background: rgba(255,255,255,.22); }
+.eit-dps-lb-btn svg { width: 18px; height: 18px; }
+.eit-dps-lb-counter {
+  color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600;
+  align-self: center; min-width: 60px; text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TRUST BAR
+══════════════════════════════════════════════════════════════ */
+.eit-dps-trust { padding: 40px 0; background: #fff; border-top: 1px solid rgba(29,92,92,.06); }
+.eit-dps-trust-grid {
+  display: flex; justify-content: center; align-items: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.eit-dps-trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .875rem; font-weight: 600; color: var(--eit-text-muted);
+}
+.eit-dps-trust-item svg { width: 20px; height: 20px; color: var(--eit-accent); flex-shrink: 0; }
+
+/* ══════════════════════════════════════════════════════════════
+   CTA
+══════════════════════════════════════════════════════════════ */
+.eit-dps-cta {
+  background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-accent));
+  padding: 64px 0; text-align: center; position: relative; overflow: hidden;
+}
+.eit-dps-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(74,172,172,.2), transparent 60%);
+}
+.eit-dps-cta-inner { position: relative; z-index: 1; }
+.eit-dps-cta h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 10px;
+}
+.eit-dps-cta p {
+  color: rgba(255,255,255,.75); font-size: .975rem;
+  max-width: 500px; margin: 0 auto 32px; line-height: 1.65;
+}
+.eit-dps-cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.eit-dps-cta-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: #fff;
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 50px; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.eit-dps-cta-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.5); }
+.eit-dps-cta-wa svg { width: 20px; height: 20px; }
+.eit-dps-cta-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.3);
+  color: #fff;
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 50px; text-decoration: none;
+  transition: background .2s;
+}
+.eit-dps-cta-ghost:hover { background: rgba(255,255,255,.2); }
+.eit-dps-cta-ghost svg { width: 18px; height: 18px; }
+</style>
+
+<div class="eit-dps-page">
+
+  <!-- HERO -->
+  <section class="eit-dps-hero">
+    <div class="eit-dps-wrap">
+      <div class="eit-dps-hero-inner eit-dps-fade">
+        <div class="eit-dps-hero-badge">Стоматология — результаты</div>
+        <h1>До и после<br><span>лечения зубов</span></h1>
+        <p class="eit-dps-hero-sub">
+          Реальные результаты наших пациентов. Импланты, коронки, виниры и комплексные преображения улыбки в Стамбуле.
+        </p>
+        <div class="eit-dps-hero-stats">
+          <div class="eit-dps-hero-stat">
+            <span class="eit-dps-hero-stat-num">5000<span>+</span></span>
+            <div class="eit-dps-hero-stat-lbl">Пациентов</div>
+          </div>
+          <div class="eit-dps-hero-stat">
+            <span class="eit-dps-hero-stat-num">12<span>+</span></span>
+            <div class="eit-dps-hero-stat-lbl">Лет опыта</div>
+          </div>
+          <div class="eit-dps-hero-stat">
+            <span class="eit-dps-hero-stat-num">52<span>+</span></span>
+            <div class="eit-dps-hero-stat-lbl">Страны</div>
+          </div>
+          <div class="eit-dps-hero-stat">
+            <span class="eit-dps-hero-stat-num">98<span>%</span></span>
+            <div class="eit-dps-hero-stat-lbl">Довольны результатом</div>
+          </div>
+        </div>
+        <nav class="eit-dps-breadcrumb" aria-label="Навигация">
+          <a href="/ru/">Главная</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span>До и после</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="eit-dps-gallery-section">
+    <div class="eit-dps-wrap">
+      <div class="eit-dps-section-head eit-dps-fade">
+        <div class="eit-dps-tag">Фотогалерея</div>
+        <h2 class="eit-dps-h2">Реальные результаты наших <span>пациентов</span></h2>
+        <div class="eit-dps-divider"></div>
+        <p class="eit-dps-section-sub">Нажмите на фото, чтобы рассмотреть детали. Все снимки сделаны в нашей клинике до и после процедуры.</p>
+      </div>
+
+      <div class="eit-dps-grid" id="eit-dps-grid">
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d1" data-idx="0">
+          <span class="eit-dps-item-num">№ 1</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/dental-treatments-before-after-min-1024x1024-1.png" alt="До и после — стоматология 1" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d2" data-idx="1">
+          <span class="eit-dps-item-num">№ 2</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/dental-treatments-before-after-3-min-1024x1024-1.png" alt="До и после — стоматология 2" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d3" data-idx="2">
+          <span class="eit-dps-item-num">№ 3</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/dental-treatments-before-after-2-min-1024x1024-1.png" alt="До и после — стоматология 3" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d1" data-idx="3">
+          <span class="eit-dps-item-num">№ 4</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/dental-treatments-before-after-1-min.png" alt="До и после — стоматология 4" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d2" data-idx="4">
+          <span class="eit-dps-item-num">№ 5</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/dental-treatments-before-after-1-min-1024x1024-1.png" alt="До и после — стоматология 5" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d3" data-idx="5">
+          <span class="eit-dps-item-num">№ 6</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/72.png" alt="До и после — стоматология 6" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d1" data-idx="6">
+          <span class="eit-dps-item-num">№ 7</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/27-1024x1024-1.png" alt="До и после — стоматология 7" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d2" data-idx="7">
+          <span class="eit-dps-item-num">№ 8</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/8-1-1024x1024-1.png" alt="До и после — стоматология 8" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d3" data-idx="8">
+          <span class="eit-dps-item-num">№ 9</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/7-1-1024x1024-1.png" alt="До и после — стоматология 9" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d1" data-idx="9">
+          <span class="eit-dps-item-num">№ 10</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/6-1024x1024-1.png" alt="До и после — стоматология 10" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-dps-item eit-dps-fade eit-dps-d2" data-idx="10">
+          <span class="eit-dps-item-num">№ 11</span>
+          <img class="eit-dps-item-img" src="http://esteinru.teset.fun/wp-content/uploads/2026/06/5-3-1024x1024-1.png" alt="До и после — стоматология 11" loading="lazy" />
+          <div class="eit-dps-item-overlay">
+            <div class="eit-dps-item-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="eit-dps-trust">
+    <div class="eit-dps-wrap">
+      <div class="eit-dps-trust-grid">
+        <div class="eit-dps-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Сертифицированные специалисты
+        </div>
+        <div class="eit-dps-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Первичная консультация бесплатно
+        </div>
+        <div class="eit-dps-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          52+ страны пациентов
+        </div>
+        <div class="eit-dps-trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Гарантия качества
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="eit-dps-cta">
+    <div class="eit-dps-wrap">
+      <div class="eit-dps-cta-inner eit-dps-fade">
+        <h2>Хотите такой же результат?</h2>
+        <p>
+          Получите бесплатную консультацию и персональный план лечения.
+          Мы ответим на все вопросы на русском языке.
+        </p>
+        <div class="eit-dps-cta-btns">
+          <a href="https://wa.me/905468189180" class="eit-dps-cta-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-dps-cta-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+          <a href="https://t.me/esteinturkey" class="eit-dps-cta-ghost" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="eit-dps-lightbox" id="eit-dps-lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <div class="eit-dps-lb-inner">
+    <button class="eit-dps-lb-close" id="eit-dps-lb-close" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img class="eit-dps-lb-img" id="eit-dps-lb-img" src="" alt="" />
+    <div class="eit-dps-lb-nav">
+      <button class="eit-dps-lb-btn" id="eit-dps-lb-prev" aria-label="Предыдущее">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <span class="eit-dps-lb-counter" id="eit-dps-lb-counter">1 / 11</span>
+      <button class="eit-dps-lb-btn" id="eit-dps-lb-next" aria-label="Следующее">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Scroll fade-in ── */
+  var fades = document.querySelectorAll('.eit-dps-fade');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('eit-dps-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    fades.forEach(function (el) { io.observe(el); });
+  } else {
+    fades.forEach(function (el) { el.classList.add('eit-dps-visible'); });
+  }
+
+  /* ── Lightbox ── */
+  var items   = document.querySelectorAll('.eit-dps-item');
+  var lb      = document.getElementById('eit-dps-lightbox');
+  var lbImg   = document.getElementById('eit-dps-lb-img');
+  var lbCnt   = document.getElementById('eit-dps-lb-counter');
+  var lbClose = document.getElementById('eit-dps-lb-close');
+  var lbPrev  = document.getElementById('eit-dps-lb-prev');
+  var lbNext  = document.getElementById('eit-dps-lb-next');
+  var total   = items.length;
+  var current = 0;
+
+  function openLb(idx) {
+    current = idx;
+    var img = items[idx].querySelector('.eit-dps-item-img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCnt.textContent = (idx + 1) + ' / ' + total;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  function goTo(idx) {
+    openLb((idx + total) % total);
+  }
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function () { openLb(parseInt(item.dataset.idx, 10)); });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click', function () { goTo(current - 1); });
+  lbNext.addEventListener('click', function () { goTo(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+})();
+</script>
