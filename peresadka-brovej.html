@@ -1,0 +1,1288 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ПЕРЕСАДКА БРОВЕЙ
+   Dil: RU | Elementor HTML Widget
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-brow *, .eit-brow *::before, .eit-brow *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.eit-brow {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-brow a { text-decoration: none; color: inherit; }
+.eit-brow ul { list-style: none; }
+.eit-brow img { max-width: 100%; display: block; }
+
+.eit-brow-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-brow-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-brow-fade.eit-brow-visible { opacity: 1; transform: none; }
+.eit-brow-fade-d1 { transition-delay: .1s; }
+.eit-brow-fade-d2 { transition-delay: .2s; }
+.eit-brow-fade-d3 { transition-delay: .3s; }
+.eit-brow-fade-d4 { transition-delay: .4s; }
+
+/* ── Shared label tag ──────────────────────────── */
+.eit-brow-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eit-brow-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+
+.eit-brow-heading {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+.eit-brow-heading span { color: var(--eit-accent); }
+.eit-brow-heading--white { color: var(--eit-white); }
+.eit-brow-heading--white span { color: var(--eit-accent-light); }
+
+.eit-brow-subheading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.eit-brow-divider {
+  width: 52px; height: 3px;
+  background: var(--eit-accent);
+  border-radius: 2px;
+  margin: 16px 0 24px;
+}
+.eit-brow-divider--center { margin-left: auto; margin-right: auto; }
+.eit-brow-divider--white { background: rgba(255,255,255,.4); }
+
+/* ── Buttons ───────────────────────────────────── */
+.eit-brow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: var(--eit-transition);
+  cursor: pointer;
+  border: none;
+}
+.eit-brow-btn--primary {
+  background: var(--eit-accent);
+  color: var(--eit-white) !important;
+}
+.eit-brow-btn--primary:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-brow-btn--outline {
+  background: transparent;
+  color: var(--eit-white) !important;
+  border: 2px solid rgba(255,255,255,.5);
+}
+.eit-brow-btn--outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.9);
+  color: var(--eit-white) !important;
+}
+.eit-brow-btn--dark {
+  background: var(--eit-primary-dark);
+  color: var(--eit-white) !important;
+}
+.eit-brow-btn--dark:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(21,68,68,.4);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-brow-hero {
+  background: var(--eit-primary-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 0;
+  min-height: 580px;
+}
+.eit-brow-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(46,139,139,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at -10% 80%, rgba(29,92,92,.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+.eit-brow-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.eit-brow-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.eit-brow-hero-left { padding-bottom: 60px; }
+.eit-brow-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.eit-brow-hero-breadcrumb a {
+  color: rgba(255,255,255,.45);
+  transition: var(--eit-transition);
+}
+.eit-brow-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-brow-hero-breadcrumb span { color: rgba(255,255,255,.2); }
+
+.eit-brow-hero-title {
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  color: var(--eit-white);
+  margin-bottom: 20px;
+}
+.eit-brow-hero-title em {
+  font-style: normal;
+  color: var(--eit-accent-light);
+}
+.eit-brow-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.eit-brow-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.eit-brow-hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.eit-brow-hero-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--eit-white);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.eit-brow-hero-stat-num span { color: var(--eit-accent-light); }
+.eit-brow-hero-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.eit-brow-hero-right {
+  position: relative;
+  align-self: flex-end;
+}
+.eit-brow-hero-img-stack {
+  position: relative;
+  height: 440px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.eit-brow-hero-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--eit-accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(46,139,139,.4);
+}
+.eit-brow-hero-img-main {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 88%;
+  height: 400px;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+  object-position: center top;
+}
+.eit-brow-hero-img-float {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 52%;
+  height: 240px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 4px solid var(--eit-primary-dark);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-brow-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-brow-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.eit-brow-about-img-wrap {
+  position: relative;
+  min-height: 500px;
+}
+.eit-brow-about-img-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  height: 86%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top center;
+  outline: 2px solid rgba(46,139,139,.3);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14);
+}
+.eit-brow-about-img-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52%;
+  height: 52%;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 5px solid var(--eit-white);
+  box-shadow: 0 16px 48px rgba(0,0,0,.18), 0 0 0 3px rgba(46,139,139,.25);
+  z-index: 2;
+}
+.eit-brow-about-deco {
+  position: absolute;
+  top: -20px; left: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.08);
+  z-index: -1;
+}
+.eit-brow-about-text p {
+  font-size: 14.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.eit-brow-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-brow-about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.eit-brow-about-highlight {
+  background: var(--eit-cream);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.eit-brow-about-highlight-icon {
+  width: 36px; height: 36px;
+  background: rgba(46,139,139,.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.eit-brow-about-highlight-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-brow-about-highlight-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--eit-primary);
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════
+   3. KEY ADVANTAGES
+   ════════════════════════════════════════════════ */
+.eit-brow-keys {
+  background: var(--eit-primary);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.eit-brow-keys::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-brow-keys-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+}
+.eit-brow-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+.eit-brow-key-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: var(--eit-transition);
+}
+.eit-brow-key-card:hover {
+  background: rgba(255,255,255,.11);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.2);
+}
+.eit-brow-key-icon {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,.1);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.eit-brow-key-icon svg { width: 26px; height: 26px; color: var(--eit-accent-light); }
+.eit-brow-key-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.eit-brow-key-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   4. BENEFITS GRID
+   ════════════════════════════════════════════════ */
+.eit-brow-benefits {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-brow-benefits-header { text-align: center; margin-bottom: 56px; }
+.eit-brow-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-brow-benefit-card {
+  background: var(--eit-white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.eit-brow-benefit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.1);
+  border-color: rgba(46,139,139,.2);
+}
+.eit-brow-benefit-num {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--eit-accent);
+  background: rgba(46,139,139,.1);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+.eit-brow-benefit-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.eit-brow-benefit-text {
+  font-size: 12.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   5. PROCESS STEPS
+   ════════════════════════════════════════════════ */
+.eit-brow-process {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-brow-process-header { text-align: center; margin-bottom: 64px; }
+.eit-brow-process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.eit-brow-step {
+  display: flex;
+  gap: 24px;
+  padding: 32px 28px;
+  border-bottom: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+}
+.eit-brow-step:nth-child(odd) { border-right: 1px solid var(--eit-border); }
+.eit-brow-step:nth-last-child(-n+2) { border-bottom: none; }
+.eit-brow-step:hover { background: rgba(248,244,239,.5); }
+.eit-brow-step-num {
+  width: 48px; height: 48px;
+  background: var(--eit-primary-dark);
+  color: var(--eit-white);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -.02em;
+  transition: var(--eit-transition);
+}
+.eit-brow-step:hover .eit-brow-step-num { background: var(--eit-accent); }
+.eit-brow-step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.eit-brow-step-text {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   6. MINI CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-brow-band {
+  background: var(--eit-accent);
+  padding: 48px 0;
+}
+.eit-brow-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.eit-brow-band-text {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 800;
+  color: var(--eit-white);
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+.eit-brow-band-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.75);
+  margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════════
+   7. FAQ
+   ════════════════════════════════════════════════ */
+.eit-brow-faq {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-brow-faq-header { text-align: center; margin-bottom: 60px; }
+.eit-brow-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 72px;
+  align-items: start;
+}
+.eit-brow-faq-list { display: flex; flex-direction: column; }
+.eit-brow-faq-item {
+  border-bottom: 1px solid var(--eit-border);
+}
+.eit-brow-faq-item:first-child { border-top: 1px solid var(--eit-border); }
+.eit-brow-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  font-family: var(--eit-font);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--eit-transition);
+}
+.eit-brow-faq-q:hover { color: var(--eit-accent); }
+.eit-brow-faq-icon {
+  width: 32px; height: 32px;
+  background: rgba(46,139,139,.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: var(--eit-transition);
+  color: var(--eit-accent);
+}
+.eit-brow-faq-item.open .eit-brow-faq-icon {
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  transform: rotate(180deg);
+}
+.eit-brow-faq-a {
+  display: none;
+  padding: 0 0 22px;
+  font-size: 14px;
+  color: var(--eit-text-muted);
+  line-height: 1.85;
+}
+.eit-brow-faq-item.open .eit-brow-faq-a { display: block; }
+.eit-brow-faq-a p { margin-bottom: 12px; }
+.eit-brow-faq-a p:last-child { margin-bottom: 0; }
+.eit-brow-faq-a ul {
+  list-style: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  border-top: 1px solid var(--eit-border);
+  padding-top: 18px;
+}
+.eit-brow-faq-aside {
+  background: var(--eit-cream);
+  border-radius: 20px;
+  padding: 36px 32px;
+  border: 1px solid var(--eit-border);
+  position: sticky;
+  top: 100px;
+}
+.eit-brow-faq-aside-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-primary);
+  margin-bottom: 16px;
+  line-height: 1.35;
+}
+.eit-brow-faq-aside p {
+  font-size: 13.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.eit-brow-faq-aside-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.eit-brow-faq-aside-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.5;
+}
+.eit-brow-faq-aside-list li::before {
+  content: '';
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.12);
+  flex-shrink: 0;
+  margin-top: 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-brow-about-inner { gap: 48px; }
+  .eit-brow-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-brow-faq-grid { grid-template-columns: 1fr; }
+  .eit-brow-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-brow-hero-inner { grid-template-columns: 1fr; }
+  .eit-brow-hero-right { display: none; }
+  .eit-brow-hero { min-height: auto; }
+  .eit-brow-about-inner { grid-template-columns: 1fr; }
+  .eit-brow-about-inner > * { min-width: 0; }
+  .eit-brow-about-img-wrap { min-height: 320px; }
+  .eit-brow-about-img-main { width: 78%; height: 80%; }
+  .eit-brow-about-img-accent { width: 50%; height: 48%; }
+  .eit-brow-keys-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-brow-process-grid { grid-template-columns: 1fr; }
+  .eit-brow-step:nth-child(odd) { border-right: none; }
+  .eit-brow-step:nth-last-child(-n+2) { border-bottom: 1px solid var(--eit-border); }
+  .eit-brow-step:last-child { border-bottom: none; }
+}
+@media (max-width: 640px) {
+  .eit-brow-benefits-grid { grid-template-columns: 1fr; }
+  .eit-brow-about-highlights { grid-template-columns: 1fr; }
+  .eit-brow-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .eit-brow-band-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .eit-brow-wrap { padding: 0 18px; }
+  .eit-brow-hero { padding: 72px 0 0; }
+  .eit-brow-hero-left { padding-bottom: 40px; }
+  .eit-brow-hero-actions { flex-direction: column; }
+  .eit-brow-hero-actions .eit-brow-btn { justify-content: center; }
+}
+</style>
+
+<!-- ============================================================
+     ESTE IN TURKEY — ПЕРЕСАДКА БРОВЕЙ (Elementor HTML Widget)
+     ============================================================ -->
+<div class="eit-brow" id="eitBrowPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-hero" aria-labelledby="eit-brow-title">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-hero-inner">
+
+      <div class="eit-brow-hero-left">
+        <nav class="eit-brow-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/uslugi/">Услуги</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Пересадка бровей</span>
+        </nav>
+
+        <div class="eit-brow-tag eit-brow-tag--light eit-brow-fade">FUE &amp; DHI метод</div>
+        <h1 id="eit-brow-title" class="eit-brow-hero-title eit-brow-fade eit-brow-fade-d1">
+          Пересадка бровей<br><em>в Стамбуле</em>
+        </h1>
+        <p class="eit-brow-hero-sub eit-brow-fade eit-brow-fade-d2">
+          Брови формируют гармонию лица и выражение эмоций. Восстановите идеальную форму и густоту бровей с помощью современных методов DHI и FUE Sapphire в клинике Este in Turkey.
+        </p>
+        <div class="eit-brow-hero-actions eit-brow-fade eit-brow-fade-d3">
+          <a href="tel:+905468189180" class="eit-brow-btn eit-brow-btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Бесплатная консультация
+          </a>
+          <a href="https://wa.me/905468189180" class="eit-brow-btn eit-brow-btn--outline" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <div class="eit-brow-hero-stats eit-brow-fade eit-brow-fade-d4">
+          <div>
+            <div class="eit-brow-hero-stat-num">2–4<span>ч</span></div>
+            <div class="eit-brow-hero-stat-label">Длительность</div>
+          </div>
+          <div>
+            <div class="eit-brow-hero-stat-num">2<span>дн</span></div>
+            <div class="eit-brow-hero-stat-label">Пребывание</div>
+          </div>
+          <div>
+            <div class="eit-brow-hero-stat-num">3–4<span>мес</span></div>
+            <div class="eit-brow-hero-stat-label">Финальный результат</div>
+          </div>
+          <div>
+            <div class="eit-brow-hero-stat-num">100<span>%</span></div>
+            <div class="eit-brow-hero-stat-label">Естественный вид</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brow-hero-right" aria-hidden="true">
+        <div class="eit-brow-hero-img-stack">
+          <div class="eit-brow-hero-badge">DHI &amp; FUE Sapphire</div>
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/brow-hero-main.webp"
+            alt="Пересадка бровей — результат"
+            class="eit-brow-hero-img-main"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/brow-hero-float.webp"
+            alt="Пересадка бровей — процесс"
+            class="eit-brow-hero-img-float"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-about" aria-labelledby="eit-brow-about-heading">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-about-inner">
+
+      <div class="eit-brow-about-img-wrap eit-brow-fade">
+        <div class="eit-brow-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/47254e51332e47ff927d2ae4526fadcf-760x760-1.webp"
+          alt="Пересадка бровей — результат до и после"
+          class="eit-brow-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/eyebrow-restoration-your-journey-to-perfect-arches_header.webp"
+          alt="Пересадка бровей — детальный план"
+          class="eit-brow-about-img-accent"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-brow-about-text">
+        <div class="eit-brow-tag eit-brow-fade">О процедуре</div>
+        <h2 id="eit-brow-about-heading" class="eit-brow-heading eit-brow-fade eit-brow-fade-d1">
+          Пересадка бровей —<br><span>естественная форма и густота</span>
+        </h2>
+        <div class="eit-brow-divider eit-brow-fade eit-brow-fade-d1"></div>
+
+        <div class="eit-brow-fade eit-brow-fade-d2">
+          <p>Брови играют ключевую роль не только в выражении эмоций, но и выполняют защитную функцию — препятствуют попаданию пыли и влаги в глаза. Они формируют гармоничные черты лица и подчёркивают взгляд. Однако не у всех от природы густые брови, а их рост может замедляться по разным причинам.</p>
+          <p>Даже регулярное выщипывание или последствия перманентного макияжа могут привести к повреждению волосяных фолликулов. Потеря густоты бровей может быть вызвана следующими факторами:</p>
+          <p><strong>татуаж и образование микрорубцов, кожные заболевания, ожоги или травмы, генетическая предрасположенность.</strong></p>
+          <p>После процедуры брови приобретают <strong>абсолютно естественный вид</strong>. В первые 1–2 года волосы могут расти чуть быстрее, однако со временем их рост стабилизируется.</p>
+        </div>
+
+        <div class="eit-brow-about-highlights eit-brow-fade eit-brow-fade-d3">
+          <div class="eit-brow-about-highlight">
+            <div class="eit-brow-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-brow-about-highlight-text">Без рубцов и шрамов</div>
+          </div>
+          <div class="eit-brow-about-highlight">
+            <div class="eit-brow-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="eit-brow-about-highlight-text">Восстановление 2–3 дня</div>
+          </div>
+          <div class="eit-brow-about-highlight">
+            <div class="eit-brow-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="eit-brow-about-highlight-text">Местная анестезия — без боли</div>
+          </div>
+          <div class="eit-brow-about-highlight">
+            <div class="eit-brow-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="eit-brow-about-highlight-text">Индивидуальный дизайн формы</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     KEY ADVANTAGES
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-keys" aria-labelledby="eit-brow-keys-heading">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-keys-header eit-brow-fade">
+      <div class="eit-brow-tag eit-brow-tag--light">Почему Este in Turkey?</div>
+      <h2 id="eit-brow-keys-heading" class="eit-brow-heading eit-brow-heading--white eit-brow-fade eit-brow-fade-d1">
+        Три ключевых преимущества <span>нашей клиники</span>
+      </h2>
+      <div class="eit-brow-divider eit-brow-divider--center eit-brow-divider--white eit-brow-fade eit-brow-fade-d1"></div>
+    </div>
+
+    <div class="eit-brow-keys-grid">
+      <div class="eit-brow-key-card eit-brow-fade">
+        <div class="eit-brow-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="eit-brow-key-title">Индивидуальное моделирование формы бровей</div>
+        <div class="eit-brow-key-text">Перед процедурой врач тщательно разрабатывает форму бровей с учётом черт вашего лица, пропорций и пожеланий. Создаётся предварительный эскиз, который вы можете увидеть и при необходимости скорректировать. Только после полного согласования формы начинается сама процедура.</div>
+      </div>
+      <div class="eit-brow-key-card eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="eit-brow-key-title">Передовые методы: DHI и FUE Sapphire</div>
+        <div class="eit-brow-key-text">Пересадка выполняется под местной анестезией методом DHI или FUE Sapphire. Трансплантаты берутся из затылочной зоны, обычно достаточно 500–1000 графтов. Корочки отпадают в течение недели, а через 3 месяца брови начинают расти в окончательном виде.</div>
+      </div>
+      <div class="eit-brow-key-card eit-brow-fade eit-brow-fade-d2">
+        <div class="eit-brow-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="eit-brow-key-title">Безболезненная анестезия и быстрое восстановление</div>
+        <div class="eit-brow-key-text">Процедура проходит под местной анестезией — вы не ощущаете боли во время операции. Используются современные анестетики, обеспечивающие полный комфорт. Уже через несколько часов после процедуры вы можете вернуться к обычной активности без сильного дискомфорта.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     BENEFITS GRID
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-benefits" aria-labelledby="eit-brow-benefits-heading">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-benefits-header eit-brow-fade">
+      <div class="eit-brow-tag">Детальный обзор</div>
+      <h2 id="eit-brow-benefits-heading" class="eit-brow-heading eit-brow-fade eit-brow-fade-d1">
+        Все преимущества <span>пересадки бровей</span>
+      </h2>
+      <div class="eit-brow-divider eit-brow-divider--center eit-brow-fade eit-brow-fade-d1"></div>
+    </div>
+
+    <div class="eit-brow-benefits-grid">
+
+      <div class="eit-brow-benefit-card eit-brow-fade">
+        <div class="eit-brow-benefit-num">01</div>
+        <div>
+          <div class="eit-brow-benefit-title">Полностью натуральный результат</div>
+          <div class="eit-brow-benefit-text">Пересаженные волосы растут в том же направлении, что и естественные брови — результат неотличим от природных, даже при детальном рассмотрении.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-benefit-num">02</div>
+        <div>
+          <div class="eit-brow-benefit-title">Подходит всем — независимо от пола и возраста</div>
+          <div class="eit-brow-benefit-text">Пересадка бровей показана всем, кого не устраивает их эстетический вид и у кого нет хронических заболеваний, препятствующих операции.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d2">
+        <div class="eit-brow-benefit-num">03</div>
+        <div>
+          <div class="eit-brow-benefit-title">Без рубцов и шрамов</div>
+          <div class="eit-brow-benefit-text">Метод микропунктирования при заборе графтов не оставляет видимых рубцов ни в донорской, ни в реципиентной зоне.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade">
+        <div class="eit-brow-benefit-num">04</div>
+        <div>
+          <div class="eit-brow-benefit-title">Долговечный и стабильный эффект</div>
+          <div class="eit-brow-benefit-text">Пересаженные трансплантаты из затылочной зоны генетически устойчивы и не выпадают. Результат сохраняется на всю жизнь.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-benefit-num">05</div>
+        <div>
+          <div class="eit-brow-benefit-title">Минимальный период восстановления</div>
+          <div class="eit-brow-benefit-text">Уже на следующий день после операции пациент может вернуться к социальной жизни. Корочки отпадают в течение недели без дополнительного вмешательства.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d2">
+        <div class="eit-brow-benefit-num">06</div>
+        <div>
+          <div class="eit-brow-benefit-title">Коррекция последствий татуажа и ожогов</div>
+          <div class="eit-brow-benefit-text">Процедура эффективно восстанавливает брови, повреждённые в результате микроблейдинга, ожогов, рубцов или кожных заболеваний.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade">
+        <div class="eit-brow-benefit-num">07</div>
+        <div>
+          <div class="eit-brow-benefit-title">Индивидуальный дизайн под черты лица</div>
+          <div class="eit-brow-benefit-text">Форма бровей разрабатывается с учётом разреза и посадки глаз, формы лица и естественного направления роста волос — результат гармоничен и органичен.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-benefit-num">08</div>
+        <div>
+          <div class="eit-brow-benefit-title">Процедура 2–4 часа, без госпитализации</div>
+          <div class="eit-brow-benefit-text">Операция занимает всего 2–4 часа и проводится амбулаторно под местной анестезией. Пребывание в Стамбуле — всего 2 дня.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-benefit-card eit-brow-fade eit-brow-fade-d2">
+        <div class="eit-brow-benefit-num">09</div>
+        <div>
+          <div class="eit-brow-benefit-title">VIP-сервис и сопровождение</div>
+          <div class="eit-brow-benefit-text">Клиника Este in Turkey обеспечивает трансфер из аэропорта, помощь с размещением и сопровождение русскоязычного координатора на протяжении всего пребывания.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     PROCESS STEPS
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-process" aria-labelledby="eit-brow-process-heading">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-process-header eit-brow-fade">
+      <div class="eit-brow-tag">Как это происходит</div>
+      <h2 id="eit-brow-process-heading" class="eit-brow-heading eit-brow-fade eit-brow-fade-d1">
+        Этапы пересадки <span>бровей</span>
+      </h2>
+      <div class="eit-brow-divider eit-brow-divider--center eit-brow-fade eit-brow-fade-d1"></div>
+      <p style="font-size:14.5px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;" class="eit-brow-fade eit-brow-fade-d2">
+        Вся процедура занимает 2–4 часа и проходит под местной анестезией в один день. Пребывание в Стамбуле — всего 2 дня.
+      </p>
+    </div>
+
+    <div class="eit-brow-process-grid">
+
+      <div class="eit-brow-step eit-brow-fade">
+        <div class="eit-brow-step-num">1</div>
+        <div>
+          <div class="eit-brow-step-title">Онлайн-консультация и оценка кандидатуры</div>
+          <div class="eit-brow-step-text">Прежде всего определяется, подходит ли пациент для трансплантации бровей. Оцениваются состояние здоровья, тип потери бровей и пожелания к форме. Консультация проводится бесплатно.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-step eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-step-num">2</div>
+        <div>
+          <div class="eit-brow-step-title">Разработка дизайна и согласование формы</div>
+          <div class="eit-brow-step-text">Врач тщательно прорабатывает форму бровей с учётом разреза глаз, пропорций лица и пожеланий пациента. Только после полного согласования эскиза начинается сама процедура.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-step eit-brow-fade">
+        <div class="eit-brow-step-num">3</div>
+        <div>
+          <div class="eit-brow-step-title">Местная анестезия</div>
+          <div class="eit-brow-step-text">Область бровей и донорская зона (затылок) обезболиваются с помощью местной анестезии. Пациент не ощущает боли в течение всей процедуры.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-step eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-step-num">4</div>
+        <div>
+          <div class="eit-brow-step-title">Забор волосяных трансплантатов</div>
+          <div class="eit-brow-step-text">Волосяные графты (500–1000 единиц) берутся из затылочной области методом FUE или DHI с помощью микромотора. Донорская зона не оставляет видимых рубцов.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-step eit-brow-fade">
+        <div class="eit-brow-step-num">5</div>
+        <div>
+          <div class="eit-brow-step-title">Имплантация трансплантатов</div>
+          <div class="eit-brow-step-text">Каждый графт имплантируется в область бровей под точным углом и в нужном направлении. Метод DHI позволяет добиться максимальной плотности и естественного направления роста.</div>
+        </div>
+      </div>
+
+      <div class="eit-brow-step eit-brow-fade eit-brow-fade-d1">
+        <div class="eit-brow-step-num">6</div>
+        <div>
+          <div class="eit-brow-step-title">Послеоперационный уход и инструктаж</div>
+          <div class="eit-brow-step-text">После завершения пациент получает подробные инструкции по уходу. Через 24 часа пересаженную область можно аккуратно промыть. Через 3–4 месяца брови приобретают окончательный вид.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MINI CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-band">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-band-inner">
+      <div>
+        <div class="eit-brow-band-text">Готовы восстановить идеальные брови?</div>
+        <div class="eit-brow-band-sub">Бесплатная онлайн-консультация — получите ответ в течение 24 часов</div>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="tel:+905468189180" class="eit-brow-btn eit-brow-btn--dark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Позвонить сейчас
+        </a>
+        <a href="https://wa.me/905468189180" class="eit-brow-btn" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-brow-faq" aria-labelledby="eit-brow-faq-heading">
+  <div class="eit-brow-wrap">
+    <div class="eit-brow-faq-header eit-brow-fade">
+      <div class="eit-brow-tag">Часто задаваемые вопросы</div>
+      <h2 id="eit-brow-faq-heading" class="eit-brow-heading eit-brow-fade eit-brow-fade-d1">
+        Вопросы о <span>пересадке бровей</span>
+      </h2>
+      <div class="eit-brow-divider eit-brow-divider--center eit-brow-fade eit-brow-fade-d1"></div>
+    </div>
+
+    <div class="eit-brow-faq-grid">
+
+      <div class="eit-brow-faq-list" role="list">
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Всем ли можно пересаживать брови?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <p><strong>Пересадка бровей</strong> — это операция, которую могут сделать все желающие, независимо от пола и возраста, если их не устраивает эстетический вид бровей и у них нет хронических заболеваний.</p>
+            <p>Для тех, кто хочет сделать эту операцию, важно, чтобы местом её проведения была специализированная клиника. Мы, как Este in Turkey, проводим трансплантацию бровей в стерильных условиях силами нашей команды специалистов. Если вы хотите сделать пересадку бровей, вы можете связаться с нами и получить подробную информацию.</p>
+          </div>
+        </div>
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Откуда берутся трансплантаты для пересадки бровей?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <p>При трансплантации бровей обычно достаточно пересадить около <strong>500–1000 графтов</strong>. Во время этой процедуры волосяные трансплантаты берутся из области затылка по методу FUE и пересаживаются в область бровей. Процедура проводится под местной анестезией.</p>
+          </div>
+        </div>
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Болезненно ли это?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <p>Трансплантация бровей выполняется методом FUE (Follicular Unit Extraction) или DHI (Direct Hair Implantation). Волосяные графты забираются с затылка методом FUE и пересаживаются с помощью техники трансплантации в область бровей.</p>
+            <p>Для того чтобы пациент не чувствовал боли во время процедуры, на область бровей и донорную зону наносится <strong>местная анестезия</strong>. Таким образом, ощущение боли во время процедуры полностью исключается.</p>
+          </div>
+        </div>
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Отпадают ли пересаженные трансплантаты?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <p>После пересадки бровей все или часть бровей может выпасть через некоторое время. Однако выпавшие трансплантаты обычно отрастают за <strong>3 месяца</strong>. Успешных результатов можно добиться при проведении процедур опытным коллективом клиники Este in Turkey. Поэтому вы можете смело доверить свою операцию нашей команде специалистов.</p>
+          </div>
+        </div>
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Как проходит процесс заживления после операции?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <ul>
+              <li>Пересадка бровей проводится в течение 2–4 часов.</li>
+              <li>Первые 24 часа область пересадки бровей не должна контактировать с водой. По истечении 24 часов пациенты могут аккуратно промывать область пересадки.</li>
+              <li>Люди, которым была проведена трансплантация бровей, могут вернуться к общественной жизни уже на следующий день после операции.</li>
+              <li>Процесс заживления после трансплантации бровей у разных людей может протекать по-разному. Но обычно первые 7 дней являются наиболее чувствительным периодом.</li>
+              <li>Как правило, для полного отрастания бровей требуется 3–4 месяца. В этот период рекомендуется регулярно массировать пересаженную область, чтобы ускорить рост бровей.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="eit-brow-faq-item" role="listitem">
+          <button class="eit-brow-faq-q" aria-expanded="false">
+            Нужно ли соблюдать особый уход после пересадки бровей?
+            <span class="eit-brow-faq-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="eit-brow-faq-a">
+            <p>Да, в первые дни после операции необходимо соблюдать несколько простых правил:</p>
+            <ul>
+              <li>Избегать прямого попадания воды на область бровей в первые 24 часа.</li>
+              <li>Не трогать и не тереть пересаженную зону.</li>
+              <li>Не использовать декоративную косметику для бровей первые 2 недели.</li>
+              <li>Избегать прямых солнечных лучей и солярия в первый месяц.</li>
+              <li>Следовать индивидуальным рекомендациям врача, полученным после процедуры.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="eit-brow-faq-aside eit-brow-fade">
+        <div class="eit-brow-faq-aside-title">Получите бесплатную консультацию</div>
+        <p>Свяжитесь с нами, чтобы узнать: подходит ли вам пересадка бровей, сколько графтов потребуется и сколько стоит процедура в 2026 году.</p>
+        <ul class="eit-brow-faq-aside-list">
+          <li>Бесплатная онлайн-консультация</li>
+          <li>Ответ в течение 24 часов</li>
+          <li>Трансфер и помощь с размещением</li>
+          <li>Русскоязычный координатор</li>
+          <li>VIP-сопровождение в Стамбуле</li>
+        </ul>
+        <a href="tel:+905468189180" class="eit-brow-btn eit-brow-btn--primary" style="width:100%;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Позвонить сейчас
+        </a>
+        <a href="https://wa.me/905468189180" class="eit-brow-btn" style="width:100%;justify-content:center;margin-top:10px;background:var(--eit-primary-dark);color:#fff;" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-brow -->
+
+<script>
+(function(){
+
+  /* ── Scroll animations ─────────────────────────── */
+  var fades = document.querySelectorAll('.eit-brow-fade');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('eit-brow-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fades.forEach(function(el){ obs.observe(el); });
+  } else {
+    fades.forEach(function(el){ el.classList.add('eit-brow-visible'); });
+  }
+
+  /* ── FAQ accordion ─────────────────────────────── */
+  document.querySelectorAll('.eit-brow-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = this.closest('.eit-brow-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.eit-brow-faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.eit-brow-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    btn.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+
+})();
+</script>

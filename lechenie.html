@@ -1,0 +1,1285 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ЛЕЧЕНИЕ ЗУБОВ
+   Dil: RU | Elementor HTML Widget | Prefix: eit-lech-
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-lech *, .eit-lech *::before, .eit-lech *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.eit-lech {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-lech a { text-decoration: none; color: inherit; }
+.eit-lech ul { list-style: none; }
+.eit-lech img { max-width: 100%; display: block; }
+
+.eit-lech-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-lech-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-lech-fade.is-visible { opacity: 1; transform: none; }
+.eit-lech-fade-d1 { transition-delay: .12s; }
+.eit-lech-fade-d2 { transition-delay: .22s; }
+.eit-lech-fade-d3 { transition-delay: .34s; }
+.eit-lech-fade-d4 { transition-delay: .46s; }
+
+/* ── Shared components ─────────────────────────── */
+.eit-lech-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  margin-bottom: 16px;
+}
+.eit-lech-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+.eit-lech-heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 800; color: var(--eit-primary);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.eit-lech-heading span { color: var(--eit-accent); }
+.eit-lech-divider {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  margin-bottom: 26px;
+}
+.eit-lech-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition); cursor: pointer; border: none;
+}
+.eit-lech-btn--primary {
+  background: var(--eit-accent);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-lech-btn--primary:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.4);
+}
+.eit-lech-btn--outline {
+  background: transparent; color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3);
+}
+.eit-lech-btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-lech-hero {
+  background: var(--eit-primary);
+  min-height: 580px;
+  display: flex; align-items: center;
+  padding: 80px 0 0;
+  position: relative; overflow: hidden;
+}
+.eit-lech-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 50%, rgba(46,139,139,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at -10% 60%, rgba(21,68,68,.45) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-lech-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(21,68,68,.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+.eit-lech-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.eit-lech-hero-left { padding-bottom: 72px; }
+.eit-lech-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
+}
+.eit-lech-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: var(--eit-transition); }
+.eit-lech-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-lech-hero-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 900; color: var(--eit-white);
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-lech-hero-title span { color: var(--eit-accent-light); }
+.eit-lech-hero-desc {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.eit-lech-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.eit-lech-stat-value {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-lech-stat-label {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 4px;
+}
+.eit-lech-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero right — CTA card */
+.eit-lech-hero-right {
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.eit-lech-hero-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.eit-lech-hero-card-badge {
+  display: inline-block;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+  align-self: flex-start;
+}
+.eit-lech-hero-card-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.3;
+}
+.eit-lech-hero-card-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-lech-hero-card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.82);
+}
+.eit-lech-hero-card-list li::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-lech-hero-card-divider {
+  height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.eit-lech-hero-card-cta {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-lech-hero-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 20px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-lech-hero-card-btn--wa { background: #25D366; }
+.eit-lech-hero-card-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-lech-hero-card-btn--tel {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+}
+.eit-lech-hero-card-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-lech-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-lech-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.eit-lech-about-img-wrap { position: relative; }
+.eit-lech-about-img-main {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  outline: 2px solid rgba(46,139,139,.3);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14);
+  display: block;
+}
+.eit-lech-about-deco {
+  position: absolute; top: -20px; left: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(46,139,139,.08); z-index: -1;
+}
+.eit-lech-about-text p {
+  font-size: 14.5px; color: var(--eit-text-muted);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.eit-lech-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-lech-about-pills {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+}
+.eit-lech-about-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(46,139,139,.08);
+  color: var(--eit-primary);
+  font-size: 12.5px; font-weight: 600;
+  padding: 8px 16px; border-radius: 30px;
+  border: 1px solid rgba(46,139,139,.18);
+}
+.eit-lech-about-pill::before {
+  content: '✓';
+  color: var(--eit-accent);
+  font-weight: 700; font-size: 11px;
+}
+
+/* ════════════════════════════════════════════════
+   3. INDICATIONS
+   ════════════════════════════════════════════════ */
+.eit-lech-indications {
+  background: var(--eit-primary);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.eit-lech-indications::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-lech-indications-head {
+  text-align: center; margin-bottom: 48px; position: relative;
+}
+.eit-lech-indications-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-lech-indications-title span { color: var(--eit-accent-light); }
+.eit-lech-indications-sub {
+  font-size: 14px; color: rgba(255,255,255,.65);
+  max-width: 540px; margin: 14px auto 0; line-height: 1.7;
+}
+.eit-lech-indications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative;
+}
+.eit-lech-indication-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: var(--eit-transition);
+}
+.eit-lech-indication-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-4px);
+  border-color: rgba(74,172,172,.4);
+}
+.eit-lech-indication-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.25); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-lech-indication-icon svg { width: 24px; height: 24px; color: var(--eit-accent-light); }
+.eit-lech-indication-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-lech-indication-text {
+  font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   4. SERVICES / TYPES
+   ════════════════════════════════════════════════ */
+.eit-lech-services {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-lech-services-head {
+  text-align: center; margin-bottom: 52px;
+}
+.eit-lech-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.eit-lech-service-card {
+  background: var(--eit-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(29,92,92,.08);
+  transition: var(--eit-transition);
+  display: flex; flex-direction: column;
+  border-top: 4px solid transparent;
+}
+.eit-lech-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(29,92,92,.14);
+  border-top-color: var(--eit-accent);
+}
+.eit-lech-service-body { padding: 28px 24px; flex: 1; }
+.eit-lech-service-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-lech-service-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
+.eit-lech-service-name {
+  font-size: 16px; font-weight: 800;
+  color: var(--eit-primary); margin-bottom: 8px;
+}
+.eit-lech-service-badge {
+  display: inline-block;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+.eit-lech-service-desc {
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   5. WHY TURKEY
+   ════════════════════════════════════════════════ */
+.eit-lech-why {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-lech-why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.eit-lech-why-list {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.eit-lech-why-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: var(--eit-text-muted); line-height: 1.65;
+}
+.eit-lech-why-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(46,139,139,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.eit-lech-why-dot svg { width: 13px; height: 13px; color: var(--eit-accent); }
+.eit-lech-why-item strong { color: var(--eit-primary); font-weight: 700; }
+
+.eit-lech-stats-card {
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 36px 32px;
+}
+.eit-lech-stats-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 8px;
+}
+.eit-lech-stats-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+  line-height: 1.7; margin-bottom: 28px;
+}
+.eit-lech-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px;
+}
+.eit-lech-stats-item {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; padding: 18px 16px; text-align: center;
+}
+.eit-lech-stats-item-val {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-lech-stats-item-label {
+  font-size: 10.5px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 5px;
+}
+.eit-lech-stats-divider {
+  height: 1px; background: rgba(255,255,255,.15); margin-bottom: 20px;
+}
+.eit-lech-stats-items {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-lech-stats-li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.6;
+}
+.eit-lech-stats-li::before {
+  content: '✓'; color: var(--eit-accent-light);
+  font-weight: 700; flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   6. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-lech-process {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-lech-process-head { text-align: center; margin-bottom: 56px; }
+.eit-lech-process-sub {
+  font-size: 14px; color: var(--eit-text-muted);
+  max-width: 540px; margin: 12px auto 0; line-height: 1.7;
+}
+.eit-lech-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-bottom: 48px;
+}
+.eit-lech-step {
+  background: var(--eit-white);
+  border-radius: 18px; padding: 28px 22px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(29,92,92,.07);
+  transition: var(--eit-transition); text-align: center;
+}
+.eit-lech-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.12);
+}
+.eit-lech-step-num {
+  font-size: 52px; font-weight: 900;
+  color: rgba(29,92,92,.06);
+  position: absolute; top: 10px; right: 14px; line-height: 1;
+}
+.eit-lech-step-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.eit-lech-step-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
+.eit-lech-step-title {
+  font-size: 13.5px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 8px; line-height: 1.4;
+}
+.eit-lech-step-text {
+  font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.65;
+}
+
+.eit-lech-comfort {
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 40px 44px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+.eit-lech-comfort-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 14px;
+}
+.eit-lech-comfort-text {
+  font-size: 13.5px; color: rgba(255,255,255,.7);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.eit-lech-comfort-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-lech-comfort-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.6;
+}
+.eit-lech-comfort-list li::before {
+  content: '✓'; font-size: 12px; font-weight: 700;
+  color: var(--eit-accent-light); flex-shrink: 0; margin-top: 2px;
+}
+.eit-lech-comfort-right {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.eit-lech-comfort-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 24px; text-align: center;
+}
+.eit-lech-comfort-stat-value {
+  font-size: 42px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-lech-comfort-stat-label {
+  font-size: 11px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 6px;
+}
+.eit-lech-comfort-note {
+  font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.65; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   7. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-lech-cta {
+  background: linear-gradient(135deg, var(--eit-accent) 0%, var(--eit-primary) 100%);
+  padding: 64px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.eit-lech-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eit-lech-cta-inner { position: relative; }
+.eit-lech-cta-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.15); color: rgba(255,255,255,.9);
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.eit-lech-cta-title {
+  font-size: clamp(22px, 3.2vw, 38px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2; margin-bottom: 14px;
+}
+.eit-lech-cta-sub {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+.eit-lech-cta-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.eit-lech-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 32px; border-radius: 14px;
+  font-family: var(--eit-font); font-size: 13.5px; font-weight: 700;
+  text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-lech-cta-btn--wa { background: #25D366; box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+.eit-lech-cta-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-lech-cta-btn--tel { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); }
+.eit-lech-cta-btn--tel:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   8. FAQ
+   ════════════════════════════════════════════════ */
+.eit-lech-faq { background: var(--eit-white); padding: 88px 0; }
+.eit-lech-faq-head { text-align: center; margin-bottom: 52px; }
+.eit-lech-faq-grid {
+  display: grid; grid-template-columns: 1fr 360px;
+  gap: 40px; align-items: start;
+}
+.eit-lech-faq-list { display: flex; flex-direction: column; gap: 12px; }
+.eit-lech-faq-item {
+  background: var(--eit-cream);
+  border-radius: 14px; border: 1px solid var(--eit-border);
+  overflow: hidden; transition: var(--eit-transition);
+}
+.eit-lech-faq-item.is-open { border-color: rgba(46,139,139,.3); }
+.eit-lech-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 20px 22px;
+  cursor: pointer; background: none; border: none; width: 100%;
+  text-align: left; font-family: var(--eit-font);
+  font-size: 14px; font-weight: 700; color: var(--eit-primary);
+}
+.eit-lech-faq-q svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--eit-accent); transition: transform .3s; }
+.eit-lech-faq-item.is-open .eit-lech-faq-q svg { transform: rotate(180deg); }
+.eit-lech-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), padding .3s;
+  padding: 0 22px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.8;
+}
+.eit-lech-faq-item.is-open .eit-lech-faq-a { max-height: 400px; padding: 0 22px 22px; }
+
+/* FAQ aside */
+.eit-lech-faq-aside {
+  position: sticky; top: 100px;
+  background: var(--eit-primary); border-radius: 22px; padding: 32px 28px;
+}
+.eit-lech-faq-aside-title { font-size: 17px; font-weight: 800; color: var(--eit-white); margin-bottom: 10px; }
+.eit-lech-faq-aside-sub { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 24px; }
+.eit-lech-faq-aside-btns { display: flex; flex-direction: column; gap: 12px; }
+.eit-lech-faq-aside-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #fff !important; transition: var(--eit-transition);
+}
+.eit-lech-faq-aside-btn--wa { background: #25D366; }
+.eit-lech-faq-aside-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-lech-faq-aside-btn--tel { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); }
+.eit-lech-faq-aside-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.eit-lech-faq-aside-divider { height: 1px; background: rgba(255,255,255,.12); margin: 22px 0; }
+.eit-lech-faq-aside-list { display: flex; flex-direction: column; gap: 10px; }
+.eit-lech-faq-aside-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.5;
+}
+.eit-lech-faq-aside-list li::before { content: '✓'; color: var(--eit-accent-light); font-weight: 700; flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-lech-about-inner { gap: 48px; }
+  .eit-lech-why-inner { gap: 40px; }
+  .eit-lech-steps { grid-template-columns: repeat(2, 1fr); }
+  .eit-lech-faq-grid { grid-template-columns: 1fr; }
+  .eit-lech-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-lech-hero-inner { grid-template-columns: 1fr; }
+  .eit-lech-hero-right { display: none; }
+  .eit-lech-hero { min-height: auto; }
+  .eit-lech-about-inner { grid-template-columns: 1fr; }
+  .eit-lech-indications-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-lech-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-lech-why-inner { grid-template-columns: 1fr; }
+  .eit-lech-comfort { grid-template-columns: 1fr; }
+  .eit-lech-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .eit-lech-wrap { padding: 0 16px; }
+  .eit-lech-indications-grid { grid-template-columns: 1fr; }
+  .eit-lech-services-grid { grid-template-columns: 1fr; }
+  .eit-lech-steps { grid-template-columns: 1fr; }
+  .eit-lech-hero-stats { gap: 20px; }
+  .eit-lech-hero-left { padding-bottom: 40px; }
+  .eit-lech-comfort { padding: 28px 22px; }
+  .eit-lech-cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="eit-lech" id="eitLechPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-hero" aria-labelledby="eit-lech-hero-title">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-lech-hero-left">
+        <nav class="eit-lech-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Лечение зубов</span>
+        </nav>
+
+        <div class="eit-lech-tag eit-lech-tag--light eit-lech-fade">Терапевтическая стоматология</div>
+        <h1 id="eit-lech-hero-title" class="eit-lech-hero-title eit-lech-fade eit-lech-fade-d1">
+          Лечение зубов<br><span>в Стамбуле</span>
+        </h1>
+        <p class="eit-lech-hero-desc eit-lech-fade eit-lech-fade-d2">
+          В клинике <strong style="color:#fff;">ESTE IN TURKEY</strong> мы проводим полный спектр терапевтического лечения зубов — от лечения кариеса до сложного эндодонтического лечения. Современное оборудование, опытные врачи и комфортные условия для иностранных пациентов.
+        </p>
+
+        <div class="eit-lech-hero-stats eit-lech-fade eit-lech-fade-d2">
+          <div>
+            <div class="eit-lech-stat-value">1–3</div>
+            <div class="eit-lech-stat-label">дня лечения</div>
+          </div>
+          <div>
+            <div class="eit-lech-stat-value">3×</div>
+            <div class="eit-lech-stat-label">дешевле Европы</div>
+          </div>
+          <div>
+            <div class="eit-lech-stat-value">3D</div>
+            <div class="eit-lech-stat-label">диагностика</div>
+          </div>
+          <div>
+            <div class="eit-lech-stat-value">Гарантия</div>
+            <div class="eit-lech-stat-label">на все работы</div>
+          </div>
+        </div>
+
+        <div class="eit-lech-hero-actions eit-lech-fade eit-lech-fade-d3">
+          <a href="https://wa.me/905468189180" class="eit-lech-btn eit-lech-btn--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-lech-btn eit-lech-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="eit-lech-hero-right">
+        <div class="eit-lech-hero-card">
+          <span class="eit-lech-hero-card-badge">Стоматология Турции</span>
+          <div class="eit-lech-hero-card-title">Бесплатная консультация по лечению зубов</div>
+          <ul class="eit-lech-hero-card-list">
+            <li>3D-диагностика и рентген на месте</li>
+            <li>Безболезненное лечение под анестезией</li>
+            <li>Результат уже за 1–3 дня</li>
+            <li>Русскоязычное сопровождение</li>
+          </ul>
+          <div class="eit-lech-hero-card-divider"></div>
+          <div class="eit-lech-hero-card-cta">
+            <a href="https://wa.me/905468189180" class="eit-lech-hero-card-btn eit-lech-hero-card-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              Написать в WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-lech-hero-card-btn eit-lech-hero-card-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-about" aria-labelledby="eit-lech-about-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-about-inner">
+
+      <div class="eit-lech-about-img-wrap eit-lech-fade">
+        <div class="eit-lech-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/dental-bridge.webp"
+          alt="Лечение зубов в Стамбуле"
+          class="eit-lech-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-lech-about-text">
+        <div class="eit-lech-tag eit-lech-fade">О лечении</div>
+        <h2 id="eit-lech-about-heading" class="eit-lech-heading eit-lech-fade eit-lech-fade-d1">
+          Комплексное лечение зубов<br><span>в Стамбуле</span>
+        </h2>
+        <div class="eit-lech-divider eit-lech-fade eit-lech-fade-d1"></div>
+
+        <div class="eit-lech-fade eit-lech-fade-d2">
+          <p>
+            Клиника <strong>ESTE IN TURKEY</strong> предоставляет полный спектр стоматологических услуг: от простого лечения кариеса до сложного эндодонтического лечения корневых каналов.
+          </p>
+          <p>
+            Мы используем <strong>современное оборудование</strong>: цифровой рентген, 3D-томограф, микроскопы для точной диагностики. Все процедуры проводятся <strong>безболезненно под анестезией</strong>.
+          </p>
+          <p>
+            Благодаря <strong>русскоязычному сопровождению</strong> и продуманной логистике вы сможете пройти лечение быстро и комфортно — не тратя лишнего времени на ожидание.
+          </p>
+        </div>
+
+        <div class="eit-lech-about-pills eit-lech-fade eit-lech-fade-d3">
+          <span class="eit-lech-about-pill">Кариес</span>
+          <span class="eit-lech-about-pill">Лечение каналов</span>
+          <span class="eit-lech-about-pill">Пломбирование</span>
+          <span class="eit-lech-about-pill">Реставрация</span>
+          <span class="eit-lech-about-pill">Гигиена полости рта</span>
+          <span class="eit-lech-about-pill">Лечение дёсен</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     INDICATIONS
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-indications" aria-labelledby="eit-lech-indications-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-indications-head">
+      <div class="eit-lech-tag eit-lech-tag--light eit-lech-fade">Когда обратиться</div>
+      <h2 id="eit-lech-indications-heading" class="eit-lech-indications-title eit-lech-fade eit-lech-fade-d1">
+        В каких случаях<br><span>нужно лечение зубов?</span>
+      </h2>
+      <p class="eit-lech-indications-sub eit-lech-fade eit-lech-fade-d2">
+        Не откладывайте визит к стоматологу — многие проблемы лечатся быстро на ранних стадиях:
+      </p>
+    </div>
+
+    <div class="eit-lech-indications-grid">
+      <div class="eit-lech-indication-card eit-lech-fade">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Боль и чувствительность зубов</div>
+        <p class="eit-lech-indication-text">Острая или ноющая боль, реакция на горячее, холодное и сладкое — первые признаки кариеса или воспаления пульпы.</p>
+      </div>
+      <div class="eit-lech-indication-card eit-lech-fade eit-lech-fade-d1">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Видимые поражения и темные пятна</div>
+        <p class="eit-lech-indication-text">Тёмные пятна, шероховатости или видимые полости на поверхности зубов свидетельствуют о развитии кариеса.</p>
+      </div>
+      <div class="eit-lech-indication-card eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Кровоточивость дёсен</div>
+        <p class="eit-lech-indication-text">Кровоточащие или воспалённые дёсны — симптом гингивита или пародонтита, которые требуют своевременного лечения.</p>
+      </div>
+      <div class="eit-lech-indication-card eit-lech-fade eit-lech-fade-d1">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Старые или выпавшие пломбы</div>
+        <p class="eit-lech-indication-text">Выпавшие, треснувшие или устаревшие пломбы необходимо заменить, чтобы предотвратить повторный кариес и боль.</p>
+      </div>
+      <div class="eit-lech-indication-card eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Профилактический осмотр</div>
+        <p class="eit-lech-indication-text">Регулярные осмотры 1–2 раза в год позволяют выявлять проблемы на ранней стадии и избегать дорогостоящего лечения.</p>
+      </div>
+      <div class="eit-lech-indication-card eit-lech-fade eit-lech-fade-d3">
+        <div class="eit-lech-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-lech-indication-title">Подготовка к протезированию</div>
+        <p class="eit-lech-indication-text">Перед установкой коронок, виниров или имплантов необходимо вылечить все воспаления и кариес в полости рта.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SERVICES
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-services" aria-labelledby="eit-lech-services-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-services-head">
+      <div class="eit-lech-tag eit-lech-fade">Виды лечения</div>
+      <h2 id="eit-lech-services-heading" class="eit-lech-heading eit-lech-fade eit-lech-fade-d1">
+        Какие услуги доступны<br><span>в Este in Turkey?</span>
+      </h2>
+      <p style="font-size:14px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;line-height:1.7;" class="eit-lech-fade eit-lech-fade-d2">
+        Мы проводим все виды терапевтического стоматологического лечения в одной клинике.
+      </p>
+    </div>
+
+    <div class="eit-lech-services-grid">
+      <div class="eit-lech-service-card eit-lech-fade">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Самый популярный</div>
+          <div class="eit-lech-service-name">Лечение кариеса</div>
+          <p class="eit-lech-service-desc">Удаление поражённых тканей и установка современной светоотверждаемой пломбы. Лечение проводится за один визит, безболезненно под анестезией. Пломбы подбираются в тон зубам.</p>
+        </div>
+      </div>
+      <div class="eit-lech-service-card eit-lech-fade eit-lech-fade-d1">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Сложное лечение</div>
+          <div class="eit-lech-service-name">Лечение каналов (эндодонтия)</div>
+          <p class="eit-lech-service-desc">Лечение пульпита и периодонтита — удаление воспалённого нерва, прочистка и герметичное пломбирование корневых каналов. Выполняется под микроскопом для максимальной точности.</p>
+        </div>
+      </div>
+      <div class="eit-lech-service-card eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Эстетика</div>
+          <div class="eit-lech-service-name">Художественная реставрация</div>
+          <p class="eit-lech-service-desc">Восстановление формы, цвета и функции повреждённых зубов с помощью композитных материалов нового поколения. Результат выглядит как естественный зуб.</p>
+        </div>
+      </div>
+      <div class="eit-lech-service-card eit-lech-fade eit-lech-fade-d1">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Профилактика</div>
+          <div class="eit-lech-service-name">Лечение дёсен (пародонтология)</div>
+          <p class="eit-lech-service-desc">Лечение гингивита и пародонтита — профессиональная чистка, снятие зубного камня, кюретаж. Здоровые дёсны — основа для долгосрочного результата любого лечения.</p>
+        </div>
+      </div>
+      <div class="eit-lech-service-card eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Гигиена</div>
+          <div class="eit-lech-service-name">Профессиональная чистка</div>
+          <p class="eit-lech-service-desc">Удаление зубного налёта и камня с помощью ультразвука и Air Flow. Полировка зубов, фторирование эмали. Рекомендуется проводить каждые 6 месяцев.</p>
+        </div>
+      </div>
+      <div class="eit-lech-service-card eit-lech-fade eit-lech-fade-d3">
+        <div class="eit-lech-service-body">
+          <div class="eit-lech-service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+          </div>
+          <div class="eit-lech-service-badge">Диагностика</div>
+          <div class="eit-lech-service-name">3D-томография и рентген</div>
+          <p class="eit-lech-service-desc">Цифровой рентген и конусно-лучевая компьютерная томография (КЛКТ) позволяют точно оценить состояние зубов, корней и костной ткани перед любым лечением.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY TURKEY
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-why" aria-labelledby="eit-lech-why-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-why-inner">
+
+      <div>
+        <div class="eit-lech-tag eit-lech-fade">Почему Турция</div>
+        <h2 id="eit-lech-why-heading" class="eit-lech-heading eit-lech-fade eit-lech-fade-d1">
+          Почему лечение зубов<br><span>выгоднее в Стамбуле?</span>
+        </h2>
+        <div class="eit-lech-divider eit-lech-fade eit-lech-fade-d1"></div>
+
+        <ul class="eit-lech-why-list eit-lech-fade eit-lech-fade-d2">
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>В 2–3 раза дешевле</strong>, чем в странах Европы и СНГ — при сопоставимом или более высоком качестве</span>
+          </li>
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Нет очередей</strong> — приём осуществляется строго по записи, без ожидания часами</span>
+          </li>
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Современное оборудование</strong>: микроскопы, 3D-томограф, цифровой рентген, ультразвук</span>
+          </li>
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Русскоязычный координатор</strong> сопровождает вас на каждом этапе — от прилёта до отъезда</span>
+          </li>
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Комплексный подход</strong> — все проблемы решаются в одной клинике за один приезд</span>
+          </li>
+          <li class="eit-lech-why-item">
+            <span class="eit-lech-why-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Гарантия на все работы</strong> — письменная гарантия и паспорт выполненных процедур</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-stats-card">
+          <div class="eit-lech-stats-title">Este in Turkey — в цифрах</div>
+          <p class="eit-lech-stats-sub">Тысячи пациентов из России, Украины, Германии и других стран уже доверились нашей клинике.</p>
+          <div class="eit-lech-stats-grid">
+            <div class="eit-lech-stats-item">
+              <div class="eit-lech-stats-item-val">3×</div>
+              <div class="eit-lech-stats-item-label">дешевле Европы</div>
+            </div>
+            <div class="eit-lech-stats-item">
+              <div class="eit-lech-stats-item-val">1–3</div>
+              <div class="eit-lech-stats-item-label">дня лечения</div>
+            </div>
+            <div class="eit-lech-stats-item">
+              <div class="eit-lech-stats-item-val">3D</div>
+              <div class="eit-lech-stats-item-label">диагностика</div>
+            </div>
+            <div class="eit-lech-stats-item">
+              <div class="eit-lech-stats-item-val">RU</div>
+              <div class="eit-lech-stats-item-label">поддержка</div>
+            </div>
+          </div>
+          <div class="eit-lech-stats-divider"></div>
+          <div class="eit-lech-stats-items">
+            <div class="eit-lech-stats-li">Бесплатная онлайн-консультация</div>
+            <div class="eit-lech-stats-li">Трансфер от аэропорта</div>
+            <div class="eit-lech-stats-li">Помощь с отелем и логистикой</div>
+            <div class="eit-lech-stats-li">Гарантия и паспорт работы</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-process" aria-labelledby="eit-lech-process-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-process-head">
+      <div class="eit-lech-tag eit-lech-fade">Этапы лечения</div>
+      <h2 id="eit-lech-process-heading" class="eit-lech-heading eit-lech-fade eit-lech-fade-d1">
+        Как проходит лечение<br><span>в нашей клинике?</span>
+      </h2>
+      <p class="eit-lech-process-sub eit-lech-fade eit-lech-fade-d2">
+        Весь процесс чётко организован — вы тратите минимум времени и получаете максимальный результат.
+      </p>
+    </div>
+
+    <div class="eit-lech-steps">
+      <div class="eit-lech-step eit-lech-fade">
+        <div class="eit-lech-step-num">01</div>
+        <div class="eit-lech-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="eit-lech-step-title">Онлайн-консультация</div>
+        <p class="eit-lech-step-text">Вы отправляете снимки зубов или описываете проблему — наш врач бесплатно консультирует и составляет предварительный план лечения.</p>
+      </div>
+      <div class="eit-lech-step eit-lech-fade eit-lech-fade-d1">
+        <div class="eit-lech-step-num">02</div>
+        <div class="eit-lech-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="eit-lech-step-title">Прилёт и встреча</div>
+        <p class="eit-lech-step-text">Наш трансфер встретит вас в аэропорту и отвезёт в клинику. Русскоязычный координатор сопровождает вас с первого момента.</p>
+      </div>
+      <div class="eit-lech-step eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-step-num">03</div>
+        <div class="eit-lech-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="eit-lech-step-title">Диагностика и осмотр</div>
+        <p class="eit-lech-step-text">Врач проводит осмотр, при необходимости делает цифровой рентген или 3D-томографию. Составляется окончательный план лечения.</p>
+      </div>
+      <div class="eit-lech-step eit-lech-fade eit-lech-fade-d3">
+        <div class="eit-lech-step-num">04</div>
+        <div class="eit-lech-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-lech-step-title">Лечение и результат</div>
+        <p class="eit-lech-step-text">Проводятся все запланированные процедуры. В конце вы получаете гарантийный документ, паспорт работы и рекомендации по уходу.</p>
+      </div>
+    </div>
+
+    <!-- Comfort block -->
+    <div class="eit-lech-comfort eit-lech-fade">
+      <div>
+        <div class="eit-lech-comfort-title">Комфортное лечение для иностранных пациентов</div>
+        <p class="eit-lech-comfort-text">Мы понимаем, что приехать на лечение в другую страну — это решение, требующее доверия. Поэтому мы делаем всё для вашего комфорта.</p>
+        <ul class="eit-lech-comfort-list">
+          <li>Русскоязычный переводчик на протяжении всего лечения</li>
+          <li>Помощь с бронированием отеля и логистикой</li>
+          <li>Трансфер аэропорт — клиника — отель</li>
+          <li>Дистанционная поддержка после возвращения домой</li>
+        </ul>
+      </div>
+      <div class="eit-lech-comfort-right">
+        <div class="eit-lech-comfort-stat">
+          <div class="eit-lech-comfort-stat-value">1–3</div>
+          <div class="eit-lech-comfort-stat-label">дня — полный курс лечения</div>
+        </div>
+        <p class="eit-lech-comfort-note">Большинство пациентов решают все стоматологические проблемы <strong style="color:#fff;">за один визит в Стамбул</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-cta" aria-labelledby="eit-lech-cta-heading">
+  <div class="eit-lech-wrap eit-lech-cta-inner">
+    <div class="eit-lech-cta-tag">Запись на приём</div>
+    <h2 id="eit-lech-cta-heading" class="eit-lech-cta-title">
+      Запишитесь на лечение в Стамбуле
+    </h2>
+    <p class="eit-lech-cta-sub">
+      Свяжитесь с нами, и мы составим для вас <strong>персональный план лечения</strong> в ESTE IN TURKEY — быстро, доступно и без очередей.
+    </p>
+    <div class="eit-lech-cta-btns">
+      <a href="https://wa.me/905468189180" class="eit-lech-cta-btn eit-lech-cta-btn--wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        Написать в WhatsApp
+      </a>
+      <a href="tel:+905468189180" class="eit-lech-cta-btn eit-lech-cta-btn--tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +90 546 818 91 80
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-lech-faq" aria-labelledby="eit-lech-faq-heading">
+  <div class="eit-lech-wrap">
+    <div class="eit-lech-faq-head">
+      <div class="eit-lech-tag eit-lech-fade">Вопросы и ответы</div>
+      <h2 id="eit-lech-faq-heading" class="eit-lech-heading eit-lech-fade eit-lech-fade-d1">
+        Часто задаваемые <span>вопросы</span>
+      </h2>
+    </div>
+
+    <div class="eit-lech-faq-grid">
+      <div class="eit-lech-faq-list">
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Больно ли лечить зубы в Турции?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            Нет. Все процедуры выполняются под местной анестезией — вы не почувствуете боли. Наши стоматологи используют современные анестетики, которые действуют мягко и надёжно. Многие пациенты отмечают, что лечение прошло значительно комфортнее, чем они ожидали.
+          </div>
+        </div>
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Сколько времени займёт лечение?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            Зависит от объёма работ. Лечение одного зуба (кариес, пломба) занимает 1–2 часа и выполняется за один визит. Лечение каналов или комплексное лечение нескольких зубов может занять 1–3 дня. Конкретные сроки мы называем после онлайн-консультации.
+          </div>
+        </div>
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Насколько дешевле лечение зубов в Турции по сравнению с Европой?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            В среднем лечение зубов в Стамбуле обходится в <strong>2–3 раза дешевле</strong>, чем в Германии, России, Израиле или ОАЭ. При этом качество материалов и уровень оборудования не уступают европейским клиникам — многие пациенты специально прилетают в Турцию именно за сочетанием цены и качества.
+          </div>
+        </div>
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Можно ли совместить лечение зубов с туризмом?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            Да, и это очень популярный формат. Стамбул — красивый город с богатой историей. Лечение занимает 1–3 дня, и у вас остаётся время на прогулки, шопинг и отдых. Мы поможем с выбором отеля и подскажем лучшие места для посещения.
+          </div>
+        </div>
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Что делать, если после возвращения домой возникнут проблемы?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            На все выполненные работы предоставляется гарантия. Если после возвращения домой возникнут вопросы или дискомфорт, вы можете связаться с нашим врачом дистанционно — мы окажем консультацию онлайн и при необходимости скоординируем дальнейшее лечение.
+          </div>
+        </div>
+
+        <div class="eit-lech-faq-item">
+          <button class="eit-lech-faq-q" aria-expanded="false">
+            Нужна ли виза для поездки в Турцию на лечение?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-lech-faq-a">
+            Граждане большинства стран СНГ могут въезжать в Турцию <strong>без визы</strong> или оформить электронную визу онлайн за несколько минут. Уточните актуальные условия въезда для вашей страны — наш координатор поможет разобраться со всеми формальностями.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ aside -->
+      <div class="eit-lech-faq-aside eit-lech-fade eit-lech-fade-d2">
+        <div class="eit-lech-faq-aside-title">Остались вопросы?</div>
+        <p class="eit-lech-faq-aside-sub">Напишите нам — ответим быстро и бесплатно проконсультируем по вашей ситуации.</p>
+        <div class="eit-lech-faq-aside-btns">
+          <a href="https://wa.me/905468189180" class="eit-lech-faq-aside-btn eit-lech-faq-aside-btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-lech-faq-aside-btn eit-lech-faq-aside-btn--tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+        <div class="eit-lech-faq-aside-divider"></div>
+        <ul class="eit-lech-faq-aside-list">
+          <li>Бесплатная консультация онлайн</li>
+          <li>Трансфер от аэропорта</li>
+          <li>Русскоязычный переводчик</li>
+          <li>Гарантия и паспорт работы</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-lech -->
+
+<script>
+(function(){
+  // Scroll animations
+  var fades = document.querySelectorAll('#eitLechPage .eit-lech-fade');
+  if(!fades.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fades.forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('#eitLechPage .eit-lech-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.eit-lech-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('#eitLechPage .eit-lech-faq-item.is-open').forEach(function(i){
+        i.classList.remove('is-open');
+        i.querySelector('.eit-lech-faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){ item.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+</script>

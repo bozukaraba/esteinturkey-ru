@@ -1,0 +1,1523 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — FUE SAPPHIRE PAGE
+   Dil: RU | Elementor HTML Widget
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-fue *, .eit-fue *::before, .eit-fue *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.eit-fue {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-fue a { text-decoration: none; color: inherit; }
+.eit-fue ul { list-style: none; }
+.eit-fue img { max-width: 100%; display: block; }
+
+.eit-fue-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-fue-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-fue-fade.eit-fue-visible { opacity: 1; transform: none; }
+.eit-fue-fade-d1 { transition-delay: .1s; }
+.eit-fue-fade-d2 { transition-delay: .2s; }
+.eit-fue-fade-d3 { transition-delay: .3s; }
+.eit-fue-fade-d4 { transition-delay: .4s; }
+
+/* ── Shared label tag ──────────────────────────── */
+.eit-fue-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eit-fue-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+
+.eit-fue-heading {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+.eit-fue-heading span { color: var(--eit-accent); }
+.eit-fue-heading--white { color: var(--eit-white); }
+.eit-fue-heading--white span { color: var(--eit-accent-light); }
+
+.eit-fue-subheading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.eit-fue-divider {
+  width: 52px; height: 3px;
+  background: var(--eit-accent);
+  border-radius: 2px;
+  margin: 16px 0 24px;
+}
+.eit-fue-divider--center { margin-left: auto; margin-right: auto; }
+.eit-fue-divider--white { background: rgba(255,255,255,.4); }
+
+/* ── Buttons ───────────────────────────────────── */
+.eit-fue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: var(--eit-transition);
+  cursor: pointer;
+  border: none;
+}
+.eit-fue-btn--primary {
+  background: var(--eit-accent);
+  color: var(--eit-white) !important;
+}
+.eit-fue-btn--primary:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-fue-btn--outline {
+  background: transparent;
+  color: var(--eit-white) !important;
+  border: 2px solid rgba(255,255,255,.5);
+}
+.eit-fue-btn--outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.9);
+  color: var(--eit-white) !important;
+}
+.eit-fue-btn--dark {
+  background: var(--eit-primary-dark);
+  color: var(--eit-white) !important;
+}
+.eit-fue-btn--dark:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(21,68,68,.4);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-fue-hero {
+  background: var(--eit-primary-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 0;
+  min-height: 580px;
+}
+.eit-fue-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(46,139,139,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at -10% 80%, rgba(29,92,92,.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+/* Decorative circles */
+.eit-fue-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.eit-fue-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.eit-fue-hero-left {
+  padding-bottom: 60px;
+}
+.eit-fue-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.eit-fue-hero-breadcrumb a {
+  color: rgba(255,255,255,.45);
+  transition: var(--eit-transition);
+}
+.eit-fue-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-fue-hero-breadcrumb span { color: rgba(255,255,255,.2); }
+
+.eit-fue-hero-title {
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  color: var(--eit-white);
+  margin-bottom: 20px;
+}
+.eit-fue-hero-title em {
+  font-style: normal;
+  color: var(--eit-accent-light);
+}
+.eit-fue-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.eit-fue-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.eit-fue-hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.eit-fue-hero-stat {}
+.eit-fue-hero-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--eit-white);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.eit-fue-hero-stat-num span { color: var(--eit-accent-light); }
+.eit-fue-hero-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.eit-fue-hero-right {
+  position: relative;
+  align-self: flex-end;
+}
+.eit-fue-hero-img-stack {
+  position: relative;
+  height: 440px;
+}
+.eit-fue-hero-img-main {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 88%;
+  height: 400px;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+  object-position: top center;
+}
+.eit-fue-hero-img-float {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 52%;
+  height: 240px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 4px solid var(--eit-primary-dark);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.eit-fue-hero-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--eit-accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(46,139,139,.4);
+}
+
+/* ════════════════════════════════════════════════
+   2. WHAT IS FUE SAPPHIRE
+   ════════════════════════════════════════════════ */
+.eit-fue-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-fue-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.eit-fue-about-img-wrap {
+  position: relative;
+  min-height: 500px;
+}
+.eit-fue-about-img-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  height: 86%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top center;
+}
+.eit-fue-about-img-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52%;
+  height: 52%;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 5px solid var(--eit-white);
+  box-shadow: 0 16px 48px rgba(0,0,0,.18);
+  z-index: 2;
+}
+.eit-fue-about-deco {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.08);
+  z-index: -1;
+}
+.eit-fue-about-text p {
+  font-size: 14.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.eit-fue-about-text p strong {
+  color: var(--eit-primary);
+  font-weight: 700;
+}
+.eit-fue-about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.eit-fue-about-highlight {
+  background: var(--eit-cream);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.eit-fue-about-highlight-icon {
+  width: 36px; height: 36px;
+  background: rgba(46,139,139,.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.eit-fue-about-highlight-icon svg {
+  width: 16px; height: 16px;
+  color: var(--eit-accent);
+}
+.eit-fue-about-highlight-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--eit-primary);
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════
+   3. KEY ADVANTAGES (3 big cards)
+   ════════════════════════════════════════════════ */
+.eit-fue-keys {
+  background: var(--eit-primary);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.eit-fue-keys::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-fue-keys-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+}
+.eit-fue-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+.eit-fue-key-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: var(--eit-transition);
+}
+.eit-fue-key-card:hover {
+  background: rgba(255,255,255,.11);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.2);
+}
+.eit-fue-key-icon {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.eit-fue-key-icon svg {
+  width: 26px; height: 26px;
+  color: var(--eit-accent-light);
+}
+.eit-fue-key-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.eit-fue-key-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   4. BENEFITS GRID
+   ════════════════════════════════════════════════ */
+.eit-fue-benefits {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-fue-benefits-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.eit-fue-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-fue-benefit-card {
+  background: var(--eit-white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.eit-fue-benefit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.1);
+  border-color: rgba(46,139,139,.2);
+}
+.eit-fue-benefit-num {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--eit-accent);
+  background: rgba(46,139,139,.1);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+.eit-fue-benefit-body {}
+.eit-fue-benefit-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.eit-fue-benefit-text {
+  font-size: 12.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   5. PROCESS STEPS
+   ════════════════════════════════════════════════ */
+.eit-fue-process {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-fue-process-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.eit-fue-process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.eit-fue-step {
+  display: flex;
+  gap: 24px;
+  padding: 32px 28px;
+  position: relative;
+  border-bottom: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+}
+.eit-fue-step:nth-child(odd) { border-right: 1px solid var(--eit-border); }
+.eit-fue-step:nth-last-child(-n+2) { border-bottom: none; }
+.eit-fue-step:hover { background: rgba(248,244,239,.5); }
+.eit-fue-step-num {
+  width: 48px; height: 48px;
+  background: var(--eit-primary-dark);
+  color: var(--eit-white);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -.02em;
+  transition: var(--eit-transition);
+}
+.eit-fue-step:hover .eit-fue-step-num {
+  background: var(--eit-accent);
+}
+.eit-fue-step-content {}
+.eit-fue-step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.eit-fue-step-text {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   6. MINI CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-fue-band {
+  background: var(--eit-accent);
+  padding: 48px 0;
+}
+.eit-fue-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.eit-fue-band-text {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 800;
+  color: var(--eit-white);
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+.eit-fue-band-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.75);
+  margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════════
+   7. VIDEOS
+   ════════════════════════════════════════════════ */
+.eit-fue-videos {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-fue-videos-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.eit-fue-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-fue-video-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--eit-primary-dark);
+  aspect-ratio: 16/9;
+  position: relative;
+}
+.eit-fue-video-item video,
+.eit-fue-video-item iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+  object-fit: cover;
+}
+
+/* ════════════════════════════════════════════════
+   8. FAQ
+   ════════════════════════════════════════════════ */
+.eit-fue-faq {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-fue-faq-header {
+  margin-bottom: 52px;
+}
+.eit-fue-faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: start;
+}
+.eit-fue-faq-list { }
+.eit-fue-faq-item {
+  border: 1px solid var(--eit-border);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: var(--eit-transition);
+}
+.eit-fue-faq-item.open {
+  border-color: rgba(46,139,139,.3);
+  box-shadow: 0 4px 20px rgba(29,92,92,.08);
+}
+.eit-fue-faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  user-select: none;
+}
+.eit-fue-faq-q-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  line-height: 1.4;
+  transition: var(--eit-transition);
+}
+.eit-fue-faq-item.open .eit-fue-faq-q-text { color: var(--eit-accent); }
+.eit-fue-faq-icon {
+  width: 28px; height: 28px;
+  background: rgba(29,92,92,.07);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--eit-transition);
+  color: var(--eit-primary);
+}
+.eit-fue-faq-item.open .eit-fue-faq-icon {
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  transform: rotate(180deg);
+}
+.eit-fue-faq-icon svg { width: 14px; height: 14px; }
+.eit-fue-faq-a {
+  display: none;
+  padding: 0 24px 20px;
+  font-size: 13.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.8;
+}
+.eit-fue-faq-item.open .eit-fue-faq-a { display: block; }
+.eit-fue-faq-a ul {
+  list-style: none;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.eit-fue-faq-a ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+}
+.eit-fue-faq-a ul li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--eit-accent);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.eit-fue-faq-a strong { color: var(--eit-primary); font-weight: 700; }
+
+/* FAQ sidebar card */
+.eit-fue-faq-aside {
+  position: sticky;
+  top: 100px;
+}
+.eit-fue-faq-aside-card {
+  background: var(--eit-primary-dark);
+  border-radius: 20px;
+  padding: 36px 28px;
+  color: var(--eit-white);
+  margin-bottom: 16px;
+}
+.eit-fue-faq-aside-icon {
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-fue-faq-aside-icon svg { width: 24px; height: 24px; color: var(--eit-accent-light); }
+.eit-fue-faq-aside-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 10px;
+}
+.eit-fue-faq-aside-text {
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.eit-fue-faq-aside-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.eit-fue-faq-aside-contact a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+  transition: var(--eit-transition);
+}
+.eit-fue-faq-aside-contact a:hover { color: var(--eit-accent-light); }
+.eit-fue-faq-aside-contact svg { width: 16px; height: 16px; color: var(--eit-accent); flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-fue-about-inner { gap: 48px; }
+  .eit-fue-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-fue-faq-inner { grid-template-columns: 1fr; }
+  .eit-fue-faq-aside { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .eit-fue-faq-aside-card { margin-bottom: 0; }
+}
+@media (max-width: 900px) {
+  .eit-fue-hero-inner { grid-template-columns: 1fr; }
+  .eit-fue-hero-right { display: none; }
+  .eit-fue-hero { min-height: auto; }
+  .eit-fue-about-inner { grid-template-columns: 1fr; }
+  .eit-fue-about-img-wrap { min-height: 320px; }
+  .eit-fue-about-img-main { width: 78%; height: 80%; }
+  .eit-fue-about-img-accent { width: 50%; height: 48%; }
+  .eit-fue-keys-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-fue-process-grid { grid-template-columns: 1fr; }
+  .eit-fue-step:nth-child(odd) { border-right: none; }
+  .eit-fue-step:nth-last-child(-n+2) { border-bottom: 1px solid var(--eit-border); }
+  .eit-fue-step:last-child { border-bottom: none; }
+  .eit-fue-videos-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-fue-faq-aside { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .eit-fue-benefits-grid { grid-template-columns: 1fr; }
+  .eit-fue-about-highlights { grid-template-columns: 1fr; }
+  .eit-fue-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .eit-fue-band-inner { flex-direction: column; text-align: center; }
+  .eit-fue-videos-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .eit-fue-wrap { padding: 0 18px; }
+  .eit-fue-hero { padding: 72px 0 0; }
+  .eit-fue-hero-left { padding-bottom: 40px; }
+  .eit-fue-hero-actions { flex-direction: column; }
+  .eit-fue-hero-actions .eit-fue-btn { justify-content: center; }
+}
+</style>
+
+<!-- ============================================================
+     ESTE IN TURKEY — FUE SAPPHIRE (Elementor HTML Widget)
+     ============================================================ -->
+<div class="eit-fue" id="eitFuePage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-hero" aria-labelledby="eit-fue-title">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-fue-hero-left">
+        <nav class="eit-fue-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/peresadka-volos/">Пересадка волос</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Sapphire FUE</span>
+        </nav>
+
+        <div class="eit-fue-tag eit-fue-tag--light eit-fue-fade">Передовая методика</div>
+        <h1 id="eit-fue-title" class="eit-fue-hero-title eit-fue-fade eit-fue-fade-d1">
+          Пересадка волос<br><em>Sapphire FUE</em>
+        </h1>
+        <p class="eit-fue-hero-sub eit-fue-fade eit-fue-fade-d2">
+          Инновационная технология с сапфировыми наконечниками — минимальный след, максимальная плотность и результаты, неотличимые от природных.
+        </p>
+        <div class="eit-fue-hero-actions eit-fue-fade eit-fue-fade-d3">
+          <a href="#eit-fue-form" class="eit-fue-btn eit-fue-btn--primary">
+            Бесплатная консультация
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:+905468189180" class="eit-fue-btn eit-fue-btn--outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+
+        <div class="eit-fue-hero-stats eit-fue-fade eit-fue-fade-d4">
+          <div class="eit-fue-hero-stat">
+            <div class="eit-fue-hero-stat-num">6–8<span>ч</span></div>
+            <div class="eit-fue-hero-stat-label">Длительность</div>
+          </div>
+          <div class="eit-fue-hero-stat">
+            <div class="eit-fue-hero-stat-num">3–5<span>дн</span></div>
+            <div class="eit-fue-hero-stat-label">Восстановление</div>
+          </div>
+          <div class="eit-fue-hero-stat">
+            <div class="eit-fue-hero-stat-num">12<span>мес</span></div>
+            <div class="eit-fue-hero-stat-label">Финальный результат</div>
+          </div>
+          <div class="eit-fue-hero-stat">
+            <div class="eit-fue-hero-stat-num">0<span>Рубец</span></div>
+            <div class="eit-fue-hero-stat-label">Без рубцов</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: image stack -->
+      <div class="eit-fue-hero-right" aria-hidden="true">
+        <div class="eit-fue-hero-img-stack">
+          <div class="eit-fue-hero-badge">Sapphire FUE — Стамбул</div>
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/fue-hero-main.jpg"
+            alt="Пересадка волос Sapphire FUE — Este in Turkey"
+            class="eit-fue-hero-img-main"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/fue-hero-float.jpg"
+            alt="Процедура FUE"
+            class="eit-fue-hero-img-float"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     ABOUT — ЧТО ТАКОЕ FUE?
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-about" aria-labelledby="eit-fue-about-heading">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-about-inner">
+
+      <!-- Image -->
+      <div class="eit-fue-about-img-wrap eit-fue-fade">
+        <div class="eit-fue-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/4.webp"
+          alt="Пересадка волос методом FUE"
+          class="eit-fue-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/fue-about-inset.jpg"
+          alt="FUE процедура крупным планом"
+          class="eit-fue-about-img-accent"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="eit-fue-about-text">
+        <div class="eit-fue-tag eit-fue-fade">О методике</div>
+        <h2 id="eit-fue-about-heading" class="eit-fue-heading eit-fue-fade eit-fue-fade-d1">
+          Что такое <span>Пересадка волос методом FUE?</span>
+        </h2>
+        <div class="eit-fue-divider eit-fue-fade eit-fue-fade-d1"></div>
+
+        <div class="eit-fue-fade eit-fue-fade-d2">
+          <p><strong>Пересадка волос методом FUE</strong> — это метод трансплантации волос, применяемый с начала 2000-х годов. Один из наиболее распространённых методов, позволяющих пересадить подходящие и сильные фолликулы из донорской зоны в зону недостатка волос.</p>
+          <p>При пересадке с затылка, который считается донорской зоной, по одному берутся графты с микромоторными наконечниками диаметром <strong>0,6–1 мм</strong> и пересаживаются в зону недостатка волос. Один трансплантат содержит 2–3 волосяных фолликула.</p>
+          <p>Несмотря на давнюю историю метода, он многократно усовершенствован. Благодаря обширной практике были достигнуты <strong>успешные и естественные результаты</strong>.</p>
+        </div>
+
+        <div class="eit-fue-about-highlights eit-fue-fade eit-fue-fade-d3">
+          <div class="eit-fue-about-highlight">
+            <div class="eit-fue-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-fue-about-highlight-text">Минимально инвазивный метод</div>
+          </div>
+          <div class="eit-fue-about-highlight">
+            <div class="eit-fue-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="eit-fue-about-highlight-text">Быстрое восстановление 3–5 дней</div>
+          </div>
+          <div class="eit-fue-about-highlight">
+            <div class="eit-fue-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="eit-fue-about-highlight-text">Без видимых рубцов</div>
+          </div>
+          <div class="eit-fue-about-highlight">
+            <div class="eit-fue-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="eit-fue-about-highlight-text">Для мужчин и женщин</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     KEY ADVANTAGES — 3 главных отличия Sapphire
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-keys" aria-labelledby="eit-fue-keys-heading">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-keys-header eit-fue-fade">
+      <div class="eit-fue-tag eit-fue-tag--light">Почему Sapphire?</div>
+      <h2 id="eit-fue-keys-heading" class="eit-fue-heading eit-fue-heading--white eit-fue-fade eit-fue-fade-d1">
+        Преимущества <span>сапфировых наконечников</span>
+      </h2>
+      <div class="eit-fue-divider eit-fue-divider--center eit-fue-divider--white eit-fue-fade eit-fue-fade-d1"></div>
+    </div>
+
+    <div class="eit-fue-keys-grid">
+      <div class="eit-fue-key-card eit-fue-fade">
+        <div class="eit-fue-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="eit-fue-key-title">Кристаллы натурального сапфира</div>
+        <div class="eit-fue-key-text">Наконечники из натурального минерала сапфира имеют асимметричную V-образную форму. Это позволяет открывать микроканалы идеальной глубины и угла, защищая фолликулы от повреждений и обеспечивая гладкое прилегание к коже.</div>
+      </div>
+      <div class="eit-fue-key-card eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="eit-fue-key-title">Минимальное кровотечение и ускоренное заживление</div>
+        <div class="eit-fue-key-text">Сапфировые наконечники обладают антибактериальными свойствами и открывают более мелкие каналы, чем стальные. Это значительно сокращает кровотечение во время операции, ускоряет заживление и уменьшает образование корочек.</div>
+      </div>
+      <div class="eit-fue-key-card eit-fue-fade eit-fue-fade-d2">
+        <div class="eit-fue-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="eit-fue-key-title">Максимальная плотность и естественный результат</div>
+        <div class="eit-fue-key-text">Благодаря плотной трансплантации и правильному углу имплантации волосяные графты ложатся под наиболее натуральным углом роста. Результат неотличим от природных волос даже при детальном рассмотрении.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     BENEFITS — все преимущества
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-benefits" aria-labelledby="eit-fue-benefits-heading">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-benefits-header eit-fue-fade">
+      <div class="eit-fue-tag">Детальный обзор</div>
+      <h2 id="eit-fue-benefits-heading" class="eit-fue-heading eit-fue-fade eit-fue-fade-d1">
+        Все преимущества <span>метода</span>
+      </h2>
+      <div class="eit-fue-divider eit-fue-divider--center eit-fue-fade eit-fue-fade-d1"></div>
+    </div>
+
+    <div class="eit-fue-benefits-grid">
+
+      <div class="eit-fue-benefit-card eit-fue-fade">
+        <div class="eit-fue-benefit-num">01</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Наиболее естественные результаты</div>
+          <div class="eit-fue-benefit-text">Один из наиболее разработанных FUE-методов, дающий максимально естественный вид благодаря правильному направлению имплантации.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-benefit-num">02</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Высокая плотность трансплантации</div>
+          <div class="eit-fue-benefit-text">Метод обеспечивает плотную пересадку — больше графтов на единицу площади, что критично при значительной потере волос.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d2">
+        <div class="eit-fue-benefit-num">03</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Ускоренное заживление</div>
+          <div class="eit-fue-benefit-text">Сапфировые наконечники открывают более мелкие микроканалы с минимальной травмой тканей, что сокращает время восстановления.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade">
+        <div class="eit-fue-benefit-num">04</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Антибактериальные свойства сапфира</div>
+          <div class="eit-fue-benefit-text">Натуральный сапфир обладает природными антибактериальными свойствами, снижая риск инфекции и воспаления после операции.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-benefit-num">05</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Минимальное кровотечение</div>
+          <div class="eit-fue-benefit-text">Благодаря точности сапфирового наконечника кровотечение в ходе пересадки минимально — процедура комфортна для пациента.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d2">
+        <div class="eit-fue-benefit-num">06</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Защита фолликулов от повреждений</div>
+          <div class="eit-fue-benefit-text">Асимметричная форма наконечника создаёт непрямые каналы, защищая волосяные фолликулы под кожей от механического повреждения.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade">
+        <div class="eit-fue-benefit-num">07</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Гладкое прилегание к коже</div>
+          <div class="eit-fue-benefit-text">Особенность метода — идеальное прилегание трансплантированных волос к коже, что повышает итоговую эстетику результата.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-benefit-num">08</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Подходит при прогрессирующем выпадении</div>
+          <div class="eit-fue-benefit-text">Высокая плотность трансплантации делает метод эффективным даже при значительном и прогрессирующем выпадении волос.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-benefit-card eit-fue-fade eit-fue-fade-d2">
+        <div class="eit-fue-benefit-num">09</div>
+        <div class="eit-fue-benefit-body">
+          <div class="eit-fue-benefit-title">Стабильный угол имплантации</div>
+          <div class="eit-fue-benefit-text">Открытые каналы совместимы с графтами — они имплантируются под естественным углом, исключая смещение и деформацию.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     PROCESS STEPS
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-process" aria-labelledby="eit-fue-process-heading">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-process-header eit-fue-fade">
+      <div class="eit-fue-tag">Как это происходит</div>
+      <h2 id="eit-fue-process-heading" class="eit-fue-heading eit-fue-fade eit-fue-fade-d1">
+        Этапы операции <span>Sapphire FUE</span>
+      </h2>
+      <div class="eit-fue-divider eit-fue-divider--center eit-fue-fade eit-fue-fade-d1"></div>
+      <p style="font-size:14.5px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;" class="eit-fue-fade eit-fue-fade-d2">
+        Операция занимает 6–8 часов и проходит под местной анестезией в комфортных условиях нашей клиники в Стамбуле.
+      </p>
+    </div>
+
+    <div class="eit-fue-process-grid">
+
+      <div class="eit-fue-step eit-fue-fade">
+        <div class="eit-fue-step-num">1</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Предварительный осмотр и диагностика</div>
+          <div class="eit-fue-step-text">Специалист оценивает состояние волос, выслушивает пожелания пациента, изучает историю болезни и проводит необходимые диагностические исследования.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-step-num">2</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Планирование и разметка зон</div>
+          <div class="eit-fue-step-text">На коже головы составляется карта области, в которой будет производиться пересадка — определяется линия роста и распределение графтов.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade">
+        <div class="eit-fue-step-num">3</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Анестезия донорской зоны</div>
+          <div class="eit-fue-step-text">Донорская область (затылок) обезболивается местной анестезией для комфортного проведения процедуры без боли.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-step-num">4</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Забор волосяных графтов</div>
+          <div class="eit-fue-step-text">С помощью микромотора волосяные графты разрыхляются и аккуратно собираются пинцетом по методу гомогенного пересечения — по одному.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade">
+        <div class="eit-fue-step-num">5</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Хранение графтов</div>
+          <div class="eit-fue-step-text">Собранные волосяные графты помещаются в специальный питательный раствор для сохранения их жизнеспособности до момента имплантации.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-step-num">6</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Открытие микроканалов сапфиром</div>
+          <div class="eit-fue-step-text">Сапфировыми наконечниками открываются точные микроканалы нужного угла и глубины — именно здесь метод кардинально отличается от классического FUE.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade">
+        <div class="eit-fue-step-num">7</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Имплантация трансплантатов</div>
+          <div class="eit-fue-step-text">Специалисты аккуратно помещают каждый графт в подготовленный микроканал под оптимальным углом — это финальный и ключевой этап операции.</div>
+        </div>
+      </div>
+
+      <div class="eit-fue-step eit-fue-fade eit-fue-fade-d1">
+        <div class="eit-fue-step-num">8</div>
+        <div class="eit-fue-step-content">
+          <div class="eit-fue-step-title">Наложение повязки и выписка</div>
+          <div class="eit-fue-step-text">После операции накладывается повязка. На следующий день — перевязка, назначение антибиотиков. Через 3–5 дней пациент может вернуться к обычной жизни.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MINI CTA BAND
+     ════════════════════════════════════════════════ -->
+<div class="eit-fue-band" role="complementary">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-band-inner">
+      <div>
+        <div class="eit-fue-band-text">Готовы к преображению?</div>
+        <div class="eit-fue-band-sub">Запишитесь на бесплатную консультацию — ответим на все вопросы</div>
+      </div>
+      <a href="#eit-fue-form" class="eit-fue-btn eit-fue-btn--dark">
+        Записаться на консультацию
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     VIDEOS
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-videos" aria-labelledby="eit-fue-videos-heading">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-videos-header eit-fue-fade">
+      <div class="eit-fue-tag">Живые отзывы</div>
+      <h2 id="eit-fue-videos-heading" class="eit-fue-heading eit-fue-fade eit-fue-fade-d1">
+        Видео <span>результатов</span>
+      </h2>
+      <div class="eit-fue-divider eit-fue-divider--center eit-fue-fade eit-fue-fade-d1"></div>
+    </div>
+
+    <div class="eit-fue-videos-grid">
+      <div class="eit-fue-video-item eit-fue-fade">
+        <video controls preload="metadata" playsinline>
+          <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="eit-fue-video-item eit-fue-fade eit-fue-fade-d1">
+        <video controls preload="metadata" playsinline>
+          <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="eit-fue-video-item eit-fue-fade eit-fue-fade-d2">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Este in Turkey — Отзывы пациентов Sapphire FUE"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-fue-faq" aria-labelledby="eit-fue-faq-heading" id="eit-fue-faq">
+  <div class="eit-fue-wrap">
+    <div class="eit-fue-faq-inner">
+
+      <!-- Left: accordion -->
+      <div>
+        <div class="eit-fue-faq-header eit-fue-fade">
+          <div class="eit-fue-tag">FAQ</div>
+          <h2 id="eit-fue-faq-heading" class="eit-fue-heading eit-fue-fade eit-fue-fade-d1">
+            Часто задаваемые <span>вопросы</span>
+          </h2>
+          <div class="eit-fue-divider eit-fue-fade eit-fue-fade-d1"></div>
+        </div>
+
+        <div class="eit-fue-faq-list eit-fue-fade eit-fue-fade-d2">
+
+          <div class="eit-fue-faq-item open">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="true">
+              <span class="eit-fue-faq-q-text">Как выполняется операция при использовании метода Sapphire FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>Процесс Sapphire FUE включает следующие этапы:</p>
+              <ul>
+                <li>Предварительный осмотр: специалист выслушивает пожелания, оценивает историю болезни, проводит необходимые диагностические исследования.</li>
+                <li>Планирование: на карту наносится область, в которой будет производиться пересадка.</li>
+                <li>Донорская зона обезболивается местной анестезией.</li>
+                <li>Графты разрыхляются микромотором и по одному собираются пинцетом методом гомогенного пересечения.</li>
+                <li>Собранные графты хранятся в специальном питательном растворе.</li>
+                <li>Сапфировыми наконечниками открываются микроканалы для имплантации трансплантатов.</li>
+                <li>Благодаря асимметричной форме наконечника каналы открываются под наиболее подходящим углом и глубиной — волосяные трансплантаты под кожей защищены от повреждения.</li>
+                <li>На заключительном этапе специалисты помещают волосяные графты в микроканалы. Этот процесс занимает около 3 часов; в целом операция длится <strong>6–8 часов</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Будет ли боль после операции по пересадке волос Sapphire FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>После завершения операции на донорскую область накладывается повязка. На следующий день повязка снимается и производится перевязка. Пациенту назначаются антибиотики против риска инфицирования и обезболивающие для снятия слабых болевых ощущений.</p>
+              <p style="margin-top:10px;">Процесс восстановления проходит быстро. При соблюдении всех рекомендаций врача вы сможете <strong>вернуться к обычной жизни уже через 3–5 дней</strong>.</p>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Как долго растут волосы после пересадки Sapphire FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>Пересаженные графты приживаются в среднем через <strong>8–10 дней</strong>. В первые 10 дней необходимо ежедневно мыть волосы по инструкции.</p>
+              <p style="margin-top:10px;">Через 1 месяц графты могут выпасть — это нормальный процесс шокового выпадения. Волосы начинают отрастать через <strong>3–4 недели</strong>, набирают объём к 6-му месяцу. Окончательный результат виден через <strong>12 месяцев</strong>.</p>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Останутся ли шрамы после пересадки Sapphire FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>При Sapphire FUE волосяные фолликулы берутся из донорской области методом гомогенного пересечения. <strong>В области забора графтов рубцы не образуются.</strong></p>
+              <p style="margin-top:10px;">В первые 3–5 дней наблюдается лёгкое покраснение донорской зоны — это норма. В дальнейшем зона заживает без рубцов и шрамов.</p>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Что необходимо учитывать перед операцией?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>Перед операцией необходимо сообщить врачу о хронических заболеваниях, принимаемых препаратах и перенесённых операциях. Также рекомендуется взять отпуск на 1 неделю.</p>
+              <p style="margin-top:10px;">Важно:</p>
+              <ul>
+                <li>Сообщите команде, если принимаете препараты для разжижения крови (например, аспирин).</li>
+                <li>Не принимайте антидепрессанты, обезболивающие, витамины E и B, поливитамины перед операцией.</li>
+                <li>Прекратите курение и употребление алкоголя <strong>за 7 дней до процедуры</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">На что обратить внимание после пересадки?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <ul>
+                <li>В течение 10 дней зона пересадки должна быть хорошо защищена.</li>
+                <li>Первую процедуру мытья волос проводит медсестра в клинике.</li>
+                <li>Мыть волосы ежедневно 10 дней по инструкции.</li>
+                <li>Не чесать и не тереть голову в течение 15 дней.</li>
+                <li>Не пользоваться тканевым полотенцем и феном 1 месяц.</li>
+                <li>Не использовать краску для волос и лосьон 1 месяц.</li>
+                <li>Избегать прямых солнечных лучей, бассейна и солярия 1 месяц.</li>
+                <li>Не заниматься тяжёлыми видами спорта 2 месяца.</li>
+                <li>Не стричь зону пересадки бритвой 6 месяцев.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Кому подходит пересадка волос методом FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>Метод подходит мужчинам и женщинам без серьёзных хронических заболеваний. Перед операцией специалисты проведут обследование и определят тип выпадения волос.</p>
+              <p style="margin-top:10px;">Если нет возможности приехать в клинику — вы можете записаться онлайн, прислать фотографии и получить персональный план лечения от нашего консультанта.</p>
+            </div>
+          </div>
+
+          <div class="eit-fue-faq-item">
+            <div class="eit-fue-faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span class="eit-fue-faq-q-text">Сколько стоит пересадка волос методом FUE?</span>
+              <span class="eit-fue-faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+              </span>
+            </div>
+            <div class="eit-fue-faq-a">
+              <p>Стоимость зависит от количества необходимых графтов, выбранной техники и желаемой густоты. В цену, как правило, включены:</p>
+              <ul>
+                <li>Консультация врача</li>
+                <li>Сама процедура</li>
+                <li>Анестезия и медикаменты</li>
+                <li>Трансфер из аэропорта</li>
+                <li>Проживание в отеле</li>
+              </ul>
+              <p style="margin-top:10px;">Для получения точной стоимости — заполните форму ниже или свяжитесь с нами напрямую.</p>
+            </div>
+          </div>
+
+        </div><!-- /.eit-fue-faq-list -->
+      </div>
+
+      <!-- Right: aside -->
+      <div class="eit-fue-faq-aside">
+        <div class="eit-fue-faq-aside-card eit-fue-fade">
+          <div class="eit-fue-faq-aside-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="eit-fue-faq-aside-title">Бесплатная консультация</div>
+          <div class="eit-fue-faq-aside-text">Остались вопросы? Наши специалисты ответят на всё — быстро и без обязательств.</div>
+          <a href="#eit-fue-form" class="eit-fue-btn eit-fue-btn--primary" style="width:100%;justify-content:center;">
+            Получить консультацию
+          </a>
+          <div class="eit-fue-faq-aside-contact">
+            <a href="tel:+905468189180">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+            <a href="mailto:info@esteinturkey.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@esteinturkey.com
+            </a>
+          </div>
+        </div>
+
+        <div class="eit-fue-faq-aside-card eit-fue-fade eit-fue-fade-d1" style="background:rgba(46,139,139,.1);border:1px solid rgba(46,139,139,.2);">
+          <div style="font-size:13px;font-weight:700;color:var(--eit-primary);margin-bottom:8px;">Время операции</div>
+          <div style="font-size:30px;font-weight:900;color:var(--eit-primary-dark);letter-spacing:-.02em;">6–8 <span style="font-size:16px;color:var(--eit-accent);">часов</span></div>
+          <div style="font-size:12px;color:var(--eit-text-muted);margin-top:6px;">Под местной анестезией, без общего наркоза</div>
+          <div style="height:1px;background:var(--eit-border);margin:16px 0;"></div>
+          <div style="font-size:13px;font-weight:700;color:var(--eit-primary);margin-bottom:8px;">Восстановление</div>
+          <div style="font-size:30px;font-weight:900;color:var(--eit-primary-dark);letter-spacing:-.02em;">3–5 <span style="font-size:16px;color:var(--eit-accent);">дней</span></div>
+          <div style="font-size:12px;color:var(--eit-text-muted);margin-top:6px;">Возврат к обычной жизни</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</div><!-- /.eit-fue -->
+
+<script>
+(function(){
+
+  /* ── Scroll animations ─────────────────────────── */
+  var fades = document.querySelectorAll('.eit-fue-fade');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('eit-fue-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fades.forEach(function(el){ obs.observe(el); });
+  } else {
+    fades.forEach(function(el){ el.classList.add('eit-fue-visible'); });
+  }
+
+  /* ── FAQ accordion ─────────────────────────────── */
+  document.querySelectorAll('.eit-fue-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = this.closest('.eit-fue-faq-item');
+      var isOpen = item.classList.contains('open');
+      /* Close all */
+      document.querySelectorAll('.eit-fue-faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.eit-fue-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      /* Open clicked */
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    btn.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+    });
+  });
+
+  /* ── Smooth scroll for anchor links ────────────── */
+  document.querySelectorAll('a[href^="#eit-fue-"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── Form submit (WP AJAX / CF7 hook placeholder) ─ */
+  var form = document.getElementById('eitFueSapphireForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = this.querySelector('button[type="submit"]');
+      var orig = btn.textContent;
+      btn.textContent = 'Отправка...';
+      btn.disabled = true;
+      /* Replace with your CF7 / WPForms AJAX call */
+      setTimeout(function(){
+        btn.textContent = '✓ Заявка отправлена!';
+        btn.style.background = 'var(--eit-accent)';
+        setTimeout(function(){ btn.textContent = orig; btn.disabled = false; btn.style.background = ''; }, 4000);
+      }, 1200);
+    });
+  }
+
+})();
+</script>

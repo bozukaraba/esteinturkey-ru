@@ -1,0 +1,1152 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ПЕРЕСАДКА БОРОДЫ PAGE
+   Дил: RU | Elementor HTML Widget
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-brd *, .eit-brd *::before, .eit-brd *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.eit-brd {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-brd a { text-decoration: none; color: inherit; }
+.eit-brd ul { list-style: none; }
+.eit-brd img { max-width: 100%; display: block; }
+
+.eit-brd-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-brd-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-brd-fade.eit-brd-visible { opacity: 1; transform: none; }
+.eit-brd-fade-d1 { transition-delay: .1s; }
+.eit-brd-fade-d2 { transition-delay: .2s; }
+.eit-brd-fade-d3 { transition-delay: .3s; }
+.eit-brd-fade-d4 { transition-delay: .4s; }
+
+/* ── Shared label tag ──────────────────────────── */
+.eit-brd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eit-brd-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+
+.eit-brd-heading {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+.eit-brd-heading span { color: var(--eit-accent); }
+.eit-brd-heading--white { color: var(--eit-white); }
+.eit-brd-heading--white span { color: var(--eit-accent-light); }
+
+.eit-brd-subheading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.eit-brd-divider {
+  width: 52px; height: 3px;
+  background: var(--eit-accent);
+  border-radius: 2px;
+  margin: 16px 0 24px;
+}
+.eit-brd-divider--center { margin-left: auto; margin-right: auto; }
+.eit-brd-divider--white { background: rgba(255,255,255,.4); }
+
+/* ── Buttons ───────────────────────────────────── */
+.eit-brd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: var(--eit-transition);
+  cursor: pointer;
+  border: none;
+}
+.eit-brd-btn--primary {
+  background: var(--eit-accent);
+  color: var(--eit-white) !important;
+}
+.eit-brd-btn--primary:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-brd-btn--outline {
+  background: transparent;
+  color: var(--eit-white) !important;
+  border: 2px solid rgba(255,255,255,.5);
+}
+.eit-brd-btn--outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.9);
+  color: var(--eit-white) !important;
+}
+.eit-brd-btn--dark {
+  background: var(--eit-primary-dark);
+  color: var(--eit-white) !important;
+}
+.eit-brd-btn--dark:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(21,68,68,.4);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-brd-hero {
+  background: var(--eit-primary-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 0;
+  min-height: 580px;
+}
+.eit-brd-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(46,139,139,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at -10% 80%, rgba(29,92,92,.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+.eit-brd-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.eit-brd-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.eit-brd-hero-left { padding-bottom: 60px; }
+.eit-brd-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.eit-brd-hero-breadcrumb a {
+  color: rgba(255,255,255,.45);
+  transition: var(--eit-transition);
+}
+.eit-brd-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-brd-hero-breadcrumb span { color: rgba(255,255,255,.2); }
+
+.eit-brd-hero-title {
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  color: var(--eit-white);
+  margin-bottom: 20px;
+}
+.eit-brd-hero-title em {
+  font-style: normal;
+  color: var(--eit-accent-light);
+}
+.eit-brd-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.eit-brd-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.eit-brd-hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.eit-brd-hero-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--eit-white);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.eit-brd-hero-stat-num span { color: var(--eit-accent-light); }
+.eit-brd-hero-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.eit-brd-hero-right {
+  position: relative;
+  align-self: flex-end;
+}
+.eit-brd-hero-img-stack {
+  position: relative;
+  height: 440px;
+}
+.eit-brd-hero-img-main {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 88%;
+  height: 400px;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+  object-position: top center;
+}
+.eit-brd-hero-img-float {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 52%;
+  height: 240px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 4px solid var(--eit-primary-dark);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.eit-brd-hero-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--eit-accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(46,139,139,.4);
+}
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-brd-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-brd-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.eit-brd-about-img-wrap {
+  position: relative;
+  min-height: 500px;
+}
+.eit-brd-about-img-main {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.eit-brd-about-deco {
+  position: absolute;
+  top: -20px; left: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.08);
+  z-index: -1;
+}
+.eit-brd-about-text p {
+  font-size: 14.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.eit-brd-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-brd-about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.eit-brd-about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--eit-cream);
+  border-radius: 12px;
+}
+.eit-brd-about-highlight-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(46,139,139,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--eit-accent);
+}
+.eit-brd-about-highlight-icon svg { width: 18px; height: 18px; }
+.eit-brd-about-highlight-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--eit-primary);
+  line-height: 1.45;
+  padding-top: 4px;
+}
+
+/* ════════════════════════════════════════════════
+   3. KEY ADVANTAGES
+   ════════════════════════════════════════════════ */
+.eit-brd-keys {
+  background: var(--eit-primary);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.eit-brd-keys::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-brd-keys-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.eit-brd-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.eit-brd-key-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: var(--eit-transition);
+}
+.eit-brd-key-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-4px);
+}
+.eit-brd-key-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  color: var(--eit-accent-light);
+}
+.eit-brd-key-icon svg { width: 26px; height: 26px; }
+.eit-brd-key-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.eit-brd-key-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   4. BENEFITS GRID
+   ════════════════════════════════════════════════ */
+.eit-brd-benefits {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-brd-benefits-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.eit-brd-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-brd-benefit-card {
+  background: var(--eit-white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.eit-brd-benefit-card:hover {
+  border-color: var(--eit-accent);
+  box-shadow: 0 8px 32px rgba(46,139,139,.1);
+  transform: translateY(-3px);
+}
+.eit-brd-benefit-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--eit-accent);
+  letter-spacing: .1em;
+}
+.eit-brd-benefit-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  line-height: 1.35;
+}
+.eit-brd-benefit-text {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   5. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-brd-process {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-brd-process-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.eit-brd-process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--eit-border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.eit-brd-step {
+  padding: 36px 32px;
+  border-bottom: 1px solid var(--eit-border);
+  border-right: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.eit-brd-step:hover { background: rgba(248,244,239,.6); }
+.eit-brd-step-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(46,139,139,.15);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 40px;
+}
+.eit-brd-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.eit-brd-step-text {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   6. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-brd-band {
+  background: var(--eit-accent);
+  padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+.eit-brd-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 100% at 100% 50%, rgba(255,255,255,.08) 0%, transparent 60%);
+}
+.eit-brd-band-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.eit-brd-band-text {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 800;
+  color: var(--eit-white);
+  line-height: 1.3;
+}
+.eit-brd-band-text span { opacity: .75; font-weight: 500; font-size: .75em; display: block; margin-top: 4px; }
+
+/* ════════════════════════════════════════════════
+   7. FAQ
+   ════════════════════════════════════════════════ */
+.eit-brd-faq {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-brd-faq-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.eit-brd-faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.eit-brd-faq-item {
+  background: var(--eit-white);
+  border: 1px solid var(--eit-border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: var(--eit-transition);
+}
+.eit-brd-faq-item.open {
+  border-color: var(--eit-accent);
+  box-shadow: 0 4px 20px rgba(46,139,139,.1);
+}
+.eit-brd-faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 16px;
+  text-align: left;
+  font-family: var(--eit-font);
+}
+.eit-brd-faq-q-text {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  line-height: 1.4;
+}
+.eit-brd-faq-item.open .eit-brd-faq-q-text { color: var(--eit-accent); }
+.eit-brd-faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--eit-accent);
+  transition: var(--eit-transition);
+}
+.eit-brd-faq-icon svg { width: 14px; height: 14px; transition: var(--eit-transition); }
+.eit-brd-faq-item.open .eit-brd-faq-icon { background: var(--eit-accent); color: white; }
+.eit-brd-faq-item.open .eit-brd-faq-icon svg { transform: rotate(180deg); }
+.eit-brd-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.eit-brd-faq-item.open .eit-brd-faq-a { max-height: 600px; }
+.eit-brd-faq-a-inner {
+  padding: 0 24px 22px;
+  font-size: 14px;
+  color: var(--eit-text-muted);
+  line-height: 1.8;
+  border-top: 1px solid var(--eit-border);
+  padding-top: 18px;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-brd-about-inner { gap: 48px; }
+  .eit-brd-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .eit-brd-hero-inner { grid-template-columns: 1fr; }
+  .eit-brd-hero-right { display: none; }
+  .eit-brd-hero { min-height: auto; }
+  .eit-brd-about-inner { grid-template-columns: 1fr; }
+  .eit-brd-about-inner > * { min-width: 0; }
+  .eit-brd-about-img-wrap { min-height: 320px; }
+  .eit-brd-about-img-main { min-height: 320px; }
+  .eit-brd-keys-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-brd-process-grid { grid-template-columns: 1fr; }
+  .eit-brd-step:nth-child(odd) { border-right: none; }
+  .eit-brd-step:nth-last-child(-n+2) { border-bottom: 1px solid var(--eit-border); }
+  .eit-brd-step:last-child { border-bottom: none; }
+}
+@media (max-width: 640px) {
+  .eit-brd-benefits-grid { grid-template-columns: 1fr; }
+  .eit-brd-about-highlights { grid-template-columns: 1fr; }
+  .eit-brd-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .eit-brd-band-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .eit-brd-wrap { padding: 0 18px; }
+  .eit-brd-hero { padding: 72px 0 0; }
+  .eit-brd-hero-left { padding-bottom: 40px; }
+  .eit-brd-hero-actions { flex-direction: column; }
+  .eit-brd-about { padding: 64px 0; }
+  .eit-brd-keys { padding: 56px 0; }
+  .eit-brd-benefits { padding: 64px 0; }
+  .eit-brd-process { padding: 64px 0; }
+  .eit-brd-faq { padding: 64px 0; }
+}
+</style>
+
+<div class="eit-brd">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-hero">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-hero-inner">
+      <div class="eit-brd-hero-left">
+        <nav class="eit-brd-hero-breadcrumb" aria-label="Навигация">
+          <a href="/ru/">Главная</a>
+          <span>/</span>
+          <a href="/ru/volosy/">Пересадка волос</a>
+          <span>/</span>
+          <span style="color:rgba(255,255,255,.7);">Пересадка бороды</span>
+        </nav>
+
+        <div class="eit-brd-tag eit-brd-tag--light eit-brd-fade">Стамбул · Este In Turkey</div>
+        <h1 class="eit-brd-hero-title eit-brd-fade eit-brd-fade-d1">
+          Пересадка бороды<br>
+          <em>в Стамбуле</em>
+        </h1>
+        <p class="eit-brd-hero-sub eit-brd-fade eit-brd-fade-d2">
+          Восстановите густую и красивую бороду с помощью современных методов DHI и FUE Sapphire. Абсолютно естественный вид — без рубцов и боли.
+        </p>
+        <div class="eit-brd-hero-actions eit-brd-fade eit-brd-fade-d2">
+          <a href="#eit-brd-form" class="eit-brd-btn eit-brd-btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Бесплатная консультация
+          </a>
+          <a href="https://wa.me/905551234567" class="eit-brd-btn eit-brd-btn--outline" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <div class="eit-brd-hero-stats eit-brd-fade eit-brd-fade-d3">
+          <div>
+            <div class="eit-brd-hero-stat-num">2500<span>+</span></div>
+            <div class="eit-brd-hero-stat-label">Пациентов</div>
+          </div>
+          <div>
+            <div class="eit-brd-hero-stat-num">10<span>+</span></div>
+            <div class="eit-brd-hero-stat-label">Лет опыта</div>
+          </div>
+          <div>
+            <div class="eit-brd-hero-stat-num">98<span>%</span></div>
+            <div class="eit-brd-hero-stat-label">Довольных клиентов</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-hero-right" aria-hidden="true">
+        <div class="eit-brd-hero-img-stack">
+          <div class="eit-brd-hero-badge">DHI &amp; FUE Sapphire</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-about">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-about-inner">
+
+      <div class="eit-brd-about-img-wrap eit-brd-fade">
+        <div class="eit-brd-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/skl.webp"
+          alt="Пересадка бороды — результат до и после"
+          class="eit-brd-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-brd-about-text">
+        <div class="eit-brd-tag eit-brd-fade">О процедуре</div>
+        <h2 class="eit-brd-heading eit-brd-fade eit-brd-fade-d1">
+          Пересадка бороды —<br><span>естественный результат</span>
+        </h2>
+        <div class="eit-brd-divider eit-brd-fade eit-brd-fade-d1"></div>
+        <div class="eit-brd-fade eit-brd-fade-d2">
+          <p>
+            Изменить свой имидж и внести изменения в лицо можно с помощью <strong>пересадки бороды</strong>. Борода — важнейший аксессуар, завершающий облик мужчины. Благодаря новейшим техническим методам трансплантации, применяемым сегодня, можно безболезненно провести естественную пересадку бороды.
+          </p>
+          <p>
+            Ожоги и шрамы на лице могут привести к потерям в области бороды. При пересадке бороды вы можете выбрать ту процедуру, которая, по вашему мнению, подходит именно вашему лицу. Она выполняется командами специалистов, являющихся экспертами в этой области, с применением новейших технологических методов, обеспечивающих <strong>абсолютно естественный вид</strong>.
+          </p>
+        </div>
+
+        <div class="eit-brd-about-highlights eit-brd-fade eit-brd-fade-d3">
+          <div class="eit-brd-about-highlight">
+            <div class="eit-brd-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-brd-about-highlight-text">Без рубцов и шрамов</div>
+          </div>
+          <div class="eit-brd-about-highlight">
+            <div class="eit-brd-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="eit-brd-about-highlight-text">Восстановление 3–5 дней</div>
+          </div>
+          <div class="eit-brd-about-highlight">
+            <div class="eit-brd-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="eit-brd-about-highlight-text">Местная анестезия — без боли</div>
+          </div>
+          <div class="eit-brd-about-highlight">
+            <div class="eit-brd-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="eit-brd-about-highlight-text">Команда сертифицированных врачей</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     KEY ADVANTAGES
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-keys">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-keys-header">
+      <div class="eit-brd-tag eit-brd-tag--light eit-brd-fade">Преимущества</div>
+      <h2 class="eit-brd-heading eit-brd-heading--white eit-brd-fade eit-brd-fade-d1">
+        Почему пациенты выбирают<br><span>Este In Turkey</span>
+      </h2>
+      <div class="eit-brd-divider eit-brd-divider--white eit-brd-divider--center eit-brd-fade eit-brd-fade-d1"></div>
+    </div>
+
+    <div class="eit-brd-keys-grid">
+      <div class="eit-brd-key-card eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-brd-key-title">Методы DHI и FUE Sapphire</div>
+        <div class="eit-brd-key-text">Выбор метода подбирается индивидуально: DHI — для точечной имплантации, FUE Sapphire — для большего объёма трансплантатов с минимальной травматизацией.</div>
+      </div>
+      <div class="eit-brd-key-card eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="eit-brd-key-title">Без рубцов и боли</div>
+        <div class="eit-brd-key-text">Процедура проводится под местной анестезией — вы не почувствуете боли. Современные технологии гарантируют отсутствие шрамов и рубцов после операции.</div>
+      </div>
+      <div class="eit-brd-key-card eit-brd-fade eit-brd-fade-d3">
+        <div class="eit-brd-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="eit-brd-key-title">Пожизненный результат</div>
+        <div class="eit-brd-key-text">Пересаженные волосяные фолликулы не выпадают — они адаптированы к росту в области бороды. Результат сохраняется на всю жизнь и через 6–8 месяцев борода принимает желаемую форму.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     BENEFITS
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-benefits">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-benefits-header">
+      <div class="eit-brd-tag eit-brd-fade">Что вы получаете</div>
+      <h2 class="eit-brd-heading eit-brd-fade eit-brd-fade-d1">
+        9 причин сделать <span>пересадку бороды</span><br>в Стамбуле
+      </h2>
+      <div class="eit-brd-divider eit-brd-divider--center eit-brd-fade eit-brd-fade-d1"></div>
+    </div>
+
+    <div class="eit-brd-benefits-grid">
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-benefit-num">01</div>
+        <div class="eit-brd-benefit-title">Абсолютно естественный вид</div>
+        <div class="eit-brd-benefit-text">Трансплантаты имплантируются под правильным углом, повторяя естественное направление роста волос бороды.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-benefit-num">02</div>
+        <div class="eit-brd-benefit-title">400–2500 графтов</div>
+        <div class="eit-brd-benefit-text">Количество трансплантатов подбирается индивидуально: от 500 при заполнении проплешин до 2500 для формирования полной бороды.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-benefit-num">03</div>
+        <div class="eit-brd-benefit-title">Местная анестезия</div>
+        <div class="eit-brd-benefit-text">Процедура полностью безболезненна — область воздействия обезболивается перед имплантацией.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-benefit-num">04</div>
+        <div class="eit-brd-benefit-title">Коррекция шрамов и ожогов</div>
+        <div class="eit-brd-benefit-text">Пересадка бороды эффективна при облысении, ожогах и шрамах на лице — позволяет восстановить нормальный рост волос.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d3">
+        <div class="eit-brd-benefit-num">05</div>
+        <div class="eit-brd-benefit-title">Быстрое восстановление</div>
+        <div class="eit-brd-benefit-text">В течение 3–5 дней после операции возможно небольшое покраснение. Через неделю можно вернуться к обычной жизни.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d3">
+        <div class="eit-brd-benefit-num">06</div>
+        <div class="eit-brd-benefit-title">Донорская зона — затылок</div>
+        <div class="eit-brd-benefit-text">Трансплантаты берутся из затылочной области — там, где волосы растут вокруг донорного места, поэтому заметных изменений не происходит.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d4">
+        <div class="eit-brd-benefit-num">07</div>
+        <div class="eit-brd-benefit-title">Результат через 6–8 месяцев</div>
+        <div class="eit-brd-benefit-text">Пересаженные графты отпадают в первый месяц — это нормально. Через 3–6 месяцев борода снова вырастает и принимает окончательную форму.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d4">
+        <div class="eit-brd-benefit-num">08</div>
+        <div class="eit-brd-benefit-title">Индивидуальное планирование формы</div>
+        <div class="eit-brd-benefit-text">Перед операцией тщательно изучается структура бороды и форма лица пациента. Линия бороды проектируется с учётом ваших пожеланий.</div>
+      </div>
+      <div class="eit-brd-benefit-card eit-brd-fade eit-brd-fade-d4">
+        <div class="eit-brd-benefit-num">09</div>
+        <div class="eit-brd-benefit-title">Стерильные условия клиники</div>
+        <div class="eit-brd-benefit-text">Операция проводится в гигиеничных и стерильных условиях нашей клиники в Стамбуле сертифицированными специалистами.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-process">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-process-header">
+      <div class="eit-brd-tag eit-brd-fade">Как проходит операция</div>
+      <h2 class="eit-brd-heading eit-brd-fade eit-brd-fade-d1">
+        Этапы <span>пересадки бороды</span>
+      </h2>
+      <div class="eit-brd-divider eit-brd-divider--center eit-brd-fade eit-brd-fade-d1"></div>
+    </div>
+
+    <div class="eit-brd-process-grid">
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-step-num">01</div>
+        <div>
+          <div class="eit-brd-step-title">Консультация и диагностика</div>
+          <div class="eit-brd-step-text">Оценивается состояние кожи лица, структура бороды и донорской зоны. Определяется количество необходимых графтов и подходящий метод — DHI или FUE Sapphire.</div>
+        </div>
+      </div>
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-step-num">02</div>
+        <div>
+          <div class="eit-brd-step-title">Планирование линии бороды</div>
+          <div class="eit-brd-step-text">Совместно с пациентом определяется желаемая форма и плотность бороды. Линия прорисовывается с учётом формы лица и индивидуальных пожеланий.</div>
+        </div>
+      </div>
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-step-num">03</div>
+        <div>
+          <div class="eit-brd-step-title">Анестезия и подготовка</div>
+          <div class="eit-brd-step-text">Область бороды и донорная зона обезболиваются местной анестезией. Вы не почувствуете боли на протяжении всей процедуры.</div>
+        </div>
+      </div>
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-step-num">04</div>
+        <div>
+          <div class="eit-brd-step-title">Забор донорского материала</div>
+          <div class="eit-brd-step-text">Волосяные фолликулы берутся из затылочной области с помощью микромоторов. Одиночные и двойные графты извлекаются бережно, не оставляя видимых следов.</div>
+        </div>
+      </div>
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d1">
+        <div class="eit-brd-step-num">05</div>
+        <div>
+          <div class="eit-brd-step-title">Имплантация трансплантатов</div>
+          <div class="eit-brd-step-text">Графты имплантируются в область бороды под правильным углом. Очень важно расположить волосяные трансплантаты под углом, соответствующим естественному росту.</div>
+        </div>
+      </div>
+      <div class="eit-brd-step eit-brd-fade eit-brd-fade-d2">
+        <div class="eit-brd-step-num">06</div>
+        <div>
+          <div class="eit-brd-step-title">Инструктаж и уход</div>
+          <div class="eit-brd-step-text">После операции пациент получает подробные инструкции по уходу. На следующий день область можно промыть. Через 1–2 недели видны первые признаки роста.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-band">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-band-inner">
+      <div class="eit-brd-band-text">
+        Готовы к густой и красивой бороде?
+        <span>Запишитесь на бесплатную консультацию прямо сейчас</span>
+      </div>
+      <a href="#eit-brd-form" class="eit-brd-btn eit-brd-btn--dark">
+        Получить консультацию
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-brd-faq">
+  <div class="eit-brd-wrap">
+    <div class="eit-brd-faq-header">
+      <div class="eit-brd-tag eit-brd-fade">Часто задаваемые вопросы</div>
+      <h2 class="eit-brd-heading eit-brd-fade eit-brd-fade-d1">
+        Всё о <span>пересадке бороды</span>
+      </h2>
+      <div class="eit-brd-divider eit-brd-divider--center eit-brd-fade eit-brd-fade-d1"></div>
+    </div>
+
+    <div class="eit-brd-faq-list eit-brd-fade eit-brd-fade-d2">
+
+      <div class="eit-brd-faq-item open">
+        <button class="eit-brd-faq-q" aria-expanded="true">
+          <span class="eit-brd-faq-q-text">Как выполняется трансплантация бороды?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            Как и при пересадке волос по методикам FUE и DHI, при пересадке бороды одиночные и двойные волосяные фолликулы собираются из области между ушами — из донорской зоны — с помощью микромоторов и пересаживаются по методике DHI или Sapphire FUE. Разницы между применением и пересадкой волос нет. Во время пересадки бороды вы не будете испытывать болевых ощущений.
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-faq-item">
+        <button class="eit-brd-faq-q" aria-expanded="false">
+          <span class="eit-brd-faq-q-text">Откуда берутся трансплантаты для пересадки бороды?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            Количество графтов, применяемых при пересадке бороды, может варьироваться в зависимости от густоты бороды пациента. Однако если пересадка бороды проводится только в области усов, то достаточно 500–1000 трансплантатов. Одиночные и двойные волосяные трансплантаты забираются из области между ушами, то есть из донорской зоны, с помощью микромоторов.
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-faq-item">
+        <button class="eit-brd-faq-q" aria-expanded="false">
+          <span class="eit-brd-faq-q-text">Можно ли пересаживать бороду при шрамах и ожогах?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            Сегодня пересадка бороды может применяться также при облысении, ожогах и шрамах. В зависимости от состояния пациента наши специалисты решают, какие мероприятия необходимо провести перед пересадкой бороды. Пересадка бороды в условиях полной стерильности и в стационаре проводится нашими специалистами с использованием новейших технологических методик.
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-faq-item">
+        <button class="eit-brd-faq-q" aria-expanded="false">
+          <span class="eit-brd-faq-q-text">Останутся ли шрамы после пересадки бороды?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            После пересадки бороды в течение 3–5 дней на пересаженном участке может наблюдаться покраснение и небольшое количество крови, но это временное явление. После пересадки бороды образуется корочка, и в первую неделю требуется специальное промывание. Благодаря методам DHI Choi и Sapphire FUE, используемым при трансплантации бороды, операция проходит без рубцов.
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-faq-item">
+        <button class="eit-brd-faq-q" aria-expanded="false">
+          <span class="eit-brd-faq-q-text">Когда отрастают трансплантаты после пересадки бороды?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            После пересадки бороды на месте пересадки могут появиться корочки и лёгкий зуд. Эти симптомы могут сохраняться до 1–2 недель. Ожидается, что пересаженные графты отпадут в течение первого месяца. В период от 3 до 6 месяцев борода снова вырастает и окончательно принимает свою форму.<br><br>
+            Для более быстрого и здорового роста бороды после пересадки специалисты рекомендуют массировать пересаженную область, употреблять питательные продукты и вести образ жизни, свободный от стрессов.
+          </div>
+        </div>
+      </div>
+
+      <div class="eit-brd-faq-item">
+        <button class="eit-brd-faq-q" aria-expanded="false">
+          <span class="eit-brd-faq-q-text">Каков процесс заживления после пересадки бороды?</span>
+          <span class="eit-brd-faq-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="eit-brd-faq-a">
+          <div class="eit-brd-faq-a-inner">
+            <ul style="list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+              <li>В первые дни после пересадки может наблюдаться небольшая припухлость и покраснение — это нормальная реакция.</li>
+              <li>В течение первой недели возможно образование корочки и её отпадение — это также является нормальным процессом.</li>
+              <li>После первой недели область начинает постепенно заживать. Большинство трансплантатов вырастает через 2–3 недели.</li>
+              <li>После первого месяца область полностью заживает, и большая часть трансплантатов прирастает.</li>
+              <li>Чтобы ускорить процесс заживления, необходимо следовать рекомендациям врача: соблюдение чистоты, использование кремов и защита от прямых солнечных лучей.</li>
+              <li>Подстригать бороду можно уже через 2 недели после трансплантации.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+</div><!-- /.eit-brd -->
+
+<script>
+(function(){
+
+  /* ── Scroll animations ─────────────────────────── */
+  var fades = document.querySelectorAll('.eit-brd-fade');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('eit-brd-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fades.forEach(function(el){ obs.observe(el); });
+  } else {
+    fades.forEach(function(el){ el.classList.add('eit-brd-visible'); });
+  }
+
+  /* ── FAQ accordion ─────────────────────────────── */
+  document.querySelectorAll('.eit-brd-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = this.closest('.eit-brd-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.eit-brd-faq-item').forEach(function(i){
+        i.classList.remove('open');
+        i.querySelector('.eit-brd-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    btn.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+
+  /* ── Smooth scroll for anchor links ─────────────── */
+  document.querySelectorAll('a[href^="#eit-brd"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>

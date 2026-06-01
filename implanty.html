@@ -1,0 +1,1150 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ИМПЛАНТАЦИЯ ЗУБОВ
+   Dil: RU | Elementor HTML Widget | Prefix: eit-imp-
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-imp *, .eit-imp *::before, .eit-imp *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.eit-imp {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-imp a { text-decoration: none; color: inherit; }
+.eit-imp ul { list-style: none; }
+.eit-imp img { max-width: 100%; display: block; }
+
+.eit-imp-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-imp-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-imp-fade.is-visible { opacity: 1; transform: none; }
+.eit-imp-fade-d1 { transition-delay: .12s; }
+.eit-imp-fade-d2 { transition-delay: .22s; }
+.eit-imp-fade-d3 { transition-delay: .34s; }
+.eit-imp-fade-d4 { transition-delay: .46s; }
+
+/* ── Shared components ─────────────────────────── */
+.eit-imp-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  margin-bottom: 16px;
+}
+.eit-imp-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+.eit-imp-heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 800; color: var(--eit-primary);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.eit-imp-heading span { color: var(--eit-accent); }
+.eit-imp-divider {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  margin-bottom: 26px;
+}
+.eit-imp-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition); cursor: pointer; border: none;
+}
+.eit-imp-btn--primary {
+  background: var(--eit-accent); color: var(--eit-white);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-imp-btn--primary:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.4);
+}
+.eit-imp-btn--outline {
+  background: transparent; color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3);
+}
+.eit-imp-btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+.eit-imp-btn svg { flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-imp-hero {
+  background: linear-gradient(135deg, var(--eit-primary-dark) 0%, var(--eit-primary) 55%, var(--eit-primary-mid) 100%);
+  padding: 96px 0 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 620px;
+}
+.eit-imp-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 80% 40%, rgba(46,139,139,.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+.eit-imp-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.eit-imp-hero-left { padding-bottom: 72px; }
+.eit-imp-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
+}
+.eit-imp-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: var(--eit-transition); }
+.eit-imp-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-imp-hero-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 900; color: var(--eit-white);
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-imp-hero-title span { color: var(--eit-accent-light); }
+.eit-imp-hero-desc {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.eit-imp-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.eit-imp-stat-value {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-imp-stat-label {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 4px;
+}
+.eit-imp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero right */
+.eit-imp-hero-right {
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.eit-imp-hero-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.eit-imp-hero-card-badge {
+  display: inline-block;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+  align-self: flex-start;
+}
+.eit-imp-hero-card-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.3;
+}
+.eit-imp-hero-card-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-imp-hero-card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.82);
+}
+.eit-imp-hero-card-list li::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-imp-hero-card-divider {
+  height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.eit-imp-hero-card-cta {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-imp-hero-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 20px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-imp-hero-card-btn--wa {
+  background: #25D366; color: #fff;
+}
+.eit-imp-hero-card-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-imp-hero-card-btn--tel {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  color: var(--eit-white);
+}
+.eit-imp-hero-card-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-imp-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-imp-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.eit-imp-about-img-wrap {
+  position: relative; min-height: 500px;
+}
+.eit-imp-about-img-main {
+  position: absolute; top: 0; right: 0;
+  width: 82%; height: 86%;
+  border-radius: 20px;
+  object-fit: cover; object-position: top center;
+  outline: 2px solid rgba(46,139,139,.3);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14);
+}
+.eit-imp-about-img-accent {
+  position: absolute; bottom: 0; left: 0;
+  width: 52%; height: 52%;
+  border-radius: 16px; object-fit: cover;
+  border: 5px solid var(--eit-white);
+  box-shadow: 0 16px 48px rgba(0,0,0,.18), 0 0 0 3px rgba(46,139,139,.25);
+  z-index: 2;
+}
+.eit-imp-about-deco {
+  position: absolute; top: -20px; left: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(46,139,139,.08); z-index: -1;
+}
+
+.eit-imp-about-text p {
+  font-size: 14.5px; color: var(--eit-text-muted);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.eit-imp-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-imp-about-highlights {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-top: 28px;
+}
+.eit-imp-about-highlight {
+  background: var(--eit-cream); border-radius: 12px;
+  padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px;
+}
+.eit-imp-about-highlight-icon {
+  width: 36px; height: 36px;
+  background: rgba(46,139,139,.12); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.eit-imp-about-highlight-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-imp-about-highlight-text {
+  font-size: 12.5px; font-weight: 600;
+  color: var(--eit-primary); line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════
+   3. KEY ADVANTAGES
+   ════════════════════════════════════════════════ */
+.eit-imp-keys {
+  background: var(--eit-primary);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.eit-imp-keys::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-imp-keys-head {
+  text-align: center; margin-bottom: 48px; position: relative;
+}
+.eit-imp-keys-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-imp-keys-title span { color: var(--eit-accent-light); }
+.eit-imp-keys-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative;
+}
+.eit-imp-key-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px; padding: 32px 28px;
+  transition: var(--eit-transition);
+}
+.eit-imp-key-card:hover {
+  background: rgba(255,255,255,.12); transform: translateY(-4px);
+}
+.eit-imp-key-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.25); border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.eit-imp-key-icon svg { width: 26px; height: 26px; color: var(--eit-accent-light); }
+.eit-imp-key-title {
+  font-size: 16px; font-weight: 700;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-imp-key-desc { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.6; }
+
+/* ════════════════════════════════════════════════
+   4. BENEFITS
+   ════════════════════════════════════════════════ */
+.eit-imp-benefits {
+  background: var(--eit-cream); padding: 88px 0;
+}
+.eit-imp-benefits-head { text-align: center; margin-bottom: 48px; }
+.eit-imp-benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.eit-imp-benefit {
+  background: var(--eit-white); border-radius: 16px;
+  padding: 24px 22px; display: flex; align-items: flex-start; gap: 16px;
+  border: 1px solid var(--eit-border); transition: var(--eit-transition);
+}
+.eit-imp-benefit:hover {
+  border-color: var(--eit-accent-light);
+  box-shadow: 0 8px 32px rgba(46,139,139,.1); transform: translateY(-2px);
+}
+.eit-imp-benefit-num {
+  font-size: 22px; font-weight: 900; color: var(--eit-accent-light);
+  line-height: 1; flex-shrink: 0; min-width: 32px;
+}
+.eit-imp-benefit-title {
+  font-size: 13.5px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 5px;
+}
+.eit-imp-benefit-desc { font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.55; }
+
+/* ════════════════════════════════════════════════
+   5. TYPES
+   ════════════════════════════════════════════════ */
+.eit-imp-types {
+  background: var(--eit-white); padding: 88px 0;
+}
+.eit-imp-types-head { text-align: center; margin-bottom: 52px; }
+.eit-imp-types-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.eit-imp-type-card {
+  border-radius: 20px; padding: 36px 28px;
+  border: 2px solid var(--eit-border);
+  transition: var(--eit-transition);
+  position: relative; overflow: hidden;
+}
+.eit-imp-type-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+}
+.eit-imp-type-card:hover {
+  border-color: var(--eit-accent-light);
+  box-shadow: 0 12px 40px rgba(46,139,139,.12); transform: translateY(-4px);
+}
+.eit-imp-type-num {
+  font-size: 44px; font-weight: 900;
+  color: rgba(46,139,139,.09); line-height: 1; margin-bottom: 6px;
+}
+.eit-imp-type-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-primary); margin-bottom: 14px;
+}
+.eit-imp-type-desc { font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.65; }
+.eit-imp-type-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.eit-imp-type-tag {
+  font-size: 11px; font-weight: 600;
+  background: rgba(46,139,139,.08); color: var(--eit-accent);
+  border-radius: 100px; padding: 5px 12px;
+}
+
+/* ════════════════════════════════════════════════
+   6. BRANDS
+   ════════════════════════════════════════════════ */
+.eit-imp-brands {
+  background: var(--eit-primary);
+  padding: 72px 0; position: relative; overflow: hidden;
+}
+.eit-imp-brands::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 20% 50%, rgba(46,139,139,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-imp-brands-head {
+  text-align: center; margin-bottom: 38px; position: relative;
+}
+.eit-imp-brands-title {
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 800; color: var(--eit-white);
+}
+.eit-imp-brands-sub {
+  font-size: 14px; color: rgba(255,255,255,.6); margin-top: 10px;
+}
+.eit-imp-brands-grid {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 14px; position: relative;
+}
+.eit-imp-brand-pill {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 14px; padding: 13px 26px;
+  font-size: 14px; font-weight: 700;
+  color: var(--eit-white); letter-spacing: .04em;
+  transition: var(--eit-transition);
+}
+.eit-imp-brand-pill:hover {
+  background: rgba(255,255,255,.18); transform: translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════
+   7. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-imp-process {
+  background: var(--eit-cream); padding: 88px 0;
+}
+.eit-imp-process-head { text-align: center; margin-bottom: 52px; }
+.eit-imp-process-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.eit-imp-step {
+  padding: 32px 28px;
+  border-right: 1px solid var(--eit-border);
+  border-bottom: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+}
+.eit-imp-step:hover { background: rgba(46,139,139,.04); }
+.eit-imp-step:nth-child(3n) { border-right: none; }
+.eit-imp-step:nth-last-child(-n+3) { border-bottom: none; }
+.eit-imp-step-num {
+  font-size: 44px; font-weight: 900;
+  color: rgba(46,139,139,.14); line-height: 1; margin-bottom: 12px;
+}
+.eit-imp-step-title {
+  font-size: 14.5px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 8px;
+}
+.eit-imp-step-desc { font-size: 13px; color: var(--eit-text-muted); line-height: 1.6; }
+
+/* ════════════════════════════════════════════════
+   8. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-imp-band {
+  background: linear-gradient(135deg, var(--eit-accent) 0%, var(--eit-primary) 100%);
+  padding: 64px 0;
+}
+.eit-imp-band-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.eit-imp-band-title {
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-imp-band-sub { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 8px; }
+.eit-imp-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   9. FAQ
+   ════════════════════════════════════════════════ */
+.eit-imp-faq {
+  background: var(--eit-white); padding: 88px 0;
+}
+.eit-imp-faq-grid {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 56px; align-items: start;
+}
+.eit-imp-faq-head { margin-bottom: 36px; }
+.eit-imp-faq-list { display: flex; flex-direction: column; gap: 12px; }
+.eit-imp-faq-item {
+  border: 1px solid var(--eit-border);
+  border-radius: 14px; overflow: hidden; transition: var(--eit-transition);
+}
+.eit-imp-faq-item.is-open { border-color: var(--eit-accent-light); }
+.eit-imp-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 20px 24px; cursor: pointer;
+  background: none; border: none; width: 100%; text-align: left;
+  font-family: var(--eit-font); font-size: 14px; font-weight: 600;
+  color: var(--eit-primary); line-height: 1.4; transition: var(--eit-transition);
+}
+.eit-imp-faq-q:hover { color: var(--eit-accent); }
+.eit-imp-faq-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(46,139,139,.1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: var(--eit-transition);
+}
+.eit-imp-faq-icon svg { width: 14px; height: 14px; color: var(--eit-accent); transition: var(--eit-transition); }
+.eit-imp-faq-item.is-open .eit-imp-faq-icon { background: var(--eit-accent); }
+.eit-imp-faq-item.is-open .eit-imp-faq-icon svg { color: var(--eit-white); transform: rotate(45deg); }
+.eit-imp-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  padding: 0 24px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.75;
+}
+.eit-imp-faq-item.is-open .eit-imp-faq-a { max-height: 500px; padding: 0 24px 20px; }
+
+.eit-imp-faq-aside { position: sticky; top: 100px; }
+.eit-imp-faq-aside-card {
+  background: var(--eit-primary); border-radius: 20px;
+  padding: 32px 28px; color: var(--eit-white);
+}
+.eit-imp-faq-aside-title {
+  font-size: 18px; font-weight: 800; color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-imp-faq-aside-text {
+  font-size: 13px; color: rgba(255,255,255,.7);
+  line-height: 1.65; margin-bottom: 24px;
+}
+.eit-imp-faq-aside-btns { display: flex; flex-direction: column; gap: 12px; }
+.eit-imp-faq-aside-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #fff !important; transition: var(--eit-transition);
+}
+.eit-imp-faq-aside-btn--wa { background: #25D366; color: var(--eit-white); }
+.eit-imp-faq-aside-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-imp-faq-aside-btn--tel {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2); color: var(--eit-white);
+}
+.eit-imp-faq-aside-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-imp-about-inner { gap: 48px; }
+  .eit-imp-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-imp-types-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-imp-faq-grid { grid-template-columns: 1fr; }
+  .eit-imp-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-imp-hero-inner { grid-template-columns: 1fr; }
+  .eit-imp-hero-right { display: none; }
+  .eit-imp-hero { min-height: auto; }
+  .eit-imp-about-inner { grid-template-columns: 1fr; }
+  .eit-imp-about-inner { grid-template-columns: 1fr; }
+  .eit-imp-about-inner > * { min-width: 0; }
+  .eit-imp-about-img-wrap { min-height: 320px; }
+  .eit-imp-about-img-main { width: 78%; height: 80%; }
+  .eit-imp-about-img-accent { width: 50%; height: 48%; }
+  .eit-imp-keys-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-imp-process-grid { grid-template-columns: 1fr; }
+  .eit-imp-step { border-right: none; border-bottom: 1px solid var(--eit-border); }
+  .eit-imp-step:last-child { border-bottom: none; }
+  .eit-imp-types-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .eit-imp-benefits-grid { grid-template-columns: 1fr; }
+  .eit-imp-about-highlights { grid-template-columns: 1fr; }
+  .eit-imp-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .eit-imp-band-inner { flex-direction: column; text-align: center; }
+  .eit-imp-brands-grid { gap: 10px; }
+}
+@media (max-width: 480px) {
+  .eit-imp-wrap { padding: 0 18px; }
+  .eit-imp-hero { padding: 72px 0 0; }
+  .eit-imp-hero-left { padding-bottom: 40px; }
+  .eit-imp-hero-actions { flex-direction: column; }
+  .eit-imp-hero-actions .eit-imp-btn { justify-content: center; }
+}
+</style>
+
+<!-- ============================================================
+     ESTE IN TURKEY — ИМПЛАНТАЦИЯ ЗУБОВ (Elementor HTML Widget)
+     ============================================================ -->
+<div class="eit-imp" id="eitImpPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-hero" aria-labelledby="eit-imp-title">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-imp-hero-left">
+        <nav class="eit-imp-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Импланты</span>
+        </nav>
+
+        <div class="eit-imp-tag eit-imp-tag--light eit-imp-fade">Стоматология</div>
+        <h1 id="eit-imp-title" class="eit-imp-hero-title eit-imp-fade eit-imp-fade-d1">
+          Имплантация зубов<br><span>в Стамбуле</span>
+        </h1>
+        <p class="eit-imp-hero-desc eit-imp-fade eit-imp-fade-d2">
+          Восстановите здоровье и эстетику улыбки вместе с клиникой <strong style="color:#fff;">ESTE IN TURKEY</strong> — одним из ведущих центров стоматологии Турции. Специализируемся на современной имплантации зубов, предоставляя пациентам со всего мира идеальное сочетание качества, комфорта и доступной стоимости.
+        </p>
+
+        <div class="eit-imp-hero-stats eit-imp-fade eit-imp-fade-d2">
+          <div>
+            <div class="eit-imp-stat-value">98%</div>
+            <div class="eit-imp-stat-label">приживаемость</div>
+          </div>
+          <div>
+            <div class="eit-imp-stat-value">20+</div>
+            <div class="eit-imp-stat-label">лет службы</div>
+          </div>
+          <div>
+            <div class="eit-imp-stat-value">2</div>
+            <div class="eit-imp-stat-label">визита</div>
+          </div>
+          <div>
+            <div class="eit-imp-stat-value">3–6</div>
+            <div class="eit-imp-stat-label">мес. результат</div>
+          </div>
+        </div>
+
+        <div class="eit-imp-hero-actions eit-imp-fade eit-imp-fade-d3">
+          <a href="https://wa.me/905468189180" class="eit-imp-btn eit-imp-btn--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-imp-btn eit-imp-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="eit-imp-hero-right">
+        <div class="eit-imp-hero-card">
+          <span class="eit-imp-hero-card-badge">Стоматология Турции</span>
+          <div class="eit-imp-hero-card-title">Бесплатная консультация по имплантации</div>
+          <ul class="eit-imp-hero-card-list">
+            <li>Индивидуальный план лечения</li>
+            <li>Перевод на русском языке</li>
+            <li>Цены в 3× дешевле европейских</li>
+            <li>Гарантия и сопровождение</li>
+          </ul>
+          <div class="eit-imp-hero-card-divider"></div>
+          <div class="eit-imp-hero-card-cta">
+            <a href="https://wa.me/905468189180" class="eit-imp-hero-card-btn eit-imp-hero-card-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              Написать в WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-imp-hero-card-btn eit-imp-hero-card-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-about" aria-labelledby="eit-imp-about-heading">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-about-inner">
+
+      <div class="eit-imp-about-img-wrap eit-imp-fade">
+        <div class="eit-imp-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/impl.webp"
+          alt="Имплантация зубов — результат"
+          class="eit-imp-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/impl.webp"
+          alt="Имплантация зубов — детальный план"
+          class="eit-imp-about-img-accent"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-imp-about-text">
+        <div class="eit-imp-tag eit-imp-fade">О процедуре</div>
+        <h2 id="eit-imp-about-heading" class="eit-imp-heading eit-imp-fade eit-imp-fade-d1">
+          Имплантация зубов —<br><span>надёжное решение на всю жизнь</span>
+        </h2>
+        <div class="eit-imp-divider eit-imp-fade eit-imp-fade-d1"></div>
+
+        <div class="eit-imp-fade eit-imp-fade-d2">
+          <p><strong>Имплантация зубов</strong> — это один из самых надёжных и эстетичных способов восстановления утраченных зубов. Современные <strong>зубные импланты</strong> полностью имитируют натуральный корень и обеспечивают высокий комфорт, долговечность и естественный внешний вид.</p>
+          <p>Такой метод подходит практически каждому пациенту и позволяет вернуть полноценную жевательную функцию уже спустя короткое время после процедуры. Имплант — это искусственный корень зуба из <strong>титана</strong>: безопасного материала, который не вызывает аллергии и идеально приживается в кости.</p>
+          <p>Установив импланты у нас, вы получаете результат, который <strong>выглядит и ощущается как собственные зубы</strong> — естественно, надёжно и навсегда.</p>
+        </div>
+
+        <div class="eit-imp-about-highlights eit-imp-fade eit-imp-fade-d3">
+          <div class="eit-imp-about-highlight">
+            <div class="eit-imp-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-imp-about-highlight-text">Гарантия производителя</div>
+          </div>
+          <div class="eit-imp-about-highlight">
+            <div class="eit-imp-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="eit-imp-about-highlight-text">Всего 2 визита в Стамбул</div>
+          </div>
+          <div class="eit-imp-about-highlight">
+            <div class="eit-imp-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="eit-imp-about-highlight-text">Приживаемость 98%</div>
+          </div>
+          <div class="eit-imp-about-highlight">
+            <div class="eit-imp-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div class="eit-imp-about-highlight-text">Срок службы 20+ лет</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     KEY ADVANTAGES
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-keys">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-keys-head eit-imp-fade">
+      <div class="eit-imp-tag eit-imp-tag--light">Ключевые преимущества</div>
+      <h2 class="eit-imp-keys-title">
+        Почему выбирают <span>имплантацию зубов</span>
+      </h2>
+    </div>
+    <div class="eit-imp-keys-grid">
+      <div class="eit-imp-key-card eit-imp-fade">
+        <div class="eit-imp-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="eit-imp-key-title">Абсолютно естественный вид</div>
+        <div class="eit-imp-key-desc">Имплант и коронка неотличимы от собственного зуба — ни визуально, ни функционально. Никто не догадается об имплантации.</div>
+      </div>
+      <div class="eit-imp-key-card eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="eit-imp-key-title">Долговечность 20+ лет</div>
+        <div class="eit-imp-key-desc">При правильном уходе импланты служат 20 лет и более. Это долгосрочная инвестиция в здоровье и красоту вашей улыбки.</div>
+      </div>
+      <div class="eit-imp-key-card eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="eit-imp-key-title">Сохранение костной ткани</div>
+        <div class="eit-imp-key-desc">Титановый стержень импланта стимулирует кость и предотвращает атрофию — чего не дают съёмные протезы или мостовидные конструкции.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BENEFITS
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-benefits">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-benefits-head eit-imp-fade">
+      <div class="eit-imp-tag">Преимущества</div>
+      <h2 class="eit-imp-heading">
+        9 причин выбрать <span>имплантацию в ESTE IN TURKEY</span>
+      </h2>
+    </div>
+    <div class="eit-imp-benefits-grid">
+      <div class="eit-imp-benefit eit-imp-fade">
+        <div class="eit-imp-benefit-num">01</div>
+        <div>
+          <div class="eit-imp-benefit-title">Естественный внешний вид</div>
+          <div class="eit-imp-benefit-desc">Имплант и коронка выглядят как собственный зуб — форма, цвет и текстура подбираются индивидуально.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-benefit-num">02</div>
+        <div>
+          <div class="eit-imp-benefit-title">Срок службы 20+ лет</div>
+          <div class="eit-imp-benefit-desc">При правильном уходе импланты служат десятилетиями, нередко — на всю жизнь.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-benefit-num">03</div>
+        <div>
+          <div class="eit-imp-benefit-title">Комфорт без натираний</div>
+          <div class="eit-imp-benefit-desc">Отсутствие дискомфорта и натираний, как при съёмных протезах. Имплант фиксируется в кости и не смещается.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade">
+        <div class="eit-imp-benefit-num">04</div>
+        <div>
+          <div class="eit-imp-benefit-title">Сохранение костной ткани</div>
+          <div class="eit-imp-benefit-desc">Имплант предотвращает атрофию кости, которая неизбежно развивается при отсутствии зуба.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-benefit-num">05</div>
+        <div>
+          <div class="eit-imp-benefit-title">Независимость от соседних зубов</div>
+          <div class="eit-imp-benefit-desc">Нет необходимости обтачивать здоровые соседние зубы, как при установке мостовидных протезов.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-benefit-num">06</div>
+        <div>
+          <div class="eit-imp-benefit-title">Высокая приживаемость 98%</div>
+          <div class="eit-imp-benefit-desc">Современные титановые импланты приживаются в 98% случаев благодаря высокой биосовместимости материала.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade">
+        <div class="eit-imp-benefit-num">07</div>
+        <div>
+          <div class="eit-imp-benefit-title">Точная 3D-диагностика</div>
+          <div class="eit-imp-benefit-desc">Планирование на основе 3D томографа обеспечивает максимальную точность и безопасность установки.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-benefit-num">08</div>
+        <div>
+          <div class="eit-imp-benefit-title">Гарантия производителя</div>
+          <div class="eit-imp-benefit-desc">На каждый имплант предоставляется официальная гарантия производителя и паспорт с серийным номером.</div>
+        </div>
+      </div>
+      <div class="eit-imp-benefit eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-benefit-num">09</div>
+        <div>
+          <div class="eit-imp-benefit-title">Всего 2 визита в Стамбул</div>
+          <div class="eit-imp-benefit-desc">Полное лечение предусматривает 2 визита в Стамбул. В крайних случаях — 3. Всё остальное удалённо.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TYPES
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-types">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-types-head eit-imp-fade">
+      <div class="eit-imp-tag">Виды имплантации</div>
+      <h2 class="eit-imp-heading">
+        Какие виды имплантации <span>есть в ESTE IN TURKEY?</span>
+      </h2>
+    </div>
+    <div class="eit-imp-types-grid">
+      <div class="eit-imp-type-card eit-imp-fade">
+        <div class="eit-imp-type-num">01</div>
+        <div class="eit-imp-type-title">Классическая имплантация</div>
+        <div class="eit-imp-type-desc">Стандартный метод: устанавливается один имплант на место одного отсутствующего зуба. Подходит при отсутствии одного или нескольких зубов. Процесс установки: 1–2 визита; остеоинтеграция: 3–6 месяцев.</div>
+        <div class="eit-imp-type-tags">
+          <span class="eit-imp-type-tag">1–2 зуба</span>
+          <span class="eit-imp-type-tag">3–6 мес.</span>
+          <span class="eit-imp-type-tag">Титан</span>
+        </div>
+      </div>
+      <div class="eit-imp-type-card eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-type-num">02</div>
+        <div class="eit-imp-type-title">All-on-4 / All-on-6</div>
+        <div class="eit-imp-type-desc">Метод полного восстановления зубного ряда на 4 или 6 имплантах. Полный ряд фиксируется вместе с искусственной десной. Используется гибридный материал: акрил, цирконий или металлокерамика. Подходит при отсутствии всех зубов.</div>
+        <div class="eit-imp-type-tags">
+          <span class="eit-imp-type-tag">Полный ряд</span>
+          <span class="eit-imp-type-tag">4–6 имплантов</span>
+          <span class="eit-imp-type-tag">Цирконий</span>
+        </div>
+      </div>
+      <div class="eit-imp-type-card eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-type-num">03</div>
+        <div class="eit-imp-type-title">Субпериостальные импланты</div>
+        <div class="eit-imp-type-desc">Применяются, если костная ткань слишком тонкая или атрофированная. Имплант фиксируется поверх кости под надкостницей — безопасное решение, когда другие методики невозможны.</div>
+        <div class="eit-imp-type-tags">
+          <span class="eit-imp-type-tag">Тонкая кость</span>
+          <span class="eit-imp-type-tag">Сложные случаи</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BRANDS
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-brands">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-brands-head eit-imp-fade">
+      <div class="eit-imp-tag eit-imp-tag--light">Бренды</div>
+      <div class="eit-imp-brands-title">Какие марки имплантов мы используем?</div>
+      <div class="eit-imp-brands-sub">Работаем только с оригинальными брендами, сертифицированными в Европе</div>
+    </div>
+    <div class="eit-imp-brands-grid eit-imp-fade eit-imp-fade-d1">
+      <div class="eit-imp-brand-pill">MediGMA</div>
+      <div class="eit-imp-brand-pill">Iris</div>
+      <div class="eit-imp-brand-pill">Megagen</div>
+      <div class="eit-imp-brand-pill">Osstem</div>
+      <div class="eit-imp-brand-pill">Nobel</div>
+      <div class="eit-imp-brand-pill">Straumann</div>
+      <div class="eit-imp-brand-pill">Venus</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-process">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-process-head eit-imp-fade">
+      <div class="eit-imp-tag">Этапы лечения</div>
+      <h2 class="eit-imp-heading">
+        Как проходит <span>имплантация зубов</span>
+      </h2>
+    </div>
+    <div class="eit-imp-process-grid">
+      <div class="eit-imp-step eit-imp-fade">
+        <div class="eit-imp-step-num">01</div>
+        <div class="eit-imp-step-title">Онлайн-консультация</div>
+        <div class="eit-imp-step-desc">Отправляете панорамный снимок или КТ. Врач изучает ситуацию и составляет предварительный план лечения с расчётом стоимости.</div>
+      </div>
+      <div class="eit-imp-step eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-step-num">02</div>
+        <div class="eit-imp-step-title">3D-диагностика и план</div>
+        <div class="eit-imp-step-desc">В клинике проводится 3D томография. На её основе составляется детальный план: количество имплантов, типы, сроки и материалы.</div>
+      </div>
+      <div class="eit-imp-step eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-step-num">03</div>
+        <div class="eit-imp-step-title">Установка имплантов</div>
+        <div class="eit-imp-step-desc">Хирург устанавливает титановые стержни в кость под местной анестезией. После установки фиксируются временные коронки или защитные колпачки.</div>
+      </div>
+      <div class="eit-imp-step eit-imp-fade">
+        <div class="eit-imp-step-num">04</div>
+        <div class="eit-imp-step-title">Остеоинтеграция</div>
+        <div class="eit-imp-step-desc">В течение 3–6 месяцев имплант прирастает к кости. Этот период проходит дома — наш врач на связи для онлайн-контроля.</div>
+      </div>
+      <div class="eit-imp-step eit-imp-fade eit-imp-fade-d1">
+        <div class="eit-imp-step-num">05</div>
+        <div class="eit-imp-step-title">Второй визит: абатмент</div>
+        <div class="eit-imp-step-desc">Устанавливается абатмент — переходный элемент между имплантом и коронкой. Берутся слепки для изготовления постоянной коронки.</div>
+      </div>
+      <div class="eit-imp-step eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-step-num">06</div>
+        <div class="eit-imp-step-title">Финальная коронка</div>
+        <div class="eit-imp-step-desc">Устанавливается постоянная коронка — циркониевая или металлокерамическая. Лечение завершено: вы уезжаете домой с новой улыбкой.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-band">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-band-inner">
+      <div>
+        <div class="eit-imp-band-title">Хотите восстановить свою улыбку?</div>
+        <div class="eit-imp-band-sub">Свяжитесь с нами — составим индивидуальный план лечения и рассчитаем стоимость</div>
+      </div>
+      <div class="eit-imp-band-actions">
+        <a href="https://wa.me/905468189180" class="eit-imp-btn eit-imp-btn--primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+          Бесплатная консультация
+        </a>
+        <a href="tel:+905468189180" class="eit-imp-btn eit-imp-btn--outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Позвонить
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-imp-faq">
+  <div class="eit-imp-wrap">
+    <div class="eit-imp-faq-grid">
+
+      <div>
+        <div class="eit-imp-faq-head eit-imp-fade">
+          <div class="eit-imp-tag">Частые вопросы</div>
+          <h2 class="eit-imp-heading">
+            Вопросы об <span>имплантации зубов</span>
+          </h2>
+        </div>
+        <div class="eit-imp-faq-list">
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Что такое зубные импланты и из чего они сделаны?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Имплант — это искусственный корень зуба из <strong>титана</strong>. Этот материал безопасен, не вызывает аллергии и идеально приживается в кости. Поверх импланта устанавливается абатмент и коронка, которые имитируют натуральный зуб по форме и цвету.
+            </div>
+          </div>
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Когда нужна имплантация?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Импланты применяются когда: отсутствует один или несколько зубов; требуется восстановить все зубы на одной челюсти; неудобны съёмные протезы; есть потеря кости (возможно базальное или субпериостальное решение). Противопоказания: тяжёлые воспалительные процессы, неконтролируемый диабет, онкологические заболевания и некоторые системные нарушения.
+            </div>
+          </div>
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Сколько длится лечение?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Процесс установки имплантов длится от одного до нескольких дней, после чего пациент находится под наблюдением врачей в течение 6 дней. По необходимости устанавливаются временные коронки. Спустя 3–6 месяцев устанавливаются постоянные коронки. <strong>Всего лечение предусматривает 2 визита в Стамбул, в крайних случаях 3.</strong>
+            </div>
+          </div>
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Что такое All-on-4 / All-on-6?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Метод подходит при отсутствии всех зубов. На 4 или 6 имплантов фиксируется полный зубной ряд вместе с искусственной десной. При протоколе All-On используется гибридный материал: акрил, цирконий или металлокерамика. Это наиболее экономичный и быстрый способ полного восстановления.
+            </div>
+          </div>
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Какие марки имплантов вы используете?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Мы работаем только с оригинальными брендами: <strong>MediGMA, Iris, Megagen, Osstem, Nobel, Straumann, Venus</strong> и другими системами, сертифицированными в Европе. На каждый имплант предоставляется гарантия и паспорт с серийным номером.
+            </div>
+          </div>
+
+          <div class="eit-imp-faq-item">
+            <button class="eit-imp-faq-q" aria-expanded="false">
+              Есть ли гарантия на импланты?
+              <span class="eit-imp-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="eit-imp-faq-a">
+              Вы получаете: официальную гарантию на импланты от производителя; гарантию на работу врача от клиники; паспорт импланта с серийным номером и производителем. Современные технологии в ESTE IN TURKEY: точная диагностика на 3D томографе, опытные хирурги со стажем от 7–16 лет, высокоточное лабораторное оборудование.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Aside -->
+      <aside class="eit-imp-faq-aside eit-imp-fade eit-imp-fade-d2">
+        <div class="eit-imp-faq-aside-card">
+          <div class="eit-imp-faq-aside-title">Остались вопросы?</div>
+          <div class="eit-imp-faq-aside-text">Наш специалист проконсультирует вас бесплатно и составит персональный план лечения с расчётом стоимости.</div>
+          <div class="eit-imp-faq-aside-btns">
+            <a href="https://wa.me/905468189180" class="eit-imp-faq-aside-btn eit-imp-faq-aside-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-imp-faq-aside-btn eit-imp-faq-aside-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Позвонить
+            </a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /eit-imp -->
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Scroll fade ──────────────────────────────── */
+  var fades = document.querySelectorAll('#eitImpPage .eit-imp-fade');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    fades.forEach(function (el) { io.observe(el); });
+  } else {
+    fades.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ── FAQ accordion ────────────────────────────── */
+  document.querySelectorAll('#eitImpPage .eit-imp-faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.eit-imp-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('#eitImpPage .eit-imp-faq-item.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+        el.querySelector('.eit-imp-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+</script>

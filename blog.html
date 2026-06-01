@@ -1,0 +1,1143 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:       #1D5C5C;
+  --eit-primary-dark:  #154444;
+  --eit-accent:        #2E8B8B;
+  --eit-accent-light:  #4AACAC;
+  --eit-cream:         #F8F4EF;
+  --eit-text:          #1A1A1A;
+  --eit-text-muted:    #5A5A5A;
+  --eit-white:         #FFFFFF;
+  --eit-border:        rgba(29, 92, 92, 0.12);
+  --eit-shadow-sm:     0 2px 12px rgba(29, 92, 92, 0.10);
+  --eit-shadow-md:     0 4px 24px rgba(29, 92, 92, 0.12);
+  --eit-shadow-lg:     0 16px 48px rgba(0, 0, 0, 0.14);
+  --eit-transition:    all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --eit-font:          'Montserrat', sans-serif;
+  --eit-header-h:      118px;
+}
+
+.eit-blog *,
+.eit-blog *::before,
+.eit-blog *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--eit-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+.eit-blog a { text-decoration: none; color: inherit; }
+.eit-blog img { max-width: 100%; display: block; }
+
+.eit-blog-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── HERO ──────────────────────────────── */
+.eit-blog-hero {
+  background: var(--eit-primary);
+  padding: 64px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.eit-blog-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 90% 50%, rgba(46,139,139,.3) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at -5% 60%, rgba(21,68,68,.5) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.eit-blog-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.eit-blog-hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.9);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 7px 22px;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 22px;
+}
+
+.eit-blog-hero h1 {
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 900;
+  color: var(--eit-white);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+
+.eit-blog-hero h1 span {
+  color: var(--eit-accent-light);
+}
+
+.eit-blog-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.72);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+.eit-blog-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+}
+
+.eit-blog-breadcrumb a {
+  color: rgba(255,255,255,.65);
+  transition: var(--eit-transition);
+}
+
+.eit-blog-breadcrumb a:hover { color: #fff; }
+
+.eit-blog-breadcrumb svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ── SEARCH + FILTER ───────────────────── */
+.eit-blog-controls {
+  background: var(--eit-white);
+  padding: 0;
+  position: sticky;
+  top: var(--eit-header-h);
+  z-index: 100;
+  border-bottom: 1px solid var(--eit-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+}
+
+.eit-blog-controls-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  flex-wrap: wrap;
+}
+
+.eit-blog-search {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+}
+
+.eit-blog-search input {
+  width: 100%;
+  padding: 13px 20px 13px 48px;
+  border: 1.5px solid var(--eit-border);
+  border-radius: 50px;
+  font-family: var(--eit-font);
+  font-size: 14px;
+  color: var(--eit-text);
+  background: var(--eit-cream);
+  outline: none;
+  transition: var(--eit-transition);
+}
+
+.eit-blog-search input:focus {
+  border-color: var(--eit-accent);
+  background: var(--eit-white);
+  box-shadow: 0 0 0 3px rgba(46,139,139,.1);
+}
+
+.eit-blog-search input::placeholder {
+  color: var(--eit-text-muted);
+}
+
+.eit-blog-search svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--eit-text-muted);
+  pointer-events: none;
+}
+
+.eit-blog-cats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.eit-blog-cat-btn {
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: var(--eit-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  border: 1.5px solid var(--eit-border);
+  background: var(--eit-white);
+  color: var(--eit-text-muted);
+  cursor: pointer;
+  transition: var(--eit-transition);
+  white-space: nowrap;
+}
+
+.eit-blog-cat-btn:hover,
+.eit-blog-cat-btn.active {
+  background: var(--eit-primary);
+  color: var(--eit-white);
+  border-color: var(--eit-primary);
+}
+
+/* ── MAIN LAYOUT ───────────────────────── */
+.eit-blog-main {
+  padding: 64px 0 100px;
+  background: var(--eit-cream);
+}
+
+.eit-blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── GRID ──────────────────────────────── */
+.eit-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* ── FEATURED CARD (first post) ─────────── */
+.eit-blog-card-featured {
+  grid-column: span 2;
+  background: var(--eit-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--eit-shadow-sm);
+  border: 1px solid var(--eit-border);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  transition: var(--eit-transition);
+  min-height: 320px;
+}
+
+.eit-blog-card-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--eit-shadow-lg);
+}
+
+.eit-blog-card-featured .eit-blog-card-img {
+  height: 100%;
+  min-height: 320px;
+}
+
+.eit-blog-card-featured .eit-blog-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eit-blog-card-featured .eit-blog-card-body {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eit-blog-card-featured .eit-blog-card-title {
+  font-size: 22px;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+/* ── REGULAR CARD ──────────────────────── */
+.eit-blog-card {
+  background: var(--eit-white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--eit-shadow-sm);
+  border: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.eit-blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--eit-shadow-lg);
+  border-color: rgba(46,139,139,.2);
+}
+
+.eit-blog-card-img {
+  position: relative;
+  overflow: hidden;
+  background: var(--eit-primary-dark);
+}
+
+.eit-blog-card-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.eit-blog-card:hover .eit-blog-card-img img,
+.eit-blog-card-featured:hover .eit-blog-card-img img {
+  transform: scale(1.05);
+}
+
+.eit-blog-card-img-placeholder {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eit-blog-card-img-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: rgba(255,255,255,.3);
+}
+
+.eit-blog-card-cat {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 30px;
+}
+
+.eit-blog-card-body {
+  padding: 28px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.eit-blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.eit-blog-card-date {
+  font-size: 11px;
+  color: var(--eit-text-muted);
+  font-weight: 600;
+  letter-spacing: .06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.eit-blog-card-date svg {
+  width: 13px;
+  height: 13px;
+  color: var(--eit-accent);
+  flex-shrink: 0;
+}
+
+.eit-blog-card-read {
+  font-size: 11px;
+  color: var(--eit-text-muted);
+  font-weight: 600;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.eit-blog-card-read svg {
+  width: 12px;
+  height: 12px;
+  color: var(--eit-text-muted);
+}
+
+.eit-blog-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--eit-text);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+  transition: var(--eit-transition);
+}
+
+.eit-blog-card:hover .eit-blog-card-title,
+.eit-blog-card-featured:hover .eit-blog-card-title {
+  color: var(--eit-accent);
+}
+
+.eit-blog-card-excerpt {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.eit-blog-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--eit-accent);
+  letter-spacing: .03em;
+  transition: var(--eit-transition);
+  margin-top: auto;
+}
+
+.eit-blog-card-link svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--eit-transition);
+}
+
+.eit-blog-card-link:hover {
+  color: var(--eit-primary);
+  gap: 10px;
+}
+
+/* ── SKELETON ──────────────────────────── */
+.eit-blog-skeleton {
+  background: var(--eit-white);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--eit-border);
+}
+
+.eit-blog-skeleton-img {
+  height: 220px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.eit-blog-skeleton-body {
+  padding: 24px;
+}
+
+.eit-blog-skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 10px;
+}
+
+.eit-blog-skeleton-line.short { width: 60%; }
+.eit-blog-skeleton-line.medium { width: 80%; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── LOAD MORE ─────────────────────────── */
+.eit-blog-load-more {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.eit-blog-load-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 44px;
+  background: var(--eit-primary);
+  color: var(--eit-white);
+  border: none;
+  border-radius: 50px;
+  font-family: var(--eit-font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: var(--eit-transition);
+  box-shadow: 0 6px 24px rgba(29,92,92,.25);
+}
+
+.eit-blog-load-btn:hover {
+  background: var(--eit-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(46,139,139,.35);
+}
+
+.eit-blog-load-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.eit-blog-load-btn svg {
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+.eit-blog-load-btn.loading svg { display: block; }
+.eit-blog-load-btn.loading span { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── EMPTY / ERROR ─────────────────────── */
+.eit-blog-empty {
+  grid-column: span 2;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--eit-text-muted);
+}
+
+.eit-blog-empty svg {
+  width: 64px;
+  height: 64px;
+  color: rgba(29,92,92,.15);
+  margin: 0 auto 24px;
+}
+
+.eit-blog-empty h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--eit-text);
+  margin-bottom: 10px;
+}
+
+.eit-blog-empty p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── SIDEBAR ───────────────────────────── */
+.eit-blog-sidebar {
+  position: sticky;
+  top: calc(var(--eit-header-h) + 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.eit-sidebar-widget {
+  background: var(--eit-white);
+  border-radius: 18px;
+  padding: 28px 24px;
+  border: 1px solid var(--eit-border);
+  box-shadow: var(--eit-shadow-sm);
+}
+
+.eit-sidebar-widget-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--eit-primary);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--eit-accent);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/* recent posts */
+.eit-sidebar-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eit-sidebar-recent-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: var(--eit-transition);
+}
+
+.eit-sidebar-recent-item:hover { opacity: .8; }
+
+.eit-sidebar-recent-img {
+  width: 68px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--eit-primary-dark);
+}
+
+.eit-sidebar-recent-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eit-sidebar-recent-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--eit-text);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: var(--eit-transition);
+}
+
+.eit-sidebar-recent-item:hover .eit-sidebar-recent-title {
+  color: var(--eit-accent);
+}
+
+.eit-sidebar-recent-date {
+  font-size: 11px;
+  color: var(--eit-text-muted);
+  font-weight: 600;
+}
+
+/* categories sidebar */
+.eit-sidebar-cats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eit-sidebar-cat-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--eit-text);
+  transition: var(--eit-transition);
+  cursor: pointer;
+}
+
+.eit-sidebar-cat-link:hover {
+  background: rgba(46,139,139,.07);
+  color: var(--eit-accent);
+  padding-left: 18px;
+}
+
+.eit-sidebar-cat-count {
+  font-size: 11px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* CTA sidebar */
+.eit-sidebar-cta {
+  background: var(--eit-primary-dark);
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  border: none;
+}
+
+.eit-sidebar-cta-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,.12);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.eit-sidebar-cta-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--eit-accent-light);
+}
+
+.eit-sidebar-cta-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.eit-sidebar-cta-text {
+  font-size: 13px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.eit-sidebar-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: var(--eit-accent);
+  color: var(--eit-white) !important;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: var(--eit-transition);
+  letter-spacing: .03em;
+}
+
+.eit-sidebar-cta-btn:hover {
+  background: var(--eit-accent-light);
+  transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ────────────────────────── */
+@media (max-width: 1100px) {
+  .eit-blog-layout { grid-template-columns: 1fr; }
+  .eit-blog-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+}
+
+@media (max-width: 900px) {
+  :root { --eit-header-h: 118px; }
+  .eit-blog-grid { grid-template-columns: 1fr; }
+  .eit-blog-card-featured { grid-template-columns: 1fr; grid-column: span 1; }
+  .eit-blog-card-featured .eit-blog-card-img { min-height: 240px; }
+  .eit-blog-card-featured .eit-blog-card-body { padding: 28px 24px; }
+  .eit-blog-card-featured .eit-blog-card-title { font-size: 18px; }
+  .eit-blog-sidebar { grid-template-columns: 1fr; position: static; }
+  .eit-blog-controls { top: var(--eit-header-h); }
+}
+
+.admin-bar .eit-blog-controls { top: calc(var(--eit-header-h) + 32px); }
+@media screen and (max-width: 782px) {
+  .admin-bar .eit-blog-controls { top: calc(var(--eit-header-h) + 46px); }
+}
+@media screen and (max-width: 600px) {
+  .admin-bar .eit-blog-controls { top: var(--eit-header-h); }
+}
+
+@media (max-width: 640px) {
+  :root { --eit-header-h: 80px; }
+  .eit-blog-wrap { padding: 0 18px; }
+  /* Mobilde sticky kaldırılıyor — WP header mobile menüsüyle z-index çakışmasını önler */
+  .eit-blog-controls {
+    position: relative;
+    top: auto;
+    z-index: 1;
+  }
+  .eit-blog-controls-inner { flex-direction: column; align-items: stretch; gap: 10px; }
+  .eit-blog-search { min-width: auto; }
+  .eit-blog-cats { gap: 6px; }
+  .eit-blog-cat-btn { padding: 8px 16px; font-size: 11px; }
+  .eit-blog-main { padding: 40px 0 70px; }
+}
+</style>
+
+<div class="eit-blog">
+
+  <!-- ── HERO ──────────────────────── -->
+  <section class="eit-blog-hero">
+    <div class="eit-blog-wrap">
+      <div class="eit-blog-hero-inner">
+        <div class="eit-blog-hero-tag">Блог — Este in Turkey</div>
+        <h1>Статьи о <span>пересадке волос</span></h1>
+        <p class="eit-blog-hero-sub">
+          Экспертные материалы, советы по уходу, истории пациентов и всё о трансплантации волос в Стамбуле.
+        </p>
+        <nav class="eit-blog-breadcrumb" aria-label="Навигация">
+          <a href="/ru/">Главная</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <span>Блог</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTROLS ───────────────────── -->
+  <div class="eit-blog-controls">
+    <div class="eit-blog-wrap">
+      <div class="eit-blog-controls-inner">
+        <div class="eit-blog-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="eitBlogSearch" placeholder="Поиск по статьям...">
+        </div>
+        <div class="eit-blog-cats" id="eitBlogCats">
+          <button class="eit-blog-cat-btn active" data-cat="0">Все статьи</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN ───────────────────────── -->
+  <div class="eit-blog-main">
+    <div class="eit-blog-wrap">
+      <div class="eit-blog-layout">
+
+        <!-- Posts area -->
+        <div>
+          <div class="eit-blog-grid" id="eitBlogGrid">
+            <!-- Skeleton while loading -->
+            <div class="eit-blog-skeleton eit-blog-card-featured" style="grid-column:span 2;">
+              <div class="eit-blog-skeleton-img" style="min-height:320px;"></div>
+              <div class="eit-blog-skeleton-body">
+                <div class="eit-blog-skeleton-line short" style="margin-bottom:20px;"></div>
+                <div class="eit-blog-skeleton-line"></div>
+                <div class="eit-blog-skeleton-line medium"></div>
+                <div class="eit-blog-skeleton-line short"></div>
+              </div>
+            </div>
+            <div class="eit-blog-skeleton"><div class="eit-blog-skeleton-img"></div><div class="eit-blog-skeleton-body"><div class="eit-blog-skeleton-line short"></div><div class="eit-blog-skeleton-line"></div><div class="eit-blog-skeleton-line medium"></div></div></div>
+            <div class="eit-blog-skeleton"><div class="eit-blog-skeleton-img"></div><div class="eit-blog-skeleton-body"><div class="eit-blog-skeleton-line short"></div><div class="eit-blog-skeleton-line"></div><div class="eit-blog-skeleton-line medium"></div></div></div>
+          </div>
+
+          <div class="eit-blog-load-more" id="eitBlogLoadMore" style="display:none;">
+            <button class="eit-blog-load-btn" id="eitBlogLoadBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              <span>Загрузить ещё</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="eit-blog-sidebar" id="eitBlogSidebar">
+
+          <!-- Recent posts -->
+          <div class="eit-sidebar-widget">
+            <div class="eit-sidebar-widget-title">Последние статьи</div>
+            <div class="eit-sidebar-recent" id="eitSidebarRecent">
+              <div class="eit-blog-skeleton-line" style="height:56px;border-radius:10px;"></div>
+              <div class="eit-blog-skeleton-line" style="height:56px;border-radius:10px;"></div>
+              <div class="eit-blog-skeleton-line" style="height:56px;border-radius:10px;"></div>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="eit-sidebar-widget">
+            <div class="eit-sidebar-widget-title">Категории</div>
+            <div class="eit-sidebar-cats-list" id="eitSidebarCats">
+              <div class="eit-blog-skeleton-line" style="margin-bottom:8px;"></div>
+              <div class="eit-blog-skeleton-line medium" style="margin-bottom:8px;"></div>
+              <div class="eit-blog-skeleton-line short"></div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="eit-sidebar-cta">
+            <div class="eit-sidebar-cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="eit-sidebar-cta-title">Бесплатная консультация</div>
+            <div class="eit-sidebar-cta-text">Остались вопросы? Наши специалисты ответят на всё быстро и без обязательств.</div>
+            <a href="/ru/kontakty/" class="eit-sidebar-cta-btn">
+              Записаться
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const SITE   = 'https://esteinru.teset.fun';
+  const API    = SITE + '/wp-json/wp/v2';
+  const PER    = 6;
+
+  let page        = 1;
+  let totalPages  = 1;
+  let currentCat  = 0;
+  let searchQuery = '';
+  let searchTimer;
+  let allLoaded   = false;
+
+  const grid       = document.getElementById('eitBlogGrid');
+  const loadMore   = document.getElementById('eitBlogLoadMore');
+  const loadBtn    = document.getElementById('eitBlogLoadBtn');
+  const catsBar    = document.getElementById('eitBlogCats');
+  const searchInp  = document.getElementById('eitBlogSearch');
+  const sideRecent = document.getElementById('eitSidebarRecent');
+  const sideCats   = document.getElementById('eitSidebarCats');
+
+  function formatDate(str) {
+    const d = new Date(str);
+    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function readTime(content) {
+    const words = content.replace(/<[^>]+>/g, '').split(/\s+/).length;
+    return Math.max(1, Math.round(words / 200)) + ' мин';
+  }
+
+  function stripHtml(html) {
+    return html.replace(/<[^>]+>/g, '').trim();
+  }
+
+  function truncate(str, len) {
+    const plain = stripHtml(str);
+    return plain.length > len ? plain.slice(0, len) + '…' : plain;
+  }
+
+  function thumbUrl(post) {
+    return post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '';
+  }
+
+  function catName(post) {
+    return post._embedded?.['wp:term']?.[0]?.[0]?.name || '';
+  }
+
+  function buildCardHTML(post, featured) {
+    const thumb   = thumbUrl(post);
+    const cat     = catName(post);
+    const date    = formatDate(post.date);
+    const rt      = readTime(post.content?.rendered || '');
+    const title   = post.title?.rendered || '';
+    const excerpt = truncate(post.excerpt?.rendered || post.content?.rendered || '', 160);
+    const url     = post.link || '#';
+
+    const imgHTML = thumb
+      ? `<img src="${thumb}" alt="${title}" loading="lazy">`
+      : `<div class="eit-blog-card-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>`;
+
+    if (featured) {
+      return `
+      <a href="${url}" class="eit-blog-card-featured">
+        <div class="eit-blog-card-img">${imgHTML}${cat ? `<span class="eit-blog-card-cat">${cat}</span>` : ''}</div>
+        <div class="eit-blog-card-body">
+          <div class="eit-blog-card-meta">
+            <span class="eit-blog-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${date}</span>
+            <span class="eit-blog-card-read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${rt}</span>
+          </div>
+          <div class="eit-blog-card-title">${title}</div>
+          <p class="eit-blog-card-excerpt">${excerpt}</p>
+          <span class="eit-blog-card-link">Читать статью <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>`;
+    }
+
+    return `
+    <a href="${url}" class="eit-blog-card">
+      <div class="eit-blog-card-img">${imgHTML}${cat ? `<span class="eit-blog-card-cat">${cat}</span>` : ''}</div>
+      <div class="eit-blog-card-body">
+        <div class="eit-blog-card-meta">
+          <span class="eit-blog-card-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${date}</span>
+          <span class="eit-blog-card-read"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${rt}</span>
+        </div>
+        <div class="eit-blog-card-title">${title}</div>
+        <p class="eit-blog-card-excerpt">${excerpt}</p>
+        <span class="eit-blog-card-link">Читать статью <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>`;
+  }
+
+  function showError() {
+    grid.innerHTML = `
+      <div class="eit-blog-empty" style="grid-column:span 2;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <h3>Не удалось загрузить статьи</h3>
+        <p>Попробуйте обновить страницу</p>
+      </div>`;
+  }
+
+  function showEmpty() {
+    grid.innerHTML = `
+      <div class="eit-blog-empty" style="grid-column:span 2;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        <h3>Статьи не найдены</h3>
+        <p>Попробуйте изменить поисковый запрос или выбрать другую категорию</p>
+      </div>`;
+    loadMore.style.display = 'none';
+  }
+
+  async function fetchPosts(reset) {
+    if (reset) {
+      page = 1;
+      allLoaded = false;
+      grid.innerHTML = `
+        <div class="eit-blog-skeleton eit-blog-card-featured" style="grid-column:span 2;"><div class="eit-blog-skeleton-img" style="min-height:320px;"></div><div class="eit-blog-skeleton-body"><div class="eit-blog-skeleton-line short" style="margin-bottom:20px;"></div><div class="eit-blog-skeleton-line"></div><div class="eit-blog-skeleton-line medium"></div></div></div>
+        <div class="eit-blog-skeleton"><div class="eit-blog-skeleton-img"></div><div class="eit-blog-skeleton-body"><div class="eit-blog-skeleton-line short"></div><div class="eit-blog-skeleton-line"></div></div></div>
+        <div class="eit-blog-skeleton"><div class="eit-blog-skeleton-img"></div><div class="eit-blog-skeleton-body"><div class="eit-blog-skeleton-line short"></div><div class="eit-blog-skeleton-line"></div></div></div>`;
+      loadMore.style.display = 'none';
+    }
+
+    loadBtn.classList.add('loading');
+    loadBtn.disabled = true;
+
+    let url = `${API}/posts?_embed&per_page=${PER}&page=${page}`;
+    if (currentCat)   url += `&categories=${currentCat}`;
+    if (searchQuery)  url += `&search=${encodeURIComponent(searchQuery)}`;
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok && res.status !== 400) throw new Error();
+
+      totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1');
+      const posts = await res.json();
+
+      if (reset) grid.innerHTML = '';
+
+      if (!posts.length && reset) {
+        showEmpty();
+        return;
+      }
+
+      posts.forEach((post, i) => {
+        const isFeatured = reset && i === 0;
+        grid.insertAdjacentHTML('beforeend', buildCardHTML(post, isFeatured));
+      });
+
+      if (page >= totalPages) {
+        loadMore.style.display = 'none';
+        allLoaded = true;
+      } else {
+        loadMore.style.display = 'block';
+      }
+
+      page++;
+
+    } catch (e) {
+      if (reset) showError();
+    } finally {
+      loadBtn.classList.remove('loading');
+      loadBtn.disabled = false;
+    }
+  }
+
+  async function fetchCategories() {
+    try {
+      const res = await fetch(`${API}/categories?per_page=20&hide_empty=true`);
+      const cats = await res.json();
+
+      cats.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'eit-blog-cat-btn';
+        btn.dataset.cat = cat.id;
+        btn.textContent = cat.name;
+        catsBar.appendChild(btn);
+      });
+
+      sideCats.innerHTML = cats.map(cat => `
+        <div class="eit-sidebar-cat-link" data-cat="${cat.id}">
+          ${cat.name}
+          <span class="eit-sidebar-cat-count">${cat.count}</span>
+        </div>`).join('');
+
+      sideCats.querySelectorAll('.eit-sidebar-cat-link').forEach(el => {
+        el.addEventListener('click', () => {
+          currentCat = parseInt(el.dataset.cat);
+          document.querySelectorAll('.eit-blog-cat-btn').forEach(b => b.classList.remove('active'));
+          const btn = document.querySelector(`.eit-blog-cat-btn[data-cat="${currentCat}"]`);
+          if (btn) btn.classList.add('active');
+          fetchPosts(true);
+        });
+      });
+
+    } catch(e) {
+      sideCats.innerHTML = '<p style="font-size:13px;color:var(--eit-text-muted);">Не удалось загрузить категории</p>';
+    }
+  }
+
+  async function fetchRecent() {
+    try {
+      const res = await fetch(`${API}/posts?_embed&per_page=4`);
+      const posts = await res.json();
+      sideRecent.innerHTML = posts.map(post => {
+        const thumb = thumbUrl(post);
+        const title = post.title?.rendered || '';
+        const date  = formatDate(post.date);
+        const url   = post.link || '#';
+        return `
+          <a href="${url}" class="eit-sidebar-recent-item">
+            <div class="eit-sidebar-recent-img">
+              ${thumb ? `<img src="${thumb}" alt="${title}" loading="lazy">` : ''}
+            </div>
+            <div>
+              <div class="eit-sidebar-recent-title">${title}</div>
+              <div class="eit-sidebar-recent-date">${date}</div>
+            </div>
+          </a>`;
+      }).join('');
+    } catch(e) {
+      sideRecent.innerHTML = '<p style="font-size:13px;color:var(--eit-text-muted);">Не удалось загрузить</p>';
+    }
+  }
+
+  catsBar.addEventListener('click', e => {
+    const btn = e.target.closest('.eit-blog-cat-btn');
+    if (!btn) return;
+    document.querySelectorAll('.eit-blog-cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = parseInt(btn.dataset.cat);
+    searchInp.value = '';
+    searchQuery = '';
+    fetchPosts(true);
+  });
+
+  loadBtn.addEventListener('click', () => { if (!allLoaded) fetchPosts(false); });
+
+  searchInp.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      searchQuery = searchInp.value.trim();
+      currentCat = 0;
+      document.querySelectorAll('.eit-blog-cat-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.eit-blog-cat-btn[data-cat="0"]')?.classList.add('active');
+      fetchPosts(true);
+    }, 500);
+  });
+
+  fetchPosts(true);
+  fetchCategories();
+  fetchRecent();
+})();
+
+(function(){
+  var root = document.documentElement;
+  function syncHeaderHeight() {
+    var header = document.getElementById('eitHeader');
+    if (header) {
+      root.style.setProperty('--eit-header-h', header.offsetHeight + 'px');
+    }
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight, {passive: true});
+  window.addEventListener('scroll', syncHeaderHeight, {passive: true});
+})();
+</script>

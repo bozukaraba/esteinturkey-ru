@@ -1,0 +1,1310 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ЭЛАЙНЕРЫ
+   Dil: RU | Elementor HTML Widget | Prefix: eit-al-
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-al *, .eit-al *::before, .eit-al *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.eit-al {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-al a { text-decoration: none; color: inherit; }
+.eit-al ul { list-style: none; }
+.eit-al img { max-width: 100%; display: block; }
+
+.eit-al-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-al-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-al-fade.is-visible { opacity: 1; transform: none; }
+.eit-al-fade-d1 { transition-delay: .12s; }
+.eit-al-fade-d2 { transition-delay: .22s; }
+.eit-al-fade-d3 { transition-delay: .34s; }
+.eit-al-fade-d4 { transition-delay: .46s; }
+
+/* ── Shared components ─────────────────────────── */
+.eit-al-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  margin-bottom: 16px;
+}
+.eit-al-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+.eit-al-heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 800; color: var(--eit-primary);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.eit-al-heading span { color: var(--eit-accent); }
+.eit-al-divider {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  margin-bottom: 26px;
+}
+.eit-al-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition); cursor: pointer; border: none;
+}
+.eit-al-btn--primary {
+  background: var(--eit-accent);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-al-btn--primary:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.4);
+}
+.eit-al-btn--outline {
+  background: transparent; color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3);
+}
+.eit-al-btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-al-hero {
+  background: var(--eit-primary);
+  min-height: 580px;
+  display: flex; align-items: center;
+  padding: 80px 0 0;
+  position: relative; overflow: hidden;
+}
+.eit-al-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 50%, rgba(46,139,139,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at -10% 60%, rgba(21,68,68,.45) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-al-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(21,68,68,.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+.eit-al-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.eit-al-hero-left { padding-bottom: 72px; }
+.eit-al-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
+}
+.eit-al-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: var(--eit-transition); }
+.eit-al-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-al-hero-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 900; color: var(--eit-white);
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-al-hero-title span { color: var(--eit-accent-light); }
+.eit-al-hero-desc {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.eit-al-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.eit-al-stat-value {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-al-stat-label {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 4px;
+}
+.eit-al-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero right — CTA card */
+.eit-al-hero-right {
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.eit-al-hero-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.eit-al-hero-card-badge {
+  display: inline-block;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+  align-self: flex-start;
+}
+.eit-al-hero-card-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.3;
+}
+.eit-al-hero-card-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-al-hero-card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.82);
+}
+.eit-al-hero-card-list li::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-al-hero-card-divider {
+  height: 1px; background: rgba(255,255,255,.15);
+}
+.eit-al-hero-card-cta {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-al-hero-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 20px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-al-hero-card-btn--wa { background: #25D366; }
+.eit-al-hero-card-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-al-hero-card-btn--tel {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+}
+.eit-al-hero-card-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-al-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-al-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.eit-al-about-img-wrap { position: relative; }
+.eit-al-about-img-main {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  outline: 2px solid rgba(46,139,139,.3);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14);
+  display: block;
+}
+.eit-al-about-deco {
+  position: absolute; top: -20px; left: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(46,139,139,.08); z-index: -1;
+}
+.eit-al-about-text p {
+  font-size: 14.5px; color: var(--eit-text-muted);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.eit-al-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-al-about-features {
+  margin-top: 28px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-al-about-feature {
+  background: var(--eit-cream); border-radius: 12px;
+  padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px;
+}
+.eit-al-about-feature-icon {
+  width: 38px; height: 38px;
+  background: rgba(46,139,139,.12); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.eit-al-about-feature-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-al-about-feature-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 3px;
+}
+.eit-al-about-feature-text {
+  font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════
+   3. INDICATIONS
+   ════════════════════════════════════════════════ */
+.eit-al-indications {
+  background: var(--eit-primary);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.eit-al-indications::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-al-indications-head {
+  text-align: center; margin-bottom: 48px; position: relative;
+}
+.eit-al-indications-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-al-indications-title span { color: var(--eit-accent-light); }
+.eit-al-indications-sub {
+  font-size: 14px; color: rgba(255,255,255,.65);
+  max-width: 540px; margin: 14px auto 0; line-height: 1.7;
+}
+.eit-al-indications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative;
+}
+.eit-al-indication-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px; padding: 28px 24px;
+  transition: var(--eit-transition);
+}
+.eit-al-indication-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-4px);
+  border-color: rgba(74,172,172,.4);
+}
+.eit-al-indication-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.25); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-al-indication-icon svg { width: 24px; height: 24px; color: var(--eit-accent-light); }
+.eit-al-indication-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-al-indication-text {
+  font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   4. TYPES
+   ════════════════════════════════════════════════ */
+.eit-al-types {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-al-types-head { text-align: center; margin-bottom: 52px; }
+.eit-al-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.eit-al-type-card {
+  background: var(--eit-white);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(29,92,92,.08);
+  transition: var(--eit-transition);
+  display: flex; flex-direction: column;
+  border-top: 4px solid transparent;
+}
+.eit-al-type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(29,92,92,.14);
+  border-top-color: var(--eit-accent);
+}
+.eit-al-type-body { padding: 28px 24px; flex: 1; }
+.eit-al-type-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-al-type-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
+.eit-al-type-name {
+  font-size: 16px; font-weight: 800;
+  color: var(--eit-primary); margin-bottom: 8px;
+}
+.eit-al-type-badge {
+  display: inline-block;
+  background: rgba(46,139,139,.1); color: var(--eit-accent);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 14px;
+}
+.eit-al-type-desc {
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   5. ADVANTAGES + COMPARE
+   ════════════════════════════════════════════════ */
+.eit-al-advantages {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-al-advantages-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.eit-al-adv-list {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.eit-al-adv-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: var(--eit-text-muted); line-height: 1.65;
+}
+.eit-al-adv-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(46,139,139,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.eit-al-adv-dot svg { width: 13px; height: 13px; color: var(--eit-accent); }
+.eit-al-adv-item strong { color: var(--eit-primary); font-weight: 700; }
+
+.eit-al-compare {
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 36px 32px;
+}
+.eit-al-compare-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 8px;
+}
+.eit-al-compare-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.eit-al-compare-table {
+  display: flex; flex-direction: column; gap: 0;
+  border-radius: 14px; overflow: hidden;
+}
+.eit-al-compare-row {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  padding: 12px 16px; gap: 8px;
+  font-size: 12.5px;
+}
+.eit-al-compare-row:nth-child(odd) { background: rgba(255,255,255,.05); }
+.eit-al-compare-row:nth-child(even) { background: rgba(255,255,255,.09); }
+.eit-al-compare-row--head {
+  background: rgba(46,139,139,.3) !important;
+  font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.eit-al-compare-row--head span { color: rgba(255,255,255,.7); }
+.eit-al-compare-row--head span:first-child { color: rgba(255,255,255,.5); }
+.eit-al-compare-cell { color: rgba(255,255,255,.8); align-self: center; }
+.eit-al-compare-cell--label { color: rgba(255,255,255,.55); font-size: 12px; }
+.eit-al-compare-cell--yes { color: var(--eit-accent-light); font-weight: 700; }
+.eit-al-compare-cell--no { color: rgba(255,255,255,.35); }
+.eit-al-compare-divider { height: 1px; background: rgba(255,255,255,.12); margin: 20px 0; }
+.eit-al-compare-note {
+  font-size: 12.5px; color: rgba(255,255,255,.6); line-height: 1.65; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   6. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-al-process {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-al-process-head { text-align: center; margin-bottom: 56px; }
+.eit-al-process-sub {
+  font-size: 14px; color: var(--eit-text-muted);
+  max-width: 540px; margin: 12px auto 0; line-height: 1.7;
+}
+.eit-al-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-bottom: 48px;
+}
+.eit-al-step {
+  background: var(--eit-white); border-radius: 18px; padding: 28px 22px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(29,92,92,.07);
+  transition: var(--eit-transition); text-align: center;
+}
+.eit-al-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.12);
+}
+.eit-al-step-num {
+  font-size: 52px; font-weight: 900;
+  color: rgba(29,92,92,.06);
+  position: absolute; top: 10px; right: 14px; line-height: 1;
+}
+.eit-al-step-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.eit-al-step-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
+.eit-al-step-title {
+  font-size: 13.5px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 8px; line-height: 1.4;
+}
+.eit-al-step-text {
+  font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.65;
+}
+
+.eit-al-care {
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 40px 44px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+.eit-al-care-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 14px;
+}
+.eit-al-care-text {
+  font-size: 13.5px; color: rgba(255,255,255,.7);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.eit-al-care-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-al-care-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.6;
+}
+.eit-al-care-list li::before {
+  content: '✓'; font-size: 12px; font-weight: 700;
+  color: var(--eit-accent-light); flex-shrink: 0; margin-top: 2px;
+}
+.eit-al-care-right { display: flex; flex-direction: column; gap: 14px; }
+.eit-al-care-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 24px; text-align: center;
+}
+.eit-al-care-stat-value {
+  font-size: 38px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-al-care-stat-label {
+  font-size: 11px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 6px;
+}
+.eit-al-care-note {
+  font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.65; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   7. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-al-cta {
+  background: linear-gradient(135deg, var(--eit-accent) 0%, var(--eit-primary) 100%);
+  padding: 64px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.eit-al-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eit-al-cta-inner { position: relative; }
+.eit-al-cta-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.15); color: rgba(255,255,255,.9);
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.eit-al-cta-title {
+  font-size: clamp(22px, 3.2vw, 38px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2; margin-bottom: 14px;
+}
+.eit-al-cta-sub {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+.eit-al-cta-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.eit-al-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 32px; border-radius: 14px;
+  font-family: var(--eit-font); font-size: 13.5px; font-weight: 700;
+  text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-al-cta-btn--wa { background: #25D366; box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+.eit-al-cta-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-al-cta-btn--tel { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); }
+.eit-al-cta-btn--tel:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   8. FAQ
+   ════════════════════════════════════════════════ */
+.eit-al-faq { background: var(--eit-white); padding: 88px 0; }
+.eit-al-faq-head { text-align: center; margin-bottom: 52px; }
+.eit-al-faq-grid {
+  display: grid; grid-template-columns: 1fr 360px;
+  gap: 40px; align-items: start;
+}
+.eit-al-faq-list { display: flex; flex-direction: column; gap: 12px; }
+.eit-al-faq-item {
+  background: var(--eit-cream);
+  border-radius: 14px; border: 1px solid var(--eit-border);
+  overflow: hidden; transition: var(--eit-transition);
+}
+.eit-al-faq-item.is-open { border-color: rgba(46,139,139,.3); }
+.eit-al-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 20px 22px;
+  cursor: pointer; background: none; border: none; width: 100%;
+  text-align: left; font-family: var(--eit-font);
+  font-size: 14px; font-weight: 700; color: var(--eit-primary);
+}
+.eit-al-faq-q svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--eit-accent); transition: transform .3s; }
+.eit-al-faq-item.is-open .eit-al-faq-q svg { transform: rotate(180deg); }
+.eit-al-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), padding .3s;
+  padding: 0 22px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.8;
+}
+.eit-al-faq-item.is-open .eit-al-faq-a { max-height: 400px; padding: 0 22px 22px; }
+
+/* FAQ aside */
+.eit-al-faq-aside {
+  position: sticky; top: 100px;
+  background: var(--eit-primary); border-radius: 22px; padding: 32px 28px;
+}
+.eit-al-faq-aside-title { font-size: 17px; font-weight: 800; color: var(--eit-white); margin-bottom: 10px; }
+.eit-al-faq-aside-sub { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 24px; }
+.eit-al-faq-aside-btns { display: flex; flex-direction: column; gap: 12px; }
+.eit-al-faq-aside-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #fff !important; transition: var(--eit-transition);
+}
+.eit-al-faq-aside-btn--wa { background: #25D366; }
+.eit-al-faq-aside-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-al-faq-aside-btn--tel { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); }
+.eit-al-faq-aside-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.eit-al-faq-aside-divider { height: 1px; background: rgba(255,255,255,.12); margin: 22px 0; }
+.eit-al-faq-aside-list { display: flex; flex-direction: column; gap: 10px; }
+.eit-al-faq-aside-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.5;
+}
+.eit-al-faq-aside-list li::before { content: '✓'; color: var(--eit-accent-light); font-weight: 700; flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-al-about-inner { gap: 48px; }
+  .eit-al-advantages-inner { gap: 40px; }
+  .eit-al-steps { grid-template-columns: repeat(2, 1fr); }
+  .eit-al-faq-grid { grid-template-columns: 1fr; }
+  .eit-al-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-al-hero-inner { grid-template-columns: 1fr; }
+  .eit-al-hero-right { display: none; }
+  .eit-al-hero { min-height: auto; }
+  .eit-al-about-inner { grid-template-columns: 1fr; }
+  .eit-al-indications-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-al-types-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-al-advantages-inner { grid-template-columns: 1fr; }
+  .eit-al-care { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .eit-al-wrap { padding: 0 16px; }
+  .eit-al-indications-grid { grid-template-columns: 1fr; }
+  .eit-al-types-grid { grid-template-columns: 1fr; }
+  .eit-al-steps { grid-template-columns: 1fr; }
+  .eit-al-hero-stats { gap: 20px; }
+  .eit-al-hero-left { padding-bottom: 40px; }
+  .eit-al-care { padding: 28px 22px; }
+  .eit-al-cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="eit-al" id="eitAlPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-hero" aria-labelledby="eit-al-hero-title">
+  <div class="eit-al-wrap">
+    <div class="eit-al-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-al-hero-left">
+        <nav class="eit-al-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Элайнеры</span>
+        </nav>
+
+        <div class="eit-al-tag eit-al-tag--light eit-al-fade">Ортодонтия</div>
+        <h1 id="eit-al-hero-title" class="eit-al-hero-title eit-al-fade eit-al-fade-d1">
+          Элайнеры<br><span>в Стамбуле</span>
+        </h1>
+        <p class="eit-al-hero-desc eit-al-fade eit-al-fade-d2">
+          В клинике <strong style="color:#fff;">ESTE IN TURKEY</strong> мы выравниваем зубы с помощью прозрачных съёмных элайнеров. Никаких металлических скоб — только комфортное и незаметное выравнивание на основе цифрового 3D-планирования.
+        </p>
+
+        <div class="eit-al-hero-stats eit-al-fade eit-al-fade-d2">
+          <div>
+            <div class="eit-al-stat-value">6–18</div>
+            <div class="eit-al-stat-label">месяцев курса</div>
+          </div>
+          <div>
+            <div class="eit-al-stat-value">3D</div>
+            <div class="eit-al-stat-label">планирование</div>
+          </div>
+          <div>
+            <div class="eit-al-stat-value">0.75 мм</div>
+            <div class="eit-al-stat-label">толщина капп</div>
+          </div>
+          <div>
+            <div class="eit-al-stat-value">Гарантия</div>
+            <div class="eit-al-stat-label">на результат</div>
+          </div>
+        </div>
+
+        <div class="eit-al-hero-actions eit-al-fade eit-al-fade-d3">
+          <a href="https://wa.me/905468189180" class="eit-al-btn eit-al-btn--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-al-btn eit-al-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="eit-al-hero-right">
+        <div class="eit-al-hero-card">
+          <span class="eit-al-hero-card-badge">Стоматология Турции</span>
+          <div class="eit-al-hero-card-title">Бесплатная консультация по элайнерам</div>
+          <ul class="eit-al-hero-card-list">
+            <li>3D-сканирование и моделирование улыбки</li>
+            <li>Прозрачные съёмные каппы</li>
+            <li>Лечение без металлических брекетов</li>
+            <li>Русскоязычное сопровождение</li>
+          </ul>
+          <div class="eit-al-hero-card-divider"></div>
+          <div class="eit-al-hero-card-cta">
+            <a href="https://wa.me/905468189180" class="eit-al-hero-card-btn eit-al-hero-card-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              Написать в WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-al-hero-card-btn eit-al-hero-card-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-about" aria-labelledby="eit-al-about-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-about-inner">
+
+      <div class="eit-al-about-img-wrap eit-al-fade">
+        <div class="eit-al-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Orthodontics.webp"
+          alt="Элайнеры — прозрачные каппы для выравнивания зубов"
+          class="eit-al-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-al-about-text">
+        <div class="eit-al-tag eit-al-fade">О процедуре</div>
+        <h2 id="eit-al-about-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
+          Что такое<br><span>элайнеры?</span>
+        </h2>
+        <div class="eit-al-divider eit-al-fade eit-al-fade-d1"></div>
+
+        <div class="eit-al-fade eit-al-fade-d2">
+          <p>
+            <strong>Элайнеры</strong> — это прозрачные съёмные каппы из медицинского пластика, которые постепенно перемещают зубы в нужное положение. В отличие от брекетов, они практически <strong>не заметны</strong> в повседневной жизни.
+          </p>
+          <p>
+            Каждый набор изготавливается индивидуально по <strong>цифровому 3D-слепку</strong> зубов. Вы заранее видите, как будет выглядеть ваша улыбка через 6, 12, 18 месяцев — ещё до начала лечения.
+          </p>
+        </div>
+
+        <div class="eit-al-about-features eit-al-fade eit-al-fade-d3">
+          <div class="eit-al-about-feature">
+            <div class="eit-al-about-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div>
+              <div class="eit-al-about-feature-title">Абсолютно прозрачные</div>
+              <div class="eit-al-about-feature-text">Практически незаметны при разговоре и улыбке — никто не догадается, что вы проходите лечение</div>
+            </div>
+          </div>
+          <div class="eit-al-about-feature">
+            <div class="eit-al-about-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div>
+              <div class="eit-al-about-feature-title">Съёмные и комфортные</div>
+              <div class="eit-al-about-feature-text">Снимаются во время еды и чистки зубов — никаких ограничений в питании и гигиене полости рта</div>
+            </div>
+          </div>
+          <div class="eit-al-about-feature">
+            <div class="eit-al-about-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <div class="eit-al-about-feature-title">Цифровое 3D-планирование</div>
+              <div class="eit-al-about-feature-text">Вы видите финальный результат на экране ещё до изготовления первой каппы — полная предсказуемость лечения</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     INDICATIONS
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-indications" aria-labelledby="eit-al-indications-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-indications-head">
+      <div class="eit-al-tag eit-al-tag--light eit-al-fade">Показания</div>
+      <h2 id="eit-al-indications-heading" class="eit-al-indications-title eit-al-fade eit-al-fade-d1">
+        В каких случаях<br><span>подходят элайнеры?</span>
+      </h2>
+      <p class="eit-al-indications-sub eit-al-fade eit-al-fade-d2">
+        Элайнеры эффективны при большинстве проблем с прикусом и положением зубов:
+      </p>
+    </div>
+
+    <div class="eit-al-indications-grid">
+      <div class="eit-al-indication-card eit-al-fade">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Кривые и скученные зубы</div>
+        <p class="eit-al-indication-text">Элайнеры постепенно выравнивают зубы, устраняя скученность и неправильное положение без болезненных брекетов.</p>
+      </div>
+      <div class="eit-al-indication-card eit-al-fade eit-al-fade-d1">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Промежутки между зубами</div>
+        <p class="eit-al-indication-text">Диастемы и тремы — промежутки между зубами — закрываются без хирургического вмешательства за несколько месяцев.</p>
+      </div>
+      <div class="eit-al-indication-card eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Неправильный прикус</div>
+        <p class="eit-al-indication-text">Глубокий, открытый, перекрёстный прикус — элайнеры корректируют положение обеих челюстей и нормализуют смыкание зубов.</p>
+      </div>
+      <div class="eit-al-indication-card eit-al-fade eit-al-fade-d1">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Подготовка к протезированию</div>
+        <p class="eit-al-indication-text">Перед установкой виниров, коронок или имплантов элайнеры помогают правильно расставить зубы для оптимального результата.</p>
+      </div>
+      <div class="eit-al-indication-card eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Рецидив после брекетов</div>
+        <p class="eit-al-indication-text">Зубы снова сдвинулись после снятия брекетов? Элайнеры мягко возвращают их в правильное положение без повторного длительного лечения.</p>
+      </div>
+      <div class="eit-al-indication-card eit-al-fade eit-al-fade-d3">
+        <div class="eit-al-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="eit-al-indication-title">Стремление к незаметному лечению</div>
+        <p class="eit-al-indication-text">Идеальный выбор для взрослых пациентов, которые хотят выровнять зубы, не привлекая внимания к своей улыбке во время лечения.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TYPES
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-types" aria-labelledby="eit-al-types-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-types-head">
+      <div class="eit-al-tag eit-al-fade">Виды элайнеров</div>
+      <h2 id="eit-al-types-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
+        Какие элайнеры<br><span>мы используем?</span>
+      </h2>
+      <p style="font-size:14px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;line-height:1.7;" class="eit-al-fade eit-al-fade-d2">
+        Мы предлагаем несколько систем — врач подберёт оптимальный вариант под ваш случай и бюджет.
+      </p>
+    </div>
+
+    <div class="eit-al-types-grid">
+      <div class="eit-al-type-card eit-al-fade">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Премиум</div>
+          <div class="eit-al-type-name">Invisalign</div>
+          <p class="eit-al-type-desc">Самая известная в мире система прозрачных элайнеров. Изготавливается из запатентованного материала SmartTrack® — мягкого, прочного и максимально прозрачного. Подходит для сложных случаев.</p>
+        </div>
+      </div>
+      <div class="eit-al-type-card eit-al-fade eit-al-fade-d1">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Оптимальный выбор</div>
+          <div class="eit-al-type-name">Clear Correct</div>
+          <p class="eit-al-type-desc">Американская система элайнеров с более гибкими каппами. Отличное соотношение цены и качества. Эффективна при лечении лёгких и средних случаев.</p>
+        </div>
+      </div>
+      <div class="eit-al-type-card eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Экономичный</div>
+          <div class="eit-al-type-name">Местные системы</div>
+          <p class="eit-al-type-desc">Турецкие и европейские системы цифровых элайнеров — изготавливаются в собственных лабораториях. Доступная цена при высоком качестве материалов и точности изготовления.</p>
+        </div>
+      </div>
+      <div class="eit-al-type-card eit-al-fade eit-al-fade-d1">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Быстрый результат</div>
+          <div class="eit-al-type-name">Ретейнеры и фиксаторы</div>
+          <p class="eit-al-type-desc">После завершения курса элайнеров изготавливаются удерживающие ретейнеры, которые фиксируют результат и не дают зубам вернуться на прежние позиции.</p>
+        </div>
+      </div>
+      <div class="eit-al-type-card eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Цифровые технологии</div>
+          <div class="eit-al-type-name">3D-моделирование улыбки</div>
+          <p class="eit-al-type-desc">Независимо от системы мы используем цифровое 3D-сканирование и программное моделирование — вы видите результат до начала лечения и можете скорректировать план.</p>
+        </div>
+      </div>
+      <div class="eit-al-type-card eit-al-fade eit-al-fade-d3">
+        <div class="eit-al-type-body">
+          <div class="eit-al-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="eit-al-type-badge">Дистанционно</div>
+          <div class="eit-al-type-name">Удалённое наблюдение</div>
+          <p class="eit-al-type-desc">После получения набора капп вы меняете их самостоятельно каждые 1–2 недели. Плановые визиты к врачу минимальны — идеально для пациентов из других стран.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ADVANTAGES + COMPARE
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-advantages" aria-labelledby="eit-al-advantages-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-advantages-inner">
+
+      <div>
+        <div class="eit-al-tag eit-al-fade">Преимущества</div>
+        <h2 id="eit-al-advantages-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
+          Почему выбирают<br><span>элайнеры?</span>
+        </h2>
+        <div class="eit-al-divider eit-al-fade eit-al-fade-d1"></div>
+
+        <ul class="eit-al-adv-list eit-al-fade eit-al-fade-d2">
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Незаметность</strong> — прозрачные каппы практически не видны; можно улыбаться и говорить без стеснения</span>
+          </li>
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Съёмность</strong> — снимаются на время еды, спорта, особых мероприятий; нет ограничений в питании</span>
+          </li>
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Комфорт</strong> — нет острых металлических деталей, которые травмируют дёсны и щёки</span>
+          </li>
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Предсказуемость</strong> — 3D-моделирование показывает финальный результат ещё до начала лечения</span>
+          </li>
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Гигиена</strong> — зубы чистятся в обычном режиме; каппы моются отдельно под проточной водой</span>
+          </li>
+          <li class="eit-al-adv-item">
+            <span class="eit-al-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Минимум визитов к врачу</strong> — удобно для пациентов, приехавших из другой страны</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-compare">
+          <div class="eit-al-compare-title">Элайнеры vs Брекеты</div>
+          <p class="eit-al-compare-sub">Сравнение двух основных методов ортодонтического лечения:</p>
+          <div class="eit-al-compare-table">
+            <div class="eit-al-compare-row eit-al-compare-row--head">
+              <span>Параметр</span>
+              <span>Элайнеры</span>
+              <span>Брекеты</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Заметность</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Незаметны</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Заметны</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Съёмность</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Снимаются</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Несъёмные</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Ограничения в еде</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Нет</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Есть</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Гигиена</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Обычная</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Сложнее</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Комфорт</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Высокий</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Средний</span>
+            </div>
+            <div class="eit-al-compare-row">
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Сложные случаи</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Частично</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Да</span>
+            </div>
+          </div>
+          <div class="eit-al-compare-divider"></div>
+          <p class="eit-al-compare-note">Наш ортодонт поможет выбрать оптимальный метод на бесплатной консультации.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-process" aria-labelledby="eit-al-process-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-process-head">
+      <div class="eit-al-tag eit-al-fade">Этапы лечения</div>
+      <h2 id="eit-al-process-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
+        Как проходит лечение<br><span>элайнерами?</span>
+      </h2>
+      <p class="eit-al-process-sub eit-al-fade eit-al-fade-d2">
+        Весь процесс чётко организован — от первой консультации до финального результата.
+      </p>
+    </div>
+
+    <div class="eit-al-steps">
+      <div class="eit-al-step eit-al-fade">
+        <div class="eit-al-step-num">01</div>
+        <div class="eit-al-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="eit-al-step-title">Консультация и 3D-сканирование</div>
+        <p class="eit-al-step-text">Ортодонт осматривает зубы, делает цифровой 3D-слепок и оценивает прикус. Составляется предварительный план лечения с визуализацией результата.</p>
+      </div>
+      <div class="eit-al-step eit-al-fade eit-al-fade-d1">
+        <div class="eit-al-step-num">02</div>
+        <div class="eit-al-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="eit-al-step-title">Утверждение плана и заказ капп</div>
+        <p class="eit-al-step-text">Вы видите финальный результат на экране и утверждаете план. После этого изготавливается индивидуальный набор элайнеров на весь курс лечения.</p>
+      </div>
+      <div class="eit-al-step eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-step-num">03</div>
+        <div class="eit-al-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="eit-al-step-title">Получение элайнеров</div>
+        <p class="eit-al-step-text">Вы получаете весь набор капп с инструкцией. Каппы меняются самостоятельно каждые 1–2 недели. Контрольные визиты к врачу — раз в 2–3 месяца.</p>
+      </div>
+      <div class="eit-al-step eit-al-fade eit-al-fade-d3">
+        <div class="eit-al-step-num">04</div>
+        <div class="eit-al-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-al-step-title">Финальный результат</div>
+        <p class="eit-al-step-text">После завершения курса изготавливается ретейнер для фиксации результата. Ваши зубы надёжно удерживаются в новом положении.</p>
+      </div>
+    </div>
+
+    <!-- Care block -->
+    <div class="eit-al-care eit-al-fade">
+      <div>
+        <div class="eit-al-care-title">Как носить и ухаживать за элайнерами?</div>
+        <p class="eit-al-care-text">Правильный уход за каппами — залог комфорта и быстрого результата. Следуйте простым правилам:</p>
+        <ul class="eit-al-care-list">
+          <li>Носить каппы не менее <strong style="color:#fff;">20–22 часов в сутки</strong></li>
+          <li>Снимать только во время еды и чистки зубов</li>
+          <li>Промывать каппы под прохладной водой (не горячей!)</li>
+          <li>Чистить мягкой щёткой без зубной пасты</li>
+          <li>Хранить в прилагаемом футляре при снятии</li>
+        </ul>
+      </div>
+      <div class="eit-al-care-right">
+        <div class="eit-al-care-stat">
+          <div class="eit-al-care-stat-value">20–22ч</div>
+          <div class="eit-al-care-stat-label">в сутки — время ношения</div>
+        </div>
+        <p class="eit-al-care-note">Смена каппы <strong style="color:#fff;">каждые 1–2 недели</strong> — именно с такой скоростью зубы мягко перемещаются в нужное положение.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-cta" aria-labelledby="eit-al-cta-heading">
+  <div class="eit-al-wrap eit-al-cta-inner">
+    <div class="eit-al-cta-tag">Записаться на консультацию</div>
+    <h2 id="eit-al-cta-heading" class="eit-al-cta-title">
+      Начните путь к ровным зубам уже сегодня
+    </h2>
+    <p class="eit-al-cta-sub">
+      Свяжитесь с нами — мы проведём <strong>бесплатную консультацию</strong> и покажем, как будет выглядеть ваша улыбка после лечения элайнерами в ESTE IN TURKEY.
+    </p>
+    <div class="eit-al-cta-btns">
+      <a href="https://wa.me/905468189180" class="eit-al-cta-btn eit-al-cta-btn--wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        Написать в WhatsApp
+      </a>
+      <a href="tel:+905468189180" class="eit-al-cta-btn eit-al-cta-btn--tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +90 546 818 91 80
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-al-faq" aria-labelledby="eit-al-faq-heading">
+  <div class="eit-al-wrap">
+    <div class="eit-al-faq-head">
+      <div class="eit-al-tag eit-al-fade">Вопросы и ответы</div>
+      <h2 id="eit-al-faq-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
+        Часто задаваемые <span>вопросы</span>
+      </h2>
+    </div>
+
+    <div class="eit-al-faq-grid">
+      <div class="eit-al-faq-list">
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Больно ли носить элайнеры?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Первые дни после смены каппы может ощущаться лёгкое давление — это нормально и означает, что зубы двигаются. Болью это назвать нельзя. В отличие от брекетов, элайнеры не травмируют дёсны и щёки острыми металлическими деталями.
+          </div>
+        </div>
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Сколько времени занимает лечение элайнерами?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Зависит от сложности случая. Лёгкое выравнивание занимает <strong>3–6 месяцев</strong>, средние случаи — 6–12 месяцев, сложные — до 18 месяцев и более. Точные сроки определяются на консультации после 3D-сканирования.
+          </div>
+        </div>
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Как начать лечение, если я живу в другой стране?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Всё просто: сначала онлайн-консультация, затем один визит в Стамбул — 3D-сканирование и утверждение плана. Готовые каппы отправляются вам курьером, и вы меняете их самостоятельно дома каждые 1–2 недели. Плановые проверки — онлайн или редкие визиты.
+          </div>
+        </div>
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Насколько заметны элайнеры?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Практически незаметны. Материал капп обладает высокой прозрачностью — при обычном разговоре и улыбке их не видно. Большинство пациентов отмечают, что коллеги и знакомые не замечали лечение до тех пор, пока им не говорили об этом.
+          </div>
+        </div>
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Что будет, если не носить каппы достаточно долго?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Элайнеры работают только при ношении <strong>минимум 20–22 часа в сутки</strong>. Если носить меньше — зубы не успевают перемещаться, план сбивается, и лечение затягивается. Текущая каппа просто не будет садиться на зубы при следующей смене.
+          </div>
+        </div>
+
+        <div class="eit-al-faq-item">
+          <button class="eit-al-faq-q" aria-expanded="false">
+            Сколько стоят элайнеры в Турции?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-al-faq-a">
+            Стоимость зависит от выбранной системы (Invisalign, ClearCorrect, местные бренды) и сложности случая. В Турции лечение обходится значительно дешевле, чем в Европе или России — при сопоставимом качестве. Точную цену мы называем после консультации и 3D-анализа прикуса. Свяжитесь с нами для расчёта.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ aside -->
+      <div class="eit-al-faq-aside eit-al-fade eit-al-fade-d2">
+        <div class="eit-al-faq-aside-title">Остались вопросы?</div>
+        <p class="eit-al-faq-aside-sub">Напишите нам — ответим быстро и бесплатно проконсультируем по вашей ситуации.</p>
+        <div class="eit-al-faq-aside-btns">
+          <a href="https://wa.me/905468189180" class="eit-al-faq-aside-btn eit-al-faq-aside-btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-al-faq-aside-btn eit-al-faq-aside-btn--tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+        <div class="eit-al-faq-aside-divider"></div>
+        <ul class="eit-al-faq-aside-list">
+          <li>Бесплатная консультация онлайн</li>
+          <li>3D-моделирование улыбки</li>
+          <li>Русскоязычный переводчик</li>
+          <li>Доставка капп курьером</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-al -->
+
+<script>
+(function(){
+  // Scroll animations
+  var fades = document.querySelectorAll('#eitAlPage .eit-al-fade');
+  if(!fades.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fades.forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('#eitAlPage .eit-al-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.eit-al-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('#eitAlPage .eit-al-faq-item.is-open').forEach(function(i){
+        i.classList.remove('is-open');
+        i.querySelector('.eit-al-faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){ item.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+</script>

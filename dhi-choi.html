@@ -1,0 +1,1423 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — DHI CHOI PAGE
+   Dil: RU | Elementor HTML Widget
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-dhi *, .eit-dhi *::before, .eit-dhi *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.eit-dhi {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-dhi a { text-decoration: none; color: inherit; }
+.eit-dhi ul { list-style: none; }
+.eit-dhi img { max-width: 100%; display: block; }
+
+.eit-dhi-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-dhi-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-dhi-fade.eit-dhi-visible { opacity: 1; transform: none; }
+.eit-dhi-fade-d1 { transition-delay: .1s; }
+.eit-dhi-fade-d2 { transition-delay: .2s; }
+.eit-dhi-fade-d3 { transition-delay: .3s; }
+.eit-dhi-fade-d4 { transition-delay: .4s; }
+
+/* ── Shared label tag ──────────────────────────── */
+.eit-dhi-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.eit-dhi-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+
+.eit-dhi-heading {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -.02em;
+}
+.eit-dhi-heading span { color: var(--eit-accent); }
+.eit-dhi-heading--white { color: var(--eit-white); }
+.eit-dhi-heading--white span { color: var(--eit-accent-light); }
+
+.eit-dhi-subheading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+
+.eit-dhi-divider {
+  width: 52px; height: 3px;
+  background: var(--eit-accent);
+  border-radius: 2px;
+  margin: 16px 0 24px;
+}
+.eit-dhi-divider--center { margin-left: auto; margin-right: auto; }
+.eit-dhi-divider--white { background: rgba(255,255,255,.4); }
+
+/* ── Buttons ───────────────────────────────────── */
+.eit-dhi-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: var(--eit-transition);
+  cursor: pointer;
+  border: none;
+}
+.eit-dhi-btn--primary {
+  background: var(--eit-accent);
+  color: var(--eit-white) !important;
+}
+.eit-dhi-btn--primary:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-dhi-btn--outline {
+  background: transparent;
+  color: var(--eit-white) !important;
+  border: 2px solid rgba(255,255,255,.5);
+}
+.eit-dhi-btn--outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.9);
+  color: var(--eit-white) !important;
+}
+.eit-dhi-btn--dark {
+  background: var(--eit-primary-dark);
+  color: var(--eit-white) !important;
+}
+.eit-dhi-btn--dark:hover {
+  background: var(--eit-primary);
+  color: var(--eit-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(21,68,68,.4);
+}
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-dhi-hero {
+  background: var(--eit-primary-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 0;
+  min-height: 580px;
+}
+.eit-dhi-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(46,139,139,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at -10% 80%, rgba(29,92,92,.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+.eit-dhi-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.04);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.eit-dhi-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.eit-dhi-hero-left { padding-bottom: 60px; }
+.eit-dhi-hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.eit-dhi-hero-breadcrumb a {
+  color: rgba(255,255,255,.45);
+  transition: var(--eit-transition);
+}
+.eit-dhi-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-dhi-hero-breadcrumb span { color: rgba(255,255,255,.2); }
+
+.eit-dhi-hero-title {
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  color: var(--eit-white);
+  margin-bottom: 20px;
+}
+.eit-dhi-hero-title em {
+  font-style: normal;
+  color: var(--eit-accent-light);
+}
+.eit-dhi-hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.eit-dhi-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.eit-dhi-hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.eit-dhi-hero-stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--eit-white);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.eit-dhi-hero-stat-num span { color: var(--eit-accent-light); }
+.eit-dhi-hero-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.eit-dhi-hero-right {
+  position: relative;
+  align-self: flex-end;
+}
+.eit-dhi-hero-img-stack {
+  position: relative;
+  height: 440px;
+}
+.eit-dhi-hero-img-main {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 88%;
+  height: 400px;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+  object-position: top center;
+}
+.eit-dhi-hero-img-float {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 52%;
+  height: 240px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 4px solid var(--eit-primary-dark);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.eit-dhi-hero-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--eit-accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(46,139,139,.4);
+}
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-dhi-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-dhi-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.eit-dhi-about-img-wrap {
+  position: relative;
+  min-height: 500px;
+}
+.eit-dhi-about-img-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  height: 86%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: top center;
+}
+.eit-dhi-about-img-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52%;
+  height: 52%;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 5px solid var(--eit-white);
+  box-shadow: 0 16px 48px rgba(0,0,0,.18);
+  z-index: 2;
+}
+.eit-dhi-about-deco {
+  position: absolute;
+  top: -20px; left: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(46,139,139,.08);
+  z-index: -1;
+}
+.eit-dhi-about-text p {
+  font-size: 14.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.eit-dhi-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-dhi-about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.eit-dhi-about-highlight {
+  background: var(--eit-cream);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.eit-dhi-about-highlight-icon {
+  width: 36px; height: 36px;
+  background: rgba(46,139,139,.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.eit-dhi-about-highlight-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-dhi-about-highlight-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--eit-primary);
+  line-height: 1.4;
+}
+
+/* ── DHI vs FUE comparison table ── */
+.eit-dhi-compare {
+  margin-top: 40px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--eit-border);
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.eit-dhi-compare-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  background: var(--eit-primary-dark);
+  white-space: nowrap;
+}
+.eit-dhi-compare-head div {
+  padding: 14px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.eit-dhi-compare-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  border-bottom: 1px solid var(--eit-border);
+}
+.eit-dhi-compare-row:last-child { border-bottom: none; }
+.eit-dhi-compare-row:nth-child(even) { background: rgba(248,244,239,.6); }
+.eit-dhi-compare-row div {
+  padding: 13px 16px;
+  font-size: 12.5px;
+  color: var(--eit-text-muted);
+  display: flex;
+  align-items: center;
+}
+.eit-dhi-compare-row div:first-child { color: var(--eit-primary); font-weight: 600; }
+.eit-dhi-compare-row div:last-child { color: var(--eit-accent); font-weight: 600; }
+
+/* ════════════════════════════════════════════════
+   3. KEY ADVANTAGES
+   ════════════════════════════════════════════════ */
+.eit-dhi-keys {
+  background: var(--eit-primary);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.eit-dhi-keys::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-dhi-keys-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+}
+.eit-dhi-keys-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+.eit-dhi-key-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 36px 28px;
+  transition: var(--eit-transition);
+}
+.eit-dhi-key-card:hover {
+  background: rgba(255,255,255,.11);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.2);
+}
+.eit-dhi-key-icon {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,.1);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.eit-dhi-key-icon svg { width: 26px; height: 26px; color: var(--eit-accent-light); }
+.eit-dhi-key-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.eit-dhi-key-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   4. BENEFITS GRID
+   ════════════════════════════════════════════════ */
+.eit-dhi-benefits {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-dhi-benefits-header { text-align: center; margin-bottom: 56px; }
+.eit-dhi-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-dhi-benefit-card {
+  background: var(--eit-white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.eit-dhi-benefit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.1);
+  border-color: rgba(46,139,139,.2);
+}
+.eit-dhi-benefit-num {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--eit-accent);
+  background: rgba(46,139,139,.1);
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+.eit-dhi-benefit-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.eit-dhi-benefit-text {
+  font-size: 12.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   5. PROCESS STEPS
+   ════════════════════════════════════════════════ */
+.eit-dhi-process {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-dhi-process-header { text-align: center; margin-bottom: 64px; }
+.eit-dhi-process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.eit-dhi-step {
+  display: flex;
+  gap: 24px;
+  padding: 32px 28px;
+  border-bottom: 1px solid var(--eit-border);
+  transition: var(--eit-transition);
+}
+.eit-dhi-step:nth-child(odd) { border-right: 1px solid var(--eit-border); }
+.eit-dhi-step:nth-last-child(-n+2) { border-bottom: none; }
+.eit-dhi-step:hover { background: rgba(248,244,239,.5); }
+.eit-dhi-step-num {
+  width: 48px; height: 48px;
+  background: var(--eit-primary-dark);
+  color: var(--eit-white);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -.02em;
+  transition: var(--eit-transition);
+}
+.eit-dhi-step:hover .eit-dhi-step-num { background: var(--eit-accent); }
+.eit-dhi-step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--eit-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.eit-dhi-step-text {
+  font-size: 13px;
+  color: var(--eit-text-muted);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════════
+   6. MINI CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-dhi-band {
+  background: var(--eit-accent);
+  padding: 48px 0;
+}
+.eit-dhi-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.eit-dhi-band-text {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 800;
+  color: var(--eit-white);
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+.eit-dhi-band-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.75);
+  margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════════
+   7. VIDEOS
+   ════════════════════════════════════════════════ */
+.eit-dhi-videos {
+  background: var(--eit-cream);
+  padding: 96px 0;
+}
+.eit-dhi-videos-header { text-align: center; margin-bottom: 52px; }
+.eit-dhi-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.eit-dhi-video-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--eit-primary-dark);
+  aspect-ratio: 16/9;
+  position: relative;
+}
+.eit-dhi-video-item video,
+.eit-dhi-video-item iframe {
+  width: 100%; height: 100%;
+  display: block; border: none;
+  object-fit: cover;
+}
+
+/* ════════════════════════════════════════════════
+   8. CONTACT FORM
+   ════════════════════════════════════════════════ */
+.eit-dhi-form-section { background: var(--eit-cream); padding: 96px 0; }
+.eit-dhi-form-inner {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+}
+.eit-dhi-form-left-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  color: var(--eit-primary-dark);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-dhi-form-left-title span { color: var(--eit-accent); }
+.eit-dhi-form-left-text {
+  font-size: 14px;
+  color: var(--eit-text-muted);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.eit-dhi-form-left-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+.eit-dhi-form-left-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--eit-text-muted);
+  line-height: 1.5;
+}
+.eit-dhi-form-left-list li::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--eit-accent);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.eit-dhi-form-card {
+  background: var(--eit-white);
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 48px rgba(29,92,92,.1);
+  position: sticky;
+  top: 100px;
+}
+.eit-dhi-form-card-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--eit-primary-dark);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+.eit-dhi-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.eit-dhi-form-input {
+  width: 100%; padding: 13px 16px;
+  border: 1.5px solid var(--eit-border);
+  border-radius: 10px;
+  font-size: 14px; font-family: var(--eit-font);
+  color: var(--eit-text); background: var(--eit-white);
+  transition: var(--eit-transition); outline: none;
+  -webkit-appearance: none;
+}
+.eit-dhi-form-input:focus {
+  border-color: var(--eit-accent);
+  box-shadow: 0 0 0 3px rgba(46,139,139,.1);
+}
+.eit-dhi-form-input::placeholder { color: #b0b8b8; }
+.eit-dhi-phone-row {
+  display: flex; gap: 0;
+  border: 1.5px solid var(--eit-border);
+  border-radius: 10px; overflow: hidden;
+  transition: var(--eit-transition);
+}
+.eit-dhi-phone-row:focus-within {
+  border-color: var(--eit-accent);
+  box-shadow: 0 0 0 3px rgba(46,139,139,.1);
+}
+.eit-dhi-phone-prefix {
+  display: flex; align-items: center; gap: 6px;
+  padding: 13px 12px;
+  border-right: 1.5px solid var(--eit-border);
+  background: rgba(248,244,239,.6);
+  font-size: 13px; font-weight: 600;
+  color: var(--eit-primary); white-space: nowrap; flex-shrink: 0;
+}
+.eit-dhi-phone-prefix img { width: 18px; height: 14px; border-radius: 2px; }
+.eit-dhi-phone-input {
+  flex: 1; border: none;
+  padding: 13px 14px;
+  font-size: 14px; font-family: var(--eit-font);
+  color: var(--eit-text); background: transparent; outline: none;
+}
+.eit-dhi-phone-input::placeholder { color: #b0b8b8; }
+.eit-dhi-form-submit { margin-top: 8px; }
+.eit-dhi-form-submit button {
+  width: 100%; padding: 15px;
+  background: var(--eit-primary-dark);
+  color: var(--eit-white);
+  border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: .04em; font-family: var(--eit-font);
+  cursor: pointer; transition: var(--eit-transition);
+}
+.eit-dhi-form-submit button:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(21,68,68,.3);
+}
+.eit-dhi-form-note {
+  font-size: 11px; color: var(--eit-text-muted);
+  text-align: center; margin-top: 12px; line-height: 1.6;
+}
+.eit-dhi-form-note a { color: var(--eit-accent); }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-dhi-about-inner { gap: 48px; }
+  .eit-dhi-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-dhi-form-inner { grid-template-columns: 1fr; }
+  .eit-dhi-form-card { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-dhi-hero-inner { grid-template-columns: 1fr; }
+  .eit-dhi-hero-right { display: none; }
+  .eit-dhi-hero { min-height: auto; }
+  .eit-dhi-about-inner { grid-template-columns: 1fr; }
+  .eit-dhi-about-inner > * { min-width: 0; }
+  .eit-dhi-about-img-wrap { min-height: 320px; }
+  .eit-dhi-about-img-main { width: 78%; height: 80%; }
+  .eit-dhi-about-img-accent { width: 50%; height: 48%; }
+  .eit-dhi-keys-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-dhi-process-grid { grid-template-columns: 1fr; }
+  .eit-dhi-step:nth-child(odd) { border-right: none; }
+  .eit-dhi-step:nth-last-child(-n+2) { border-bottom: 1px solid var(--eit-border); }
+  .eit-dhi-step:last-child { border-bottom: none; }
+  .eit-dhi-videos-grid { grid-template-columns: 1fr; gap: 16px; }
+  .eit-dhi-form-card { padding: 32px 24px; }
+  .eit-dhi-compare { overflow-x: auto; }
+  .eit-dhi-compare-head, .eit-dhi-compare-row { min-width: 460px; font-size: 11px; }
+  .eit-dhi-compare-head div { padding: 12px 12px; }
+  .eit-dhi-compare-row div { padding: 11px 12px; }
+}
+@media (max-width: 640px) {
+  .eit-dhi-benefits-grid { grid-template-columns: 1fr; }
+  .eit-dhi-about-highlights { grid-template-columns: 1fr; }
+  .eit-dhi-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .eit-dhi-band-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .eit-dhi-wrap { padding: 0 18px; }
+  .eit-dhi-hero { padding: 72px 0 0; }
+  .eit-dhi-hero-left { padding-bottom: 40px; }
+  .eit-dhi-hero-actions { flex-direction: column; }
+  .eit-dhi-hero-actions .eit-dhi-btn { justify-content: center; }
+}
+</style>
+
+<!-- ============================================================
+     ESTE IN TURKEY — DHI CHOI (Elementor HTML Widget)
+     ============================================================ -->
+<div class="eit-dhi" id="eitDhiPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-hero" aria-labelledby="eit-dhi-title">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-dhi-hero-left">
+        <nav class="eit-dhi-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/peresadka-volos/">Пересадка волос</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">DHI Choi</span>
+        </nav>
+
+        <div class="eit-dhi-tag eit-dhi-tag--light eit-dhi-fade">Прямая имплантация</div>
+        <h1 id="eit-dhi-title" class="eit-dhi-hero-title eit-dhi-fade eit-dhi-fade-d1">
+          Пересадка волос<br><em>DHI Choi</em>
+        </h1>
+        <p class="eit-dhi-hero-sub eit-dhi-fade eit-dhi-fade-d2">
+          Метод прямой имплантации с ручкой Choi — одновременное открытие канала и посадка фолликула без предварительного разреза. Максимальная точность угла, направления и глубины каждого графта.
+        </p>
+        <div class="eit-dhi-hero-actions eit-dhi-fade eit-dhi-fade-d3">
+          <a href="#eit-dhi-form" class="eit-dhi-btn eit-dhi-btn--primary">
+            Бесплатная консультация
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:+905468189180" class="eit-dhi-btn eit-dhi-btn--outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+
+        <div class="eit-dhi-hero-stats eit-dhi-fade eit-dhi-fade-d4">
+          <div class="eit-dhi-hero-stat">
+            <div class="eit-dhi-hero-stat-num">7–9<span>ч</span></div>
+            <div class="eit-dhi-hero-stat-label">Длительность</div>
+          </div>
+          <div class="eit-dhi-hero-stat">
+            <div class="eit-dhi-hero-stat-num">2–3<span>дн</span></div>
+            <div class="eit-dhi-hero-stat-label">Восстановление</div>
+          </div>
+          <div class="eit-dhi-hero-stat">
+            <div class="eit-dhi-hero-stat-num">12<span>мес</span></div>
+            <div class="eit-dhi-hero-stat-label">Финальный результат</div>
+          </div>
+          <div class="eit-dhi-hero-stat">
+            <div class="eit-dhi-hero-stat-num">100<span>%</span></div>
+            <div class="eit-dhi-hero-stat-label">Естественный вид</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: image stack -->
+      <div class="eit-dhi-hero-right" aria-hidden="true">
+        <div class="eit-dhi-hero-img-stack">
+          <div class="eit-dhi-hero-badge">DHI Choi — Стамбул</div>
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/dhi-hero-main.jpg"
+            alt="Пересадка волос DHI Choi — Este in Turkey"
+            class="eit-dhi-hero-img-main"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+          <img
+            src="http://esteinru.teset.fun/wp-content/uploads/2026/05/dhi-hero-float.jpg"
+            alt="Ручка Choi — DHI имплантация"
+            class="eit-dhi-hero-img-float"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     ABOUT — ЧТО ТАКОЕ DHI?
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-about" aria-labelledby="eit-dhi-about-heading">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-about-inner">
+
+      <!-- Image -->
+      <div class="eit-dhi-about-img-wrap eit-dhi-fade">
+        <div class="eit-dhi-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/3-1.webp"
+          alt="Пересадка волос методом DHI Choi"
+          class="eit-dhi-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/dhi-about-inset.jpg"
+          alt="Ручка-имплантер Choi"
+          class="eit-dhi-about-img-accent"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="eit-dhi-about-text">
+        <div class="eit-dhi-tag eit-dhi-fade">О методике</div>
+        <h2 id="eit-dhi-about-heading" class="eit-dhi-heading eit-dhi-fade eit-dhi-fade-d1">
+          Что такое <span>пересадка волос методом DHI?</span>
+        </h2>
+        <div class="eit-dhi-divider eit-dhi-fade eit-dhi-fade-d1"></div>
+
+        <div class="eit-dhi-fade eit-dhi-fade-d2">
+          <p><strong>Метод DHI (Direct Hair Implantation)</strong> — это самая передовая техника пересадки волос, при которой специальная ручка-имплантер Choi позволяет одновременно открывать канал и имплантировать волосяной фолликул в один шаг.</p>
+          <p>В отличие от FUE Sapphire, при DHI не требуется предварительное открытие каналов. Ручка Choi оснащена полой иглой диаметром <strong>0,6–1 мм</strong>, в которую загружается графт — и с одним нажатием фолликул помещается в кожу под нужным углом и на нужную глубину.</p>
+          <p>Именно благодаря этому принципу DHI обеспечивает <strong>непревзойдённую точность направления роста</strong> волос и является методом выбора при необходимости увеличить плотность в зонах, где волосы ещё присутствуют.</p>
+        </div>
+
+        <div class="eit-dhi-about-highlights eit-dhi-fade eit-dhi-fade-d3">
+          <div class="eit-dhi-about-highlight">
+            <div class="eit-dhi-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-dhi-about-highlight-text">Канал и имплантация — один шаг</div>
+          </div>
+          <div class="eit-dhi-about-highlight">
+            <div class="eit-dhi-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="eit-dhi-about-highlight-text">Без бритья головы (Unshaved DHI)</div>
+          </div>
+          <div class="eit-dhi-about-highlight">
+            <div class="eit-dhi-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="eit-dhi-about-highlight-text">Минимальное повреждение тканей</div>
+          </div>
+          <div class="eit-dhi-about-highlight">
+            <div class="eit-dhi-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="eit-dhi-about-highlight-text">Идеально для увеличения плотности</div>
+          </div>
+        </div>
+
+        <!-- DHI vs FUE table -->
+        <div class="eit-dhi-compare eit-dhi-fade eit-dhi-fade-d4" style="margin-top:36px;">
+          <div class="eit-dhi-compare-head">
+            <div>Параметр</div>
+            <div>FUE Sapphire</div>
+            <div>DHI Choi</div>
+          </div>
+          <div class="eit-dhi-compare-row">
+            <div>Открытие канала</div>
+            <div>Отдельный этап</div>
+            <div>Одновременно</div>
+          </div>
+          <div class="eit-dhi-compare-row">
+            <div>Бритьё головы</div>
+            <div>Требуется</div>
+            <div>Необязательно</div>
+          </div>
+          <div class="eit-dhi-compare-row">
+            <div>Плотность</div>
+            <div>Высокая</div>
+            <div>Максимальная</div>
+          </div>
+          <div class="eit-dhi-compare-row">
+            <div>Восстановление</div>
+            <div>3–5 дней</div>
+            <div>2–3 дня</div>
+          </div>
+          <div class="eit-dhi-compare-row">
+            <div>Увеличение плотности</div>
+            <div>Хорошо</div>
+            <div>Отлично</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     KEY ADVANTAGES — 3 главных отличия DHI
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-keys" aria-labelledby="eit-dhi-keys-heading">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-keys-header eit-dhi-fade">
+      <div class="eit-dhi-tag eit-dhi-tag--light">Почему DHI?</div>
+      <h2 id="eit-dhi-keys-heading" class="eit-dhi-heading eit-dhi-heading--white eit-dhi-fade eit-dhi-fade-d1">
+        Три ключевых преимущества <span>ручки Choi</span>
+      </h2>
+      <div class="eit-dhi-divider eit-dhi-divider--center eit-dhi-divider--white eit-dhi-fade eit-dhi-fade-d1"></div>
+    </div>
+
+    <div class="eit-dhi-keys-grid">
+      <div class="eit-dhi-key-card eit-dhi-fade">
+        <div class="eit-dhi-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="eit-dhi-key-title">Ручка-имплантер Choi: канал + посадка за один шаг</div>
+        <div class="eit-dhi-key-text">Цилиндрическая полая игла ручки Choi одновременно прокалывает кожу и высаживает фолликул. Благодаря этому графт проводит минимальное время вне организма, что повышает его выживаемость и качество приживаемости.</div>
+      </div>
+      <div class="eit-dhi-key-card eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="eit-dhi-key-title">Контроль угла, направления и глубины имплантации</div>
+        <div class="eit-dhi-key-text">Конструкция ручки позволяет хирургу точно задавать угол наклона и направление для каждого графта. Результат — волосы растут строго в нужную сторону, полностью повторяя естественный паттерн роста.</div>
+      </div>
+      <div class="eit-dhi-key-card eit-dhi-fade eit-dhi-fade-d2">
+        <div class="eit-dhi-key-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="eit-dhi-key-title">Unshaved DHI — без бритья, без следов</div>
+        <div class="eit-dhi-key-text">Метод DHI позволяет выполнить пересадку без полного бритья головы. Это идеальный вариант для тех, кто хочет сохранить конфиденциальность — никто не заметит, что вы прошли процедуру.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     BENEFITS GRID
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-benefits" aria-labelledby="eit-dhi-benefits-heading">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-benefits-header eit-dhi-fade">
+      <div class="eit-dhi-tag">Детальный обзор</div>
+      <h2 id="eit-dhi-benefits-heading" class="eit-dhi-heading eit-dhi-fade eit-dhi-fade-d1">
+        Все преимущества <span>метода DHI</span>
+      </h2>
+      <div class="eit-dhi-divider eit-dhi-divider--center eit-dhi-fade eit-dhi-fade-d1"></div>
+    </div>
+
+    <div class="eit-dhi-benefits-grid">
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade">
+        <div class="eit-dhi-benefit-num">01</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Максимальная естественность результата</div>
+          <div class="eit-dhi-benefit-text">Точный контроль угла и направления каждого фолликула обеспечивает результат, неотличимый от природных волос даже при детальном осмотре.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-benefit-num">02</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Высокая выживаемость графтов</div>
+          <div class="eit-dhi-benefit-text">Фолликул не ждёт открытия канала — он сразу имплантируется. Минимальное время вне организма повышает выживаемость и плотность приживания.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d2">
+        <div class="eit-dhi-benefit-num">03</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Увеличение плотности в существующих зонах</div>
+          <div class="eit-dhi-benefit-text">DHI — метод выбора при необходимости уплотнить зоны с частичным выпадением, не повреждая уже растущие волосы вокруг.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade">
+        <div class="eit-dhi-benefit-num">04</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Более быстрое восстановление</div>
+          <div class="eit-dhi-benefit-text">Отсутствие предварительных разрезов уменьшает травматизацию тканей — корочки исчезают быстрее, а возврат к обычной жизни занимает 2–3 дня.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-benefit-num">05</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Минимальное кровотечение</div>
+          <div class="eit-dhi-benefit-text">Тонкая игла ручки Choi проходит через ткань почти без повреждений сосудов — процедура практически бескровная.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d2">
+        <div class="eit-dhi-benefit-num">06</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Возможность без бритья (Unshaved DHI)</div>
+          <div class="eit-dhi-benefit-text">Можно провести процедуру без стрижки головы. Волосы остаются длинными, что позволяет сохранить конфиденциальность прохождения операции.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade">
+        <div class="eit-dhi-benefit-num">07</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Отсутствие рубцов и шрамов</div>
+          <div class="eit-dhi-benefit-text">Как и при FUE, забор графтов производится методом микропунктирования. Ни в донорской, ни в реципиентной зоне рубцы не образуются.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-benefit-num">08</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Подходит при различных типах выпадения</div>
+          <div class="eit-dhi-benefit-text">Метод эффективен при андрогенетической алопеции любой стадии по шкале Norwood, а также при очаговом выпадении у мужчин и женщин.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-benefit-card eit-dhi-fade eit-dhi-fade-d2">
+        <div class="eit-dhi-benefit-num">09</div>
+        <div>
+          <div class="eit-dhi-benefit-title">Долговечный результат</div>
+          <div class="eit-dhi-benefit-text">Пересаженные фолликулы из донорской зоны генетически устойчивы к DHT и не подвержены выпадению. Результат сохраняется на всю жизнь.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     PROCESS STEPS
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-process" aria-labelledby="eit-dhi-process-heading">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-process-header eit-dhi-fade">
+      <div class="eit-dhi-tag">Как это происходит</div>
+      <h2 id="eit-dhi-process-heading" class="eit-dhi-heading eit-dhi-fade eit-dhi-fade-d1">
+        Этапы операции <span>DHI Choi</span>
+      </h2>
+      <div class="eit-dhi-divider eit-dhi-divider--center eit-dhi-fade eit-dhi-fade-d1"></div>
+      <p style="font-size:14.5px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;" class="eit-dhi-fade eit-dhi-fade-d2">
+        Операция занимает 7–9 часов и проходит под местной анестезией. Ручки Choi разных диаметров подбираются индивидуально под размер ваших графтов.
+      </p>
+    </div>
+
+    <div class="eit-dhi-process-grid">
+
+      <div class="eit-dhi-step eit-dhi-fade">
+        <div class="eit-dhi-step-num">1</div>
+        <div>
+          <div class="eit-dhi-step-title">Предварительная консультация и диагностика</div>
+          <div class="eit-dhi-step-text">Трихолог оценивает тип и стадию выпадения волос, изучает историю болезни, проводит дерматоскопию донорской зоны и определяет оптимальный метод.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-step-num">2</div>
+        <div>
+          <div class="eit-dhi-step-title">Дизайн линии роста и разметка</div>
+          <div class="eit-dhi-step-text">Совместно с пациентом хирург разрабатывает натуральную линию роста волос, учитывая пропорции лица и долгосрочную картину возможного выпадения.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade">
+        <div class="eit-dhi-step-num">3</div>
+        <div>
+          <div class="eit-dhi-step-title">Местная анестезия донорской зоны</div>
+          <div class="eit-dhi-step-text">Затылочная и боковые зоны обезболиваются с помощью местной анестезии. При желании применяется безыгольная анестезия для максимального комфорта.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-step-num">4</div>
+        <div>
+          <div class="eit-dhi-step-title">Забор волосяных графтов микромотором</div>
+          <div class="eit-dhi-step-text">Графты поочерёдно извлекаются из донорской зоны с помощью микропанча диаметром 0,6–0,9 мм — без разрезов, без шрамов. Качественные фолликулы с 2–3 волосками.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade">
+        <div class="eit-dhi-step-num">5</div>
+        <div>
+          <div class="eit-dhi-step-title">Классификация и загрузка в ручки Choi</div>
+          <div class="eit-dhi-step-text">Графты сортируются по количеству волосков. Каждый фолликул загружается в полую иглу ручки Choi нужного диаметра — непосредственно перед имплантацией.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-step-num">6</div>
+        <div>
+          <div class="eit-dhi-step-title">Анестезия реципиентной зоны</div>
+          <div class="eit-dhi-step-text">Зона пересадки обезболивается локально. При необходимости применяется местный тумесцентный раствор для снижения отёка и защиты тканей.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade">
+        <div class="eit-dhi-step-num">7</div>
+        <div>
+          <div class="eit-dhi-step-title">Прямая имплантация ручкой Choi</div>
+          <div class="eit-dhi-step-text">Хирург нажатием поршня одновременно открывает микроканал и высаживает графт под заданным углом. Этот этап занимает около 4 часов и требует высочайшей квалификации команды.</div>
+        </div>
+      </div>
+
+      <div class="eit-dhi-step eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-step-num">8</div>
+        <div>
+          <div class="eit-dhi-step-title">Перевязка и послеоперационные инструкции</div>
+          <div class="eit-dhi-step-text">Донорская зона накрывается повязкой. На следующий день — первое мытьё в клинике. Выписываются антибиотики и средства по уходу. Возврат к жизни через 2–3 дня.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MINI CTA BAND
+     ════════════════════════════════════════════════ -->
+<div class="eit-dhi-band" role="complementary">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-band-inner">
+      <div>
+        <div class="eit-dhi-band-text">Не уверены — DHI или FUE?</div>
+        <div class="eit-dhi-band-sub">Запишитесь на консультацию — наш специалист подберёт метод лично под вас</div>
+      </div>
+      <a href="#eit-dhi-form" class="eit-dhi-btn eit-dhi-btn--dark">
+        Записаться на консультацию
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     VIDEOS
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-videos" aria-labelledby="eit-dhi-videos-heading">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-videos-header eit-dhi-fade">
+      <div class="eit-dhi-tag">Живые отзывы</div>
+      <h2 id="eit-dhi-videos-heading" class="eit-dhi-heading eit-dhi-fade eit-dhi-fade-d1">
+        Видео <span>результатов</span>
+      </h2>
+      <div class="eit-dhi-divider eit-dhi-divider--center eit-dhi-fade eit-dhi-fade-d1"></div>
+    </div>
+
+    <div class="eit-dhi-videos-grid">
+      <div class="eit-dhi-video-item eit-dhi-fade">
+        <video controls preload="metadata" playsinline>
+          <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="eit-dhi-video-item eit-dhi-fade eit-dhi-fade-d1">
+        <video controls preload="metadata" playsinline>
+          <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="eit-dhi-video-item eit-dhi-fade eit-dhi-fade-d2">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Este in Turkey — Отзывы пациентов DHI Choi"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ════════════════════════════════════════════════
+     CONTACT FORM
+     ════════════════════════════════════════════════ -->
+<section class="eit-dhi-form-section" aria-labelledby="eit-dhi-form-heading" id="eit-dhi-form">
+  <div class="eit-dhi-wrap">
+    <div class="eit-dhi-form-inner">
+
+      <!-- Left: info -->
+      <div class="eit-dhi-fade">
+        <div class="eit-dhi-tag">Запись на консультацию</div>
+        <h2 id="eit-dhi-form-heading" class="eit-dhi-form-left-title">
+          Как проходит пересадка волос <span>DHI Choi?</span>
+        </h2>
+        <div class="eit-dhi-divider"></div>
+        <p class="eit-dhi-form-left-text">Перед процедурой анализируется общее состояние здоровья пациента. Проводятся анализ крови, предоперационная консультация и анкетирование, намечается разметка области пересадки и новой линии роста волос с учётом пожеланий и ожиданий.</p>
+        <ul class="eit-dhi-form-left-list">
+          <li>Пересадка волос DHI Choi может быть выполнена без полного бритья головы — стрижётся только донорская зона.</li>
+          <li>Операция проводится под местной анестезией или, по желанию, с применением седации.</li>
+          <li>Волосяные графты извлекаются из донорской зоны по одному методом гомогенного пересечения с помощью микромотора — так же, как и при методе FUE.</li>
+          <li>Графты осторожно загружаются в Choi-имплантёр диаметром от 0,6 до 1 мм и имплантируются напрямую в кожу, минуя этап предварительного открытия каналов.</li>
+          <li>С помощью DHI Choi Pen результат имплантации выглядит естественно и плотно.</li>
+          <li>Choi-трансплантёр позволяет индивидуально регулировать угол, направление и глубину каждого графта для достижения максимально естественного и эстетичного результата.</li>
+          <li>Пересаженные волосы растут на протяжении всей жизни и не выпадают при отсутствии существенного ухудшения здоровья.</li>
+          <li>Все процедуры выполняются специалистами с европейским сертификатом, прошедшими специальное обучение по методике пересадки волос DHI Choi.</li>
+        </ul>
+        <p class="eit-dhi-form-left-text" style="margin-top:28px;">
+          <a href="/ru/contact/" style="color:var(--eit-accent);font-weight:600;">Вы можете связаться с нами</a> и получить подробную информацию о ценах на пересадку волос DHI Choi. <strong>Получите бесплатную онлайн-консультацию, задайте все интересующие вопросы и забронируйте удобную дату для пересадки волос в Este in Turkey!</strong>
+        </p>
+      </div>
+
+      <!-- Right: form card -->
+      <div class="eit-dhi-form-card eit-dhi-fade eit-dhi-fade-d1">
+        <div class="eit-dhi-form-card-title">Заполните заявку для<br>бесплатной консультации</div>
+        <form class="eit-dhi-form-fields" id="eitDhiChoiForm" novalidate>
+
+          <input
+            type="text"
+            name="name"
+            class="eit-dhi-form-input"
+            placeholder="Имя Фамилия"
+            autocomplete="name"
+            required
+          />
+
+          <div class="eit-dhi-phone-row">
+            <div class="eit-dhi-phone-prefix">
+              <img src="https://flagcdn.com/w20/tr.png" alt="TR" width="20" height="14" loading="lazy" />
+              +90
+            </div>
+            <input
+              type="tel"
+              name="phone"
+              class="eit-dhi-phone-input"
+              placeholder="501 234 56 78"
+              autocomplete="tel"
+            />
+          </div>
+
+          <input
+            type="number"
+            name="age"
+            class="eit-dhi-form-input"
+            placeholder="Сколько вам полных лет?"
+            min="18"
+            max="99"
+          />
+
+          <input
+            type="text"
+            name="chronic_diseases"
+            class="eit-dhi-form-input"
+            placeholder="Есть ли хронические заболевания?"
+          />
+
+          <input
+            type="text"
+            name="medications"
+            class="eit-dhi-form-input"
+            placeholder="Лекарства на постоянной основе?"
+          />
+
+          <div class="eit-dhi-form-submit">
+            <button type="submit">Отправить</button>
+            <p class="eit-dhi-form-note">
+              Нажимая кнопку, вы соглашаетесь с
+              <a href="/ru/privacy-policy/">политикой конфиденциальности</a>.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-dhi -->
+
+<script>
+(function(){
+
+  /* ── Scroll animations ─────────────────────────── */
+  var fades = document.querySelectorAll('.eit-dhi-fade');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('eit-dhi-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fades.forEach(function(el){ obs.observe(el); });
+  } else {
+    fades.forEach(function(el){ el.classList.add('eit-dhi-visible'); });
+  }
+
+  /* ── Smooth scroll ─────────────────────────────── */
+  document.querySelectorAll('a[href^="#eit-dhi-"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── Form submit placeholder ───────────────────── */
+  var form = document.getElementById('eitDhiChoiForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = this.querySelector('button[type="submit"]');
+      var orig = btn.textContent;
+      btn.textContent = 'Отправка...';
+      btn.disabled = true;
+      setTimeout(function(){
+        btn.textContent = '✓ Заявка отправлена!';
+        btn.style.background = 'var(--eit-accent)';
+        setTimeout(function(){ btn.textContent = orig; btn.disabled = false; btn.style.background = ''; }, 4000);
+      }, 1200);
+    });
+  }
+
+})();
+</script>

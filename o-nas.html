@@ -1,0 +1,1568 @@
+<!-- ============================================================
+     О НАС — Este in Turkey
+     Prefix: eit-onas-
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+/* ── reset ── */
+.eit-onas-page *, .eit-onas-page *::before, .eit-onas-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.eit-onas-page { font-family: var(--eit-font); color: var(--eit-text); line-height: 1.6; }
+
+/* ── wrap ── */
+.eit-onas-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* ── fade animation ── */
+.eit-onas-fade { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.eit-onas-fade.eit-onas-visible { opacity: 1; transform: none; }
+.eit-onas-fade-d1 { transition-delay: .12s; }
+.eit-onas-fade-d2 { transition-delay: .24s; }
+.eit-onas-fade-d3 { transition-delay: .36s; }
+
+/* ── shared label tag ── */
+.eit-onas-tag {
+  display: inline-block;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 40px;
+  margin-bottom: 12px;
+}
+
+/* ── section heading ── */
+.eit-onas-h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--eit-text);
+  line-height: 1.2;
+}
+.eit-onas-h2 span { color: var(--eit-accent); }
+
+/* ── divider ── */
+.eit-onas-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  border-radius: 2px;
+  margin: 16px 0 24px;
+}
+.eit-onas-divider-center { margin: 16px auto 24px; }
+
+/* ── primary button ── */
+.eit-onas-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--eit-accent), var(--eit-primary));
+  color: #fff;
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 50px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 18px rgba(46,139,139,.35);
+}
+.eit-onas-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(46,139,139,.45); }
+.eit-onas-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── outline button ── */
+.eit-onas-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid var(--eit-accent);
+  color: var(--eit-accent);
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 12px 26px; border-radius: 50px;
+  text-decoration: none; cursor: pointer;
+  transition: background .2s, color .2s;
+  background: transparent;
+}
+.eit-onas-btn-outline:hover { background: var(--eit-accent); color: #fff; }
+
+/* ══════════════════════════════════════════════════════════════
+   1. HERO
+══════════════════════════════════════════════════════════════ */
+.eit-onas-hero {
+  background: linear-gradient(135deg, var(--eit-primary-dark) 0%, var(--eit-primary) 50%, var(--eit-primary-mid) 100%);
+  padding: 80px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+.eit-onas-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.eit-onas-hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: end; gap: 40px;
+}
+.eit-onas-hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.9);
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 6px 16px; border-radius: 40px; margin-bottom: 16px;
+}
+.eit-onas-hero-tag::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--eit-accent-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.eit-onas-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.eit-onas-hero h1 span { color: var(--eit-accent-light); }
+.eit-onas-hero-sub {
+  color: rgba(255,255,255,.78);
+  font-size: 1rem; font-weight: 400;
+  max-width: 480px; line-height: 1.65;
+  margin-bottom: 32px;
+}
+.eit-onas-hero-stats {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+}
+.eit-onas-hero-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-align: center;
+  min-width: 100px;
+}
+.eit-onas-hero-stat-num {
+  font-size: 1.5rem; font-weight: 800; color: #fff;
+  line-height: 1;
+}
+.eit-onas-hero-stat-num sup {
+  font-size: .7em; color: var(--eit-accent-light); vertical-align: super;
+}
+.eit-onas-hero-stat-lbl {
+  font-size: .65rem; font-weight: 600;
+  color: rgba(255,255,255,.65);
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-top: 4px;
+}
+/* breadcrumb */
+.eit-onas-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .78rem; color: rgba(255,255,255,.5);
+  margin-top: 32px;
+}
+.eit-onas-breadcrumb a { color: rgba(255,255,255,.7); text-decoration: none; }
+.eit-onas-breadcrumb a:hover { color: #fff; }
+.eit-onas-breadcrumb svg { width: 12px; height: 12px; opacity: .5; }
+
+@media (max-width: 768px) {
+  .eit-onas-hero-inner { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. ABOUT / STORY
+══════════════════════════════════════════════════════════════ */
+.eit-onas-story { padding: 88px 0; background: #fff; }
+.eit-onas-story-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.eit-onas-story-text p {
+  color: var(--eit-text-muted);
+  font-size: .975rem; line-height: 1.8;
+  margin-bottom: 20px;
+}
+.eit-onas-story-features { margin: 32px 0 36px; display: flex; flex-direction: column; gap: 18px; }
+.eit-onas-story-feature {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.eit-onas-story-feature-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(46,139,139,.1); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--eit-accent);
+}
+.eit-onas-story-feature-icon svg { width: 18px; height: 18px; }
+.eit-onas-story-feature strong { display: block; font-size: .9rem; font-weight: 700; color: var(--eit-text); }
+.eit-onas-story-feature span { font-size: .83rem; color: var(--eit-text-muted); }
+
+/* image side */
+.eit-onas-story-img-wrap { position: relative; }
+.eit-onas-story-img-deco {
+  position: absolute;
+  top: -24px; right: -24px;
+  width: 80%; height: 80%;
+  background: var(--eit-cream);
+  border-radius: 20px;
+  z-index: 0;
+}
+.eit-onas-story-img {
+  position: relative; z-index: 1;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(29,92,92,.18);
+}
+.eit-onas-story-img img {
+  width: 100%; height: 480px;
+  object-fit: cover; display: block;
+}
+.eit-onas-story-badge {
+  position: absolute;
+  bottom: -16px; left: -16px; z-index: 2;
+  background: var(--eit-primary);
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px 22px;
+  box-shadow: 0 8px 28px rgba(29,92,92,.4);
+  min-width: 130px;
+}
+.eit-onas-story-badge-num {
+  font-size: 1.8rem; font-weight: 900; line-height: 1;
+}
+.eit-onas-story-badge-lbl {
+  font-size: .72rem; font-weight: 600; opacity: .75;
+  margin-top: 4px; text-transform: uppercase; letter-spacing: .06em;
+}
+
+@media (max-width: 900px) {
+  .eit-onas-story-grid { grid-template-columns: 1fr; gap: 40px; }
+  .eit-onas-story-img-deco { display: none; }
+  .eit-onas-story-img img { height: 300px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. STATS BAND
+══════════════════════════════════════════════════════════════ */
+.eit-onas-stats {
+  background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-primary-mid));
+  padding: 64px 0;
+}
+.eit-onas-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.eit-onas-stat-item {
+  text-align: center; padding: 32px 20px;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.eit-onas-stat-item:last-child { border-right: none; }
+.eit-onas-stat-icon {
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,.1);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--eit-accent-light);
+  margin: 0 auto 16px;
+}
+.eit-onas-stat-icon svg { width: 24px; height: 24px; }
+.eit-onas-stat-num {
+  font-size: 2.4rem; font-weight: 900;
+  color: #fff; line-height: 1;
+  margin-bottom: 8px;
+}
+.eit-onas-stat-num span { color: var(--eit-accent-light); font-size: 1.6rem; }
+.eit-onas-stat-lbl {
+  font-size: .78rem; font-weight: 600;
+  color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .08em;
+}
+
+@media (max-width: 768px) {
+  .eit-onas-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-onas-stat-item:nth-child(2) { border-right: none; }
+  .eit-onas-stat-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,.1); border-top: 1px solid rgba(255,255,255,.1); }
+  .eit-onas-stat-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(255,255,255,.1); }
+}
+@media (max-width: 480px) {
+  .eit-onas-stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. НАША МИССИЯ / VALUES
+══════════════════════════════════════════════════════════════ */
+.eit-onas-values { padding: 88px 0; background: var(--eit-cream); }
+.eit-onas-values-header { text-align: center; margin-bottom: 56px; }
+.eit-onas-values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.eit-onas-value-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 28px;
+  box-shadow: 0 4px 20px rgba(29,92,92,.07);
+  border: 1px solid rgba(29,92,92,.06);
+  transition: transform .25s, box-shadow .25s;
+}
+.eit-onas-value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(29,92,92,.13); }
+.eit-onas-value-icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--eit-accent), var(--eit-primary));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; margin-bottom: 20px;
+}
+.eit-onas-value-icon svg { width: 26px; height: 26px; }
+.eit-onas-value-card h3 {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--eit-text); margin-bottom: 10px;
+}
+.eit-onas-value-card p {
+  font-size: .875rem; color: var(--eit-text-muted); line-height: 1.7;
+}
+
+@media (max-width: 900px) { .eit-onas-values-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .eit-onas-values-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   5. SERVICES OVERVIEW
+══════════════════════════════════════════════════════════════ */
+.eit-onas-services { padding: 88px 0; background: #fff; }
+.eit-onas-services-header { text-align: center; margin-bottom: 52px; }
+.eit-onas-services-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+.eit-onas-svc-card {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 6px 28px rgba(29,92,92,.1);
+  transition: transform .25s;
+}
+.eit-onas-svc-card:hover { transform: translateY(-4px); }
+.eit-onas-svc-card-head {
+  background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-accent));
+  padding: 32px 32px 28px;
+  position: relative; overflow: hidden;
+}
+.eit-onas-svc-card-head::after {
+  content: '';
+  position: absolute; right: -20px; bottom: -20px;
+  width: 100px; height: 100px;
+  background: rgba(255,255,255,.06);
+  border-radius: 50%;
+}
+.eit-onas-svc-card-cat {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--eit-accent-light);
+  margin-bottom: 8px;
+}
+.eit-onas-svc-card-head h3 {
+  font-size: 1.4rem; font-weight: 800; color: #fff;
+}
+.eit-onas-svc-card-body {
+  background: #fff; padding: 28px 32px 32px;
+  border: 1px solid rgba(29,92,92,.06);
+  border-top: none; border-radius: 0 0 20px 20px;
+}
+.eit-onas-svc-card-desc {
+  font-size: .875rem; color: var(--eit-text-muted); line-height: 1.7;
+  margin-bottom: 20px;
+}
+.eit-onas-svc-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.eit-onas-svc-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(46,139,139,.08);
+  color: var(--eit-accent);
+  font-size: .8rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 30px;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.eit-onas-svc-link:hover { background: var(--eit-accent); color: #fff; }
+.eit-onas-svc-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+@media (max-width: 768px) { .eit-onas-services-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   6. MEDICAL TOURISM
+══════════════════════════════════════════════════════════════ */
+.eit-onas-tourism { padding: 88px 0; background: var(--eit-cream); }
+.eit-onas-tourism-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.eit-onas-tourism-img {
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 16px 50px rgba(29,92,92,.18);
+  height: 440px;
+  background: url('http://esteinru.teset.fun/wp-content/uploads/2026/05/engin-yapici-WA1u0scVLZU-unsplash-scaled.jpg') center/cover no-repeat;
+  position: relative;
+}
+.eit-onas-tourism-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(29,92,92,.4) 0%, transparent 60%);
+}
+.eit-onas-tourism-img-label {
+  position: absolute; bottom: 20px; left: 20px; z-index: 1;
+  color: #fff; font-size: .85rem; font-weight: 700;
+}
+.eit-onas-tourism-content p {
+  color: var(--eit-text-muted); font-size: .975rem; line-height: 1.8; margin-bottom: 18px;
+}
+.eit-onas-tourism-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 32px;
+}
+.eit-onas-tourism-feature {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  border: 1px solid rgba(29,92,92,.07);
+  box-shadow: 0 2px 10px rgba(29,92,92,.05);
+}
+.eit-onas-tourism-feature-icon {
+  width: 40px; height: 40px;
+  background: rgba(46,139,139,.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--eit-accent);
+  margin-bottom: 12px;
+}
+.eit-onas-tourism-feature-icon svg { width: 18px; height: 18px; }
+.eit-onas-tourism-feature strong { display: block; font-size: .875rem; font-weight: 700; color: var(--eit-text); margin-bottom: 4px; }
+.eit-onas-tourism-feature span { font-size: .78rem; color: var(--eit-text-muted); }
+
+@media (max-width: 900px) {
+  .eit-onas-tourism-inner { grid-template-columns: 1fr; }
+  .eit-onas-tourism-img { height: 280px; }
+}
+@media (max-width: 480px) {
+  .eit-onas-tourism-features { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. WHY TURKEY
+══════════════════════════════════════════════════════════════ */
+.eit-onas-why { padding: 88px 0; background: #fff; }
+.eit-onas-why-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.eit-onas-why-text p {
+  color: var(--eit-text-muted); font-size: .975rem; line-height: 1.8; margin-bottom: 28px;
+}
+.eit-onas-why-points { display: flex; flex-direction: column; gap: 20px; }
+.eit-onas-why-point {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px;
+  background: var(--eit-cream);
+  border-radius: 14px;
+  border-left: 3px solid var(--eit-accent);
+  transition: box-shadow .2s;
+}
+.eit-onas-why-point:hover { box-shadow: 0 4px 18px rgba(29,92,92,.1); }
+.eit-onas-why-point-num {
+  font-size: 1.4rem; font-weight: 900;
+  color: var(--eit-accent); line-height: 1;
+  flex-shrink: 0; min-width: 40px;
+}
+.eit-onas-why-point strong { display: block; font-size: .9rem; font-weight: 700; color: var(--eit-text); margin-bottom: 4px; }
+.eit-onas-why-point span { font-size: .83rem; color: var(--eit-text-muted); }
+
+/* advantages side */
+.eit-onas-why-advantages { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+.eit-onas-why-adv {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px;
+  border: 1px solid rgba(46,139,139,.15);
+  border-radius: 14px;
+  background: rgba(46,139,139,.03);
+  transition: border-color .2s, background .2s;
+}
+.eit-onas-why-adv:hover { border-color: var(--eit-accent); background: rgba(46,139,139,.06); }
+.eit-onas-why-adv-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--eit-accent), var(--eit-primary));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+.eit-onas-why-adv-icon svg { width: 20px; height: 20px; }
+.eit-onas-why-adv strong { display: block; font-size: .9rem; font-weight: 700; color: var(--eit-text); }
+.eit-onas-why-adv span { font-size: .8rem; color: var(--eit-text-muted); }
+
+@media (max-width: 900px) { .eit-onas-why-inner { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   8. PROCESS
+══════════════════════════════════════════════════════════════ */
+.eit-onas-process { padding: 88px 0; background: var(--eit-cream); }
+.eit-onas-process-header { text-align: center; margin-bottom: 56px; }
+.eit-onas-process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  position: relative;
+}
+.eit-onas-process-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--eit-accent-light), var(--eit-accent));
+  opacity: .3;
+}
+.eit-onas-step {
+  background: #fff;
+  border-radius: 18px; padding: 32px 22px 28px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(29,92,92,.07);
+  border: 1px solid rgba(29,92,92,.06);
+  position: relative; z-index: 1;
+}
+.eit-onas-step-num {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--eit-accent), var(--eit-primary));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 800;
+  margin: 0 auto 20px;
+}
+.eit-onas-step h3 { font-size: .95rem; font-weight: 700; color: var(--eit-text); margin-bottom: 8px; }
+.eit-onas-step p { font-size: .83rem; color: var(--eit-text-muted); line-height: 1.65; }
+
+@media (max-width: 900px) {
+  .eit-onas-process-steps { grid-template-columns: 1fr 1fr; }
+  .eit-onas-process-steps::before { display: none; }
+}
+@media (max-width: 480px) { .eit-onas-process-steps { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   9. TESTIMONIALS
+══════════════════════════════════════════════════════════════ */
+.eit-onas-reviews { padding: 88px 0; background: #fff; }
+.eit-onas-reviews-header { text-align: center; margin-bottom: 52px; }
+.eit-onas-reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.eit-onas-review-card {
+  background: #fff;
+  border: 1px solid rgba(29,92,92,.08);
+  border-radius: 18px; padding: 28px;
+  box-shadow: 0 4px 20px rgba(29,92,92,.07);
+  transition: transform .25s, box-shadow .25s;
+}
+.eit-onas-review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(29,92,92,.12); }
+.eit-onas-review-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.eit-onas-reviewer { display: flex; align-items: center; gap: 12px; }
+.eit-onas-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.eit-onas-reviewer-name { font-size: .9rem; font-weight: 700; color: var(--eit-text); }
+.eit-onas-reviewer-date { font-size: .75rem; color: var(--eit-text-muted); }
+.eit-onas-g-badge {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #f1f3f4;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 900; color: #4285F4;
+}
+.eit-onas-stars { display: flex; gap: 2px; margin-bottom: 14px; }
+.eit-onas-stars svg {
+  width: 16px; height: 16px; fill: #F9B22C; flex-shrink: 0;
+}
+.eit-onas-review-text {
+  font-size: .875rem; color: var(--eit-text-muted); line-height: 1.7;
+}
+
+@media (max-width: 900px) { .eit-onas-reviews-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .eit-onas-reviews-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════════════════════════════
+   10. CTA BAND
+══════════════════════════════════════════════════════════════ */
+.eit-onas-cta {
+  background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-accent));
+  padding: 72px 0; text-align: center; position: relative; overflow: hidden;
+}
+.eit-onas-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(74,172,172,.2), transparent 60%);
+}
+.eit-onas-cta-inner { position: relative; z-index: 1; }
+.eit-onas-cta h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: #fff;
+  margin-bottom: 12px;
+}
+.eit-onas-cta p {
+  color: rgba(255,255,255,.75); font-size: 1rem; line-height: 1.6;
+  max-width: 520px; margin: 0 auto 36px;
+}
+.eit-onas-cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.eit-onas-cta-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: #fff;
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37,211,102,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.eit-onas-cta-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.5); }
+.eit-onas-cta-wa svg { width: 20px; height: 20px; }
+.eit-onas-cta-tel {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.3);
+  color: #fff;
+  font-family: var(--eit-font); font-size: .875rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 50px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.eit-onas-cta-tel:hover { background: rgba(255,255,255,.2); }
+.eit-onas-cta-tel svg { width: 18px; height: 18px; }
+
+/* ══════════════════════════════════════════════════════════════
+   11. FAQ
+══════════════════════════════════════════════════════════════ */
+.eit-onas-faq-section { padding: 88px 0; background: var(--eit-cream); }
+.eit-onas-faq-inner {
+  display: grid; grid-template-columns: 1fr 380px; gap: 52px; align-items: start;
+}
+.eit-onas-faq-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.eit-onas-faq-item {
+  background: #fff; border-radius: 14px;
+  border: 1px solid rgba(29,92,92,.07);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(29,92,92,.05);
+}
+.eit-onas-faq-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 20px 24px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--eit-font); font-size: .925rem; font-weight: 600; color: var(--eit-text);
+  text-align: left;
+  transition: color .2s;
+}
+.eit-onas-faq-btn:hover { color: var(--eit-accent); }
+.eit-onas-faq-arrow {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: rgba(46,139,139,.1); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--eit-accent);
+  transition: transform .3s, background .2s;
+}
+.eit-onas-faq-arrow svg { width: 14px; height: 14px; }
+.eit-onas-faq-item.eit-onas-faq-open .eit-onas-faq-arrow { transform: rotate(180deg); background: var(--eit-accent); color: #fff; }
+.eit-onas-faq-panel {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  font-size: .875rem; color: var(--eit-text-muted); line-height: 1.75;
+  padding: 0 24px;
+}
+.eit-onas-faq-item.eit-onas-faq-open .eit-onas-faq-panel { max-height: 300px; padding: 0 24px 20px; }
+
+/* aside contact card */
+.eit-onas-faq-aside {
+  background: linear-gradient(160deg, var(--eit-primary), var(--eit-accent));
+  border-radius: 20px; padding: 36px 28px;
+  color: #fff; text-align: center;
+  box-shadow: 0 12px 40px rgba(29,92,92,.25);
+  position: sticky; top: 100px;
+}
+.eit-onas-faq-aside h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+.eit-onas-faq-aside p { font-size: .85rem; opacity: .8; line-height: 1.65; margin-bottom: 24px; }
+.eit-onas-faq-aside-divider { height: 1px; background: rgba(255,255,255,.2); margin: 20px 0; }
+.eit-onas-faq-aside-tel {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem;
+  margin-bottom: 12px;
+}
+.eit-onas-faq-aside-tel svg { width: 16px; height: 16px; }
+.eit-onas-faq-aside-tg {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; text-decoration: none; font-size: .83rem; font-weight: 600;
+  padding: 10px 20px; border-radius: 30px; margin-bottom: 16px;
+  transition: background .2s;
+}
+.eit-onas-faq-aside-tg:hover { background: rgba(255,255,255,.25); }
+.eit-onas-faq-aside-tg svg { width: 16px; height: 16px; }
+
+@media (max-width: 900px) {
+  .eit-onas-faq-inner { grid-template-columns: 1fr; }
+  .eit-onas-faq-aside { position: static; }
+}
+</style>
+
+<div class="eit-onas-page">
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-hero">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-hero-inner">
+        <div class="eit-onas-fade">
+          <div class="eit-onas-hero-tag">Este in Turkey</div>
+          <h1>О нас —<br><span>наша история</span></h1>
+          <p class="eit-onas-hero-sub">
+            Более 15 лет мы помогаем пациентам из 52 стран мира обрести уверенность в себе,
+            сочетая передовую медицину и тёплый приём в сердце Стамбула.
+          </p>
+          <div class="eit-onas-hero-stats">
+            <div class="eit-onas-hero-stat">
+              <div class="eit-onas-hero-stat-num">12150<sup>+</sup></div>
+              <div class="eit-onas-hero-stat-lbl">Пациентов</div>
+            </div>
+            <div class="eit-onas-hero-stat">
+              <div class="eit-onas-hero-stat-num">13</div>
+              <div class="eit-onas-hero-stat-lbl">Врачей</div>
+            </div>
+            <div class="eit-onas-hero-stat">
+              <div class="eit-onas-hero-stat-num">52</div>
+              <div class="eit-onas-hero-stat-lbl">Страны</div>
+            </div>
+            <div class="eit-onas-hero-stat">
+              <div class="eit-onas-hero-stat-num">15<sup>+</sup></div>
+              <div class="eit-onas-hero-stat-lbl">Лет опыта</div>
+            </div>
+          </div>
+          <nav class="eit-onas-breadcrumb" aria-label="Навигация">
+            <a href="/ru/">Главная</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span>О нас</span>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       STORY / ABOUT
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-story">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-story-grid">
+
+        <div class="eit-onas-story-text eit-onas-fade">
+          <div class="eit-onas-tag">Наша история</div>
+          <h2 class="eit-onas-h2">Клиника,<br>рождённая <span>для вас</span></h2>
+          <div class="eit-onas-divider"></div>
+          <p>
+            ESTE IN TURKEY предоставляет услуги с использованием новейших технологических методов
+            с участием опытных специалистов в области трансплантации волос и стоматологии.
+            Наша цель — повышение качества жизни каждого пациента, ориентируясь на его потребности.
+          </p>
+          <p>
+            Наша клиника работает в соответствии с принципом счастья пациента — от первой консультации
+            до полного восстановления вы находитесь под нашей заботой. Мы не просто лечим,
+            мы сопровождаем вас на каждом шагу этого пути.
+          </p>
+          <p>
+            Стамбул — наш дом. За более чем 15 лет работы мы приняли пациентов из 52 стран
+            и выполнили свыше 12 000 успешных процедур. Доверие — наша главная ценность.
+          </p>
+
+          <div class="eit-onas-story-features">
+            <div class="eit-onas-story-feature">
+              <div class="eit-onas-story-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <strong>Сертифицированные врачи-специалисты</strong>
+                <span>Команда с международными сертификатами и многолетним опытом</span>
+              </div>
+            </div>
+            <div class="eit-onas-story-feature">
+              <div class="eit-onas-story-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <strong>Международные стандарты качества</strong>
+                <span>Работаем по самым высоким стандартам медицины в оснащённой клинике</span>
+              </div>
+            </div>
+            <div class="eit-onas-story-feature">
+              <div class="eit-onas-story-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <div>
+                <strong>Комплексное сопровождение</strong>
+                <span>Встреча в аэропорту, проживание, трансфер и консультант 24/7</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+            <a href="https://wa.me/905468189180" class="eit-onas-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Написать нам
+            </a>
+            <a href="tel:+905468189180" class="eit-onas-btn-outline">+90 546 818 91 80</a>
+          </div>
+        </div>
+
+        <div class="eit-onas-story-img-wrap eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-story-img-deco"></div>
+          <div class="eit-onas-story-img">
+            <img
+              src="http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%9E-%D0%BD%D0%B0%D1%81%E2%80%8B.png"
+              alt="Команда врачей Este in Turkey"
+              loading="lazy"
+            >
+          </div>
+          <div class="eit-onas-story-badge">
+            <div class="eit-onas-story-badge-num">13</div>
+            <div class="eit-onas-story-badge-lbl">Опытных врача-специалиста</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       STATS BAND
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-stats" aria-label="Наши достижения">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-stats-grid">
+
+        <div class="eit-onas-stat-item eit-onas-fade">
+          <div class="eit-onas-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="eit-onas-stat-num" data-target="12150">0</div>
+          <div class="eit-onas-stat-lbl">Довольных пациентов</div>
+        </div>
+
+        <div class="eit-onas-stat-item eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="eit-onas-stat-num" data-target="13">0</div>
+          <div class="eit-onas-stat-lbl">Опытных докторов</div>
+        </div>
+
+        <div class="eit-onas-stat-item eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="eit-onas-stat-num" data-target="52">0</div>
+          <div class="eit-onas-stat-lbl">Страны мира</div>
+        </div>
+
+        <div class="eit-onas-stat-item eit-onas-fade eit-onas-fade-d3">
+          <div class="eit-onas-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="eit-onas-stat-num">15<span>+</span></div>
+          <div class="eit-onas-stat-lbl">Лет опыта</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       VALUES / MISSION
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-values">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-values-header eit-onas-fade">
+        <div class="eit-onas-tag">Наши принципы</div>
+        <h2 class="eit-onas-h2" style="text-align:center;">Почему нам <span>доверяют</span></h2>
+        <div class="eit-onas-divider eit-onas-divider-center"></div>
+        <p style="color:var(--eit-text-muted);font-size:.975rem;max-width:560px;margin:0 auto;line-height:1.7;">
+          Наша работа основана на прозрачности, профессионализме и искренней заботе о каждом пациенте.
+        </p>
+      </div>
+      <div class="eit-onas-values-grid">
+
+        <div class="eit-onas-value-card eit-onas-fade">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Безопасность и качество</h3>
+          <p>Все процедуры проходят в клинике, соответствующей международным стандартам медицины. Стерильность, сертифицированное оборудование и строгие протоколы — наш стандарт.</p>
+        </div>
+
+        <div class="eit-onas-value-card eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Индивидуальный подход</h3>
+          <p>Каждый пациент уникален. Мы разрабатываем персональный план лечения после детальной консультации с учётом состояния здоровья и пожеланий пациента.</p>
+        </div>
+
+        <div class="eit-onas-value-card eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Гарантированный результат</h3>
+          <p>Более 12 000 успешно выполненных процедур говорят сами за себя. Мы контролируем результат и поддерживаем связь на протяжении всего периода восстановления.</p>
+        </div>
+
+        <div class="eit-onas-value-card eit-onas-fade">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Поддержка на русском языке</h3>
+          <p>Наши координаторы говорят на русском языке. Вы всегда можете задать вопрос, получить консультацию и поддержку — до, во время и после процедуры.</p>
+        </div>
+
+        <div class="eit-onas-value-card eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Полное сопровождение</h3>
+          <p>Мы организуем весь ваш визит: трансфер из аэропорта, размещение в отеле, поездки по городу и сопровождение на все процедуры. Вам остаётся только довериться нам.</p>
+        </div>
+
+        <div class="eit-onas-value-card eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Прозрачные цены</h3>
+          <p>Никаких скрытых платежей. Стоимость лечения оговаривается заранее, и вы точно знаете, за что платите. Европейское качество по доступным ценам.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SERVICES OVERVIEW
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-services">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-services-header eit-onas-fade">
+        <div class="eit-onas-tag">Направления лечения</div>
+        <h2 class="eit-onas-h2" style="text-align:center;">Наши <span>услуги</span></h2>
+        <div class="eit-onas-divider eit-onas-divider-center"></div>
+        <p style="color:var(--eit-text-muted);font-size:.975rem;max-width:540px;margin:0 auto;line-height:1.7;">
+          Мировой уровень медицины в сердце Стамбула. Два ключевых направления — трансплантация волос и стоматология.
+        </p>
+      </div>
+
+      <div class="eit-onas-services-grid">
+
+        <!-- HAIR -->
+        <div class="eit-onas-svc-card eit-onas-fade">
+          <div class="eit-onas-svc-card-head">
+            <div class="eit-onas-svc-card-cat">Трихология</div>
+            <h3>Пересадка волос</h3>
+          </div>
+          <div class="eit-onas-svc-card-body">
+            <p class="eit-onas-svc-card-desc">
+              Трансплантация волос с использованием передовых методов FUE Sapphire и DHI-Choi.
+              Индивидуальный подход, естественный результат и минимальный период восстановления.
+              Также выполняем пересадку бороды и бровей.
+            </p>
+            <div class="eit-onas-svc-links">
+              <a href="/ru/fue-sapphire/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                FUE Sapphire
+              </a>
+              <a href="/ru/dhi-choi/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                DHI-Choi
+              </a>
+              <a href="/ru/peresadka-borody/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Пересадка бороды
+              </a>
+              <a href="/ru/peresadka-brovey/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Пересадка бровей
+              </a>
+            </div>
+            <a href="/ru/fue-sapphire/" class="eit-onas-btn">
+              Подробнее о пересадке
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- DENTAL -->
+        <div class="eit-onas-svc-card eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-svc-card-head" style="background:linear-gradient(135deg,#154444,#4AACAC);">
+            <div class="eit-onas-svc-card-cat">Стоматология</div>
+            <h3>Стоматологическое лечение</h3>
+          </div>
+          <div class="eit-onas-svc-card-body">
+            <p class="eit-onas-svc-card-desc">
+              Полный спектр стоматологических услуг: от имплантации до эстетической коррекции.
+              Современные технологии, безболезненные процедуры и красивая улыбка,
+              которая останется с вами навсегда.
+            </p>
+            <div class="eit-onas-svc-links">
+              <a href="/ru/implant/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Импланты
+              </a>
+              <a href="/ru/koronki/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Коронки
+              </a>
+              <a href="/ru/veniry/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Виниры
+              </a>
+              <a href="/ru/stom-lechenie/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Лечение
+              </a>
+              <a href="/ru/elaynery/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Элайнеры
+              </a>
+              <a href="/ru/otbelivanie/" class="eit-onas-svc-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                Отбеливание
+              </a>
+            </div>
+            <a href="/ru/implant/" class="eit-onas-btn">
+              Подробнее о стоматологии
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       MEDICAL TOURISM
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-tourism">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-tourism-inner">
+
+        <div class="eit-onas-tourism-img eit-onas-fade">
+          <div class="eit-onas-tourism-img-label">Стамбул, Турция</div>
+        </div>
+
+        <div class="eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-tag">Медицинский туризм</div>
+          <h2 class="eit-onas-h2">Путешествие<br>в <span>Турцию</span></h2>
+          <div class="eit-onas-divider"></div>
+          <p>
+            Este in Turkey предоставляет услуги оздоровительного туризма самого высокого качества,
+            сочетая в себе все преимущества Турции. Благодаря команде квалифицированных врачей
+            и самому современному оборудованию мы обеспечиваем комфортное лечение.
+          </p>
+          <p>
+            Для вашего удобства мы организуем встречу в аэропорту, проживание в отеле,
+            личный транспорт и всё необходимое сопровождение на протяжении всего пребывания в Стамбуле.
+          </p>
+
+          <div class="eit-onas-tourism-features">
+            <div class="eit-onas-tourism-feature">
+              <div class="eit-onas-tourism-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <strong>Встреча в аэропорту</strong>
+              <span>VIP трансфер от/до аэропорта</span>
+            </div>
+            <div class="eit-onas-tourism-feature">
+              <div class="eit-onas-tourism-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <strong>Размещение в отеле</strong>
+              <span>Помощь с бронированием отеля</span>
+            </div>
+            <div class="eit-onas-tourism-feature">
+              <div class="eit-onas-tourism-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <strong>Личный транспорт</strong>
+              <span>Комфортные поездки по городу</span>
+            </div>
+            <div class="eit-onas-tourism-feature">
+              <div class="eit-onas-tourism-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <strong>Личный консультант</strong>
+              <span>24/7 поддержка на русском языке</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/905468189180" class="eit-onas-btn" target="_blank" rel="noopener">
+            Узнать подробнее
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WHY TURKEY
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-why">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-why-inner">
+
+        <div class="eit-onas-fade">
+          <div class="eit-onas-tag">Выбор пациентов</div>
+          <h2 class="eit-onas-h2">Почему именно <span>Турция?</span></h2>
+          <div class="eit-onas-divider"></div>
+          <div class="eit-onas-why-text">
+            <p>
+              Турция является одной из ведущих стран в секторе медицинского туризма,
+              привлекая высоким качеством медицинских услуг, развитой инфраструктурой
+              и доступными ценами. Ежегодно сюда приезжают тысячи пациентов из Европы,
+              СНГ и стран Ближнего Востока.
+            </p>
+          </div>
+          <div class="eit-onas-why-points">
+            <div class="eit-onas-why-point">
+              <div class="eit-onas-why-point-num">01</div>
+              <div>
+                <strong>Квалифицированные специалисты</strong>
+                <span>Врачи с международными сертификатами и десятками лет опыта в своей области</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-point">
+              <div class="eit-onas-why-point-num">02</div>
+              <div>
+                <strong>Современное оборудование</strong>
+                <span>Самые передовые технологии и инновационные методы лечения мирового уровня</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-point">
+              <div class="eit-onas-why-point-num">03</div>
+              <div>
+                <strong>Доступные цены</strong>
+                <span>Качество европейского уровня по значительно более низким ценам — экономия до 70%</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-point">
+              <div class="eit-onas-why-point-num">04</div>
+              <div>
+                <strong>Богатая культура и туризм</strong>
+                <span>Совместите лечение с незабываемым путешествием по историческому Стамбулу</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-tag">Преимущества клиники</div>
+          <h2 class="eit-onas-h2">Наши <span>преимущества</span></h2>
+          <div class="eit-onas-divider"></div>
+          <div class="eit-onas-why-advantages">
+            <div class="eit-onas-why-adv">
+              <div class="eit-onas-why-adv-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <strong>Аккредитованная клиника</strong>
+                <span>Все процедуры проходят в лицензированном медицинском учреждении Стамбула</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-adv">
+              <div class="eit-onas-why-adv-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <strong>Проверенные методы</strong>
+                <span>FUE Sapphire, DHI-Choi, Flash-отбеливание — только доказанные технологии</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-adv">
+              <div class="eit-onas-why-adv-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <strong>Команда 13 специалистов</strong>
+                <span>Высококвалифицированные трихологи, стоматологи и координаторы</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-adv">
+              <div class="eit-onas-why-adv-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong>Поддержка 24/7</strong>
+                <span>Консультант на русском языке доступен в любое время суток</span>
+              </div>
+            </div>
+            <div class="eit-onas-why-adv">
+              <div class="eit-onas-why-adv-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <div>
+                <strong>Счастливые пациенты</strong>
+                <span>12 150+ довольных пациентов из 52 стран за 15+ лет работы</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-process">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-process-header eit-onas-fade">
+        <div class="eit-onas-tag">Как это работает</div>
+        <h2 class="eit-onas-h2" style="text-align:center;">Как проходит <span>лечение</span></h2>
+        <div class="eit-onas-divider eit-onas-divider-center"></div>
+        <p style="color:var(--eit-text-muted);font-size:.975rem;max-width:520px;margin:0 auto;line-height:1.7;">
+          Мы сделали процесс максимально простым и комфортным — от первого обращения до получения результата.
+        </p>
+      </div>
+      <div class="eit-onas-process-steps">
+
+        <div class="eit-onas-step eit-onas-fade">
+          <div class="eit-onas-step-num">1</div>
+          <h3>Онлайн-консультация</h3>
+          <p>Напишите нам в WhatsApp или оставьте заявку. Наш консультант свяжется с вами, ответит на вопросы и предварительно оценит ситуацию по фото.</p>
+        </div>
+
+        <div class="eit-onas-step eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-step-num">2</div>
+          <h3>Планирование поездки</h3>
+          <p>Мы помогаем организовать визит: встреча в аэропорту, бронирование отеля, составление графика процедур — всё под ключ.</p>
+        </div>
+
+        <div class="eit-onas-step eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-step-num">3</div>
+          <h3>Процедура в клинике</h3>
+          <p>Детальная диагностика, индивидуальный план лечения и проведение процедуры в современно оснащённой клинике с опытными специалистами.</p>
+        </div>
+
+        <div class="eit-onas-step eit-onas-fade eit-onas-fade-d3">
+          <div class="eit-onas-step-num">4</div>
+          <h3>Восстановление и контроль</h3>
+          <p>После процедуры вы получите все необходимые рекомендации. Наш консультант остаётся на связи на весь период восстановления.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-reviews">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-reviews-header eit-onas-fade">
+        <div class="eit-onas-tag">Google Reviews</div>
+        <h2 class="eit-onas-h2" style="text-align:center;">Счастливые <span>клиенты</span></h2>
+        <div class="eit-onas-divider eit-onas-divider-center"></div>
+        <p style="color:var(--eit-text-muted);font-size:.975rem;max-width:480px;margin:0 auto;line-height:1.7;">
+          Мнения наших пациентов — лучшее подтверждение нашей работы.
+        </p>
+      </div>
+
+      <div class="eit-onas-reviews-grid">
+
+        <article class="eit-onas-review-card eit-onas-fade">
+          <div class="eit-onas-review-head">
+            <div class="eit-onas-reviewer">
+              <div class="eit-onas-avatar" style="background:#1D5C5C;">E</div>
+              <div>
+                <div class="eit-onas-reviewer-name">Etkin K.</div>
+                <div class="eit-onas-reviewer-date">2 года назад</div>
+              </div>
+            </div>
+            <div class="eit-onas-g-badge">G</div>
+          </div>
+          <div class="eit-onas-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="eit-onas-review-text">
+            Я хотел бы поблагодарить вашу команду за проявленный интерес на протяжении всего процесса.
+            Я был очень удивлён, насколько хорошим оказался результат. Всё было на высшем уровне!
+          </p>
+        </article>
+
+        <article class="eit-onas-review-card eit-onas-fade eit-onas-fade-d1">
+          <div class="eit-onas-review-head">
+            <div class="eit-onas-reviewer">
+              <div class="eit-onas-avatar" style="background:#2E8B8B;">Ü</div>
+              <div>
+                <div class="eit-onas-reviewer-name">Ümit D.</div>
+                <div class="eit-onas-reviewer-date">2 года назад</div>
+              </div>
+            </div>
+            <div class="eit-onas-g-badge">G</div>
+          </div>
+          <div class="eit-onas-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="eit-onas-review-text">
+            Клиника работает профессионально. Персонал очень внимателен и дружелюбен.
+            Результатом очень доволен, всё прошло точно по плану. Рекомендую Este in Turkey!
+          </p>
+        </article>
+
+        <article class="eit-onas-review-card eit-onas-fade eit-onas-fade-d2">
+          <div class="eit-onas-review-head">
+            <div class="eit-onas-reviewer">
+              <div class="eit-onas-avatar" style="background:#154444;">А</div>
+              <div>
+                <div class="eit-onas-reviewer-name">Анна С.</div>
+                <div class="eit-onas-reviewer-date">1 год назад</div>
+              </div>
+            </div>
+            <div class="eit-onas-g-badge">G</div>
+          </div>
+          <div class="eit-onas-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="eit-onas-review-text">
+            Приехала на стоматологическое лечение. Всё организовали на высшем уровне — встреча, отель,
+            поездки. Врачи профессионалы, всё объяснили и сделали без боли. Очень благодарна!
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CTA BAND
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-cta">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-cta-inner eit-onas-fade">
+        <h2>Готовы начать?<br>Свяжитесь с нами сегодня</h2>
+        <p>
+          Получите бесплатную консультацию — наш специалист ответит на все вопросы
+          и поможет подобрать оптимальное лечение именно для вас.
+        </p>
+        <div class="eit-onas-cta-btns">
+          <a href="https://wa.me/905468189180" class="eit-onas-cta-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-onas-cta-tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+          <a href="https://t.me/esteinturkey" class="eit-onas-cta-tel" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="eit-onas-faq-section">
+    <div class="eit-onas-wrap">
+      <div class="eit-onas-faq-inner">
+
+        <div class="eit-onas-fade">
+          <div class="eit-onas-tag">Частые вопросы</div>
+          <h2 class="eit-onas-h2">Часто задаваемые <span>вопросы</span></h2>
+          <div class="eit-onas-divider"></div>
+
+          <ul class="eit-onas-faq-list" role="list">
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Могу ли я получить лечение в Турции?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Да, вы можете получить лечение в Турции. Наша клиника принимает пациентов из разных стран.
+                Мы обеспечиваем полное сопровождение: от консультации до завершения курса лечения.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Можете ли вы помочь с размещением и трансфером?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Да. Мы организуем встречу в аэропорту, помогаем с бронированием отеля
+                и обеспечиваем личный транспорт на всё время вашего пребывания в Стамбуле.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Как долго длится восстановление после процедур?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Срок восстановления зависит от процедуры. При пересадке волос первые 10–14 дней
+                требуется особый уход, полный результат виден через 6–12 месяцев.
+                Стоматологические процедуры в большинстве случаев не требуют длительного восстановления.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Насколько безопасны процедуры в клинике?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Все процедуры проходят в аккредитованной клинике с соблюдением всех международных
+                стандартов безопасности. Оборудование сертифицировано, врачи имеют международные
+                дипломы и многолетний опыт. Более 12 000 успешных случаев подтверждают это.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Как связаться для первичной консультации?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Вы можете написать нам в WhatsApp по номеру +90 546 818 91 80,
+                обратиться в Telegram @esteinturkey или позвонить напрямую.
+                Первичная консультация бесплатна и проходит на русском языке.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Какие методы пересадки волос вы используете?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Мы предлагаем два основных метода: FUE Sapphire — с поштучным извлечением фолликулов
+                сапфировыми лезвиями, и DHI-Choi — прямая имплантация без предварительного создания каналов.
+                Врач подбирает оптимальный метод индивидуально после осмотра.
+              </div>
+            </li>
+
+            <li class="eit-onas-faq-item">
+              <button class="eit-onas-faq-btn" aria-expanded="false">
+                Какие стоматологические услуги вы предоставляете?
+                <div class="eit-onas-faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+              </button>
+              <div class="eit-onas-faq-panel">
+                Полный спектр стоматологии: дентальные импланты, металлокерамические и циркониевые коронки,
+                виниры, лечение зубов и дёсен, элайнеры (прозрачные брекеты) и профессиональное отбеливание
+                методами Flash и Opalescence.
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Aside card -->
+        <div class="eit-onas-faq-aside eit-onas-fade eit-onas-fade-d1">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h3>Задайте вопрос прямо сейчас</h3>
+          <p>Наш консультант ответит на все ваши вопросы на русском языке — бесплатно и без обязательств.</p>
+          <a href="https://wa.me/905468189180" class="eit-onas-btn" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+          <div class="eit-onas-faq-aside-divider"></div>
+          <a href="tel:+905468189180" class="eit-onas-faq-aside-tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+          <a href="https://t.me/esteinturkey" class="eit-onas-faq-aside-tg" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Scroll fade-in ── */
+  var els = document.querySelectorAll('.eit-onas-fade');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('eit-onas-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('eit-onas-visible'); });
+  }
+
+  /* ── Counter animation ── */
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if (!target) return;
+    var duration = 1800;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target).toLocaleString('ru-RU');
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('ru-RU');
+    }
+    requestAnimationFrame(step);
+  }
+
+  var counterObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.eit-onas-stat-num[data-target]').forEach(function (el) {
+    counterObserver.observe(el);
+  });
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.eit-onas-faq-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.eit-onas-faq-item');
+      var isOpen = item.classList.contains('eit-onas-faq-open');
+      document.querySelectorAll('.eit-onas-faq-item.eit-onas-faq-open').forEach(function (openItem) {
+        openItem.classList.remove('eit-onas-faq-open');
+        openItem.querySelector('.eit-onas-faq-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('eit-onas-faq-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+})();
+</script>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стоматологическое лечение в Турции | Имплантация, Виниры, Отбеливание | Este in Turkey</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --p:    #1D5C5C;
+  --pd:   #154444;
+  --pm:   #236666;
+  --acc:  #2E8B8B;
+  --acl:  #4AACAC;
+  --cr:   #F8F4EF;
+  --tx:   #1A1A1A;
+  --txm:  #5A5A5A;
+  --wh:   #FFFFFF;
+  --gd:   #D4AF37;
+  --bd:   rgba(29,92,92,.12);
+  --sh1:  0 2px 12px rgba(29,92,92,.10);
+  --sh2:  0 4px 24px rgba(29,92,92,.12);
+  --sh3:  0 8px 40px rgba(0,0,0,.14);
+  --tr:   all .28s cubic-bezier(.4,0,.2,1);
+  --fn:   'Montserrat', sans-serif;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+
+body { font-family:var(--fn); color:var(--tx); background:var(--wh); overflow-x:hidden; }
+
+.ew { max-width:1200px; margin:0 auto; padding:0 32px; }
+
+/* ── HERO ── */
+.st-hero {
+  background:var(--pd);
+  position:relative;
+  overflow:hidden;
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  padding:120px 0 80px;
+}
+.st-hero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url('http://esteinru.teset.fun/wp-content/uploads/2026/05/Blue-Modern-Blod-Medical-Care-Presentation-3-e1775910857271.webp');
+  background-size:cover;
+  background-position:center;
+  opacity:.25;
+  z-index:0;
+}
+.st-hero::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(21,68,68,.95) 0%,rgba(29,92,92,.78) 55%,rgba(21,68,68,.9) 100%);
+  z-index:1;
+}
+.st-hero .ew { position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+
+.st-hero-tag {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:50px;
+  padding:8px 18px;
+  color:rgba(255,255,255,.9);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.st-hero-tag::before { content:''; width:6px; height:6px; background:var(--acl); border-radius:50%; }
+
+.st-hero-left h1 {
+  font-size:clamp(30px,4vw,54px);
+  font-weight:900;
+  color:var(--wh);
+  line-height:1.1;
+  margin-bottom:16px;
+  letter-spacing:-.02em;
+}
+.st-hero-left h1 span { color:var(--acl); }
+.st-hero-left p { font-size:16px; color:rgba(255,255,255,.8); line-height:1.7; margin-bottom:36px; max-width:480px; }
+
+.st-services-quick {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:36px;
+}
+.st-service-q {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:rgba(255,255,255,.9);
+  font-size:14px;
+  font-weight:600;
+}
+.st-service-q-dot { width:8px; height:8px; background:var(--acl); border-radius:50%; flex-shrink:0; }
+
+.st-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:14px 28px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+  transition:var(--tr);
+  cursor:pointer;
+  border:none;
+  white-space:nowrap;
+}
+.st-btn-primary { background:var(--acc); color:var(--wh); }
+.st-btn-primary:hover { background:var(--p); transform:translateY(-2px); box-shadow:0 8px 24px rgba(46,139,139,.4); }
+.st-btn-outline { background:transparent; color:var(--wh); border:2px solid rgba(255,255,255,.4); }
+.st-btn-outline:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.7); }
+
+.st-hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
+
+.st-hero-right { display:flex; flex-direction:column; gap:16px; }
+
+.st-smile-preview {
+  background:rgba(255,255,255,.1);
+  border:1.5px solid rgba(255,255,255,.2);
+  border-radius:20px;
+  padding:30px;
+  backdrop-filter:blur(12px);
+  text-align:center;
+}
+.st-smile-emoji { font-size:64px; margin-bottom:12px; }
+.st-smile-text { font-size:15px; font-weight:700; color:var(--wh); margin-bottom:6px; }
+.st-smile-sub { font-size:13px; color:rgba(255,255,255,.65); }
+
+.st-stat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.st-stat-card {
+  background:rgba(255,255,255,.12);
+  border:1.5px solid rgba(255,255,255,.2);
+  border-radius:16px;
+  padding:20px 18px;
+  text-align:center;
+  backdrop-filter:blur(12px);
+}
+.st-stat-val { font-size:28px; font-weight:900; color:var(--wh); letter-spacing:-.02em; line-height:1; }
+.st-stat-val sup { font-size:14px; }
+.st-stat-lbl { font-size:11px; color:rgba(255,255,255,.7); margin-top:5px; font-weight:500; line-height:1.3; }
+
+/* ── SERVICES ── */
+.st-services { padding:100px 0; background:var(--wh); }
+
+.st-section-tag {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(29,92,92,.08);
+  color:var(--p);
+  border-radius:50px;
+  padding:7px 18px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.st-section-tag::before { content:''; width:6px; height:6px; background:var(--acc); border-radius:50%; }
+.st-section-title {
+  font-size:clamp(26px,3.5vw,44px);
+  font-weight:900;
+  color:var(--tx);
+  line-height:1.15;
+  margin-bottom:14px;
+  letter-spacing:-.02em;
+}
+.st-section-title span { color:var(--acc); }
+.st-section-sub { font-size:16px; color:var(--txm); line-height:1.7; max-width:560px; }
+.st-section-head { margin-bottom:60px; }
+
+.st-services-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.st-service-card {
+  background:var(--cr);
+  border-radius:20px;
+  overflow:hidden;
+  transition:var(--tr);
+  box-shadow:var(--sh1);
+}
+.st-service-card:hover { transform:translateY(-6px); box-shadow:var(--sh3); }
+.st-service-top {
+  background:var(--pd);
+  padding:30px 26px;
+  position:relative;
+  overflow:hidden;
+  min-height:140px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.st-service-top::before {
+  content:'';
+  position:absolute;
+  right:-20px; top:-20px;
+  width:100px; height:100px;
+  background:rgba(255,255,255,.05);
+  border-radius:50%;
+}
+.st-service-icon { font-size:34px; margin-bottom:12px; position:relative; z-index:1; }
+.st-service-name { font-size:17px; font-weight:800; color:var(--wh); position:relative; z-index:1; }
+.st-service-body { padding:26px; }
+.st-service-body p { font-size:14px; color:var(--txm); line-height:1.7; margin-bottom:18px; }
+.st-service-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.st-service-list li {
+  display:flex; gap:8px; align-items:flex-start;
+  font-size:13px; color:var(--tx); font-weight:500;
+}
+.st-service-list li::before { content:'✓'; color:var(--acc); font-weight:800; flex-shrink:0; margin-top:1px; }
+.st-service-price {
+  margin-top:18px;
+  display:inline-block;
+  background:rgba(29,92,92,.1);
+  color:var(--p);
+  border-radius:50px;
+  padding:5px 14px;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* ── WHY TURKEY ── */
+.st-why {
+  padding:100px 0;
+  background:var(--pd);
+  position:relative;
+  overflow:hidden;
+}
+.st-why::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 70% 50%, rgba(46,139,139,.25) 0%, transparent 60%);
+}
+.st-why .ew { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.st-why .st-section-tag { background:rgba(255,255,255,.12); color:rgba(255,255,255,.9); border:1px solid rgba(255,255,255,.2); }
+.st-why .st-section-tag::before { background:var(--acl); }
+.st-why .st-section-title { color:var(--wh); }
+.st-why .st-section-sub { color:rgba(255,255,255,.7); }
+
+.st-why-points { display:flex; flex-direction:column; gap:20px; margin-top:40px; }
+.st-why-point {
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+.st-why-point-icon {
+  width:48px; height:48px;
+  background:rgba(255,255,255,.1);
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,.15);
+}
+.st-why-point-text h4 { font-size:15px; font-weight:700; color:var(--wh); margin-bottom:4px; }
+.st-why-point-text p { font-size:13px; color:rgba(255,255,255,.65); line-height:1.6; }
+
+.st-why-visual {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.st-why-img-wrap {
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 48px rgba(0,0,0,.35);
+}
+.st-why-img-wrap img {
+  width:100%;
+  display:block;
+  border-radius:24px;
+}
+.st-why-img-badge {
+  position:absolute;
+  bottom:20px; left:20px; right:20px;
+  background:rgba(21,68,68,.88);
+  backdrop-filter:blur(16px);
+  border:1.5px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  padding:20px 24px;
+  text-align:center;
+}
+.st-why-big-num { font-size:52px; font-weight:900; color:var(--wh); line-height:1; letter-spacing:-.03em; }
+.st-why-big-num span { font-size:28px; color:var(--acl); }
+.st-why-big-lbl { font-size:13px; color:rgba(255,255,255,.75); margin-top:6px; font-weight:600; }
+
+/* ── PROCESS ── */
+.st-process { padding:100px 0; background:var(--cr); }
+.st-process-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; margin-top:60px; }
+.st-process-grid::before {
+  content:'';
+  position:absolute;
+  top:34px; left:calc(10% + 16px); right:calc(10% + 16px);
+  height:2px;
+  background:var(--bd);
+}
+.st-proc-step { text-align:center; padding:0 12px; position:relative; z-index:1; }
+.st-proc-num {
+  width:68px; height:68px;
+  background:var(--wh);
+  border:2px solid var(--acc);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:900; color:var(--acc);
+  margin:0 auto 16px;
+  box-shadow:0 4px 16px rgba(46,139,139,.2);
+}
+.st-proc-title { font-size:13px; font-weight:700; color:var(--tx); margin-bottom:8px; line-height:1.3; }
+.st-proc-text { font-size:12px; color:var(--txm); line-height:1.6; }
+
+/* ── PRICE ── */
+.st-price { padding:100px 0; background:var(--wh); }
+.st-price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px; }
+.st-price-card {
+  border-radius:20px;
+  overflow:hidden;
+  border:2px solid var(--bd);
+  transition:var(--tr);
+}
+.st-price-card:hover { border-color:var(--acc); transform:translateY(-4px); box-shadow:var(--sh2); }
+.st-price-card.featured {
+  border-color:var(--acc);
+  box-shadow:0 0 0 4px rgba(46,139,139,.12);
+  transform:scale(1.02);
+}
+.st-price-head {
+  background:var(--pd);
+  padding:28px 28px 24px;
+  position:relative;
+}
+.st-price-card.featured .st-price-head { background:var(--acc); }
+.st-price-badge {
+  position:absolute;
+  top:14px; right:14px;
+  background:var(--gd);
+  color:var(--tx);
+  border-radius:50px;
+  padding:3px 10px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.05em;
+}
+.st-price-cat { font-size:11px; color:rgba(255,255,255,.6); font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px; }
+.st-price-name { font-size:20px; font-weight:800; color:var(--wh); margin-bottom:16px; }
+.st-price-amount { font-size:40px; font-weight:900; color:var(--wh); line-height:1; }
+.st-price-amount span { font-size:20px; }
+.st-price-period { font-size:12px; color:rgba(255,255,255,.55); margin-top:4px; }
+.st-price-body { padding:28px; }
+.st-price-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
+.st-price-features li {
+  display:flex; gap:8px; align-items:flex-start;
+  font-size:13px; color:var(--tx); font-weight:500;
+}
+.st-price-features li::before { content:'✓'; color:var(--acc); font-weight:800; flex-shrink:0; }
+.st-price-cta { display:block; width:100%; text-align:center; padding:13px; background:var(--pd); color:var(--wh); border-radius:50px; font-size:14px; font-weight:700; text-decoration:none; transition:var(--tr); }
+.st-price-cta:hover { background:var(--acc); }
+.st-price-card.featured .st-price-cta { background:var(--acc); }
+.st-price-card.featured .st-price-cta:hover { background:var(--pd); }
+
+/* ── FAQ ── */
+.st-faq { padding:100px 0; background:var(--cr); }
+.st-faq-list { max-width:760px; margin:0 auto; }
+.st-faq-item { border-bottom:1px solid var(--bd); }
+.st-faq-q {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 0;
+  cursor:pointer;
+  gap:16px;
+}
+.st-faq-q-text { font-size:15px; font-weight:700; color:var(--tx); line-height:1.4; }
+.st-faq-icon {
+  width:32px; height:32px;
+  background:rgba(29,92,92,.08);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  transition:var(--tr);
+}
+.st-faq-icon svg { width:16px; height:16px; stroke:var(--p); transition:transform .3s; }
+.st-faq-item.open .st-faq-icon { background:var(--p); }
+.st-faq-item.open .st-faq-icon svg { stroke:var(--wh); transform:rotate(180deg); }
+.st-faq-a { display:none; }
+.st-faq-a-content { padding:0 0 20px; font-size:14px; color:var(--txm); line-height:1.8; }
+.st-faq-item.open .st-faq-a { display:block; }
+
+/* ── CTA ── */
+.st-cta {
+  background:var(--pd);
+  padding:80px 0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.st-cta::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center, rgba(46,139,139,.3) 0%, transparent 70%);
+}
+.st-cta .ew { position:relative; z-index:1; }
+.st-cta h2 { font-size:clamp(24px,3vw,42px); font-weight:900; color:var(--wh); margin-bottom:16px; }
+.st-cta h2 span { color:var(--acl); }
+.st-cta p { font-size:16px; color:rgba(255,255,255,.75); margin-bottom:40px; max-width:520px; margin-left:auto; margin-right:auto; }
+.st-cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:1024px) {
+  .st-services-grid { grid-template-columns:repeat(2,1fr); }
+  .st-price-grid { grid-template-columns:1fr; }
+  .st-price-card.featured { transform:none; }
+}
+@media (max-width:900px) {
+  .st-hero .ew { grid-template-columns:1fr; gap:40px; }
+  .st-hero { min-height:auto; padding:100px 0 60px; }
+  .st-why .ew { grid-template-columns:1fr; gap:40px; }
+  .st-process-grid { grid-template-columns:repeat(3,1fr); gap:30px; }
+  .st-process-grid::before { display:none; }
+}
+@media (max-width:640px) {
+  .ew { padding:0 18px; }
+  .st-services-grid { grid-template-columns:1fr; }
+  .st-process-grid { grid-template-columns:1fr 1fr; }
+  .st-hero-cta { flex-direction:column; }
+  .st-btn { justify-content:center; }
+  .st-stat-grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<section class="st-hero">
+  <div class="ew">
+    <div class="st-hero-left">
+      <div class="st-hero-tag">Стоматология — Стамбул</div>
+      <h1>Голголивудская улыбка<br><span>в Турции</span></h1>
+      <p>Имплантация, виниры, отбеливание и выравнивание зубов по европейскому уровню. В 3–5 раз дешевле, чем в России.</p>
+      <div class="st-services-quick">
+        <div class="st-service-q"><div class="st-service-q-dot"></div>Зубные импланты и коронки</div>
+        <div class="st-service-q"><div class="st-service-q-dot"></div>Виниры и эстетическое отбеливание</div>
+        <div class="st-service-q"><div class="st-service-q-dot"></div>Элайнеры и ортодонтическое лечение</div>
+        <div class="st-service-q"><div class="st-service-q-dot"></div>Дизайн улыбки (Smile Design)</div>
+      </div>
+      <div class="st-hero-cta">
+        <a href="https://wa.me/905468189180" class="st-btn st-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Бесплатная консультация
+        </a>
+        <a href="tel:+905468189180" class="st-btn st-btn-outline">+90 546 818 91 80</a>
+      </div>
+    </div>
+    <div class="st-hero-right">
+      <div class="st-smile-preview">
+        <div class="st-smile-emoji">😁</div>
+        <div class="st-smile-text">Улыбка вашей мечты — за 5–7 дней</div>
+        <div class="st-smile-sub">Полный цикл лечения в одной клинике</div>
+      </div>
+      <div class="st-stat-grid">
+        <div class="st-stat-card">
+          <div class="st-stat-val">5000<sup>+</sup></div>
+          <div class="st-stat-lbl">Пациентов в год</div>
+        </div>
+        <div class="st-stat-card">
+          <div class="st-stat-val">3×</div>
+          <div class="st-stat-lbl">Дешевле чем в РФ</div>
+        </div>
+        <div class="st-stat-card">
+          <div class="st-stat-val">5<sup>★</sup></div>
+          <div class="st-stat-lbl">Рейтинг клиники</div>
+        </div>
+        <div class="st-stat-card">
+          <div class="st-stat-val">10<sup>лет</sup></div>
+          <div class="st-stat-lbl">Гарантия импланта</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-services">
+  <div class="ew">
+    <div class="st-section-head">
+      <div class="st-section-tag">Наши услуги</div>
+      <h2 class="st-section-title">Полный спектр<br><span>стоматологических услуг</span></h2>
+      <p class="st-section-sub">От одного импланта до полного преображения улыбки. Используем только сертифицированные материалы.</p>
+    </div>
+    <div class="st-services-grid">
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">🦷</div>
+          <div class="st-service-name">Импланты и коронки</div>
+        </div>
+        <div class="st-service-body">
+          <p>Восстановление утраченных зубов с помощью имплантов лучших мировых брендов. Коронки из диоксида циркония — самый прочный и эстетичный материал.</p>
+          <ul class="st-service-list">
+            <li>Импланты Nobel, Straumann, Osstem</li>
+            <li>Циркониевые коронки</li>
+            <li>Временные коронки за 1 день</li>
+            <li>Всё включено: имплант + коронка</li>
+          </ul>
+          <span class="st-service-price">Имплант от 500€</span>
+        </div>
+      </div>
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">✨</div>
+          <div class="st-service-name">Виниры и Smile Design</div>
+        </div>
+        <div class="st-service-body">
+          <p>Ультратонкие виниры из фарфора или диоксида циркония преображают улыбку за 3–5 дней. Дизайн улыбки — ваш индивидуальный план с цифровым прообразом.</p>
+          <ul class="st-service-list">
+            <li>Фарфоровые и цирконовые виниры</li>
+            <li>Цифровой дизайн улыбки (DSD)</li>
+            <li>Люминиры без обточки</li>
+            <li>Прямые композитные виниры</li>
+          </ul>
+          <span class="st-service-price">Винир от 200€</span>
+        </div>
+      </div>
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">🌟</div>
+          <div class="st-service-name">Отбеливание зубов</div>
+        </div>
+        <div class="st-service-body">
+          <p>Профессиональное отбеливание системами Zoom, Beyond и лазерное отбеливание. До 14 тонов светлее за 1 сеанс в кресле.</p>
+          <ul class="st-service-list">
+            <li>Zoom WhiteSpeed — 1 час в кресле</li>
+            <li>Лазерное отбеливание</li>
+            <li>Ночные каппы для дома</li>
+            <li>Безопасно для эмали</li>
+          </ul>
+          <span class="st-service-price">Отбеливание от 150€</span>
+        </div>
+      </div>
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">🔵</div>
+          <div class="st-service-name">Элайнеры и брекеты</div>
+        </div>
+        <div class="st-service-body">
+          <p>Незаметное выравнивание зубов с помощью прозрачных элайнеров или керамических брекетов. Без металлических замочков.</p>
+          <ul class="st-service-list">
+            <li>Прозрачные элайнеры Invisalign</li>
+            <li>Керамические брекеты</li>
+            <li>Сапфировые брекеты</li>
+            <li>Ретейнеры после лечения</li>
+          </ul>
+          <span class="st-service-price">Элайнеры от 1500€</span>
+        </div>
+      </div>
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">🩹</div>
+          <div class="st-service-name">Лечение дёсен</div>
+        </div>
+        <div class="st-service-body">
+          <p>Лазерное лечение пародонтита и гингивита. Коррекция линии дёсен для идеальной улыбки (Gum Contouring).</p>
+          <ul class="st-service-list">
+            <li>Лазерное лечение пародонтита</li>
+            <li>Коррекция десневой улыбки</li>
+            <li>Профессиональная чистка</li>
+            <li>Air-Flow полирование</li>
+          </ul>
+          <span class="st-service-price">От 80€</span>
+        </div>
+      </div>
+      <div class="st-service-card">
+        <div class="st-service-top">
+          <div class="st-service-icon">⚙️</div>
+          <div class="st-service-name">Протезирование All-on-4/6</div>
+        </div>
+        <div class="st-service-body">
+          <p>Полное восстановление зубного ряда на 4 или 6 имплантах. Постоянные зубы за 3–5 дней без съёмного протеза.</p>
+          <ul class="st-service-list">
+            <li>All-on-4 — полная челюсть на 4 имплантах</li>
+            <li>All-on-6 — максимальная надёжность</li>
+            <li>Временная конструкция в день операции</li>
+            <li>Гарантия 10 лет</li>
+          </ul>
+          <span class="st-service-price">All-on-4 от 3500€</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-why">
+  <div class="ew">
+    <div>
+      <div class="st-section-tag">Почему Турция</div>
+      <h2 class="st-section-title">Мировое качество<br><span style="color:var(--acl)">по доступным ценам</span></h2>
+      <p class="st-section-sub">Турецкие стоматологические клиники входят в топ мирового рейтинга. Стоимость — в 3–5 раз ниже, чем в Западной Европе.</p>
+      <div class="st-why-points">
+        <div class="st-why-point">
+          <div class="st-why-point-icon">🏆</div>
+          <div class="st-why-point-text"><h4>Международные материалы</h4><p>Nobel, Straumann, Osstem — те же импланты, что и в Германии или Швейцарии.</p></div>
+        </div>
+        <div class="st-why-point">
+          <div class="st-why-point-icon">👨‍⚕️</div>
+          <div class="st-why-point-text"><h4>Опытные специалисты</h4><p>Хирурги с международными сертификатами и многолетней практикой.</p></div>
+        </div>
+        <div class="st-why-point">
+          <div class="st-why-point-icon">⚡</div>
+          <div class="st-why-point-text"><h4>Быстрые сроки</h4><p>Полный цикл лечения за 5–7 дней. Временные коронки ставим в день операции.</p></div>
+        </div>
+        <div class="st-why-point">
+          <div class="st-why-point-icon">🔤</div>
+          <div class="st-why-point-text"><h4>Русскоязычный координатор</h4><p>Полное сопровождение от приезда до выезда. Никакого языкового барьера.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="st-why-visual">
+      <div class="st-why-img-wrap">
+        <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-29-at-15.14.47-1.jpeg" alt="Стоматологическое лечение — здоровые зубы" />
+        <div class="st-why-img-badge">
+          <div class="st-why-big-num">3–5<span>×</span></div>
+          <div class="st-why-big-lbl">дешевле, чем в России</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-process">
+  <div class="ew">
+    <div class="st-section-head" style="text-align:center;">
+      <div class="st-section-tag">Как это работает</div>
+      <h2 class="st-section-title">5 шагов к <span>идеальной улыбке</span></h2>
+      <p class="st-section-sub" style="margin:0 auto;">От записи до готовой улыбки — всего 5–7 дней в Стамбуле.</p>
+    </div>
+    <div class="st-process-grid">
+      <div class="st-proc-step">
+        <div class="st-proc-num">1</div>
+        <div class="st-proc-title">Бесплатная консультация</div>
+        <div class="st-proc-text">Отправьте фото и рентген онлайн. Получите план лечения и стоимость.</div>
+      </div>
+      <div class="st-proc-step">
+        <div class="st-proc-num">2</div>
+        <div class="st-proc-title">Приезд в Стамбул</div>
+        <div class="st-proc-text">Трансфер из аэропорта, заселение в отель. Осмотр и КТ в клинике.</div>
+      </div>
+      <div class="st-proc-step">
+        <div class="st-proc-num">3</div>
+        <div class="st-proc-title">Лечение</div>
+        <div class="st-proc-text">Операция или процедура. Временные конструкции устанавливаются сразу.</div>
+      </div>
+      <div class="st-proc-step">
+        <div class="st-proc-num">4</div>
+        <div class="st-proc-title">Готовая улыбка</div>
+        <div class="st-proc-text">Установка постоянных конструкций. Финальная коррекция и полировка.</div>
+      </div>
+      <div class="st-proc-step">
+        <div class="st-proc-num">5</div>
+        <div class="st-proc-title">Послелечение</div>
+        <div class="st-proc-text">Инструкции по уходу, онлайн-консультации из дома. Гарантия до 10 лет.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-price">
+  <div class="ew">
+    <div class="st-section-head" style="text-align:center;">
+      <div class="st-section-tag">Цены</div>
+      <h2 class="st-section-title">Прозрачные <span>цены</span></h2>
+      <p class="st-section-sub" style="margin:0 auto;">Никаких скрытых платежей. Финальная стоимость фиксируется до начала лечения.</p>
+    </div>
+    <div class="st-price-grid">
+      <div class="st-price-card">
+        <div class="st-price-head">
+          <div class="st-price-cat">Восстановление</div>
+          <div class="st-price-name">Имплант + коронка</div>
+          <div class="st-price-amount">500<span>€</span></div>
+          <div class="st-price-period">за один зуб, всё включено</div>
+        </div>
+        <div class="st-price-body">
+          <ul class="st-price-features">
+            <li>Имплант (Nobel / Straumann / Osstem)</li>
+            <li>Циркониевая коронка</li>
+            <li>Хирургическое вмешательство</li>
+            <li>Консультация и КТ</li>
+          </ul>
+          <a href="https://wa.me/905468189180" class="st-price-cta">Узнать подробнее</a>
+        </div>
+      </div>
+      <div class="st-price-card featured">
+        <div class="st-price-head">
+          <div class="st-price-badge">⭐ Популярно</div>
+          <div class="st-price-cat">Эстетика</div>
+          <div class="st-price-name">Виниры (10 зубов)</div>
+          <div class="st-price-amount">2000<span>€</span></div>
+          <div class="st-price-period">комплект 10 виниров</div>
+        </div>
+        <div class="st-price-body">
+          <ul class="st-price-features">
+            <li>10 фарфоровых / цирконовых виниров</li>
+            <li>Цифровой дизайн улыбки (DSD)</li>
+            <li>Временные виниры на время изготовления</li>
+            <li>Полировка и финальная коррекция</li>
+          </ul>
+          <a href="https://wa.me/905468189180" class="st-price-cta">Получить предложение</a>
+        </div>
+      </div>
+      <div class="st-price-card">
+        <div class="st-price-head">
+          <div class="st-price-cat">Полное восстановление</div>
+          <div class="st-price-name">All-on-4</div>
+          <div class="st-price-amount">3500<span>€</span></div>
+          <div class="st-price-period">одна челюсть, всё включено</div>
+        </div>
+        <div class="st-price-body">
+          <ul class="st-price-features">
+            <li>4 импланта на одну челюсть</li>
+            <li>Временный протез в день операции</li>
+            <li>Постоянный протез из циркония</li>
+            <li>Гарантия 10 лет</li>
+          </ul>
+          <a href="https://wa.me/905468189180" class="st-price-cta">Узнать подробнее</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-faq">
+  <div class="ew">
+    <div class="st-section-head" style="text-align:center;">
+      <div class="st-section-tag">FAQ</div>
+      <h2 class="st-section-title">Частые <span>вопросы</span></h2>
+      <p class="st-section-sub" style="margin:0 auto;">Всё, что нужно знать о стоматологическом лечении в Турции.</p>
+    </div>
+    <div class="st-faq-list">
+      <div class="st-faq-item">
+        <div class="st-faq-q">
+          <span class="st-faq-q-text">Безопасно ли лечить зубы в Турции?</span>
+          <div class="st-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></div>
+        </div>
+        <div class="st-faq-a"><div class="st-faq-a-content">Да. Турецкие стоматологические клиники имеют международные сертификаты JCI и ISO. Мы используем те же материалы и технологии, что и в ведущих европейских клиниках. Наши хирурги прошли обучение в Европе и США.</div></div>
+      </div>
+      <div class="st-faq-item">
+        <div class="st-faq-q">
+          <span class="st-faq-q-text">Сколько дней нужно провести в Стамбуле?</span>
+          <div class="st-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></div>
+        </div>
+        <div class="st-faq-a"><div class="st-faq-a-content">Зависит от лечения. Виниры и коронки — 5–7 дней. Имплантация — 3–5 дней (с временными коронками), затем возвращение через 3–6 месяцев для постоянных. All-on-4 — 5–7 дней.</div></div>
+      </div>
+      <div class="st-faq-item">
+        <div class="st-faq-q">
+          <span class="st-faq-q-text">Насколько Турция дешевле России?</span>
+          <div class="st-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></div>
+        </div>
+        <div class="st-faq-a"><div class="st-faq-a-content">В среднем в 3–5 раз. Например, один имплант с коронкой в Москве может стоить 150–250 тысяч рублей (1500–2500€), у нас — от 500€ при том же качестве материалов. Даже с учётом дороги и отеля экономия значительная.</div></div>
+      </div>
+      <div class="st-faq-item">
+        <div class="st-faq-q">
+          <span class="st-faq-q-text">Что делать, если возникнут проблемы после возвращения домой?</span>
+          <div class="st-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></div>
+        </div>
+        <div class="st-faq-a"><div class="st-faq-a-content">У нас работает онлайн-поддержка. Мы консультируем удалённо и при необходимости направляем к партнёрским клиникам в вашем городе. При гарантийных случаях организуем повторный визит за наш счёт.</div></div>
+      </div>
+      <div class="st-faq-item">
+        <div class="st-faq-q">
+          <span class="st-faq-q-text">Как долго служат виниры и импланты?</span>
+          <div class="st-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></div>
+        </div>
+        <div class="st-faq-a"><div class="st-faq-a-content">Фарфоровые виниры служат 15–20 лет при правильном уходе. Циркониевые — 20–25 лет. Импланты — пожизненно при условии здоровья дёсен. Мы даём письменную гарантию на все конструкции.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="st-cta">
+  <div class="ew">
+    <h2>Подарите себе<br><span>идеальную улыбку</span></h2>
+    <p>Бесплатная онлайн-консультация. Отправьте фото — получите план лечения и точную стоимость за 24 часа.</p>
+    <div class="st-cta-btns">
+      <a href="https://wa.me/905468189180" class="st-btn st-btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Написать в WhatsApp
+      </a>
+      <a href="tel:+905468189180" class="st-btn st-btn-outline">+90 546 818 91 80</a>
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.st-faq-q').forEach(function(q){
+  q.addEventListener('click', function(){
+    var item = this.closest('.st-faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.st-faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if(!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>

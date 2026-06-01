@@ -1,0 +1,1395 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ЗУБНЫЕ КОРОНКИ
+   Dil: RU | Elementor HTML Widget | Prefix: eit-cor-
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-cor *, .eit-cor *::before, .eit-cor *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.eit-cor {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-cor a { text-decoration: none; color: inherit; }
+.eit-cor ul { list-style: none; }
+.eit-cor img { max-width: 100%; display: block; }
+
+.eit-cor-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-cor-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-cor-fade.is-visible { opacity: 1; transform: none; }
+.eit-cor-fade-d1 { transition-delay: .12s; }
+.eit-cor-fade-d2 { transition-delay: .22s; }
+.eit-cor-fade-d3 { transition-delay: .34s; }
+.eit-cor-fade-d4 { transition-delay: .46s; }
+
+/* ── Shared components ─────────────────────────── */
+.eit-cor-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  margin-bottom: 16px;
+}
+.eit-cor-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+.eit-cor-heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 800; color: var(--eit-primary);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.eit-cor-heading span { color: var(--eit-accent); }
+.eit-cor-divider {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  margin-bottom: 26px;
+}
+.eit-cor-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition); cursor: pointer; border: none;
+}
+.eit-cor-btn--primary {
+  background: var(--eit-accent);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-cor-btn--primary:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.4);
+}
+.eit-cor-btn--outline {
+  background: transparent; color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3);
+}
+.eit-cor-btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+.eit-cor-btn svg { flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-cor-hero {
+  background: var(--eit-primary);
+  min-height: 580px;
+  display: flex; align-items: center;
+  padding: 80px 0 0;
+  position: relative; overflow: hidden;
+}
+.eit-cor-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 50%, rgba(46,139,139,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at -10% 60%, rgba(21,68,68,.45) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-cor-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(21,68,68,.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+.eit-cor-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.eit-cor-hero-left { padding-bottom: 72px; }
+.eit-cor-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
+}
+.eit-cor-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: var(--eit-transition); }
+.eit-cor-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-cor-hero-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 900; color: var(--eit-white);
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-cor-hero-title span { color: var(--eit-accent-light); }
+.eit-cor-hero-desc {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.eit-cor-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.eit-cor-stat-value {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-cor-stat-label {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 4px;
+}
+.eit-cor-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero right — CTA card */
+.eit-cor-hero-right {
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.eit-cor-hero-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.eit-cor-hero-card-badge {
+  display: inline-block;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+  align-self: flex-start;
+}
+.eit-cor-hero-card-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.3;
+}
+.eit-cor-hero-card-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-cor-hero-card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.82);
+}
+.eit-cor-hero-card-list li::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-cor-hero-card-divider {
+  height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.eit-cor-hero-card-cta {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-cor-hero-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 20px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-cor-hero-card-btn--wa { background: #25D366; }
+.eit-cor-hero-card-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-cor-hero-card-btn--tel {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+}
+.eit-cor-hero-card-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   2. ABOUT
+   ════════════════════════════════════════════════ */
+.eit-cor-about {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-cor-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.eit-cor-about-img-wrap {
+  position: relative;
+}
+.eit-cor-about-img-main {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  outline: 2px solid rgba(46,139,139,.3);
+  outline-offset: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14);
+  display: block;
+}
+.eit-cor-about-deco {
+  position: absolute; top: -20px; left: -20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(46,139,139,.08); z-index: -1;
+}
+.eit-cor-about-text p {
+  font-size: 14.5px; color: var(--eit-text-muted);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.eit-cor-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-cor-about-highlights {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; margin-top: 28px;
+}
+.eit-cor-about-highlight {
+  background: var(--eit-cream); border-radius: 12px;
+  padding: 16px 18px; display: flex; align-items: flex-start; gap: 12px;
+}
+.eit-cor-about-highlight-icon {
+  width: 36px; height: 36px;
+  background: rgba(46,139,139,.12); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.eit-cor-about-highlight-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-cor-about-highlight-text {
+  font-size: 12.5px; font-weight: 600;
+  color: var(--eit-primary); line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════
+   3. WHY NEEDED — KEY REASONS
+   ════════════════════════════════════════════════ */
+.eit-cor-reasons {
+  background: var(--eit-primary);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.eit-cor-reasons::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-cor-reasons-head {
+  text-align: center; margin-bottom: 48px; position: relative;
+}
+.eit-cor-reasons-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-cor-reasons-title span { color: var(--eit-accent-light); }
+.eit-cor-reasons-sub {
+  font-size: 14px; color: rgba(255,255,255,.65);
+  max-width: 540px; margin: 14px auto 0; line-height: 1.7;
+}
+.eit-cor-reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative;
+}
+.eit-cor-reason-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: var(--eit-transition);
+}
+.eit-cor-reason-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-4px);
+  border-color: rgba(74,172,172,.4);
+}
+.eit-cor-reason-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.25);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-cor-reason-icon svg { width: 24px; height: 24px; color: var(--eit-accent-light); }
+.eit-cor-reason-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-cor-reason-text {
+  font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   4. TYPES
+   ════════════════════════════════════════════════ */
+.eit-cor-types {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-cor-types-head {
+  text-align: center; margin-bottom: 52px;
+}
+.eit-cor-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.eit-cor-type-card {
+  background: var(--eit-white);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(29,92,92,.09);
+  transition: var(--eit-transition);
+  display: flex; flex-direction: column;
+}
+.eit-cor-type-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(29,92,92,.15);
+}
+.eit-cor-type-header {
+  background: var(--eit-primary);
+  padding: 28px 24px 22px;
+  position: relative; overflow: hidden;
+}
+.eit-cor-type-header::after {
+  content: '';
+  position: absolute; bottom: -16px; right: -16px;
+  width: 80px; height: 80px;
+  background: rgba(255,255,255,.06);
+  border-radius: 50%;
+}
+.eit-cor-type-icon {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,.12);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.eit-cor-type-icon svg { width: 22px; height: 22px; color: var(--eit-accent-light); }
+.eit-cor-type-name {
+  font-size: 17px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.2;
+  margin-bottom: 6px;
+}
+.eit-cor-type-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.85);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+}
+.eit-cor-type-body {
+  padding: 24px;
+  flex: 1; display: flex; flex-direction: column;
+}
+.eit-cor-type-desc {
+  font-size: 13.5px; color: var(--eit-text-muted);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.eit-cor-type-specs {
+  margin-top: auto;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.eit-cor-type-spec {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12.5px; color: var(--eit-primary); font-weight: 600;
+}
+.eit-cor-type-spec::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--eit-accent); flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   5. WHY TURKEY
+   ════════════════════════════════════════════════ */
+.eit-cor-turkey {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-cor-turkey-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.eit-cor-turkey-text {}
+.eit-cor-turkey-text p {
+  font-size: 14.5px; color: var(--eit-text-muted);
+  line-height: 1.85; margin-bottom: 18px;
+}
+.eit-cor-turkey-text p strong { color: var(--eit-primary); font-weight: 700; }
+.eit-cor-turkey-list {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-cor-turkey-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.65;
+}
+.eit-cor-turkey-list li .eit-cor-turkey-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(46,139,139,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.eit-cor-turkey-list li .eit-cor-turkey-dot::after {
+  content: ''; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--eit-accent);
+}
+.eit-cor-turkey-list li strong { color: var(--eit-primary); font-weight: 700; }
+
+.eit-cor-turkey-price {
+  background: var(--eit-cream);
+  border-radius: 22px;
+  padding: 36px 32px;
+}
+.eit-cor-turkey-price-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--eit-accent); margin-bottom: 14px;
+}
+.eit-cor-turkey-price-main {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900; color: var(--eit-primary);
+  line-height: 1; margin-bottom: 8px;
+}
+.eit-cor-turkey-price-main span {
+  font-size: 20px; font-weight: 600;
+  color: var(--eit-text-muted); margin-left: 6px;
+}
+.eit-cor-turkey-price-note {
+  font-size: 12.5px; color: var(--eit-text-muted);
+  margin-bottom: 24px; line-height: 1.6;
+}
+.eit-cor-turkey-price-divider {
+  height: 1px; background: var(--eit-border); margin-bottom: 24px;
+}
+.eit-cor-turkey-price-factors {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-cor-turkey-price-factor {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px; color: var(--eit-text-muted); line-height: 1.5;
+}
+.eit-cor-turkey-price-factor-num {
+  width: 26px; height: 26px; border-radius: 8px;
+  background: var(--eit-primary); color: var(--eit-white);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   6. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-cor-process {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-cor-process-head {
+  text-align: center; margin-bottom: 56px;
+}
+.eit-cor-process-sub {
+  font-size: 14px; color: var(--eit-text-muted);
+  max-width: 540px; margin: 12px auto 0; line-height: 1.7;
+}
+.eit-cor-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-bottom: 48px;
+}
+.eit-cor-step {
+  background: var(--eit-white);
+  border-radius: 18px;
+  padding: 28px 24px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(29,92,92,.07);
+  transition: var(--eit-transition);
+}
+.eit-cor-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.12);
+}
+.eit-cor-step-num {
+  font-size: 52px; font-weight: 900;
+  color: rgba(29,92,92,.07);
+  position: absolute; top: 12px; right: 18px;
+  line-height: 1;
+}
+.eit-cor-step-icon {
+  width: 46px; height: 46px;
+  background: rgba(46,139,139,.1); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.eit-cor-step-icon svg { width: 20px; height: 20px; color: var(--eit-accent); }
+.eit-cor-step-title {
+  font-size: 14px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 8px;
+}
+.eit-cor-step-text {
+  font-size: 13px; color: var(--eit-text-muted); line-height: 1.7;
+}
+
+.eit-cor-care {
+  background: var(--eit-primary);
+  border-radius: 22px;
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+.eit-cor-care-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 14px;
+}
+.eit-cor-care-text {
+  font-size: 13.5px; color: rgba(255,255,255,.7);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.eit-cor-care-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-cor-care-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.6;
+}
+.eit-cor-care-list li::before {
+  content: '✓';
+  font-size: 12px; font-weight: 700;
+  color: var(--eit-accent-light); flex-shrink: 0;
+  margin-top: 2px;
+}
+.eit-cor-care-right {}
+.eit-cor-care-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 24px;
+  text-align: center; margin-bottom: 16px;
+}
+.eit-cor-care-stat-value {
+  font-size: 42px; font-weight: 900;
+  color: var(--eit-white); line-height: 1;
+}
+.eit-cor-care-stat-label {
+  font-size: 11px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 6px;
+}
+.eit-cor-care-note {
+  font-size: 13px; color: rgba(255,255,255,.6);
+  line-height: 1.65; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   7. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-cor-cta {
+  background: linear-gradient(135deg, var(--eit-accent) 0%, var(--eit-primary) 100%);
+  padding: 64px 0;
+  text-align: center; position: relative; overflow: hidden;
+}
+.eit-cor-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eit-cor-cta-inner { position: relative; }
+.eit-cor-cta-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.eit-cor-cta-title {
+  font-size: clamp(22px, 3.2vw, 38px);
+  font-weight: 800; color: var(--eit-white);
+  line-height: 1.2; margin-bottom: 14px;
+}
+.eit-cor-cta-sub {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+}
+.eit-cor-cta-btns {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  justify-content: center;
+}
+.eit-cor-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 32px; border-radius: 14px;
+  font-family: var(--eit-font); font-size: 13.5px; font-weight: 700;
+  text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-cor-cta-btn--wa {
+  background: #25D366;
+  box-shadow: 0 8px 28px rgba(0,0,0,.2);
+}
+.eit-cor-cta-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-cor-cta-btn--tel {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+}
+.eit-cor-cta-btn--tel:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   8. FAQ
+   ════════════════════════════════════════════════ */
+.eit-cor-faq {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-cor-faq-head {
+  text-align: center; margin-bottom: 52px;
+}
+.eit-cor-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px; align-items: start;
+}
+.eit-cor-faq-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-cor-faq-item {
+  background: var(--eit-cream);
+  border-radius: 14px;
+  border: 1px solid var(--eit-border);
+  overflow: hidden;
+  transition: var(--eit-transition);
+}
+.eit-cor-faq-item.is-open { border-color: rgba(46,139,139,.3); }
+.eit-cor-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 20px 22px;
+  cursor: pointer; background: none; border: none;
+  width: 100%; text-align: left;
+  font-family: var(--eit-font); font-size: 14px; font-weight: 700;
+  color: var(--eit-primary);
+}
+.eit-cor-faq-q svg {
+  width: 18px; height: 18px; flex-shrink: 0;
+  color: var(--eit-accent); transition: transform .3s;
+}
+.eit-cor-faq-item.is-open .eit-cor-faq-q svg { transform: rotate(180deg); }
+.eit-cor-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), padding .3s;
+  padding: 0 22px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.8;
+}
+.eit-cor-faq-item.is-open .eit-cor-faq-a { max-height: 400px; padding: 0 22px 22px; }
+
+/* FAQ aside */
+.eit-cor-faq-aside {
+  position: sticky; top: 100px;
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 32px 28px;
+}
+.eit-cor-faq-aside-title {
+  font-size: 17px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-cor-faq-aside-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.eit-cor-faq-aside-btns { display: flex; flex-direction: column; gap: 12px; }
+.eit-cor-faq-aside-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #fff !important; transition: var(--eit-transition);
+}
+.eit-cor-faq-aside-btn--wa { background: #25D366; }
+.eit-cor-faq-aside-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-cor-faq-aside-btn--tel {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.eit-cor-faq-aside-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.eit-cor-faq-aside-divider {
+  height: 1px; background: rgba(255,255,255,.12); margin: 22px 0;
+}
+.eit-cor-faq-aside-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-cor-faq-aside-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.5;
+}
+.eit-cor-faq-aside-list li::before {
+  content: '✓'; color: var(--eit-accent-light);
+  font-weight: 700; flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-cor-about-inner { gap: 48px; }
+  .eit-cor-turkey-inner { gap: 40px; }
+  .eit-cor-steps { grid-template-columns: repeat(2, 1fr); }
+  .eit-cor-faq-grid { grid-template-columns: 1fr; }
+  .eit-cor-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-cor-hero-inner { grid-template-columns: 1fr; }
+  .eit-cor-hero-right { display: none; }
+  .eit-cor-hero { min-height: auto; }
+  .eit-cor-about-inner { grid-template-columns: 1fr; }
+  .eit-cor-about-img-wrap { min-height: auto; }
+  .eit-cor-reasons-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-cor-types-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-cor-turkey-inner { grid-template-columns: 1fr; }
+  .eit-cor-care { grid-template-columns: 1fr; }
+  .eit-cor-hero-actions .eit-cor-btn { justify-content: center; }
+}
+@media (max-width: 640px) {
+  .eit-cor-wrap { padding: 0 16px; }
+  .eit-cor-reasons-grid { grid-template-columns: 1fr; }
+  .eit-cor-types-grid { grid-template-columns: 1fr; }
+  .eit-cor-steps { grid-template-columns: 1fr; }
+  .eit-cor-about-highlights { grid-template-columns: 1fr; }
+  .eit-cor-hero-stats { gap: 20px; }
+  .eit-cor-hero-left { padding-bottom: 40px; }
+  .eit-cor-care { padding: 28px 22px; }
+  .eit-cor-cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="eit-cor" id="eitCorPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-hero" aria-labelledby="eit-cor-hero-title">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-cor-hero-left">
+        <nav class="eit-cor-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Зубные коронки</span>
+        </nav>
+
+        <div class="eit-cor-tag eit-cor-tag--light eit-cor-fade">Протезирование зубов</div>
+        <h1 id="eit-cor-hero-title" class="eit-cor-hero-title eit-cor-fade eit-cor-fade-d1">
+          Зубные коронки<br><span>в Стамбуле</span>
+        </h1>
+        <p class="eit-cor-hero-desc eit-cor-fade eit-cor-fade-d2">
+          Восстановите красоту и функцию улыбки с помощью <strong style="color:#fff;">зубных коронок</strong> в клинике ESTE IN TURKEY. Циркониевые, керамические и металлокерамические коронки от ведущих швейцарских брендов — в 3 раза дешевле, чем в Европе.
+        </p>
+
+        <div class="eit-cor-hero-stats eit-cor-fade eit-cor-fade-d2">
+          <div>
+            <div class="eit-cor-stat-value">15–20</div>
+            <div class="eit-cor-stat-label">лет службы</div>
+          </div>
+          <div>
+            <div class="eit-cor-stat-value">5–10</div>
+            <div class="eit-cor-stat-label">дней лечения</div>
+          </div>
+          <div>
+            <div class="eit-cor-stat-value">3×</div>
+            <div class="eit-cor-stat-label">дешевле Европы</div>
+          </div>
+          <div>
+            <div class="eit-cor-stat-value">IVOCLAR</div>
+            <div class="eit-cor-stat-label">материалы</div>
+          </div>
+        </div>
+
+        <div class="eit-cor-hero-actions eit-cor-fade eit-cor-fade-d3">
+          <a href="https://wa.me/905468189180" class="eit-cor-btn eit-cor-btn--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-cor-btn eit-cor-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="eit-cor-hero-right">
+        <div class="eit-cor-hero-card">
+          <span class="eit-cor-hero-card-badge">Стоматология Турции</span>
+          <div class="eit-cor-hero-card-title">Бесплатная консультация по коронкам</div>
+          <ul class="eit-cor-hero-card-list">
+            <li>Индивидуальный подбор материала</li>
+            <li>Перевод на русском языке</li>
+            <li>Цены в 3× дешевле европейских</li>
+            <li>Гарантия и сопровождение</li>
+          </ul>
+          <div class="eit-cor-hero-card-divider"></div>
+          <div class="eit-cor-hero-card-cta">
+            <a href="https://wa.me/905468189180" class="eit-cor-hero-card-btn eit-cor-hero-card-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              Написать в WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-cor-hero-card-btn eit-cor-hero-card-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ABOUT
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-about" aria-labelledby="eit-cor-about-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-about-inner">
+
+      <div class="eit-cor-about-img-wrap eit-cor-fade">
+        <div class="eit-cor-about-deco"></div>
+        <img
+          src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Dental-Implant-Treatment.webp"
+          alt="Зубные коронки — лечение"
+          class="eit-cor-about-img-main"
+          loading="lazy"
+          onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
+        />
+      </div>
+
+      <div class="eit-cor-about-text">
+        <div class="eit-cor-tag eit-cor-fade">О процедуре</div>
+        <h2 id="eit-cor-about-heading" class="eit-cor-heading eit-cor-fade eit-cor-fade-d1">
+          Что такое<br><span>зубные коронки?</span>
+        </h2>
+        <div class="eit-cor-divider eit-cor-fade eit-cor-fade-d1"></div>
+
+        <div class="eit-cor-fade eit-cor-fade-d2">
+          <p>
+            <strong>Зубные коронки</strong> — это постоянные несъёмные <strong>зубные протезы</strong>, которые своей формой и цветом в точности имитируют натуральные <strong>зубы</strong>. Коронки бывают одиночные и скреплённые между собой, так называемые — <strong>зубные мосты</strong>.
+          </p>
+          <p>
+            <strong>Коронки</strong> используют чтобы скрыть косметические дефекты зубов (сколы и повреждения), а также для замены одного отсутствующего зуба. Когда устанавливаются импланты, они также покрываются <strong>коронками</strong>.
+          </p>
+          <p>
+            <strong>Зубной мост</strong> — это зубные коронки, связанные между собой и применяемые при отсутствии одного или нескольких зубов. Зубной мост является несъёмной протезной конструкцией, обеспечивающей долговременное функциональное и эстетическое решение.
+          </p>
+        </div>
+
+        <div class="eit-cor-about-highlights eit-cor-fade eit-cor-fade-d3">
+          <div class="eit-cor-about-highlight">
+            <div class="eit-cor-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="eit-cor-about-highlight-text">Несъёмная конструкция на весь день</div>
+          </div>
+          <div class="eit-cor-about-highlight">
+            <div class="eit-cor-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <div class="eit-cor-about-highlight-text">Точное совпадение цвета и формы</div>
+          </div>
+          <div class="eit-cor-about-highlight">
+            <div class="eit-cor-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="eit-cor-about-highlight-text">До 20 лет срок службы</div>
+          </div>
+          <div class="eit-cor-about-highlight">
+            <div class="eit-cor-about-highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="eit-cor-about-highlight-text">Гипоаллергенные материалы</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY NEEDED — REASONS
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-reasons" aria-labelledby="eit-cor-reasons-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-reasons-head">
+      <div class="eit-cor-tag eit-cor-tag--light eit-cor-fade">Показания</div>
+      <h2 id="eit-cor-reasons-heading" class="eit-cor-reasons-title eit-cor-fade eit-cor-fade-d1">
+        Для чего нужны<br><span>зубные коронки?</span>
+      </h2>
+      <p class="eit-cor-reasons-sub eit-cor-fade eit-cor-fade-d2">
+        Зубные коронки могут быть необходимы по разным причинам — их применение зависит от конкретной ситуации и состояния зуба.
+      </p>
+    </div>
+
+    <div class="eit-cor-reasons-grid">
+      <div class="eit-cor-reason-card eit-cor-fade">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">Разрушение зуба</div>
+        <p class="eit-cor-reason-text">Если зуб повреждён кариесом или травмой с потерей структуры — коронка восстанавливает форму, функцию и эстетику.</p>
+      </div>
+      <div class="eit-cor-reason-card eit-cor-fade eit-cor-fade-d1">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">Укрепление слабых зубов</div>
+        <p class="eit-cor-reason-text">Коронки укрепляют зубы, ослабленные большим наполнением, наличием трещин и других проблем, предотвращая дальнейшее разрушение.</p>
+      </div>
+      <div class="eit-cor-reason-card eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">Косметические цели</div>
+        <p class="eit-cor-reason-text">Коронки корректируют форму, размер, цвет и выравнивание зубов — помогают достичь желаемого эстетического результата.</p>
+      </div>
+      <div class="eit-cor-reason-card eit-cor-fade eit-cor-fade-d1">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">Замена больших пломб</div>
+        <p class="eit-cor-reason-text">Замена нескольких больших пломб коронкой предотвращает дальнейшее разрушение зуба и обеспечивает более долговечное решение.</p>
+      </div>
+      <div class="eit-cor-reason-card eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">После эндодонтического лечения</div>
+        <p class="eit-cor-reason-text">После лечения корневых каналов зуб становится хрупким. Установка коронки защищает и укрепляет такой зуб от повреждений.</p>
+      </div>
+      <div class="eit-cor-reason-card eit-cor-fade eit-cor-fade-d3">
+        <div class="eit-cor-reason-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="eit-cor-reason-title">Замена потерянного зуба</div>
+        <p class="eit-cor-reason-text">Зубные коронки используются в составе мостов и имплантов для замены потерянных зубов, обеспечивая функциональность и эстетику.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TYPES
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-types" aria-labelledby="eit-cor-types-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-types-head">
+      <div class="eit-cor-tag eit-cor-fade">Материалы</div>
+      <h2 id="eit-cor-types-heading" class="eit-cor-heading eit-cor-fade eit-cor-fade-d1">
+        Виды зубных <span>коронок</span>
+      </h2>
+      <p style="font-size:14px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;line-height:1.7;" class="eit-cor-fade eit-cor-fade-d2">
+        В современных клиниках коронки изготавливают из диоксида циркония, керамики и металлокерамики. Выбор материала зависит от индивидуальных потребностей пациента, местоположения зуба и эстетических предпочтений.
+      </p>
+    </div>
+
+    <div class="eit-cor-types-grid">
+      <!-- Ceramic -->
+      <div class="eit-cor-type-card eit-cor-fade">
+        <div class="eit-cor-type-header">
+          <div class="eit-cor-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <div class="eit-cor-type-name">Керамические коронки</div>
+          <span class="eit-cor-type-badge">Передние зубы</span>
+        </div>
+        <div class="eit-cor-type-body">
+          <p class="eit-cor-type-desc">
+            Коронки из прессованной <strong>керамики</strong> выглядят максимально естественно благодаря пористой природной структуре. Хороший выбор, если необходимо скрыть эстетический недостаток передних зубов. Не рекомендуются на моляры из-за меньшей прочности материала.
+          </p>
+          <div class="eit-cor-type-specs">
+            <div class="eit-cor-type-spec">Срок службы: 12–15 лет</div>
+            <div class="eit-cor-type-spec">Максимальный эстетический эффект</div>
+            <div class="eit-cor-type-spec">Подходит для передних зубов</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zirconia -->
+      <div class="eit-cor-type-card eit-cor-fade eit-cor-fade-d1">
+        <div class="eit-cor-type-header">
+          <div class="eit-cor-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="eit-cor-type-name">Циркониевые коронки</div>
+          <span class="eit-cor-type-badge">Рекомендованы</span>
+        </div>
+        <div class="eit-cor-type-body">
+          <p class="eit-cor-type-desc">
+            Основное <strong>достоинство циркониевых коронок</strong> — прочность и долговечность. Их ставят на моляры и премоляры: <strong>цирконий</strong> выдерживает жевательные нагрузки. Создаёт эффект «голливудской улыбки». В клинике используется цирконий бренда <strong>IVOCLAR</strong>.
+          </p>
+          <div class="eit-cor-type-specs">
+            <div class="eit-cor-type-spec">Срок службы: 15–20 лет</div>
+            <div class="eit-cor-type-spec">Подходит для жевательных зубов</div>
+            <div class="eit-cor-type-spec">Цирконий IVOCLAR (Швейцария)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metal-ceramic -->
+      <div class="eit-cor-type-card eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-type-header">
+          <div class="eit-cor-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          </div>
+          <div class="eit-cor-type-name">Металлокерамика</div>
+          <span class="eit-cor-type-badge">ALL on 4 / 6</span>
+        </div>
+        <div class="eit-cor-type-body">
+          <p class="eit-cor-type-desc">
+            <strong>Гибридные конструкции</strong>: внутренняя часть из металла, внешняя покрыта цирконием. Применяются в системах <strong>ALL on 4</strong> и <strong>ALL on 6</strong> — единый протез из титановых имплантов, искусственной десны и зубных коронок. Устанавливаются при полном отсутствии зубов.
+          </p>
+          <div class="eit-cor-type-specs">
+            <div class="eit-cor-type-spec">Срок службы: 15–20 лет</div>
+            <div class="eit-cor-type-spec">Для систем ALL on 4 / ALL on 6</div>
+            <div class="eit-cor-type-spec">Цвет подбирается индивидуально</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY TURKEY + PRICE
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-turkey" aria-labelledby="eit-cor-turkey-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-turkey-inner">
+
+      <div class="eit-cor-turkey-text">
+        <div class="eit-cor-tag eit-cor-fade">Почему Турция</div>
+        <h2 id="eit-cor-turkey-heading" class="eit-cor-heading eit-cor-fade eit-cor-fade-d1">
+          Зубные коронки<br><span>в Турции</span>
+        </h2>
+        <div class="eit-cor-divider eit-cor-fade eit-cor-fade-d1"></div>
+        <p class="eit-cor-fade eit-cor-fade-d2">
+          <strong>Турецкие стоматологи</strong> завоевали доверие миллионов пациентов со всего мира. <strong>Турция</strong> совмещает в себе всё то, что ищет человек, нуждающийся в лечении зубов:
+        </p>
+        <ul class="eit-cor-turkey-list eit-cor-fade eit-cor-fade-d2">
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Добросовестное медицинское образование</strong> и десятилетия опыта стоматологического туризма.</span>
+          </li>
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Широкий выбор материалов</strong> — от бюджетных локальных брендов до люксовых брендов из Швейцарии.</span>
+          </li>
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Клиентоориентированность</strong> — турецкие специалисты объясняют плюсы и минусы каждого варианта лечения.</span>
+          </li>
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Современное оборудование</strong>, стерильность, чистота, профессионализм.</span>
+          </li>
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Медицинская поездка «под ключ»</strong> — отель, транспорт, переводчик, антибиотики, капы для защиты.</span>
+          </li>
+          <li>
+            <span class="eit-cor-turkey-dot"></span>
+            <span><strong>Соотношение цены и качества</strong>: коронки в Турции значительно дешевле, чем в Европе и российских клиниках.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-turkey-price">
+          <div class="eit-cor-turkey-price-label">Стоимость одной коронки</div>
+          <div class="eit-cor-turkey-price-main">140–350<span>€</span></div>
+          <p class="eit-cor-turkey-price-note">Стоимость зависит от материала, количества коронок и сложности лечения. Уточняйте актуальную цену на консультации.</p>
+          <div class="eit-cor-turkey-price-divider"></div>
+          <p style="font-size:13px;font-weight:700;color:var(--eit-primary);margin-bottom:14px;">Факторы, влияющие на цену:</p>
+          <div class="eit-cor-turkey-price-factors">
+            <div class="eit-cor-turkey-price-factor">
+              <div class="eit-cor-turkey-price-factor-num">1</div>
+              <span><strong>Качество материала</strong> — цирконий бывает от разных производителей. В нашей клинике используется IVOCLAR (Швейцария).</span>
+            </div>
+            <div class="eit-cor-turkey-price-factor">
+              <div class="eit-cor-turkey-price-factor-num">2</div>
+              <span><strong>Лаборатория</strong> — новизна оборудования и внимание к деталям определяют будущее ощущение зубов «как родных».</span>
+            </div>
+            <div class="eit-cor-turkey-price-factor">
+              <div class="eit-cor-turkey-price-factor-num">3</div>
+              <span><strong>Опыт врача</strong> — стоимость услуг закономерно различается, однако молодые специалисты в Турции часто обладают высоким уровнем.</span>
+            </div>
+            <div class="eit-cor-turkey-price-factor">
+              <div class="eit-cor-turkey-price-factor-num">4</div>
+              <span><strong>Честность оферты</strong> — в нашей клинике вы получаете полный план лечения без скрытых расходов.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-process" aria-labelledby="eit-cor-process-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-process-head">
+      <div class="eit-cor-tag eit-cor-fade">Этапы лечения</div>
+      <h2 id="eit-cor-process-heading" class="eit-cor-heading eit-cor-fade eit-cor-fade-d1">
+        Процесс установки <span>зубных коронок</span>
+      </h2>
+      <p class="eit-cor-process-sub eit-cor-fade eit-cor-fade-d2">
+        Процесс установки включает несколько этапов, начиная с диагностики. Весь процесс лечения занимает от 5 до 10 дней.
+      </p>
+    </div>
+
+    <div class="eit-cor-steps">
+      <div class="eit-cor-step eit-cor-fade">
+        <div class="eit-cor-step-num">01</div>
+        <div class="eit-cor-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="eit-cor-step-title">Диагностика и план лечения</div>
+        <p class="eit-cor-step-text">Врач проводит тщательную оценку состояния зубов, решает необходимость установки коронок и разрабатывает план лечения с выбором материала.</p>
+      </div>
+      <div class="eit-cor-step eit-cor-fade eit-cor-fade-d1">
+        <div class="eit-cor-step-num">02</div>
+        <div class="eit-cor-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        </div>
+        <div class="eit-cor-step-title">Подготовка зуба и снятие отпечатка</div>
+        <p class="eit-cor-step-text">Зуб подвергается подготовке: удаление повреждённых тканей и придание формы. Затем берётся отпечаток для изготовления индивидуальной коронки.</p>
+      </div>
+      <div class="eit-cor-step eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-step-num">03</div>
+        <div class="eit-cor-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="eit-cor-step-title">Временная коронка</div>
+        <p class="eit-cor-step-text">При необходимости врач устанавливает временную коронку для защиты и поддержания функциональности до окончательной установки постоянной.</p>
+      </div>
+      <div class="eit-cor-step eit-cor-fade eit-cor-fade-d1">
+        <div class="eit-cor-step-num">04</div>
+        <div class="eit-cor-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="eit-cor-step-title">Изготовление в лаборатории</div>
+        <p class="eit-cor-step-text">Отпечаток отправляется в стоматологическую лабораторию, где специалисты создают коронку с учётом индивидуальных особенностей пациента.</p>
+      </div>
+      <div class="eit-cor-step eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-step-num">05</div>
+        <div class="eit-cor-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-cor-step-title">Окончательная установка</div>
+        <p class="eit-cor-step-text">Когда коронка готова, врач проверяет соответствие цвет и при необходимости вносит коррекции. Коронка фиксируется специальным цементом.</p>
+      </div>
+    </div>
+
+    <!-- Care block -->
+    <div class="eit-cor-care eit-cor-fade">
+      <div>
+        <div class="eit-cor-care-title">Уход за зубными коронками</div>
+        <p class="eit-cor-care-text">Эффективный уход продлит срок службы зубных коронок и поможет поддерживать здоровье рта на долгие годы.</p>
+        <ul class="eit-cor-care-list">
+          <li>Регулярная гигиеническая чистка: используйте мягкую зубную щётку и зубную нить для удаления налёта.</li>
+          <li>Избегание травм: предостерегайтесь жевания твёрдых предметов, которые могут повредить коронки.</li>
+          <li>Регулярные визиты к стоматологу: профессиональная оценка и чистка поддержат здоровье коронок.</li>
+        </ul>
+      </div>
+      <div class="eit-cor-care-right">
+        <div class="eit-cor-care-stat">
+          <div class="eit-cor-care-stat-value">5–10</div>
+          <div class="eit-cor-care-stat-label">дней — полный курс лечения</div>
+        </div>
+        <p class="eit-cor-care-note">Этот комплексный процесс обеспечивает точное соответствие <strong style="color:#fff;">коронки</strong> анатомии и эстетике пациента.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-cta" aria-labelledby="eit-cor-cta-heading">
+  <div class="eit-cor-wrap eit-cor-cta-inner">
+    <div class="eit-cor-cta-tag">Запись на приём</div>
+    <h2 id="eit-cor-cta-heading" class="eit-cor-cta-title">
+      Получите бесплатную консультацию<br>по зубным коронкам в Стамбуле
+    </h2>
+    <p class="eit-cor-cta-sub">
+      Наши специалисты ответят на все вопросы, подберут оптимальный материал и рассчитают стоимость лечения.
+    </p>
+    <div class="eit-cor-cta-btns">
+      <a href="https://wa.me/905468189180" class="eit-cor-cta-btn eit-cor-cta-btn--wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        Написать в WhatsApp
+      </a>
+      <a href="tel:+905468189180" class="eit-cor-cta-btn eit-cor-cta-btn--tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +90 546 818 91 80
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-cor-faq" aria-labelledby="eit-cor-faq-heading">
+  <div class="eit-cor-wrap">
+    <div class="eit-cor-faq-head">
+      <div class="eit-cor-tag eit-cor-fade">Вопросы и ответы</div>
+      <h2 id="eit-cor-faq-heading" class="eit-cor-heading eit-cor-fade eit-cor-fade-d1">
+        Часто задаваемые <span>вопросы</span>
+      </h2>
+    </div>
+
+    <div class="eit-cor-faq-grid">
+      <div class="eit-cor-faq-list">
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Какие зубные коронки самые лучшие?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Наиболее прочным и долговечным материалом является <strong>диоксид циркония</strong>. Срок службы циркониевых коронок при правильном уходе — от 15 до 20 лет. Однако выбор зависит от состояния зубов, прикуса, количества коронок, места установки и бюджета. Опытный врач оценит все факторы индивидуально.
+          </div>
+        </div>
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Больно ли устанавливать зубные коронки?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Нет. Установка коронок проводится под местной анестезией, поэтому процедура практически безболезненна. После установки возможен незначительный дискомфорт, который проходит в течение нескольких дней. Наши специалисты используют современные анестетики для максимального комфорта пациента.
+          </div>
+        </div>
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Сколько времени занимает лечение в Стамбуле?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Полный курс лечения занимает <strong>от 5 до 10 дней</strong>. В первый визит проводится диагностика, подготовка зубов и снятие отпечатков. Коронки изготавливаются в лаборатории, после чего проводится финальная установка. Мы организуем всю программу пребывания «под ключ».
+          </div>
+        </div>
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Нужно ли удалять нерв перед установкой коронки?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Это зависит от состояния зуба. Если зуб живой и здоровый, удаление нерва не требуется. Депульпирование (удаление нерва) проводится только при наличии воспаления или инфекции в корневых каналах. Решение принимает врач после диагностики.
+          </div>
+        </div>
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Почему коронки в Турции дешевле, чем в Европе?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Разница в цене обусловлена более низкими операционными расходами, государственными субсидиями на медицинский туризм и высокой конкуренцией среди клиник. При этом <strong>качество материалов</strong> (цирконий IVOCLAR, швейцарские бренды) остаётся на европейском уровне. Цена за коронку в Турции — 140–350 €.
+          </div>
+        </div>
+
+        <div class="eit-cor-faq-item">
+          <button class="eit-cor-faq-q" aria-expanded="false">
+            Есть ли гарантия на зубные коронки?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-cor-faq-a">
+            Да. Клиника ESTE IN TURKEY предоставляет гарантию на установленные коронки и сопровождение после лечения. При необходимости корректировки или возникновении вопросов вы можете связаться с нашими специалистами дистанционно. Все детали гарантии уточняются на консультации.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ aside -->
+      <div class="eit-cor-faq-aside eit-cor-fade eit-cor-fade-d2">
+        <div class="eit-cor-faq-aside-title">Остались вопросы?</div>
+        <p class="eit-cor-faq-aside-sub">Напишите нам — ответим в течение нескольких минут и бесплатно проконсультируем по вашей ситуации.</p>
+        <div class="eit-cor-faq-aside-btns">
+          <a href="https://wa.me/905468189180" class="eit-cor-faq-aside-btn eit-cor-faq-aside-btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-cor-faq-aside-btn eit-cor-faq-aside-btn--tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+        <div class="eit-cor-faq-aside-divider"></div>
+        <ul class="eit-cor-faq-aside-list">
+          <li>Бесплатная консультация онлайн</li>
+          <li>Русскоязычный переводчик</li>
+          <li>Трансфер из аэропорта</li>
+          <li>Гарантия на коронки</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-cor -->
+
+<script>
+(function(){
+  // Scroll animations
+  var fades = document.querySelectorAll('#eitCorPage .eit-cor-fade');
+  if(!fades.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fades.forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('#eitCorPage .eit-cor-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.eit-cor-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('#eitCorPage .eit-cor-faq-item.is-open').forEach(function(i){
+        i.classList.remove('is-open');
+        i.querySelector('.eit-cor-faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){ item.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+</script>

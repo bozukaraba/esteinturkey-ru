@@ -1,0 +1,1253 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ОТБЕЛИВАНИЕ ЗУБОВ
+   Dil: RU | Elementor HTML Widget | Prefix: eit-otb-
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-otb *, .eit-otb *::before, .eit-otb *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.eit-otb {
+  font-family: var(--eit-font);
+  color: var(--eit-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.eit-otb a { text-decoration: none; color: inherit; }
+.eit-otb ul { list-style: none; }
+.eit-otb img { max-width: 100%; display: block; }
+
+.eit-otb-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Scroll animations ─────────────────────────── */
+.eit-otb-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+}
+.eit-otb-fade.is-visible { opacity: 1; transform: none; }
+.eit-otb-fade-d1 { transition-delay: .12s; }
+.eit-otb-fade-d2 { transition-delay: .22s; }
+.eit-otb-fade-d3 { transition-delay: .34s; }
+.eit-otb-fade-d4 { transition-delay: .46s; }
+
+/* ── Shared components ─────────────────────────── */
+.eit-otb-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
+  margin-bottom: 16px;
+}
+.eit-otb-tag--light {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+}
+.eit-otb-heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 800; color: var(--eit-primary);
+  line-height: 1.15; margin-bottom: 18px;
+}
+.eit-otb-heading span { color: var(--eit-accent); }
+.eit-otb-divider {
+  width: 52px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+  margin-bottom: 26px;
+}
+.eit-otb-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  letter-spacing: .03em; text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition); cursor: pointer; border: none;
+}
+.eit-otb-btn--primary {
+  background: var(--eit-accent);
+  box-shadow: 0 8px 28px rgba(46,139,139,.35);
+}
+.eit-otb-btn--primary:hover {
+  background: var(--eit-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.4);
+}
+.eit-otb-btn--outline {
+  background: transparent; color: #fff !important;
+  border: 2px solid rgba(255,255,255,.3);
+}
+.eit-otb-btn--outline:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+.eit-otb-btn svg { flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════
+   1. HERO
+   ════════════════════════════════════════════════ */
+.eit-otb-hero {
+  background: var(--eit-primary);
+  min-height: 580px;
+  display: flex; align-items: center;
+  padding: 80px 0 0;
+  position: relative; overflow: hidden;
+}
+.eit-otb-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 50%, rgba(46,139,139,.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at -10% 60%, rgba(21,68,68,.45) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-otb-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(21,68,68,.3) 0%, transparent 100%);
+  pointer-events: none;
+}
+.eit-otb-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.eit-otb-hero-left { padding-bottom: 72px; }
+.eit-otb-hero-breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 22px;
+}
+.eit-otb-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: var(--eit-transition); }
+.eit-otb-hero-breadcrumb a:hover { color: var(--eit-accent-light); }
+.eit-otb-hero-title {
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 900; color: var(--eit-white);
+  line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.eit-otb-hero-title span { color: var(--eit-accent-light); }
+.eit-otb-hero-subtitle {
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 18px; letter-spacing: .01em;
+}
+.eit-otb-hero-desc {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  line-height: 1.75; margin-bottom: 32px; max-width: 480px;
+}
+.eit-otb-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.eit-otb-stat-value {
+  font-size: 28px; font-weight: 900; color: var(--eit-white); line-height: 1;
+}
+.eit-otb-stat-label {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 4px;
+}
+.eit-otb-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Hero right — CTA card */
+.eit-otb-hero-right {
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+}
+.eit-otb-hero-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%; max-width: 380px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.eit-otb-hero-card-badge {
+  display: inline-block;
+  background: var(--eit-accent);
+  color: var(--eit-white);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 30px;
+  align-self: flex-start;
+}
+.eit-otb-hero-card-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--eit-white); line-height: 1.3;
+}
+.eit-otb-hero-card-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-otb-hero-card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.82);
+}
+.eit-otb-hero-card-list li::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-otb-hero-card-divider {
+  height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.eit-otb-hero-card-cta {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-otb-hero-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 20px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-otb-hero-card-btn--wa { background: #25D366; }
+.eit-otb-hero-card-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-otb-hero-card-btn--tel {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+}
+.eit-otb-hero-card-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   2. METHODS
+   ════════════════════════════════════════════════ */
+.eit-otb-methods {
+  background: var(--eit-white);
+  padding: 96px 0;
+}
+.eit-otb-methods-head {
+  text-align: center; margin-bottom: 56px;
+}
+.eit-otb-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.eit-otb-method-card {
+  background: var(--eit-cream);
+  border-radius: 22px;
+  padding: 40px 36px;
+  border-top: 4px solid transparent;
+  transition: var(--eit-transition);
+  display: flex; flex-direction: column; gap: 20px;
+  box-shadow: 0 4px 24px rgba(29,92,92,.06);
+}
+.eit-otb-method-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(29,92,92,.12);
+  border-top-color: var(--eit-accent);
+}
+.eit-otb-method-icon {
+  width: 60px; height: 60px;
+  background: rgba(46,139,139,.12); border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.eit-otb-method-icon svg { width: 26px; height: 26px; color: var(--eit-accent); }
+.eit-otb-method-badge {
+  display: inline-block;
+  background: rgba(46,139,139,.12);
+  color: var(--eit-accent);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  align-self: flex-start;
+}
+.eit-otb-method-name {
+  font-size: 22px; font-weight: 800;
+  color: var(--eit-primary); line-height: 1.2;
+  margin-bottom: 2px;
+}
+.eit-otb-method-subtitle {
+  font-size: 13px; font-weight: 600;
+  color: var(--eit-accent); margin-bottom: 4px;
+}
+.eit-otb-method-desc {
+  font-size: 14px; color: var(--eit-text-muted); line-height: 1.75;
+}
+.eit-otb-method-desc strong { color: var(--eit-primary); font-weight: 700; }
+.eit-otb-method-benefits {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-otb-method-benefits li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13.5px; color: var(--eit-text); line-height: 1.5;
+}
+.eit-otb-method-benefits li::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--eit-accent-light); flex-shrink: 0;
+}
+.eit-otb-method-note {
+  font-size: 13px; color: var(--eit-text-muted);
+  font-style: italic; border-top: 1px solid var(--eit-border);
+  padding-top: 16px; line-height: 1.6;
+}
+
+/* ════════════════════════════════════════════════
+   3. INDICATIONS
+   ════════════════════════════════════════════════ */
+.eit-otb-indications {
+  background: var(--eit-primary);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.eit-otb-indications::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(46,139,139,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-otb-indications-head {
+  text-align: center; margin-bottom: 48px; position: relative;
+}
+.eit-otb-indications-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 800; color: var(--eit-white); line-height: 1.2;
+}
+.eit-otb-indications-title span { color: var(--eit-accent-light); }
+.eit-otb-indications-sub {
+  font-size: 14px; color: rgba(255,255,255,.65);
+  max-width: 540px; margin: 14px auto 0; line-height: 1.7;
+}
+.eit-otb-indications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative;
+}
+.eit-otb-indication-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  transition: var(--eit-transition);
+}
+.eit-otb-indication-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-4px);
+  border-color: rgba(74,172,172,.4);
+}
+.eit-otb-indication-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.25);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.eit-otb-indication-icon svg { width: 24px; height: 24px; color: var(--eit-accent-light); }
+.eit-otb-indication-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-otb-indication-text {
+  font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════
+   4. ADVANTAGES
+   ════════════════════════════════════════════════ */
+.eit-otb-advantages {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-otb-advantages-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.eit-otb-adv-list {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.eit-otb-adv-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: var(--eit-text-muted); line-height: 1.65;
+}
+.eit-otb-adv-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(46,139,139,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.eit-otb-adv-dot svg { width: 13px; height: 13px; color: var(--eit-accent); }
+.eit-otb-adv-item strong { color: var(--eit-primary); font-weight: 700; }
+
+.eit-otb-safety {
+  background: var(--eit-primary);
+  border-radius: 22px;
+  padding: 36px 32px;
+}
+.eit-otb-safety-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 8px;
+}
+.eit-otb-safety-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.eit-otb-safety-items {
+  display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;
+}
+.eit-otb-safety-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13.5px; color: rgba(255,255,255,.82); line-height: 1.6;
+}
+.eit-otb-safety-item::before {
+  content: '✓';
+  font-size: 12px; font-weight: 700;
+  color: var(--eit-accent-light); flex-shrink: 0;
+  margin-top: 2px;
+}
+.eit-otb-safety-divider {
+  height: 1px; background: rgba(255,255,255,.15); margin-bottom: 24px;
+}
+.eit-otb-safety-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 20px 22px;
+  text-align: center;
+}
+.eit-otb-safety-stat-value {
+  font-size: 42px; font-weight: 900;
+  color: var(--eit-white); line-height: 1;
+}
+.eit-otb-safety-stat-label {
+  font-size: 11px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════════
+   5. PROCESS
+   ════════════════════════════════════════════════ */
+.eit-otb-process {
+  background: var(--eit-cream);
+  padding: 88px 0;
+}
+.eit-otb-process-head {
+  text-align: center; margin-bottom: 56px;
+}
+.eit-otb-process-sub {
+  font-size: 14px; color: var(--eit-text-muted);
+  max-width: 540px; margin: 12px auto 0; line-height: 1.7;
+}
+.eit-otb-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-bottom: 48px;
+}
+.eit-otb-step {
+  background: var(--eit-white);
+  border-radius: 18px;
+  padding: 28px 22px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(29,92,92,.07);
+  transition: var(--eit-transition);
+  text-align: center;
+}
+.eit-otb-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(29,92,92,.12);
+}
+.eit-otb-step-num {
+  font-size: 52px; font-weight: 900;
+  color: rgba(29,92,92,.06);
+  position: absolute; top: 10px; right: 14px;
+  line-height: 1;
+}
+.eit-otb-step-icon {
+  width: 52px; height: 52px;
+  background: rgba(46,139,139,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.eit-otb-step-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
+.eit-otb-step-title {
+  font-size: 13.5px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 8px; line-height: 1.4;
+}
+.eit-otb-step-text {
+  font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.65;
+}
+
+.eit-otb-aftercare {
+  background: var(--eit-primary);
+  border-radius: 22px;
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+.eit-otb-aftercare-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 14px;
+}
+.eit-otb-aftercare-text {
+  font-size: 13.5px; color: rgba(255,255,255,.7);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.eit-otb-aftercare-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-otb-aftercare-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.6;
+}
+.eit-otb-aftercare-list li::before {
+  content: '✓';
+  font-size: 12px; font-weight: 700;
+  color: var(--eit-accent-light); flex-shrink: 0;
+  margin-top: 2px;
+}
+.eit-otb-aftercare-right {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.eit-otb-aftercare-stat {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 24px;
+  text-align: center;
+}
+.eit-otb-aftercare-stat-value {
+  font-size: 42px; font-weight: 900;
+  color: var(--eit-white); line-height: 1;
+}
+.eit-otb-aftercare-stat-label {
+  font-size: 11px; color: rgba(255,255,255,.6);
+  text-transform: uppercase; letter-spacing: .06em; margin-top: 6px;
+}
+.eit-otb-aftercare-note {
+  font-size: 13px; color: rgba(255,255,255,.6);
+  line-height: 1.65; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   6. CTA BAND
+   ════════════════════════════════════════════════ */
+.eit-otb-cta {
+  background: linear-gradient(135deg, var(--eit-accent) 0%, var(--eit-primary) 100%);
+  padding: 64px 0;
+  text-align: center; position: relative; overflow: hidden;
+}
+.eit-otb-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eit-otb-cta-inner { position: relative; }
+.eit-otb-cta-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.eit-otb-cta-title {
+  font-size: clamp(22px, 3.2vw, 38px);
+  font-weight: 800; color: var(--eit-white);
+  line-height: 1.2; margin-bottom: 14px;
+}
+.eit-otb-cta-sub {
+  font-size: 14.5px; color: rgba(255,255,255,.75);
+  margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto;
+  line-height: 1.7;
+}
+.eit-otb-cta-btns {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  justify-content: center;
+}
+.eit-otb-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 32px; border-radius: 14px;
+  font-family: var(--eit-font); font-size: 13.5px; font-weight: 700;
+  text-decoration: none; color: #fff !important;
+  transition: var(--eit-transition);
+}
+.eit-otb-cta-btn--wa {
+  background: #25D366;
+  box-shadow: 0 8px 28px rgba(0,0,0,.2);
+}
+.eit-otb-cta-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-otb-cta-btn--tel {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.3);
+}
+.eit-otb-cta-btn--tel:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   7. FAQ
+   ════════════════════════════════════════════════ */
+.eit-otb-faq {
+  background: var(--eit-white);
+  padding: 88px 0;
+}
+.eit-otb-faq-head {
+  text-align: center; margin-bottom: 52px;
+}
+.eit-otb-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px; align-items: start;
+}
+.eit-otb-faq-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.eit-otb-faq-item {
+  background: var(--eit-cream);
+  border-radius: 14px;
+  border: 1px solid var(--eit-border);
+  overflow: hidden;
+  transition: var(--eit-transition);
+}
+.eit-otb-faq-item.is-open { border-color: rgba(46,139,139,.3); }
+.eit-otb-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 20px 22px;
+  cursor: pointer; background: none; border: none;
+  width: 100%; text-align: left;
+  font-family: var(--eit-font); font-size: 14px; font-weight: 700;
+  color: var(--eit-primary);
+}
+.eit-otb-faq-q svg {
+  width: 18px; height: 18px; flex-shrink: 0;
+  color: var(--eit-accent); transition: transform .3s;
+}
+.eit-otb-faq-item.is-open .eit-otb-faq-q svg { transform: rotate(180deg); }
+.eit-otb-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1), padding .3s;
+  padding: 0 22px;
+  font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.8;
+}
+.eit-otb-faq-item.is-open .eit-otb-faq-a { max-height: 500px; padding: 0 22px 22px; }
+
+/* FAQ aside */
+.eit-otb-faq-aside {
+  position: sticky; top: 100px;
+  background: var(--eit-primary);
+  border-radius: 22px; padding: 32px 28px;
+}
+.eit-otb-faq-aside-title {
+  font-size: 17px; font-weight: 800;
+  color: var(--eit-white); margin-bottom: 10px;
+}
+.eit-otb-faq-aside-sub {
+  font-size: 13px; color: rgba(255,255,255,.65);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.eit-otb-faq-aside-btns { display: flex; flex-direction: column; gap: 12px; }
+.eit-otb-faq-aside-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px;
+  font-family: var(--eit-font); font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #fff !important; transition: var(--eit-transition);
+}
+.eit-otb-faq-aside-btn--wa { background: #25D366; }
+.eit-otb-faq-aside-btn--wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+.eit-otb-faq-aside-btn--tel {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.eit-otb-faq-aside-btn--tel:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.eit-otb-faq-aside-divider {
+  height: 1px; background: rgba(255,255,255,.12); margin: 22px 0;
+}
+.eit-otb-faq-aside-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.eit-otb-faq-aside-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.5;
+}
+.eit-otb-faq-aside-list li::before {
+  content: '✓'; color: var(--eit-accent-light);
+  font-weight: 700; flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .eit-otb-advantages-inner { gap: 40px; }
+  .eit-otb-steps { grid-template-columns: repeat(2, 1fr); }
+  .eit-otb-faq-grid { grid-template-columns: 1fr; }
+  .eit-otb-faq-aside { position: static; }
+}
+@media (max-width: 900px) {
+  .eit-otb-hero-inner { grid-template-columns: 1fr; }
+  .eit-otb-hero-right { display: none; }
+  .eit-otb-hero { min-height: auto; }
+  .eit-otb-methods-grid { grid-template-columns: 1fr; }
+  .eit-otb-indications-grid { grid-template-columns: repeat(2, 1fr); }
+  .eit-otb-advantages-inner { grid-template-columns: 1fr; }
+  .eit-otb-aftercare { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .eit-otb-wrap { padding: 0 16px; }
+  .eit-otb-indications-grid { grid-template-columns: 1fr; }
+  .eit-otb-steps { grid-template-columns: 1fr; }
+  .eit-otb-hero-stats { gap: 20px; }
+  .eit-otb-hero-left { padding-bottom: 40px; }
+  .eit-otb-aftercare { padding: 28px 22px; }
+  .eit-otb-cta-btns { flex-direction: column; align-items: center; }
+}
+</style>
+
+<div class="eit-otb" id="eitOtbPage">
+
+<!-- ════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-hero" aria-labelledby="eit-otb-hero-title">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-hero-inner">
+
+      <!-- Left -->
+      <div class="eit-otb-hero-left">
+        <nav class="eit-otb-hero-breadcrumb" aria-label="Breadcrumb">
+          <a href="/ru/">Главная</a>
+          <span>›</span>
+          <a href="/ru/stomatologiya/">Стоматология</a>
+          <span>›</span>
+          <span style="color:rgba(255,255,255,.7);">Отбеливание зубов</span>
+        </nav>
+
+        <div class="eit-otb-tag eit-otb-tag--light eit-otb-fade">Эстетическая стоматология</div>
+        <h1 id="eit-otb-hero-title" class="eit-otb-hero-title eit-otb-fade eit-otb-fade-d1">
+          Отбеливание зубов<br><span>в Este in Turkey</span>
+        </h1>
+        <p class="eit-otb-hero-subtitle eit-otb-fade eit-otb-fade-d1">
+          Flash и Opalescence — безопасно, быстро и с долговременным эффектом
+        </p>
+        <p class="eit-otb-hero-desc eit-otb-fade eit-otb-fade-d2">
+          В клинике <strong style="color:#fff;">Este in Turkey</strong> (Стамбул) мы предлагаем два эффективных и безопасных вида профессионального отбеливания — <strong style="color:#fff;">Flash</strong> и <strong style="color:#fff;">Opalescence</strong>. Оба метода дают натуральный, яркий результат без повреждения эмали и подходят для пациентов, которые хотят освежить или значительно осветлить улыбку.
+        </p>
+
+        <div class="eit-otb-hero-stats eit-otb-fade eit-otb-fade-d2">
+          <div>
+            <div class="eit-otb-stat-value">2–8</div>
+            <div class="eit-otb-stat-label">тонов осветления</div>
+          </div>
+          <div>
+            <div class="eit-otb-stat-value">30–45</div>
+            <div class="eit-otb-stat-label">минут (Flash)</div>
+          </div>
+          <div>
+            <div class="eit-otb-stat-value">1–2</div>
+            <div class="eit-otb-stat-label">года результат</div>
+          </div>
+          <div>
+            <div class="eit-otb-stat-value">Без боли</div>
+            <div class="eit-otb-stat-label">для эмали</div>
+          </div>
+        </div>
+
+        <div class="eit-otb-hero-actions eit-otb-fade eit-otb-fade-d3">
+          <a href="https://wa.me/905468189180" class="eit-otb-btn eit-otb-btn--primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-otb-btn eit-otb-btn--outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Позвонить
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: CTA card -->
+      <div class="eit-otb-hero-right">
+        <div class="eit-otb-hero-card">
+          <span class="eit-otb-hero-card-badge">Стоматология Турции</span>
+          <div class="eit-otb-hero-card-title">Бесплатная консультация по отбеливанию</div>
+          <ul class="eit-otb-hero-card-list">
+            <li>Flash и Opalescence — два метода на выбор</li>
+            <li>Результат уже за один визит (Flash)</li>
+            <li>Безопасно даже для чувствительных зубов</li>
+            <li>Русскоязычное сопровождение</li>
+          </ul>
+          <div class="eit-otb-hero-card-divider"></div>
+          <div class="eit-otb-hero-card-cta">
+            <a href="https://wa.me/905468189180" class="eit-otb-hero-card-btn eit-otb-hero-card-btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              Написать в WhatsApp
+            </a>
+            <a href="tel:+905468189180" class="eit-otb-hero-card-btn eit-otb-hero-card-btn--tel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              +90 546 818 91 80
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     METHODS
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-methods" aria-labelledby="eit-otb-methods-heading">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-methods-head">
+      <div class="eit-otb-tag eit-otb-fade">Методы отбеливания</div>
+      <h2 id="eit-otb-methods-heading" class="eit-otb-heading eit-otb-fade eit-otb-fade-d1">
+        Два профессиональных метода<br><span>в Este in Turkey</span>
+      </h2>
+      <p style="font-size:14px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;line-height:1.7;" class="eit-otb-fade eit-otb-fade-d2">
+        Мы подберём оптимальный вариант в зависимости от состояния зубов, желаемого результата и образа жизни пациента.
+      </p>
+    </div>
+
+    <div class="eit-otb-methods-grid">
+
+      <!-- Flash -->
+      <div class="eit-otb-method-card eit-otb-fade">
+        <div class="eit-otb-method-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div>
+          <div class="eit-otb-method-badge">Быстрый результат</div>
+          <div class="eit-otb-method-name">Отбеливание Flash</div>
+          <div class="eit-otb-method-subtitle">Быстрое клиническое отбеливание за один визит</div>
+        </div>
+        <p class="eit-otb-method-desc">
+          <strong>Flash</strong> — это современная немецкая система, которая работает мягко, но эффективно.
+        </p>
+        <ul class="eit-otb-method-benefits">
+          <li>Осветление на 2–6 тонов</li>
+          <li>Процедура занимает 30–45 минут</li>
+          <li>Безопасно для чувствительных зубов</li>
+          <li>Мгновенный эстетический результат</li>
+        </ul>
+        <p class="eit-otb-method-note">
+          Отлично подходит перед путешествием, событием или фотосессией.
+        </p>
+      </div>
+
+      <!-- Opalescence -->
+      <div class="eit-otb-method-card eit-otb-fade eit-otb-fade-d1">
+        <div class="eit-otb-method-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div>
+          <div class="eit-otb-method-badge">Стойкий эффект</div>
+          <div class="eit-otb-method-name">Отбеливание Opalescence</div>
+          <div class="eit-otb-method-subtitle">Глубокое и щадящее отбеливание для стойкого результата</div>
+        </div>
+        <p class="eit-otb-method-desc">
+          <strong>Opalescence</strong> — американская система профессионального отбеливания, которая проникает глубже в структуру эмали и обеспечивает более стойкий эффект.
+        </p>
+        <ul class="eit-otb-method-benefits">
+          <li>Отбеливание 3–8 тонов</li>
+          <li>Длительный результат (до 1–2 лет)</li>
+          <li>Мягкая формула, подходящая даже для чувствительных зубов</li>
+          <li>Возможность комбинированного метода (клиника + домашние каппы)</li>
+        </ul>
+        <p class="eit-otb-method-note">
+          Оптимальный вариант для тех, кто хочет надолго сохранить белизну.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     INDICATIONS
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-indications" aria-labelledby="eit-otb-indications-heading">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-indications-head">
+      <div class="eit-otb-tag eit-otb-tag--light eit-otb-fade">Показания</div>
+      <h2 id="eit-otb-indications-heading" class="eit-otb-indications-title eit-otb-fade eit-otb-fade-d1">
+        Кому подходит<br><span>отбеливание?</span>
+      </h2>
+      <p class="eit-otb-indications-sub eit-otb-fade eit-otb-fade-d2">
+        Профессиональное отбеливание эффективно в большинстве случаев потемнения зубов. Вот когда оно особенно полезно:
+      </p>
+    </div>
+
+    <div class="eit-otb-indications-grid">
+      <div class="eit-otb-indication-card eit-otb-fade">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">Потемнение от кофе и чая</div>
+        <p class="eit-otb-indication-text">Регулярное употребление кофе, чая, красного вина и других красящих напитков постепенно окрашивает эмаль. Профессиональное отбеливание устраняет эти пятна.</p>
+      </div>
+      <div class="eit-otb-indication-card eit-otb-fade eit-otb-fade-d1">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">Пятна от курения</div>
+        <p class="eit-otb-indication-text">Никотин и смолы оставляют стойкие жёлтые и коричневые пятна. Flash и Opalescence эффективно осветляют даже такое потемнение.</p>
+      </div>
+      <div class="eit-otb-indication-card eit-otb-fade eit-otb-fade-d2">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">Возрастное потемнение</div>
+        <p class="eit-otb-indication-text">С возрастом эмаль истончается и зубы становятся темнее. Отбеливание восстанавливает яркость и свежесть улыбки без агрессивного вмешательства.</p>
+      </div>
+      <div class="eit-otb-indication-card eit-otb-fade eit-otb-fade-d1">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">Подготовка к событию</div>
+        <p class="eit-otb-indication-text">Свадьба, выпускной, фотосессия или важная встреча — Flash-отбеливание за 45 минут поможет выглядеть безупречно.</p>
+      </div>
+      <div class="eit-otb-indication-card eit-otb-fade eit-otb-fade-d2">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">Желание красивой улыбки</div>
+        <p class="eit-otb-indication-text">Просто хотите улыбаться увереннее? Профессиональное отбеливание — самый быстрый и безопасный способ освежить внешний вид зубов.</p>
+      </div>
+      <div class="eit-otb-indication-card eit-otb-fade eit-otb-fade-d3">
+        <div class="eit-otb-indication-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="eit-otb-indication-title">После ортодонтического лечения</div>
+        <p class="eit-otb-indication-text">После снятия брекетов отбеливание восстанавливает цвет и придаёт зубам равномерный, сияющий оттенок.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ADVANTAGES
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-advantages" aria-labelledby="eit-otb-advantages-heading">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-advantages-inner">
+
+      <div>
+        <div class="eit-otb-tag eit-otb-fade">Почему мы?</div>
+        <h2 id="eit-otb-advantages-heading" class="eit-otb-heading eit-otb-fade eit-otb-fade-d1">
+          Почему отбеливание у нас —<br><span>лучший выбор?</span>
+        </h2>
+        <div class="eit-otb-divider eit-otb-fade eit-otb-fade-d1"></div>
+
+        <ul class="eit-otb-adv-list eit-otb-fade eit-otb-fade-d2">
+          <li class="eit-otb-adv-item">
+            <span class="eit-otb-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Современные и безопасные системы</strong> отбеливания Flash и Opalescence — сертифицированные методы без риска для эмали</span>
+          </li>
+          <li class="eit-otb-adv-item">
+            <span class="eit-otb-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Врачи с большим опытом</strong> и индивидуальным подходом к каждому пациенту</span>
+          </li>
+          <li class="eit-otb-adv-item">
+            <span class="eit-otb-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>3D-диагностика</strong> и полный контроль состояния эмали до и после процедуры</span>
+          </li>
+          <li class="eit-otb-adv-item">
+            <span class="eit-otb-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Комфортные условия и сервис</strong> для пациентов из других стран: трансфер, переводчик, сопровождение</span>
+          </li>
+          <li class="eit-otb-adv-item">
+            <span class="eit-otb-adv-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span><strong>Натуральный белый оттенок</strong> без «пережжённого» эффекта — результат выглядит красиво и естественно</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="eit-otb-fade eit-otb-fade-d2">
+        <div class="eit-otb-safety">
+          <div class="eit-otb-safety-title">Безопасность и защита эмали</div>
+          <p class="eit-otb-safety-sub">Мы следим за каждым этапом процедуры, чтобы результат был долгим и безопасным.</p>
+          <div class="eit-otb-safety-items">
+            <div class="eit-otb-safety-item">Защита дёсен специальным барьерным гелем</div>
+            <div class="eit-otb-safety-item">Контроль концентрации и времени воздействия</div>
+            <div class="eit-otb-safety-item">Реминерализация эмали после процедуры при необходимости</div>
+            <div class="eit-otb-safety-item">Персональные рекомендации по уходу после отбеливания</div>
+          </div>
+          <div class="eit-otb-safety-divider"></div>
+          <div class="eit-otb-safety-stat">
+            <div class="eit-otb-safety-stat-value">1–2</div>
+            <div class="eit-otb-safety-stat-label">года — эффект Opalescence</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROCESS
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-process" aria-labelledby="eit-otb-process-heading">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-process-head">
+      <div class="eit-otb-tag eit-otb-fade">Этапы процедуры</div>
+      <h2 id="eit-otb-process-heading" class="eit-otb-heading eit-otb-fade eit-otb-fade-d1">
+        Как проходит <span>отбеливание?</span>
+      </h2>
+      <p class="eit-otb-process-sub eit-otb-fade eit-otb-fade-d2">
+        Весь процесс занимает всего <strong>один визит</strong> — от диагностики до готового результата.
+      </p>
+    </div>
+
+    <div class="eit-otb-steps">
+      <div class="eit-otb-step eit-otb-fade">
+        <div class="eit-otb-step-num">01</div>
+        <div class="eit-otb-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="eit-otb-step-title">Консультация и осмотр</div>
+        <p class="eit-otb-step-text">Врач оценивает состояние эмали, определяет тип потемнения и подбирает оптимальный метод — Flash или Opalescence.</p>
+      </div>
+      <div class="eit-otb-step eit-otb-fade eit-otb-fade-d1">
+        <div class="eit-otb-step-num">02</div>
+        <div class="eit-otb-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="eit-otb-step-title">Профессиональная чистка</div>
+        <p class="eit-otb-step-text">Перед отбеливанием проводится удаление зубного налёта и камня — это обеспечивает равномерное и эффективное воздействие геля.</p>
+      </div>
+      <div class="eit-otb-step eit-otb-fade eit-otb-fade-d2">
+        <div class="eit-otb-step-num">03</div>
+        <div class="eit-otb-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="eit-otb-step-title">Нанесение геля и активация</div>
+        <p class="eit-otb-step-text">Дёсны защищаются специальным барьером, затем наносится отбеливающий гель. При Flash-методе активируется ультрафиолетовой лампой.</p>
+      </div>
+      <div class="eit-otb-step eit-otb-fade eit-otb-fade-d3">
+        <div class="eit-otb-step-num">04</div>
+        <div class="eit-otb-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="eit-otb-step-title">Реминерализация и оценка</div>
+        <p class="eit-otb-step-text">После процедуры эмаль укрепляется реминерализующим составом. Врач оценивает результат и даёт рекомендации по уходу.</p>
+      </div>
+    </div>
+
+    <!-- After-care block -->
+    <div class="eit-otb-aftercare eit-otb-fade">
+      <div>
+        <div class="eit-otb-aftercare-title">Уход после отбеливания</div>
+        <p class="eit-otb-aftercare-text">Следуйте простым правилам, чтобы результат сохранялся как можно дольше.</p>
+        <ul class="eit-otb-aftercare-list">
+          <li>В первые 48 часов исключить красящие продукты и напитки</li>
+          <li>Не курить в течение 24–48 часов после процедуры</li>
+          <li>Использовать зубную пасту для чувствительных зубов</li>
+          <li>Регулярно посещать стоматолога для профилактической чистки</li>
+        </ul>
+      </div>
+      <div class="eit-otb-aftercare-right">
+        <div class="eit-otb-aftercare-stat">
+          <div class="eit-otb-aftercare-stat-value">30–45</div>
+          <div class="eit-otb-aftercare-stat-label">минут — процедура Flash</div>
+        </div>
+        <p class="eit-otb-aftercare-note">Лёгкая чувствительность после процедуры <strong style="color:#fff;">кратковременна</strong> и проходит в течение 1–2 дней.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-cta" aria-labelledby="eit-otb-cta-heading">
+  <div class="eit-otb-wrap eit-otb-cta-inner">
+    <div class="eit-otb-cta-tag">Запись на приём</div>
+    <h2 id="eit-otb-cta-heading" class="eit-otb-cta-title">
+      Готовы к сияющей улыбке?
+    </h2>
+    <p class="eit-otb-cta-sub">
+      Свяжитесь с нами — специалисты <strong>Este in Turkey</strong> подберут идеальный вариант отбеливания Flash или Opalescence специально для вас.
+    </p>
+    <div class="eit-otb-cta-btns">
+      <a href="https://wa.me/905468189180" class="eit-otb-cta-btn eit-otb-cta-btn--wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        Написать в WhatsApp
+      </a>
+      <a href="tel:+905468189180" class="eit-otb-cta-btn eit-otb-cta-btn--tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +90 546 818 91 80
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════ -->
+<section class="eit-otb-faq" aria-labelledby="eit-otb-faq-heading">
+  <div class="eit-otb-wrap">
+    <div class="eit-otb-faq-head">
+      <div class="eit-otb-tag eit-otb-fade">Вопросы и ответы</div>
+      <h2 id="eit-otb-faq-heading" class="eit-otb-heading eit-otb-fade eit-otb-fade-d1">
+        Часто задаваемые <span>вопросы</span>
+      </h2>
+    </div>
+
+    <div class="eit-otb-faq-grid">
+      <div class="eit-otb-faq-list">
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Какое отбеливание лучше: Flash или Opalescence?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            <strong>Flash</strong> — быстрое отбеливание за один визит, осветляет на 2–6 тонов и занимает около 30–45 минут. Отлично подходит, если нужен быстрый результат.<br><br>
+            <strong>Opalescence</strong> — более глубокое и стойкое отбеливание (эффект до 1–2 лет), осветляет на 3–8 тонов и подходит даже для чувствительных зубов.<br><br>
+            В <strong>ESTE IN TURKEY</strong> врач подскажет лучший вариант после осмотра.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Безопасно ли отбеливание для эмали?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Да. Профессиональные системы <strong>Flash</strong> и <strong>Opalescence</strong> не повреждают эмаль. Мы защищаем дёсны, контролируем концентрацию и время воздействия, а при необходимости проводим реминерализацию.<br><br>
+            Чувствительность после процедуры кратковременная и проходит в течение 1–2 дней.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Подходит ли отбеливание для чувствительных зубов?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Да, оба метода разработаны с учётом чувствительности. <strong>Opalescence</strong> особенно подходит для таких пациентов — мягкая формула с потассиумом нитрата снижает дискомфорт во время и после процедуры. Врач предварительно оценит состояние зубов и при необходимости использует десенсибилизирующий гель.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Как долго держится результат отбеливания?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Результат Flash-отбеливания сохраняется <strong>6–12 месяцев</strong> при правильном уходе. Opalescence обеспечивает стойкий эффект до <strong>1–2 лет</strong>. Продолжительность зависит от образа жизни, питания и соблюдения рекомендаций врача.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Больно ли делать отбеливание зубов?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Процедура безболезненна. Во время отбеливания возможно лёгкое ощущение тепла или покалывания — это нормально. После процедуры может наблюдаться кратковременная чувствительность, которая проходит в течение 1–2 дней. При необходимости врач назначит десенсибилизирующий гель.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Кому не подходит отбеливание?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Отбеливание не рекомендуется при: кариесе и незапломбированных зубах, воспалении дёсен, беременности и кормлении грудью, а также детям до 16 лет. Стойкие пятна от тетрациклина или флюороза могут реагировать слабее — в таких случаях врач предложит альтернативные решения, например, виниры.
+          </div>
+        </div>
+
+        <div class="eit-otb-faq-item">
+          <button class="eit-otb-faq-q" aria-expanded="false">
+            Можно ли отбелить зубы с коронками или пломбами?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eit-otb-faq-a">
+            Отбеливающие гели воздействуют только на натуральную эмаль — коронки, виниры и пломбы цвет не меняют. Если у вас есть видимые реставрации на передних зубах, врач оценит ситуацию и предложит оптимальное решение для достижения равномерного цвета.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ aside -->
+      <div class="eit-otb-faq-aside eit-otb-fade eit-otb-fade-d2">
+        <div class="eit-otb-faq-aside-title">Остались вопросы?</div>
+        <p class="eit-otb-faq-aside-sub">Напишите нам — ответим в течение нескольких минут и бесплатно проконсультируем по вашей ситуации.</p>
+        <div class="eit-otb-faq-aside-btns">
+          <a href="https://wa.me/905468189180" class="eit-otb-faq-aside-btn eit-otb-faq-aside-btn--wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-otb-faq-aside-btn eit-otb-faq-aside-btn--tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +90 546 818 91 80
+          </a>
+        </div>
+        <div class="eit-otb-faq-aside-divider"></div>
+        <ul class="eit-otb-faq-aside-list">
+          <li>Бесплатная консультация онлайн</li>
+          <li>Flash и Opalescence на выбор</li>
+          <li>Русскоязычный переводчик</li>
+          <li>Безопасно для чувствительных зубов</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.eit-otb -->
+
+<script>
+(function(){
+  // Scroll animations
+  var fades = document.querySelectorAll('#eitOtbPage .eit-otb-fade');
+  if(!fades.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fades.forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('#eitOtbPage .eit-otb-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.eit-otb-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('#eitOtbPage .eit-otb-faq-item.is-open').forEach(function(i){
+        i.classList.remove('is-open');
+        i.querySelector('.eit-otb-faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){ item.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+</script>

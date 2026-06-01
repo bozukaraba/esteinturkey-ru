@@ -1,0 +1,651 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — ПЕРЕСАДКА ВОЛОС GALERİ SAYFASI
+   Dil: RU | Elementor HTML Widget
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --eit-primary:       #1D5C5C;
+  --eit-primary-dark:  #154444;
+  --eit-primary-mid:   #236666;
+  --eit-accent:        #2E8B8B;
+  --eit-accent-light:  #4AACAC;
+  --eit-cream:         #F8F4EF;
+  --eit-text:          #1A1A1A;
+  --eit-text-muted:    #5A5A5A;
+  --eit-white:         #FFFFFF;
+  --eit-border:        rgba(29, 92, 92, 0.12);
+  --eit-shadow-sm:     0 2px 12px rgba(29, 92, 92, 0.10);
+  --eit-shadow-lg:     0 8px 40px rgba(0, 0, 0, 0.14);
+  --eit-transition:    all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --eit-radius:        12px;
+  --eit-font:          'Montserrat', sans-serif;
+}
+
+.eit-hair *,
+.eit-hair-lb * {
+  box-sizing: border-box;
+  font-family: var(--eit-font);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── WRAP ─── */
+.eit-hair-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.eit-hair-hero {
+  background: var(--eit-primary);
+  padding: 64px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.eit-hair-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 90% 50%, rgba(46,139,139,.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at -10% 60%, rgba(21,68,68,.5) 0%, transparent 60%);
+  pointer-events: none;
+}
+.eit-hair-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.eit-hair-hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.85);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.eit-hair-hero h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--eit-white);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin-bottom: 14px;
+}
+.eit-hair-hero h1 span {
+  color: var(--eit-accent-light);
+}
+.eit-hair-hero-sub {
+  font-size: clamp(13px, 1.4vw, 15px);
+  color: rgba(255,255,255,.72);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+.eit-hair-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+}
+.eit-hair-breadcrumb a {
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  transition: var(--eit-transition);
+}
+.eit-hair-breadcrumb a:hover { color: #fff; }
+.eit-hair-breadcrumb svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ============================================================
+   GALLERY SECTION
+   ============================================================ */
+.eit-hair-gallery {
+  padding: 72px 0 88px;
+  background: var(--eit-cream);
+}
+.eit-hair-section-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.eit-hair-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(29,92,92,.08);
+  color: var(--eit-primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+}
+.eit-hair-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--eit-accent);
+  flex-shrink: 0;
+}
+.eit-hair-section-head h2 {
+  font-size: clamp(24px, 3.2vw, 38px);
+  font-weight: 800;
+  color: var(--eit-text);
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+.eit-hair-section-head h2 span { color: var(--eit-primary); }
+.eit-hair-divider {
+  width: 48px; height: 3px;
+  background: var(--eit-accent);
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
+/* ── Grid ── */
+.eit-hair-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ── Card ── */
+.eit-hair-card {
+  border-radius: var(--eit-radius);
+  overflow: hidden;
+  position: relative;
+  background: var(--eit-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  transition: var(--eit-transition);
+}
+.eit-hair-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.15);
+}
+.eit-hair-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform .4s ease;
+}
+.eit-hair-card:hover img {
+  transform: scale(1.05);
+}
+.eit-hair-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(29,92,92,0);
+  transition: var(--eit-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eit-hair-card:hover .eit-hair-card-overlay {
+  background: rgba(29,92,92,.45);
+}
+.eit-hair-card-zoom {
+  width: 50px; height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(.6);
+  transition: var(--eit-transition);
+}
+.eit-hair-card:hover .eit-hair-card-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+.eit-hair-card-zoom svg {
+  width: 20px; height: 20px;
+  stroke: var(--eit-primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eit-hair-card-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px; height: 28px;
+  background: rgba(29,92,92,.75);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.eit-hair-lb {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+.eit-hair-lb.is-open { display: flex; }
+
+.eit-hair-lb-inner {
+  position: relative;
+  max-width: 900px;
+  max-height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eit-hair-lb-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+  object-fit: contain;
+}
+.eit-hair-lb-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--eit-transition);
+}
+.eit-hair-lb-close:hover { background: rgba(255,255,255,.25); }
+.eit-hair-lb-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--eit-transition);
+}
+.eit-hair-lb-btn:hover { background: rgba(255,255,255,.25); }
+.eit-hair-lb-prev { left: -60px; }
+.eit-hair-lb-next { right: -60px; }
+.eit-hair-lb-btn svg {
+  width: 20px; height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eit-hair-lb-counter {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,.6);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.eit-hair-cta {
+  padding: 72px 0;
+  background: var(--eit-primary);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.eit-hair-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(46,139,139,.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eit-hair-cta-inner { position: relative; z-index: 1; }
+.eit-hair-cta h2 {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 800;
+  color: var(--eit-white);
+  margin-bottom: 14px;
+  letter-spacing: -.01em;
+}
+.eit-hair-cta h2 span { color: var(--eit-accent-light); }
+.eit-hair-cta p {
+  font-size: 15px;
+  color: rgba(255,255,255,.72);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+.eit-hair-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--eit-white);
+  color: var(--eit-primary);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: var(--eit-transition);
+  letter-spacing: .03em;
+}
+.eit-hair-cta-btn:hover {
+  background: var(--eit-cream);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.2);
+}
+.eit-hair-cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .eit-hair-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .eit-hair-gallery { padding: 48px 0 60px; }
+  .eit-hair-hero { padding: 48px 0 40px; }
+  .eit-hair-lb-prev { left: 8px; }
+  .eit-hair-lb-next { right: 8px; }
+  .eit-hair-lb-inner { padding: 0 52px; }
+}
+@media (max-width: 480px) {
+  .eit-hair-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .eit-hair-wrap { padding: 0 18px; }
+  .eit-hair-lb-inner { padding: 0 44px; }
+}
+</style>
+
+<!-- ============================================================
+     ПЕРЕСАДКА ВОЛОС — GALERİ SAYFASI (Elementor HTML Widget)
+     Görsel eklemek için: src="HAIR_GORSEL_X_URL" kısımlarını
+     WordPress Media Library URL'leri ile değiştirin.
+     ============================================================ -->
+
+<div class="eit-hair">
+
+  <!-- ── HERO ──────────────────────────────────────── -->
+  <section class="eit-hair-hero">
+    <div class="eit-hair-wrap">
+      <div class="eit-hair-hero-inner">
+        <div class="eit-hair-hero-tag">Пересадка волос</div>
+        <h1>Наши <span>результаты</span> пересадки волос</h1>
+        <p class="eit-hair-hero-sub">
+          Реальные истории наших пациентов. Густые и здоровые волосы — это реальность, а не мечта.
+        </p>
+        <nav class="eit-hair-breadcrumb" aria-label="Навигация">
+          <a href="/ru/">Главная</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span>Пересадка волос — Галерея</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ───────────────────────────────────── -->
+  <section class="eit-hair-gallery">
+    <div class="eit-hair-wrap">
+
+      <div class="eit-hair-section-head">
+        <div class="eit-hair-label">Результаты работ</div>
+        <h2>До и <span>после</span></h2>
+        <div class="eit-hair-divider"></div>
+      </div>
+
+      <div class="eit-hair-grid" id="eitHairGrid">
+
+        <!-- !! Görsel 1: src'yi WordPress Media Library URL ile değiştirin !! -->
+        <div class="eit-hair-card" data-index="0">
+          <img src="HAIR_GORSEL_1_URL" alt="Пересадка волос — результат 1" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">1</div>
+        </div>
+
+        <!-- !! Görsel 2 !! -->
+        <div class="eit-hair-card" data-index="1">
+          <img src="HAIR_GORSEL_2_URL" alt="Пересадка волос — результат 2" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">2</div>
+        </div>
+
+        <!-- !! Görsel 3 !! -->
+        <div class="eit-hair-card" data-index="2">
+          <img src="HAIR_GORSEL_3_URL" alt="Пересадка волос — результат 3" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">3</div>
+        </div>
+
+        <!-- !! Görsel 4 !! -->
+        <div class="eit-hair-card" data-index="3">
+          <img src="HAIR_GORSEL_4_URL" alt="Пересадка волос — результат 4" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">4</div>
+        </div>
+
+        <!-- !! Görsel 5 !! -->
+        <div class="eit-hair-card" data-index="4">
+          <img src="HAIR_GORSEL_5_URL" alt="Пересадка волос — результат 5" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">5</div>
+        </div>
+
+        <!-- !! Görsel 6 !! -->
+        <div class="eit-hair-card" data-index="5">
+          <img src="HAIR_GORSEL_6_URL" alt="Пересадка волос — результат 6" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">6</div>
+        </div>
+
+        <!-- !! Görsel 7 !! -->
+        <div class="eit-hair-card" data-index="6">
+          <img src="HAIR_GORSEL_7_URL" alt="Пересадка волос — результат 7" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">7</div>
+        </div>
+
+        <!-- !! Görsel 8 !! -->
+        <div class="eit-hair-card" data-index="7">
+          <img src="HAIR_GORSEL_8_URL" alt="Пересадка волос — результат 8" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">8</div>
+        </div>
+
+        <!-- !! Görsel 9 !! -->
+        <div class="eit-hair-card" data-index="8">
+          <img src="HAIR_GORSEL_9_URL" alt="Пересадка волос — результат 9" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">9</div>
+        </div>
+
+        <!-- !! Görsel 10 !! -->
+        <div class="eit-hair-card" data-index="9">
+          <img src="HAIR_GORSEL_10_URL" alt="Пересадка волос — результат 10" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">10</div>
+        </div>
+
+        <!-- !! Yeni görsel eklemek için aşağıdaki bloğu kopyalayın !!
+        <div class="eit-hair-card" data-index="10">
+          <img src="HAIR_GORSEL_11_URL" alt="Пересадка волос — результат 11" loading="lazy">
+          <div class="eit-hair-card-overlay">
+            <div class="eit-hair-card-zoom">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="eit-hair-card-num">11</div>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────── -->
+  <section class="eit-hair-cta">
+    <div class="eit-hair-wrap">
+      <div class="eit-hair-cta-inner">
+        <h2>Хотите такие же <span>результаты?</span></h2>
+        <p>Запишитесь на бесплатную консультацию — наши специалисты оценят состояние волос и подберут оптимальный метод пересадки.</p>
+        <a href="/ru/kontakty/" class="eit-hair-cta-btn">
+          Записаться на консультацию
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── LIGHTBOX ───────────────────────────────────── -->
+<div class="eit-hair-lb" id="eitHairLb" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+  <div class="eit-hair-lb-inner">
+    <button class="eit-hair-lb-close" id="eitHairLbClose" aria-label="Закрыть">✕</button>
+    <img class="eit-hair-lb-img" id="eitHairLbImg" src="" alt="">
+    <button class="eit-hair-lb-btn eit-hair-lb-prev" id="eitHairLbPrev" aria-label="Предыдущий">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="eit-hair-lb-btn eit-hair-lb-next" id="eitHairLbNext" aria-label="Следующий">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="eit-hair-lb-counter" id="eitHairLbCounter">1 / 10</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var grid    = document.getElementById('eitHairGrid');
+  var lb      = document.getElementById('eitHairLb');
+  var lbImg   = document.getElementById('eitHairLbImg');
+  var lbClose = document.getElementById('eitHairLbClose');
+  var lbPrev  = document.getElementById('eitHairLbPrev');
+  var lbNext  = document.getElementById('eitHairLbNext');
+  var lbCount = document.getElementById('eitHairLbCounter');
+
+  var cards = Array.from(grid.querySelectorAll('.eit-hair-card'));
+  var total = cards.length;
+  var cur   = 0;
+
+  function openLb(idx){
+    cur = idx;
+    var img = cards[cur].querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCount.textContent = (cur + 1) + ' / ' + total;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+  function navigate(dir){
+    cur = (cur + dir + total) % total;
+    var img = cards[cur].querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCount.textContent = (cur + 1) + ' / ' + total;
+  }
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      openLb(parseInt(this.getAttribute('data-index'), 10));
+    });
+  });
+
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  lbPrev.addEventListener('click', function(){ navigate(-1); });
+  lbNext.addEventListener('click', function(){ navigate(1); });
+
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('is-open')) return;
+    if(e.key === 'Escape')     closeLb();
+    if(e.key === 'ArrowLeft')  navigate(-1);
+    if(e.key === 'ArrowRight') navigate(1);
+  });
+})();
+</script>
