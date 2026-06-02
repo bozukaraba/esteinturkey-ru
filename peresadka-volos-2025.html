@@ -46,8 +46,8 @@
   --eit-text:          #1A2A2A;
   --eit-text-muted:    #5A6A6A;
   --eit-white:         #FFFFFF;
-  --eit-gold:          #C9A24B;
-  --eit-gold-light:    #E2C57E;
+  --eit-gold:          #2E8B8B;
+  --eit-gold-light:    #4AACAC;
   --eit-border:        rgba(29, 92, 92, 0.12);
   --eit-shadow-sm:     0 2px 12px rgba(29, 92, 92, 0.08);
   --eit-shadow-md:     0 10px 34px rgba(29, 92, 92, 0.12);
@@ -79,14 +79,14 @@
   border: 2px solid transparent; transition: var(--eit-transition); white-space: nowrap;
 }
 .eit2-btn svg { width: 18px; height: 18px; }
-.eit2-btn-primary { background: var(--eit-primary); color: #fff; }
+.eit2-btn-primary { background: var(--eit-primary); color: #fff !important; }
 .eit2-btn-primary:hover { background: var(--eit-primary-dark); transform: translateY(-2px); box-shadow: var(--eit-shadow-md); }
-.eit2-btn-gold { background: linear-gradient(135deg, var(--eit-gold-light), var(--eit-gold)); color: #3a2e08; }
-.eit2-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,162,75,.4); }
-.eit2-btn-outline { background: #fff; color: var(--eit-primary); border-color: var(--eit-border); }
-.eit2-btn-outline:hover { border-color: var(--eit-primary); transform: translateY(-2px); }
-.eit2-btn-ghost { background: transparent; color: var(--eit-gold); border-color: var(--eit-gold); }
-.eit2-btn-ghost:hover { background: var(--eit-gold); color: #3a2e08; }
+.eit2-btn-gold { background: linear-gradient(135deg, var(--eit-gold-light), var(--eit-gold)); color: #fff !important; }
+.eit2-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(46,139,139,.4); }
+.eit2-btn-outline { background: var(--eit-primary); color: #fff !important; border-color: var(--eit-primary); }
+.eit2-btn-outline:hover { background: var(--eit-primary-dark); border-color: var(--eit-primary-dark); transform: translateY(-2px); }
+.eit2-btn-ghost { background: transparent; color: #fff !important; border-color: #fff; }
+.eit2-btn-ghost:hover { background: var(--eit-gold); color: #fff !important; }
 
 /* ── SECTION HEADER ── */
 .eit2-sec { padding: 92px 0; }
@@ -167,7 +167,7 @@
 .eit2-ba-tag { position: absolute; top: 14px; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; color: #fff; }
 .eit2-ba-tag.before { left: 14px; background: var(--eit-primary-dark); }
 .eit2-ba-tag.after { right: 14px; background: var(--eit-primary); }
-.eit2-ba-mid { left: 50%; top: 14px; transform: translateX(-50%); background: var(--eit-gold); color: #3a2e08; }
+.eit2-ba-mid { left: 50%; top: 14px; transform: translateX(-50%); background: var(--eit-gold); color: #fff; }
 .eit2-ba-thumbs { display: flex; flex-direction: column; gap: 12px; }
 .eit2-ba-thumb { border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; box-shadow: var(--eit-shadow-sm); transition: var(--eit-transition); }
 .eit2-ba-thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; }
@@ -200,7 +200,7 @@
   padding: 32px 26px; transition: var(--eit-transition); overflow: hidden;
 }
 .eit2-reason:hover { transform: translateY(-6px); box-shadow: var(--eit-shadow-md); border-color: var(--eit-gold); }
-.eit2-reason-num { font-family: var(--eit-serif); font-size: 50px; font-weight: 800; color: rgba(201,162,75,.25); line-height: 1; }
+.eit2-reason-num { font-family: var(--eit-serif); font-size: 50px; font-weight: 800; color: rgba(29,92,92,.25); line-height: 1; }
 .eit2-reason-ic { position: absolute; top: 30px; right: 26px; width: 44px; height: 44px; border-radius: 50%; background: var(--eit-cream); display: flex; align-items: center; justify-content: center; color: var(--eit-gold); }
 .eit2-reason-ic svg { width: 22px; height: 22px; }
 .eit2-reason h3 { font-size: 18px; font-weight: 800; color: var(--eit-primary-dark); margin: 16px 0 10px; }
@@ -209,7 +209,7 @@
 /* 6 reasons dark box */
 .eit2-clinic { margin-top: 56px; background: var(--eit-primary-dark); border-radius: 26px; padding: 50px 44px; }
 .eit2-clinic-head { text-align: center; margin-bottom: 36px; }
-.eit2-clinic-head .eit2-eyebrow { background: rgba(201,162,75,.15); padding: 7px 18px; border-radius: 30px; }
+.eit2-clinic-head .eit2-eyebrow { background: rgba(46,139,139,.15); padding: 7px 18px; border-radius: 30px; }
 .eit2-clinic-head .eit2-eyebrow::after { display: none; }
 .eit2-clinic-head h2 { font-family: var(--eit-serif); color: #fff; font-size: clamp(24px,3vw,36px); font-weight: 800; }
 .eit2-clinic-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -263,7 +263,7 @@
   position: relative; transition: var(--eit-transition);
 }
 .eit2-proc:hover { background: rgba(255,255,255,.09); transform: translateY(-4px); }
-.eit2-proc-num { font-family: var(--eit-serif); font-size: 40px; font-weight: 800; color: rgba(201,162,75,.4); line-height: 1; }
+.eit2-proc-num { font-family: var(--eit-serif); font-size: 40px; font-weight: 800; color: rgba(29,92,92,.4); line-height: 1; }
 .eit2-proc-ic { position: absolute; top: 24px; right: 22px; width: 42px; height: 42px; border-radius: 11px; background: var(--eit-primary-dark); display: flex; align-items: center; justify-content: center; color: var(--eit-gold); }
 .eit2-proc-ic svg { width: 21px; height: 21px; }
 .eit2-proc h4 { color: #fff; font-size: 16px; font-weight: 700; margin: 16px 0 8px; }
@@ -374,7 +374,7 @@
 
 /* ════════ CTA BANNER ════════ */
 .eit2-cta { background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-primary)); position: relative; overflow: hidden; padding: 76px 0; }
-.eit2-cta::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(201,162,75,.14); }
+.eit2-cta::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(29,92,92,.14); }
 .eit2-cta-in { position: relative; text-align: center; max-width: 720px; margin: 0 auto; z-index: 1; }
 .eit2-cta-in h2 { font-family: var(--eit-serif); color: #fff; font-size: clamp(26px,3.6vw,42px); font-weight: 800; }
 .eit2-cta-in h2 span { color: var(--eit-gold-light); }
@@ -461,22 +461,7 @@
     </div>
   </section>
 
-  <!-- ════════ TRUSTED LOGOS ════════ -->
-  <div class="eit2-trusted">
-    <div class="eit2-wrap">
-      <div class="eit2-trusted-inner">
-        <span class="eit2-trusted-label">Нам доверяют пациенты со всего мира</span>
-        <div class="eit2-trusted-logos">
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>GLOBAL<br>HEALTH</span>
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>MEDICAL<br>EXCELLENCE</span>
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-8-4.5-8-10a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5.5-8 10-8 10z"/></svg>HEALTH<br>TRAVELER</span>
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg>WORLD CLINIC<br>AWARDS</span>
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>MEDTOUR<br>WORLD</span>
-          <span class="eit2-trusted-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.8 6.5 19.5l1-6.3L3 8.9 9 8z"/></svg>PREMIER<br>HEALTH</span>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ════════ WHY CHOOSE ════════ -->
   <section class="eit2-sec">
@@ -589,11 +574,6 @@
         <h2>Ваш персональный <span>пакет лечения</span></h2>
         <p>Выберите подходящий вариант. Прозрачно. Всё включено. Создано под вас.</p>
       </div>
-      <div class="eit2-tabs">
-        <button class="eit2-tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3c0 4 6 5 6 9a3 3 0 0 1-6 0"/></svg>Пересадка волос</button>
-        <button class="eit2-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5.5c-2-2-6-2-7 1-1.5 4 1 9 2 11 .8 1.6 2 .5 2.5-1 .3-.9.7-2 1.5-2s1.2 1.1 1.5 2c.5 1.5 1.7 2.6 2.5 1 1-2 3.5-7 2-11-1-3-5-3-7-1z"/></svg>Стоматология</button>
-        <button class="eit2-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l4 4 5-6 5 6 4-4v10H3z"/></svg>VIP-опыт</button>
-      </div>
       <div class="eit2-pkg-grid">
         <div class="eit2-pkg standard fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>Стандарт</h3></div>
@@ -689,7 +669,7 @@
             <div class="eit2-field"><label>Телефон</label><input type="tel" id="cfPhone" placeholder="+7 ___ ___ __ __"></div>
             <div class="eit2-field"><label>Страна</label><input type="text" placeholder="Ваша страна"></div>
             <div class="eit2-field full"><label>Интересующая услуга</label>
-              <select><option>Пересадка волос (FUE)</option><option>Пересадка волос (DHI)</option><option>Пересадка бороды</option><option>Стоматология</option></select>
+              <select><option>Пересадка волос</option><option>Стоматология</option></select>
             </div>
           </div>
         </div>
@@ -765,7 +745,6 @@
           <div class="eit2-story-media">
             <span class="eit2-story-tag">Пересадка волос</span>
             <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.07.43_691e03a6.png" alt="История пациента — результат">
-            <div class="eit2-story-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div>
           </div>
           <div class="eit2-story-body">
             <div class="eit2-story-name">Денис</div>
@@ -778,7 +757,6 @@
           <div class="eit2-story-media">
             <span class="eit2-story-tag">Стоматология</span>
             <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/женщина.png" alt="История пациента — стоматология">
-            <div class="eit2-story-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div>
           </div>
           <div class="eit2-story-body">
             <div class="eit2-story-name">Ольга</div>
@@ -786,35 +764,6 @@
             <div class="eit2-story-quote">«Обожаю свою новую улыбку! Клиника на высшем уровне, персонал очень внимательный.»</div>
             <div class="eit2-story-foot"><span style="color:var(--eit-text-muted)">🇩🇪 Германия</span><span class="eit2-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> 5.0</span></div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════ TEAM ════════ -->
-  <section class="eit2-sec eit2-sec-cream">
-    <div class="eit2-wrap">
-      <div class="eit2-head">
-        <span class="eit2-eyebrow">Наша команда</span>
-        <h2>Познакомьтесь с <span>нашей командой</span></h2>
-        <p>Основатель, дерматолог, хирурги по пересадке волос и координаторы создают индивидуальный план для каждого пациента.</p>
-      </div>
-      <div class="eit2-team-grid">
-        <div class="eit2-member fade-in">
-          <div class="eit2-member-photo"><img src="__TEAM_1__" alt="Sinan Özer" onerror="this.outerHTML='<div class=&quot;eit2-member-ph&quot;>__TEAM_1__</div>'"></div>
-          <div class="eit2-member-body"><div class="eit2-member-role">Основатель и координатор</div><div class="eit2-member-name">Sinan Özer</div><div class="eit2-member-desc">Основатель Este in Turkey с опытом более 10 лет в медицинском туризме и заботе о пациентах.</div><a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее</a></div>
-        </div>
-        <div class="eit2-member fade-in">
-          <div class="eit2-member-photo"><img src="__TEAM_2__" alt="Dr. Rasime Erkan" onerror="this.outerHTML='<div class=&quot;eit2-member-ph&quot;>__TEAM_2__</div>'"></div>
-          <div class="eit2-member-body"><div class="eit2-member-role">Дерматолог</div><div class="eit2-member-name">Dr. Rasime Erkan</div><div class="eit2-member-desc">Сертифицированный дерматолог, специалист по здоровью кожи головы и подготовке к процедуре.</div><a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее</a></div>
-        </div>
-        <div class="eit2-member fade-in">
-          <div class="eit2-member-photo"><img src="__TEAM_3__" alt="Zehra Özer" onerror="this.outerHTML='<div class=&quot;eit2-member-ph&quot;>__TEAM_3__</div>'"></div>
-          <div class="eit2-member-body"><div class="eit2-member-role">Специалист по пересадке</div><div class="eit2-member-name">Zehra Özer</div><div class="eit2-member-desc">Специалист по методам FUE и DHI с фокусом на естественный результат и удовлетворённость пациентов.</div><a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее</a></div>
-        </div>
-        <div class="eit2-member fade-in">
-          <div class="eit2-member-photo"><img src="__TEAM_4__" alt="Maria K." onerror="this.outerHTML='<div class=&quot;eit2-member-ph&quot;>__TEAM_4__</div>'"></div>
-          <div class="eit2-member-body"><div class="eit2-member-role">Координатор пациентов</div><div class="eit2-member-name">Maria K.</div><div class="eit2-member-desc">Сопровождает международных пациентов с заботой и обеспечивает комфортное путешествие.</div><a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее</a></div>
         </div>
       </div>
     </div>
@@ -829,12 +778,11 @@
         <p>Смотрите истории «до и после» и узнайте об опыте наших пациентов в Турции.</p>
       </div>
       <div class="eit2-res-grid">
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">Невероятный результат</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="Результат пересадки 1"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">3800 графтов</span></div></div>
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">До / После</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.16.38_de7f274f.png" alt="Результат пересадки 2"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">4200 графтов</span></div></div>
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">Преображение</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.06.41_d56da3ec.png" alt="Результат пересадки 3"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">5000 графтов</span></div></div>
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">Естественный вид</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.04.23_0da4bdf3.png" alt="Результат пересадки 4"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">3600 графтов</span></div></div>
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">История пациента</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.00.07_73d33486.png" alt="Результат пересадки 5"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">4500 графтов</span></div></div>
-        <div class="eit2-res fade-in"><span class="eit2-res-tag">До / После</span><div class="eit2-res-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg></div><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-01-at-11.44.32.jpeg" alt="Результат пересадки 6"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">Результат</span></div></div>
+        <div class="eit2-res fade-in"><span class="eit2-res-tag">Невероятный результат</span><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="Результат пересадки 1"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">3800 графтов</span></div></div>
+        <div class="eit2-res fade-in"><span class="eit2-res-tag">До / После</span><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.16.38_de7f274f.png" alt="Результат пересадки 2"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">4200 графтов</span></div></div>
+        <div class="eit2-res fade-in"><span class="eit2-res-tag">Преображение</span><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.06.41_d56da3ec.png" alt="Результат пересадки 3"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">5000 графтов</span></div></div>
+        <div class="eit2-res fade-in"><span class="eit2-res-tag">Естественный вид</span><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.04.23_0da4bdf3.png" alt="Результат пересадки 4"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">3600 графтов</span></div></div>
+        <div class="eit2-res fade-in"><span class="eit2-res-tag">История пациента</span><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.00.07_73d33486.png" alt="Результат пересадки 5"><div class="eit2-res-foot"><span>Пересадка волос</span><span class="g">4500 графтов</span></div></div>
       </div>
       <div style="text-align:center;margin-top:38px;"><a href="https://esteinru.teset.fun/otzyvy-peresadka-volos/" class="eit2-btn eit2-btn-outline">Все отзывы и результаты →</a></div>
     </div>
@@ -849,13 +797,7 @@
         <p>Слушайте напрямую наших международных пациентов, которые получили результат, изменивший жизнь.</p>
       </div>
       <div class="eit2-rev-box">
-        <div class="eit2-rev-tabs">
-          <div class="eit2-rev-tab active">Все отзывы <span class="rt">4.9</span></div>
-          <div class="eit2-rev-tab">Google <span class="rt">4.8</span></div>
-          <div class="eit2-rev-tab">Trustpilot <span class="rt">5.0</span></div>
-          <div class="eit2-rev-tab">Tripadvisor <span class="rt">5.0</span></div>
-          <div class="eit2-rev-tab">Yandex <span class="rt">4.9</span></div>
-        </div>
+
         <div class="eit2-rev-summary">
           <div class="eit2-rev-score">4.9</div>
           <div class="eit2-stars">
