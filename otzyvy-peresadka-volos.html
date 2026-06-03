@@ -76,10 +76,12 @@ img { max-width: 100%; display: block; }
   transition: none !important;
 }
 .elementor-invisible:has(.rv-wrap),
-.elementor-invisible .rv-wrap {
+.elementor-invisible .rv-wrap,
+*:has(.rv-wrap) {
   visibility: visible !important;
   opacity: 1 !important;
   animation: none !important;
+  transform: none !important;
 }
 
 /* Full-bleed escape */
@@ -314,25 +316,34 @@ img { max-width: 100%; display: block; }
     while(p && p !== document.body){
       if(p.classList){
         p.classList.remove('elementor-invisible');
-        p.style.visibility = 'visible';
-        p.style.opacity = '1';
+        p.style.cssText += ';visibility:visible!important;opacity:1!important;animation:none!important;transform:none!important;';
       }
       p = p.parentElement;
     }
-    var all = wrap.querySelectorAll('*');
+    var all = document.querySelectorAll('.elementor-invisible');
     for(var i=0; i<all.length; i++){
       all[i].classList.remove('elementor-invisible');
-      all[i].style.visibility = 'visible';
-      all[i].style.opacity = '1';
+      all[i].style.cssText += ';visibility:visible!important;opacity:1!important;';
     }
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', fix);
-  } else {
-    fix();
-  }
-  var t = setInterval(fix, 100);
-  setTimeout(function(){ clearInterval(t); }, 3000);
+  fix();
+  document.addEventListener('DOMContentLoaded', fix);
+  window.addEventListener('load', fix);
+  var t = setInterval(fix, 50);
+  setTimeout(function(){ clearInterval(t); }, 5000);
+  var obs = new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var n = muts[i].target;
+      if(n.classList && n.classList.contains('elementor-invisible')){
+        n.classList.remove('elementor-invisible');
+        n.style.cssText += ';visibility:visible!important;opacity:1!important;';
+      }
+    }
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    obs.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class','style'] });
+    setTimeout(function(){ obs.disconnect(); }, 8000);
+  });
 })();
 </script>
 
