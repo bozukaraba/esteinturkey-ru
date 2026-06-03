@@ -61,18 +61,25 @@ img { max-width: 100%; display: block; }
 }
 .elementor-widget-container:has(.rv-wrap) > * { max-width: 100% !important; }
 
-/* Elementor entrance animation override — sadece hero + ilk 2 content */
-.rv-hero,
-.rv-hero *,
-.rv-card:first-of-type,
-.rv-card:first-of-type *,
-.rv-review:first-of-type,
-.rv-review:first-of-type * {
+.rv-wrap,
+.rv-wrap *,
+.rv-wrap .rv-hero,
+.rv-wrap .rv-card,
+.rv-wrap .rv-review,
+.rv-wrap .rv-faq,
+.rv-wrap .rv-cta,
+.rv-wrap .rv-main {
   visibility: visible !important;
   opacity: 1 !important;
   animation: none !important;
   transform: none !important;
   transition: none !important;
+}
+.elementor-invisible:has(.rv-wrap),
+.elementor-invisible .rv-wrap {
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: none !important;
 }
 
 /* Full-bleed escape */
@@ -301,21 +308,31 @@ img { max-width: 100%; display: block; }
 <script>
 (function(){
   function fix(){
-    var els = document.querySelectorAll('.rv-hero, .rv-card:first-of-type, .rv-review:first-of-type');
-    for(var i=0; i<els.length; i++){
-      var p = els[i];
-      while(p && p !== document.body){
-        if(p.classList){
-          p.classList.remove('elementor-invisible');
-          p.style.visibility = 'visible';
-          p.style.opacity = '1';
-        }
-        p = p.parentElement;
+    var wrap = document.querySelector('.rv-wrap');
+    if(!wrap) return;
+    var p = wrap;
+    while(p && p !== document.body){
+      if(p.classList){
+        p.classList.remove('elementor-invisible');
+        p.style.visibility = 'visible';
+        p.style.opacity = '1';
       }
+      p = p.parentElement;
+    }
+    var all = wrap.querySelectorAll('*');
+    for(var i=0; i<all.length; i++){
+      all[i].classList.remove('elementor-invisible');
+      all[i].style.visibility = 'visible';
+      all[i].style.opacity = '1';
     }
   }
-  var t = setInterval(function(){ fix(); }, 100);
-  setTimeout(function(){ clearInterval(t); }, 2000);
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', fix);
+  } else {
+    fix();
+  }
+  var t = setInterval(fix, 100);
+  setTimeout(function(){ clearInterval(t); }, 3000);
 })();
 </script>
 
