@@ -46,11 +46,47 @@ body { font-family: var(--eit-font); color: var(--eit-text); background: var(--e
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
-.rv-wrap { min-height: 100vh; overflow-x: hidden; width: 100%; }
+.rv-wrap { overflow-x: hidden; width: 100%; }
+
+/* ── WordPress / Elementor container resets ── */
+.elementor-section:has(.rv-wrap),
+.elementor-column:has(.rv-wrap),
+.e-con:has(.rv-wrap),
+.e-child:has(.rv-wrap),
+.elementor-widget-container:has(.rv-wrap) {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.elementor-widget-container:has(.rv-wrap) > * { max-width: 100% !important; }
+
+/* Elementor entrance animation override — sadece hero + ilk 2 content */
+.rv-hero,
+.rv-hero *,
+.rv-card:first-of-type,
+.rv-card:first-of-type *,
+.rv-review:first-of-type,
+.rv-review:first-of-type * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Full-bleed escape */
+.elementor-widget-container .rv-wrap,
+.e-con .rv-wrap,
+.elementor-column .rv-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block;
+}
 .rv-inner { max-width: 980px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
 /* ── HERO ── */
-.rv-hero { background: var(--eit-primary-dark); padding: 80px 0 60px; position: relative; overflow: hidden; }
+.rv-hero { background: var(--eit-primary-dark); padding: 48px 0 36px; position: relative; overflow: hidden; }
 .rv-hero::before {
   content: ''; position: absolute; inset: 0;
   background:
@@ -77,12 +113,12 @@ img { max-width: 100%; display: block; }
 .rv-hero-rating { color: rgba(255,255,255,.7); font-size: 13px; font-weight: 600; }
 
 /* ── MAIN ── */
-.rv-main { padding: 56px 0 100px; }
+.rv-main { padding: 32px 0 80px; }
 
 /* ── INTRO CARD ── */
 .rv-card {
-  background: var(--eit-white); border-radius: 24px;
-  border: 1px solid var(--eit-border); box-shadow: var(--eit-shadow-md);
+  background: linear-gradient(145deg, #f0f7f7, #e8f4f4); border-radius: 24px;
+  border: 1px solid rgba(46,139,139,.18); box-shadow: var(--eit-shadow-md);
   padding: 44px 48px; margin-bottom: 28px;
 }
 .rv-card p { font-size: 16px; line-height: 1.85; color: var(--eit-text); margin-bottom: 16px; }
@@ -102,8 +138,8 @@ img { max-width: 100%; display: block; }
 
 /* ── REVIEW SECTION ── */
 .rv-review {
-  background: var(--eit-white); border-radius: 24px;
-  border: 1px solid var(--eit-border); box-shadow: var(--eit-shadow-md);
+  background: linear-gradient(145deg, #f0f7f7, #e8f4f4); border-radius: 24px;
+  border: 1px solid rgba(46,139,139,.18); box-shadow: var(--eit-shadow-md);
   padding: 40px 44px; margin-bottom: 28px; scroll-margin-top: 120px;
 }
 .rv-review-head { margin-bottom: 26px; }
@@ -128,41 +164,35 @@ img { max-width: 100%; display: block; }
 .rv-review-sub strong { color: var(--eit-primary-dark); font-weight: 700; }
 
 /* ── MEDIA GRID ── */
-.rv-media { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.rv-media.cols-1 { grid-template-columns: 1fr; max-width: 640px; }
+.rv-media { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 300px; gap: 14px; }
+.rv-media.cols-1 { grid-template-columns: 1fr; }
 .rv-media.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.rv-media.mixed { grid-template-columns: 3fr 2fr; align-items: stretch; }
-.rv-media.mixed .rv-video { aspect-ratio: 16/9; }
-.rv-media.mixed .rv-photo { aspect-ratio: unset; }
-.rv-video-shorts { aspect-ratio: 9/16 !important; max-width: 260px; justify-self: center; }
+.rv-media + .rv-media { margin-top: 14px; }
 
 /* Responsive video */
 .rv-video {
-  position: relative; width: 100%; aspect-ratio: 16 / 9;
-  border-radius: 16px; overflow: hidden; background: #0d2626;
+  position: relative; width: 100%; height: 100%;
+  border-radius: 14px; overflow: hidden; background: none;
   box-shadow: var(--eit-shadow-sm);
 }
 .rv-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Photo */
 .rv-photo {
-  position: relative; width: 100%; aspect-ratio: 4 / 3;
-  border-radius: 16px; overflow: hidden; background: var(--eit-cream);
+  position: relative; width: 100%; height: 100%;
+  border-radius: 14px; overflow: hidden; background: none;
   box-shadow: var(--eit-shadow-sm);
 }
-.rv-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.rv-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .rv-photo:hover img { transform: scale(1.05); }
-.rv-photo.tall { aspect-ratio: 3 / 4; }
-.rv-photo.wide { aspect-ratio: 16 / 9; }
-.rv-photo.contain { background: #fff; }
-.rv-photo.contain img { object-fit: contain; }
+.rv-photo.sq { } 
+.rv-photo.wide { }
 
 /* span helpers */
 .rv-span-2 { grid-column: span 2; }
 
 /* ── TEXT TESTIMONIAL ── */
-.rv-quote-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-.rv-quote-row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 22px; align-items: start; }
+.rv-quote-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: center; }
 .rv-quote {
   background: linear-gradient(135deg, rgba(29,92,92,.04), rgba(46,139,139,.08));
   border: 1px solid rgba(46,139,139,.16); border-radius: 18px;
@@ -181,8 +211,6 @@ img { max-width: 100%; display: block; }
 .rv-quote-stars { display: flex; gap: 2px; margin-bottom: 12px; }
 .rv-quote-stars svg { width: 15px; height: 15px; color: #FFC107; }
 .rv-quote-text { font-size: 14px; line-height: 1.75; color: var(--eit-text); }
-.rv-quote-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.rv-quote-photos.single { grid-template-columns: 1fr; }
 
 /* ── DIVIDER ── */
 .rv-divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--eit-accent), transparent); margin: 8px 0 28px; }
@@ -197,7 +225,7 @@ img { max-width: 100%; display: block; }
 }
 .rv-faq-header h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--eit-primary-dark); letter-spacing: -.025em; }
 .rv-faq-item {
-  background: var(--eit-white); border-radius: 16px; border: 1.5px solid var(--eit-border);
+  background: linear-gradient(145deg, #f0f7f7, #e8f4f4); border-radius: 16px; border: 1.5px solid rgba(46,139,139,.18);
   margin-bottom: 10px; overflow: hidden; transition: var(--eit-transition);
 }
 .rv-faq-item.open { border-color: rgba(46,139,139,.35); box-shadow: var(--eit-shadow-sm); }
@@ -247,14 +275,13 @@ img { max-width: 100%; display: block; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .rv-hero { padding: 56px 0 44px; }
-  .rv-main { padding: 32px 0 60px; }
+  .rv-hero { padding: 40px 0 30px; }
+  .rv-main { padding: 24px 0 60px; }
   .rv-card { padding: 28px 22px; }
   .rv-review { padding: 28px 20px; }
-  .rv-media, .rv-media.cols-3 { grid-template-columns: 1fr; }
+  .rv-media, .rv-media.cols-3 { grid-template-columns: 1fr; grid-auto-rows: 260px; }
   .rv-span-2 { grid-column: auto; }
-  .rv-quote-row, .rv-quote-row-3 { grid-template-columns: 1fr; }
-  .rv-quote-photos { grid-template-columns: 1fr 1fr; }
+  .rv-quote-row { grid-template-columns: 1fr; }
   .rv-cta { padding: 40px 22px; }
 }
 @media (max-width: 480px) {
@@ -270,6 +297,27 @@ img { max-width: 100%; display: block; }
   .rv-faq-item.open .rv-faq-a { padding: 0 18px 18px; font-size: 13px; }
 }
 </style>
+
+<script>
+(function(){
+  function fix(){
+    var els = document.querySelectorAll('.rv-hero, .rv-card:first-of-type, .rv-review:first-of-type');
+    for(var i=0; i<els.length; i++){
+      var p = els[i];
+      while(p && p !== document.body){
+        if(p.classList){
+          p.classList.remove('elementor-invisible');
+          p.style.visibility = 'visible';
+          p.style.opacity = '1';
+        }
+        p = p.parentElement;
+      }
+    }
+  }
+  var t = setInterval(function(){ fix(); }, 100);
+  setTimeout(function(){ clearInterval(t); }, 2000);
+})();
+</script>
 
 <div class="rv-wrap">
 
@@ -319,13 +367,13 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв о пересадке волос в 2026 году</h2>
           <p class="rv-review-sub">Евгений из восточной Европы, приехал к нам из Эстонии, рассказывает о своем опыте пересадки волос в Турции в 2026 году техникой FUE.</p>
         </div>
-        <div class="rv-media mixed">
+        <div class="rv-media">
           <div class="rv-video"><iframe src="https://www.youtube.com/embed/rbZX0Wx3ntk" title="Отзыв Евгения о пересадке волос FUE 2026" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
           <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/20260114-DSC02588-1365x2048-1.webp" alt="Процесс пересадки волос FUE — Евгений из Эстонии" loading="lazy"></div>
         </div>
-        <div class="rv-media" style="margin-top:16px;">
-          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/daadd08c-8de7-452a-aea0-b0913efef4d4.webp" alt="Мытьё головы после пересадки волос в клинике ESTE IN TURKEY" loading="lazy"></div>
-          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/DSC02591-rotated-1-scaled.webp" alt="Пациент Евгений с врачом клиники ESTE IN TURKEY" loading="lazy"></div>
+        <div class="rv-media">
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/daadd08c-8de7-452a-aea0-b0913efef4d4.webp" alt="Пациент Евгений с врачом клиники ESTE IN TURKEY" loading="lazy"></div>
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/DSC02591-rotated-1-scaled.webp" alt="Мытьё головы после пересадки волос в клинике ESTE IN TURKEY" loading="lazy"></div>
         </div>
       </article>
 
@@ -336,13 +384,13 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв Игоря из Казани о пересадке волос в Стамбуле</h2>
           <p class="rv-review-sub">Рассказывает как выбрать клинику, как проходит процесс пересадки волос, сколько длится процедура и другие детали от первого лица.</p>
         </div>
-        <div class="rv-media mixed">
+        <div class="rv-media">
           <div class="rv-video"><iframe src="https://www.youtube.com/embed/ei8PEyhi8g8" title="Отзыв Игоря из Казани о пересадке волос — часть 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          <div class="rv-video rv-video-shorts"><iframe src="https://www.youtube.com/embed/_GeN4j3HFE8" title="Отзыв Игоря из Казани о пересадке волос — часть 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="rv-video"><iframe src="https://www.youtube.com/embed/_GeN4j3HFE8" title="Отзыв Игоря из Казани о пересадке волос — часть 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         </div>
-        <div class="rv-media" style="margin-top:16px;">
+        <div class="rv-media">
           <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-1-760x760-1.webp" alt="Игорь из Казани — фото до и после пересадки волос" loading="lazy"></div>
-          <div class="rv-photo tall"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/aca12c04-0f07-4c4a-85e6-6409bd450a71-768x1024-1.webp" alt="Результат пересадки волос Игоря из Казани" loading="lazy"></div>
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/aca12c04-0f07-4c4a-85e6-6409bd450a71-768x1024-1.webp" alt="Результат пересадки волос Игоря из Казани" loading="lazy"></div>
         </div>
       </article>
 
@@ -353,26 +401,26 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв Батыра о трансплантации волос в клинике ESTE IN TURKEY</h2>
           <p class="rv-review-sub">Довольный пациент нашей клиники, фото до пересадки и на 10-ый день после пересадки волос.</p>
         </div>
-        <div class="rv-quote-row-3">
-          <div class="rv-quote">
-            <div class="rv-quote-top">
-              <div class="rv-quote-ava">Б</div>
-              <div class="rv-quote-meta">
-                <span class="rv-quote-name">Батыр</span>
-                <span class="rv-quote-src">Отзыв · 2 месяца назад</span>
-              </div>
+        <div class="rv-quote" style="margin-bottom:14px;">
+          <div class="rv-quote-top">
+            <div class="rv-quote-ava">Б</div>
+            <div class="rv-quote-meta">
+              <span class="rv-quote-name">Батыр</span>
+              <span class="rv-quote-src">Отзыв · 2 месяца назад</span>
             </div>
-            <div class="rv-quote-stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="rv-quote-text">Случайно наткнулся на просторах инета на эту клинику и изначально относился скептически по поводу пересадки, но решил просто узнать цену и оставил заявку. Сказать что я был удивлён — ничего не сказать. С первого созвона и до конца пересадки волос меня просто вели за руку: встретили в аэропорту, поселили в приятный отель, на следующий день мы приехали в клинику, врач досконально всё объяснил, а переводчик всё дословно перевёл. Весь персонал и переводчики вежливые и учтивые. Делал пересадку в 4500 графтов и остался очень доволен, всем советую эту клинику. Если бы я раньше знал, что снова обрести уверенность и шевелюру это так просто — сделал бы это давно, не задумываясь. Ещё раз спасибо клинике «Este in Turkey»!!!</p>
           </div>
-          <div class="rv-photo tall"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2025-08-02-at-16.21.03-768x1024-1.webp" alt="Батыр — фото до пересадки волос" loading="lazy"></div>
-          <div class="rv-photo tall"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/photos.webp" alt="Батыр — фото на 10-й день после пересадки волос" loading="lazy"></div>
+          <div class="rv-quote-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rv-quote-text">Случайно наткнулся на просторах инета на эту клинику и изначально относился скептически по поводу пересадки, но решил просто узнать цену и оставил заявку. Сказать что я был удивлён — ничего не сказать. С первого созвона и до конца пересадки волос меня просто вели за руку: встретили в аэропорту, поселили в приятный отель, на следующий день мы приехали в клинику, врач досконально всё объяснил, а переводчик всё дословно перевёл. Весь персонал и переводчики вежливые и учтивые. Делал пересадку в 4500 графтов и остался очень доволен, всем советую эту клинику. Если бы я раньше знал, что снова обрести уверенность и шевелюру это так просто — сделал бы это давно, не задумываясь. Ещё раз спасибо клинике «Este in Turkey»!!!</p>
+        </div>
+        <div class="rv-media">
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2025-08-02-at-16.21.03-768x1024-1.webp" alt="Батыр — фото до пересадки волос" loading="lazy"></div>
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/photos.webp" alt="Батыр — фото на 10-й день после пересадки волос" loading="lazy"></div>
         </div>
       </article>
 
@@ -385,7 +433,7 @@ img { max-width: 100%; display: block; }
         </div>
         <div class="rv-media">
           <div class="rv-video"><iframe src="https://www.youtube.com/embed/LT0AFEw_Cos" title="Отзыв Дениса из Мурманска о пересадке волос FUE Sapphire" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-2-1-819x1024-1.webp" alt="Денис из Мурманска — результат пересадки волос спустя год" loading="lazy"></div>
+          <div class="rv-photo wide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-2-1-819x1024-1.webp" alt="Денис из Мурманска — результат пересадки волос спустя год" loading="lazy"></div>
         </div>
       </article>
 
@@ -408,28 +456,26 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв Леонида из Тулы о бесшовной пересадке волос в клинике ESTE IN TURKEY</h2>
           <p class="rv-review-sub">Впечатляющий пример работы профессиональных врачей. Использовался современный бесшовный метод, позволяющий создать естественное направление роста волос.</p>
         </div>
-        <div class="rv-quote-row">
-          <div class="rv-quote">
-            <div class="rv-quote-top">
-              <div class="rv-quote-ava">Л</div>
-              <div class="rv-quote-meta">
-                <span class="rv-quote-name">Leonid Batozsky</span>
-                <span class="rv-quote-src">2 отзыва · 2 года назад</span>
-              </div>
+        <div class="rv-quote" style="margin-bottom:14px;">
+          <div class="rv-quote-top">
+            <div class="rv-quote-ava">Л</div>
+            <div class="rv-quote-meta">
+              <span class="rv-quote-name">Leonid Batozsky</span>
+              <span class="rv-quote-src">2 отзыва · 2 года назад</span>
             </div>
-            <div class="rv-quote-stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="rv-quote-text">Хочу сказать спасибо Este in Turkey, которая провела мне операцию по пересадке волос в октябре 2022 года. Я очень доволен результатом. Компания организовала абсолютно всё: VIP-трансфер, отель, лекарства. Но отдельное спасибо Ташкину, который сопровождал меня на всех этапах, начиная от заключения договора до полной реабилитации. Фото до и через 10 месяцев после операции.</p>
           </div>
-          <div class="rv-quote-photos">
-            <div class="rv-photo tall"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/leo-942x1024-2.webp" alt="Леонид из Тулы — фото до пересадки волос" loading="lazy"></div>
-            <div class="rv-photo tall"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/leo2-839x1024-1.webp" alt="Леонид из Тулы — результат через 10 месяцев" loading="lazy"></div>
+          <div class="rv-quote-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
+          <p class="rv-quote-text">Хочу сказать спасибо Este in Turkey, которая провела мне операцию по пересадке волос в октябре 2022 года. Я очень доволен результатом. Компания организовала абсолютно всё: VIP-трансфер, отель, лекарства. Но отдельное спасибо Ташкину, который сопровождал меня на всех этапах, начиная от заключения договора до полной реабилитации. Фото до и через 10 месяцев после операции.</p>
+        </div>
+        <div class="rv-media">
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/leo-942x1024-2.webp" alt="Леонид из Тулы — фото до пересадки волос" loading="lazy"></div>
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/leo2-839x1024-1.webp" alt="Леонид из Тулы — результат через 10 месяцев" loading="lazy"></div>
         </div>
       </article>
 
@@ -440,29 +486,27 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв Галии о лечении зубов в клинике ESTE IN TURKEY</h2>
           <p class="rv-review-sub">Полное преображение улыбки. Пациентка из США делится впечатлениями о стоматологическом лечении в Стамбуле.</p>
         </div>
-        <div class="rv-quote-row">
-          <div class="rv-quote">
-            <div class="rv-quote-top">
-              <div class="rv-quote-ava">G</div>
-              <div class="rv-quote-meta">
-                <span class="rv-quote-name">Galiya Laughnan</span>
-                <span class="rv-quote-src">4 отзыва · месяц назад</span>
-              </div>
+        <div class="rv-quote" style="margin-bottom:14px;">
+          <div class="rv-quote-top">
+            <div class="rv-quote-ava">G</div>
+            <div class="rv-quote-meta">
+              <span class="rv-quote-name">Galiya Laughnan</span>
+              <span class="rv-quote-src">4 отзыва · месяц назад</span>
             </div>
-            <div class="rv-quote-stars">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="rv-quote-text">Меня зовут Galiya Laughnan. Я узнала об этой компании от моей подруги, которая сделала здесь себе зубы и была очень довольна. Теперь хочу сказать своё мнение о клинике и Докторе Халиде. Мне всё очень понравилось: профессионализм, отношение, внимание к моим мельчайшим просьбам и замечаниям. Особо хочу отметить работу Ташкына и Саши — добрые, отзывчивые, всегда рядом, готовы помочь, поддержать, объяснить, посоветовать. Я чувствую себя в безопасности. И теперь я с новыми красивыми зубами. Мне 71 год, живу в Америке.</p>
           </div>
-          <div class="rv-quote-photos">
-            <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/fdc993f6-a96f-485e-9b29-dfbf2fab0863-578x1024-1.webp" alt="Галия с врачом клиники ESTE IN TURKEY" loading="lazy"></div>
-            <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/a2fe4e45-f14d-4ef0-96ec-59ef9c4f2427-578x1024-1.webp" alt="Галия после лечения зубов — новая улыбка" loading="lazy"></div>
-            <div class="rv-photo rv-span-2 wide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/PHOTO-2026-04-03-16-36-11-2-1-1024x579-1.webp" alt="Результат стоматологического лечения — голливудская улыбка" loading="lazy"></div>
+          <div class="rv-quote-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
+          <p class="rv-quote-text">Меня зовут Galiya Laughnan. Я узнала об этой компании от моей подруги, которая сделала здесь себе зубы и была очень довольна. Теперь хочу сказать своё мнение о клинике и Докторе Халиде. Мне всё очень понравилось: профессионализм, отношение, внимание к моим мельчайшим просьбам и замечаниям. Особо хочу отметить работу Ташкына и Саши — добрые, отзывчивые, всегда рядом, готовы помочь, поддержать, объяснить, посоветовать. Я чувствую себя в безопасности. И теперь я с новыми красивыми зубами. Мне 71 год, живу в Америке.</p>
+        </div>
+        <div class="rv-media cols-3">
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/fdc993f6-a96f-485e-9b29-dfbf2fab0863-578x1024-1.webp" alt="Галия с врачом клиники ESTE IN TURKEY" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/a2fe4e45-f14d-4ef0-96ec-59ef9c4f2427-578x1024-1.webp" alt="Галия после лечения зубов — новая улыбка" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/PHOTO-2026-04-03-16-36-11-2-1-1024x579-1.webp" alt="Результат стоматологического лечения — голливудская улыбка" loading="lazy"></div>
         </div>
       </article>
 
@@ -473,10 +517,12 @@ img { max-width: 100%; display: block; }
           <h2>Кардио-хирург из США прилетел в Стамбул на пересадку волос</h2>
           <p class="rv-review-sub">Пересадка волос современной техникой DHI в лучшей клинике Стамбула. Пациент оценивает качество сервиса и заботу персонала клиники <strong>ESTE IN TURKEY</strong>.</p>
         </div>
+        <div class="rv-media cols-1">
+          <div class="rv-video"><iframe src="https://www.youtube.com/embed/hNt4bGBnNNI" title="Отзыв кардио-хирурга из США о пересадке волос DHI" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
         <div class="rv-media">
-          <div class="rv-video rv-span-2"><iframe src="https://www.youtube.com/embed/hNt4bGBnNNI" title="Отзыв кардио-хирурга из США о пересадке волос DHI" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
           <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/IMG_7456-1024x768-1.webp" alt="Пациент из США с координатором клиники ESTE IN TURKEY" loading="lazy"></div>
-          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2025-11-05-at-17.55.13-760x760-1.webp" alt="Happy patient — пересадка волос DHI в Стамбуле" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2025-11-05-at-17.55.13-760x760-1.webp" alt="Happy patient — пересадка волос DHI в Стамбуле" loading="lazy"></div>
         </div>
       </article>
 
@@ -497,20 +543,20 @@ img { max-width: 100%; display: block; }
 
       <!-- ════════ ОТЗЫВ 10 — Стоматология (видео + галерея) ════════ -->
       <article class="rv-review">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; margin-bottom:16px;">
+        <div class="rv-quote-row" style="margin-bottom:14px;">
           <div class="rv-review-head" style="margin-bottom:0;">
             <span class="rv-badge dental"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5.5C9 2 4 3 4 8c0 4 2 6 3 10 .5 1.5 1 3 2 3s1.2-2 1.5-3.5S11 17 12 17s1.2 1 1.5 2.5S14 23 15 23s1.5-1.5 2-3c1-4 3-6 3-10 0-5-5-6-8-2.5z"/></svg> Стоматология в Турции</span>
             <h2>Стоматологическое лечение в клинике ESTE IN TURKEY</h2>
             <p class="rv-review-sub">Видеоотзыв пациента о лечении зубов в Стамбуле, фото до и после преображения улыбки.</p>
           </div>
-          <div class="rv-video" style="border-radius:16px; height:100%; min-height:220px;">
+          <div class="rv-video">
             <iframe src="https://www.youtube.com/embed/xTLE3GLD43M" title="Стоматологическое лечение в клинике ESTE IN TURKEY" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         <div class="rv-media cols-3">
-          <div class="rv-photo" style="aspect-ratio:1/1;"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-2-760x760-1.webp" alt="Зубы до стоматологического лечения" loading="lazy"></div>
-          <div class="rv-photo" style="aspect-ratio:1/1;"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-3-760x760-1.webp" alt="Зубы после стоматологического лечения" loading="lazy"></div>
-          <div class="rv-photo" style="aspect-ratio:1/1;"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-760x760-1.webp" alt="Результат лечения зубов — новая улыбка" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-2-760x760-1.webp" alt="Зубы до стоматологического лечения" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-3-760x760-1.webp" alt="Зубы после стоматологического лечения" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-760x760-1.webp" alt="Результат лечения зубов — новая улыбка" loading="lazy"></div>
         </div>
       </article>
 
@@ -521,7 +567,7 @@ img { max-width: 100%; display: block; }
           <h2>Отзыв Ольги о новой улыбке после лечения зубов</h2>
           <p class="rv-review-sub">Полное изменение всех зубов. Пациентка рассказывает о заботе и внимательном отношении персонала клиники.</p>
         </div>
-        <div class="rv-quote-row">
+        <div class="rv-quote-row" style="margin-bottom:14px;">
           <div class="rv-video"><iframe src="https://www.youtube.com/embed/PSyjFrMrU7o" title="Отзыв Ольги о стоматологическом лечении в Турции" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
           <div class="rv-quote">
             <div class="rv-quote-top">
@@ -541,11 +587,10 @@ img { max-width: 100%; display: block; }
             <p class="rv-quote-text">Большое спасибо Este in Turkey за мою новую ОСЛЕПИТЕЛЬНУЮ УЛЫБКУ! Я долго подбирала клинику и морально готовилась к этой процедуре, так как решилась на полное изменение всех своих зубов. Ни разу не пожалела! Всё прошло отлично! Было не больно! Чувствуется забота о пациенте и внимательное отношение — это очень важно! Всем рекомендую!</p>
           </div>
         </div>
-        <hr class="rv-divider" style="margin-top:24px;">
         <div class="rv-media cols-3">
-          <div class="rv-photo wide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-4-819x1024-1.webp" alt="Улыбка Ольги после лечения зубов — вид сбоку" loading="lazy"></div>
-          <div class="rv-photo wide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-3-819x1024-1.webp" alt="Зубы Ольги до и после лечения" loading="lazy"></div>
-          <div class="rv-photo wide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-2-819x1024-1.webp" alt="Результат стоматологического лечения Ольги" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-4-819x1024-1.webp" alt="Улыбка Ольги после лечения зубов — вид сбоку" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-3-819x1024-1.webp" alt="Зубы Ольги до и после лечения" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/Happy-patients-2-819x1024-1.webp" alt="Результат стоматологического лечения Ольги" loading="lazy"></div>
         </div>
       </article>
 
@@ -556,12 +601,16 @@ img { max-width: 100%; display: block; }
           <h2>Лечение зубов в клинике ESTE IN TURKEY</h2>
           <p class="rv-review-sub">Современная стоматология в центре Стамбула. Видео процесса лечения и фото результатов наших пациентов.</p>
         </div>
+        <div class="rv-media cols-1">
+          <div class="rv-video"><iframe src="https://www.youtube.com/embed/B_UCr5Bftxw" title="Лечение зубов в клинике ESTE IN TURKEY — Стамбул" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
         <div class="rv-media">
-          <div class="rv-video rv-span-2"><iframe src="https://www.youtube.com/embed/B_UCr5Bftxw" title="Лечение зубов в клинике ESTE IN TURKEY — Стамбул" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
           <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/20251206-DSC01954-683x1024-1.webp" alt="Процесс лечения зубов в клинике" loading="lazy"></div>
-          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-4-760x760-1.webp" alt="Стоматологический кабинет ESTE IN TURKEY" loading="lazy"></div>
-          <div class="rv-photo"><img src="__FOTO_27__" alt="Зубы до и после лечения — результат" loading="lazy"></div>
-          <div class="rv-photo"><img src="__FOTO_28__" alt="Консультация стоматолога в Стамбуле" loading="lazy"></div>
+          <div class="rv-photo sq"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/incollage_save-4-760x760-1.webp" alt="Стоматологический кабинет ESTE IN TURKEY" loading="lazy"></div>
+        </div>
+        <div class="rv-media">
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/20251206-DSC01961-683x1024-1.webp" alt="Зубы до и после лечения — результат" loading="lazy"></div>
+          <div class="rv-photo"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/06/IMG_3225-1024x578-1.webp" alt="Консультация стоматолога в Стамбуле" loading="lazy"></div>
         </div>
       </article>
 
