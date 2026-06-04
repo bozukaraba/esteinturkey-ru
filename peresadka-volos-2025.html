@@ -1310,24 +1310,28 @@
     var email = document.getElementById('eq-email').value.trim();
     if(!name || !phone){ document.getElementById('eq-name').focus(); return; }
 
-    var msg = 'Анализ волос — Este in Turkey\n'
-      +'—————————————\n'
-      +'Пол: '+(answers.gender||'—')+'\n'
-      +'Возраст: '+(answers.age||'—')+'\n'
-      +'Выпадение (лет): '+(answers.years||'—')+'\n'
-      +'Была пересадка: '+(answers.prev||'—')+'\n'
-      +'Степень облысения: '+(answers.norwood||'—')+'\n'
-      +'Когда планирует: '+(answers.when||'—')+'\n'
-      +'—————————————\n'
-      +'Имя: '+name+'\n'
-      +'Телефон: +7'+phone+'\n'
-      +'Email: '+email;
+    var payload = {
+      name: name, phone: '+7'+phone, email: email,
+      gender: answers.gender||'—', age: answers.age||0, years: answers.years||0,
+      prev: answers.prev||'—', norwood: answers.norwood||'—', when: answers.when||'—',
+      source: 'Пересадка волос 2025'
+    };
 
-    var wa = 'https://api.whatsapp.com/send/?phone=905468189180&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0';
-    window.open(wa, '_blank');
+    fetch('https://esteinru.teset.fun/wp-json/este/v1/quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(){});
 
-    var body = document.getElementById('eit-quiz-body');
-    body.innerHTML = '<div class="eit-quiz-success">'
+    var msg = 'Анализ волос — Este in Turkey\n—————————————\n'
+      +'Пол: '+payload.gender+'\nВозраст: '+payload.age+'\nВыпадение (лет): '+payload.years+'\n'
+      +'Была пересадка: '+payload.prev+'\nСтепень облысения: '+payload.norwood+'\n'
+      +'Когда планирует: '+payload.when+'\n—————————————\n'
+      +'Имя: '+name+'\nТелефон: '+payload.phone+'\nEmail: '+(email||'—');
+
+    window.open('https://api.whatsapp.com/send/?phone=905468189180&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0','_blank');
+
+    document.getElementById('eit-quiz-body').innerHTML = '<div class="eit-quiz-success">'
       +'<div class="eit-quiz-success-icon">✅</div>'
       +'<h3>Спасибо, '+name+'!</h3>'
       +'<p>Ваш анализ волос отправлен. Наши эксперты свяжутся с вами в течение 30 минут.</p>'

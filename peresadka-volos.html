@@ -898,7 +898,9 @@ document.querySelectorAll('.ph-faq-q').forEach(function(q){
     var phone=document.getElementById('eq-phone').value.trim();
     var email=document.getElementById('eq-email').value.trim();
     if(!name||!phone){document.getElementById('eq-name').focus();return;}
-    var msg='Анализ волос — Este in Turkey\n—————————————\nПол: '+(answers.gender||'—')+'\nВозраст: '+(answers.age||'—')+'\nВыпадение (лет): '+(answers.years||'—')+'\nБыла пересадка: '+(answers.prev||'—')+'\nСтепень облысения: '+(answers.norwood||'—')+'\nКогда планирует: '+(answers.when||'—')+'\n—————————————\nИмя: '+name+'\nТелефон: +7'+phone+'\nEmail: '+email;
+    var payload={name:name,phone:'+7'+phone,email:email,gender:answers.gender||'—',age:answers.age||0,years:answers.years||0,prev:answers.prev||'—',norwood:answers.norwood||'—',when:answers.when||'—',source:'Пересадка волос'};
+    fetch('https://esteinru.teset.fun/wp-json/este/v1/quiz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+    var msg='Анализ волос — Este in Turkey\n—————————————\nПол: '+payload.gender+'\nВозраст: '+payload.age+'\nВыпадение (лет): '+payload.years+'\nБыла пересадка: '+payload.prev+'\nСтепень облысения: '+payload.norwood+'\nКогда планирует: '+payload.when+'\n—————————————\nИмя: '+name+'\nТелефон: '+payload.phone+'\nEmail: '+(email||'—');
     window.open('https://api.whatsapp.com/send/?phone=905468189180&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0','_blank');
     document.getElementById('eit-quiz-body').innerHTML='<div class="eit-quiz-success"><div class="eit-quiz-success-icon">✅</div><h3>Спасибо, '+name+'!</h3><p>Ваш анализ волос отправлен. Наши эксперты свяжутся с вами в течение 30 минут.</p></div>';
     document.getElementById('eit-qprogress').style.width='100%';
