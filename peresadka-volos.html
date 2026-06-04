@@ -472,10 +472,10 @@ body { font-family:var(--fn); color:var(--tx); background:var(--wh); overflow-x:
         <div class="ph-hero-method"><div class="ph-hero-method-dot"></div>Пересадка бороды и бровей</div>
       </div>
       <div class="ph-hero-cta">
-        <a href="https://wa.me/905468189180" class="ph-btn ph-btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <button type="button" onclick="eitQuizOpen()" class="ph-btn ph-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           Бесплатная консультация
-        </a>
+        </button>
         <a href="tel:+905468189180" class="ph-btn ph-btn-outline">+90 546 818 91 80</a>
       </div>
     </div>
@@ -746,6 +746,167 @@ document.querySelectorAll('.ph-faq-q').forEach(function(q){
     if(!isOpen) item.classList.add('open');
   });
 });
+</script>
+
+<!-- ════════ HAIR ANALYSIS QUIZ POPUP ════════ -->
+<style>
+#eit-quiz-overlay {
+  display: none; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(13,35,35,.72); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 16px;
+}
+#eit-quiz-overlay.active { display: flex; }
+#eit-quiz-modal {
+  background: #fff; border-radius: 24px; width: 100%; max-width: 560px;
+  max-height: 90vh; overflow-y: auto; position: relative;
+  box-shadow: 0 32px 80px rgba(13,35,35,.28);
+  animation: eitQuizIn .3s cubic-bezier(.4,0,.2,1);
+}
+@keyframes eitQuizIn {
+  from { opacity:0; transform: translateY(32px) scale(.97); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+.eit-quiz-header { background: linear-gradient(135deg, #154444 0%, #1D5C5C 60%, #2E8B8B 100%); border-radius: 24px 24px 0 0; padding: 28px 32px 22px; }
+.eit-quiz-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.eit-quiz-brand { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.7); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.eit-quiz-brand svg { width: 18px; height: 18px; color: #4AACAC; }
+.eit-quiz-close { width: 32px; height: 32px; border-radius: 50%; border: none; cursor: pointer; background: rgba(255,255,255,.15); color: #fff; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.eit-quiz-close:hover { background: rgba(255,255,255,.28); }
+.eit-quiz-close svg { width: 14px; height: 14px; }
+.eit-quiz-progress-bar { height: 4px; background: rgba(255,255,255,.2); border-radius: 2px; overflow: hidden; }
+.eit-quiz-progress-fill { height: 100%; background: #4AACAC; border-radius: 2px; transition: width .4s ease; }
+.eit-quiz-step-label { color: rgba(255,255,255,.55); font-size: 11px; font-weight: 600; margin-top: 8px; letter-spacing: .08em; text-transform: uppercase; }
+.eit-quiz-body { padding: 32px; }
+.eit-quiz-q { font-size: 19px; font-weight: 800; color: #154444; letter-spacing: -.02em; line-height: 1.3; margin-bottom: 24px; text-align: center; }
+.eit-quiz-opts { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px; }
+.eit-quiz-opt { background: #F8F4EF; border: 2px solid rgba(29,92,92,.1); border-radius: 14px; padding: 16px 14px; min-width: 120px; max-width: 140px; flex: 1; cursor: pointer; text-align: center; transition: all .2s; user-select: none; }
+.eit-quiz-opt:hover { border-color: #2E8B8B; background: rgba(46,139,139,.06); }
+.eit-quiz-opt.selected { border-color: #1D5C5C; background: rgba(29,92,92,.08); }
+.eit-quiz-opt-icon { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.eit-quiz-opt-lbl { font-size: 13px; font-weight: 700; color: #154444; }
+.eit-quiz-opt-2col { max-width: 160px; min-width: 140px; }
+.eit-quiz-nw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+.eit-quiz-nw-opt { background: #F8F4EF; border: 2px solid rgba(29,92,92,.1); border-radius: 12px; padding: 10px 6px 8px; cursor: pointer; text-align: center; transition: all .2s; user-select: none; }
+.eit-quiz-nw-opt:hover { border-color: #2E8B8B; background: rgba(46,139,139,.06); }
+.eit-quiz-nw-opt.selected { border-color: #1D5C5C; background: rgba(29,92,92,.09); }
+.eit-quiz-nw-opt svg { width: 52px; height: 60px; display: block; margin: 0 auto 6px; }
+.eit-quiz-sliders { margin-bottom: 24px; display: flex; flex-direction: column; gap: 22px; }
+.eit-quiz-slider-block label { display: block; font-size: 15px; font-weight: 700; color: #154444; margin-bottom: 12px; text-align: center; }
+.eit-quiz-slider-block label span { color: #2E8B8B; }
+.eit-quiz-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; border-radius: 4px; background: #e0eeee; outline: none; cursor: pointer; }
+.eit-quiz-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #1D5C5C; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(29,92,92,.3); cursor: pointer; }
+.eit-quiz-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #1D5C5C; border: 3px solid #fff; cursor: pointer; }
+.eit-quiz-nav { display: flex; justify-content: center; }
+.eit-quiz-next { background: linear-gradient(135deg, #1D5C5C, #2E8B8B); color: #fff; border: none; border-radius: 12px; padding: 15px 40px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all .25s; font-family: inherit; letter-spacing: .02em; box-shadow: 0 6px 20px rgba(29,92,92,.3); }
+.eit-quiz-next:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(29,92,92,.38); }
+.eit-quiz-next:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.eit-quiz-form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.eit-quiz-form-sub { text-align: center; font-size: 14px; color: #5A6A6A; margin-bottom: 4px; }
+.eit-quiz-form-sub strong { color: #154444; }
+.eit-quiz-input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(29,92,92,.18); border-radius: 10px; font-size: 15px; font-family: inherit; color: #1A2A2A; background: #F8F4EF; outline: none; transition: border-color .2s; }
+.eit-quiz-input:focus { border-color: #2E8B8B; background: #fff; }
+.eit-quiz-input::placeholder { color: #aab8b8; }
+.eit-quiz-phone-wrap { display: flex; }
+.eit-quiz-phone-flag { display: flex; align-items: center; gap: 6px; padding: 14px 12px; border: 1.5px solid rgba(29,92,92,.18); border-right: none; border-radius: 10px 0 0 10px; background: #F8F4EF; font-size: 14px; white-space: nowrap; }
+.eit-quiz-phone-wrap .eit-quiz-input { border-radius: 0 10px 10px 0; }
+.eit-quiz-send { background: linear-gradient(135deg, #1D5C5C, #2E8B8B); color: #fff; border: none; border-radius: 12px; padding: 16px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all .25s; font-family: inherit; width: 100%; box-shadow: 0 6px 20px rgba(29,92,92,.3); letter-spacing: .04em; text-transform: uppercase; }
+.eit-quiz-send:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(29,92,92,.38); }
+.eit-quiz-success { text-align: center; padding: 16px 0 8px; }
+.eit-quiz-success-icon { font-size: 54px; margin-bottom: 12px; }
+.eit-quiz-success h3 { font-size: 22px; font-weight: 900; color: #154444; margin-bottom: 10px; }
+.eit-quiz-success p { font-size: 15px; color: #5A6A6A; line-height: 1.7; }
+@media (max-width: 480px) {
+  #eit-quiz-modal { border-radius: 18px; }
+  .eit-quiz-header { padding: 22px 20px 18px; border-radius: 18px 18px 0 0; }
+  .eit-quiz-body { padding: 22px 18px; }
+  .eit-quiz-q { font-size: 16px; }
+  .eit-quiz-opt { min-width: 90px; max-width: 110px; padding: 12px 8px; }
+  .eit-quiz-nw-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .eit-quiz-nw-opt svg { width: 40px; height: 46px; }
+}
+</style>
+
+<div id="eit-quiz-overlay">
+  <div id="eit-quiz-modal" role="dialog" aria-modal="true">
+    <div class="eit-quiz-header">
+      <div class="eit-quiz-header-top">
+        <div class="eit-quiz-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Анализ волос — Este in Turkey
+        </div>
+        <button class="eit-quiz-close" onclick="eitQuizClose()" aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="eit-quiz-progress-bar"><div class="eit-quiz-progress-fill" id="eit-qprogress" style="width:14%"></div></div>
+      <div class="eit-quiz-step-label" id="eit-qstep-label">Шаг 1 из 6</div>
+    </div>
+    <div class="eit-quiz-body" id="eit-quiz-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var answers={},step=0;
+  var steps=[
+    {type:'choice',q:'Ваш пол',key:'gender',opts:[{icon:'♂',bg:'#d4e8ff',val:'Мужской',lbl:'Мужской'},{icon:'♀',bg:'#ffd4e8',val:'Женский',lbl:'Женский'}]},
+    {type:'sliders',sliders:[{key:'age',label:'Сколько вам лет?',tpl:'Мне {v} лет',min:18,max:80,def:30},{key:'years',label:'Сколько лет вы замечаете выпадение?',tpl:'{v} лет',min:1,max:40,def:5}]},
+    {type:'choice',q:'Делали ли вы пересадку волос ранее?',key:'prev',opts:[{icon:'✅',bg:'#d4f0d4',val:'Да',lbl:'Да'},{icon:'❌',bg:'#ffd4d4',val:'Нет',lbl:'Нет'}]},
+    {type:'norwood',key:'norwood'},
+    {type:'choice',q:'Когда планируете пересадку?',key:'when',opts:[{icon:'⚡',bg:'#d4eeff',val:'Как можно скорее',lbl:'Как можно скорее'},{icon:'📅',bg:'#e8f4e8',val:'В течение 3 мес.',lbl:'В течение 3 мес.'},{icon:'🗓',bg:'#f0e8ff',val:'В течение года',lbl:'В течение года'},{icon:'ℹ️',bg:'#f8f4ef',val:'Только информация',lbl:'Только инфо'}]},
+    {type:'contact'}
+  ];
+  function progress(s){return Math.round(((s+1)/steps.length)*100);}
+  function render(){
+    var s=steps[step];
+    document.getElementById('eit-qprogress').style.width=progress(step)+'%';
+    document.getElementById('eit-qstep-label').textContent='Шаг '+(step+1)+' из '+steps.length;
+    var body=document.getElementById('eit-quiz-body');
+    if(s.type==='choice'){
+      var sel=answers[s.key]||null;
+      var optsHtml=s.opts.map(function(o){var cls='eit-quiz-opt'+(s.opts.length===2?' eit-quiz-opt-2col':'')+(sel===o.val?' selected':'');return '<div class="'+cls+'" onclick="eitQuizPick(\''+s.key+'\',\''+o.val+'\',this)"><div class="eit-quiz-opt-icon" style="background:'+o.bg+'">'+o.icon+'</div><div class="eit-quiz-opt-lbl">'+o.lbl+'</div></div>';}).join('');
+      body.innerHTML='<div class="eit-quiz-q">'+s.q+'</div><div class="eit-quiz-opts">'+optsHtml+'</div><div class="eit-quiz-nav"><button class="eit-quiz-next" id="eit-qnext" onclick="eitQuizNext()"'+(sel?'':' disabled')+'>Далее →</button></div>';
+    }
+    if(s.type==='sliders'){
+      var sl=s.sliders.map(function(sl){var v=answers[sl.key]!==undefined?answers[sl.key]:sl.def;var lbl=sl.tpl.replace('{v}','<span>'+v+'</span>');return '<div class="eit-quiz-slider-block"><label>'+sl.label+'<br><small style="font-weight:400;color:#5A6A6A;">'+lbl+'</small></label><input class="eit-quiz-slider" type="range" min="'+sl.min+'" max="'+sl.max+'" value="'+v+'" oninput="eitQuizSlider(\''+sl.key+'\',this,\''+sl.tpl+'\')"></div>';}).join('');
+      body.innerHTML='<div class="eit-quiz-sliders">'+sl+'</div><div class="eit-quiz-nav"><button class="eit-quiz-next" onclick="eitQuizNext()">Далее →</button></div>';
+      s.sliders.forEach(function(sl){if(answers[sl.key]===undefined)answers[sl.key]=sl.def;});
+    }
+    if(s.type==='norwood'){
+      var sel=answers[s.key]||null;
+      var nwData=[{n:3,lbl:'Норвуд 3'},{n:4,lbl:'Норвуд 4'},{n:5,lbl:'Норвуд 5'},{n:6,lbl:'Норвуд 6'},{n:7,lbl:'Норвуд 7'}];
+      var gridHtml=nwData.map(function(d){var c='eit-quiz-nw-opt'+(sel===d.lbl?' selected':'');return '<div class="'+c+'" onclick="eitQuizNw(\''+d.lbl+'\',this)">'+nwSvg(d.n)+'</div>';}).join('');
+      body.innerHTML='<div class="eit-quiz-q">Ваша степень облысения</div><div class="eit-quiz-nw-grid" style="grid-template-columns:repeat(5,1fr)">'+gridHtml+'</div><div class="eit-quiz-nav"><button class="eit-quiz-next" id="eit-qnext" onclick="eitQuizNext()"'+(sel?'':' disabled')+'>Далее →</button></div>';
+    }
+    if(s.type==='contact'){
+      body.innerHTML='<p class="eit-quiz-form-sub">Почти готово! Оставьте контакты — мы составим <strong>персональный план бесплатно</strong>.</p><div class="eit-quiz-form"><input class="eit-quiz-input" id="eq-name" type="text" placeholder="Имя и фамилия"><div class="eit-quiz-phone-wrap"><span class="eit-quiz-phone-flag">🇷🇺 +7</span><input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="900 000 00 00"></div><input class="eit-quiz-input" id="eq-email" type="email" placeholder="E-mail"></div><button class="eit-quiz-send" onclick="eitQuizSend()">Отправить анализ →</button>';
+    }
+  }
+  function nwSvg(n){
+    var s='#fdd5a0',h='#3d2b1a',o='#c8a070',cl='nwc'+n;
+    var shapes={3:'<ellipse cx="35" cy="48" rx="24" ry="24" fill="'+h+'"/><ellipse cx="35" cy="21" rx="12" ry="9" fill="'+h+'"/><ellipse cx="11" cy="23" rx="12" ry="10" fill="'+s+'"/><ellipse cx="59" cy="23" rx="12" ry="10" fill="'+s+'"/><ellipse cx="35" cy="13" rx="14" ry="7" fill="'+s+'"/>',4:'<ellipse cx="35" cy="50" rx="23" ry="22" fill="'+h+'"/><ellipse cx="13" cy="38" rx="9" ry="20" fill="'+h+'"/><ellipse cx="57" cy="38" rx="9" ry="20" fill="'+h+'"/><ellipse cx="35" cy="20" rx="9" ry="7" fill="'+h+'"/><ellipse cx="35" cy="36" rx="12" ry="10" fill="'+s+'"/>',5:'<ellipse cx="35" cy="52" rx="21" ry="20" fill="'+h+'"/><ellipse cx="12" cy="40" rx="8" ry="22" fill="'+h+'"/><ellipse cx="58" cy="40" rx="8" ry="22" fill="'+h+'"/><ellipse cx="35" cy="30" rx="18" ry="18" fill="'+s+'"/>',6:'<ellipse cx="35" cy="55" rx="18" ry="15" fill="'+h+'"/><ellipse cx="11" cy="42" rx="8" ry="24" fill="'+h+'"/><ellipse cx="59" cy="42" rx="8" ry="24" fill="'+h+'"/><ellipse cx="35" cy="34" rx="22" ry="28" fill="'+s+'"/>',7:'<ellipse cx="35" cy="57" rx="14" ry="11" fill="'+h+'"/><ellipse cx="10" cy="42" rx="6" ry="24" fill="'+h+'"/><ellipse cx="60" cy="42" rx="6" ry="24" fill="'+h+'"/><ellipse cx="35" cy="36" rx="25" ry="30" fill="'+s+'"/>'};
+    return '<svg viewBox="0 0 70 80" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="'+cl+'"><ellipse cx="35" cy="42" rx="28" ry="34"/></clipPath></defs><g clip-path="url(#'+cl+')"><ellipse cx="35" cy="42" rx="28" ry="34" fill="'+s+'"/>'+shapes[n]+'</g><ellipse cx="35" cy="42" rx="28" ry="34" fill="none" stroke="'+o+'" stroke-width="1.2"/></svg>';
+  }
+  window.eitQuizNw=function(val,el){answers['norwood']=val;el.closest('.eit-quiz-nw-grid').querySelectorAll('.eit-quiz-nw-opt').forEach(function(o){o.classList.remove('selected');});el.classList.add('selected');var btn=document.getElementById('eit-qnext');if(btn)btn.removeAttribute('disabled');};
+  window.eitQuizOpen=function(){step=0;answers={};document.getElementById('eit-quiz-overlay').classList.add('active');document.body.style.overflow='hidden';render();};
+  window.eitQuizClose=function(){document.getElementById('eit-quiz-overlay').classList.remove('active');document.body.style.overflow='';};
+  window.eitQuizPick=function(key,val,el){answers[key]=val;el.closest('.eit-quiz-opts').querySelectorAll('.eit-quiz-opt').forEach(function(o){o.classList.remove('selected');});el.classList.add('selected');var btn=document.getElementById('eit-qnext');if(btn)btn.removeAttribute('disabled');};
+  window.eitQuizSlider=function(key,el,tpl){answers[key]=parseInt(el.value);var lbl=tpl.replace('{v}','<span>'+el.value+'</span>');el.closest('.eit-quiz-slider-block').querySelector('label small').innerHTML=lbl;};
+  window.eitQuizNext=function(){if(step<steps.length-1){step++;render();}};
+  window.eitQuizSend=function(){
+    var name=document.getElementById('eq-name').value.trim();
+    var phone=document.getElementById('eq-phone').value.trim();
+    var email=document.getElementById('eq-email').value.trim();
+    if(!name||!phone){document.getElementById('eq-name').focus();return;}
+    var msg='Анализ волос — Este in Turkey\n—————————————\nПол: '+(answers.gender||'—')+'\nВозраст: '+(answers.age||'—')+'\nВыпадение (лет): '+(answers.years||'—')+'\nБыла пересадка: '+(answers.prev||'—')+'\nСтепень облысения: '+(answers.norwood||'—')+'\nКогда планирует: '+(answers.when||'—')+'\n—————————————\nИмя: '+name+'\nТелефон: +7'+phone+'\nEmail: '+email;
+    window.open('https://api.whatsapp.com/send/?phone=905468189180&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0','_blank');
+    document.getElementById('eit-quiz-body').innerHTML='<div class="eit-quiz-success"><div class="eit-quiz-success-icon">✅</div><h3>Спасибо, '+name+'!</h3><p>Ваш анализ волос отправлен. Наши эксперты свяжутся с вами в течение 30 минут.</p></div>';
+    document.getElementById('eit-qprogress').style.width='100%';
+    document.getElementById('eit-qstep-label').textContent='Анализ завершён';
+    setTimeout(eitQuizClose,4000);
+  };
+  document.getElementById('eit-quiz-overlay').addEventListener('click',function(e){if(e.target===this)eitQuizClose();});
+})();
 </script>
 
 </body>
