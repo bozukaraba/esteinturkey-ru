@@ -183,27 +183,29 @@
     position: relative;
     overflow: hidden;
   }
-  /* Full-bleed background image */
+  /* Full-bleed background image / video */
   .eit-hero-image-bg {
     position: absolute;
     inset: 0;
     overflow: hidden;
     z-index: 0;
+    background: #0a1e1e;
   }
-  .eit-hero-image-bg img {
+  .eit-hero-image-bg img,
+  .eit-hero-image-bg video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
     display: block;
   }
   /* Dark overlay for readability */
   .eit-hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: linear-gradient(180deg, rgba(10,30,30,.45) 0%, rgba(10,30,30,.55) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -496,10 +498,10 @@
   }
   /* !! Kart görsel URL'lerini aşağıya yapıştırın !! */
   .eit-service-card-hair .eit-card-bg {
-    background-image: url('http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B4%D0%BA%D0%B0-%D0%B2%D0%BE%D0%BB%D0%BE%D1%81.png');
+    background-image: url('https://esteinturkey.com/ru/wp-content/uploads/2026/06/hair.png');
   }
   .eit-service-card-dental .eit-card-bg {
-    background-image: url('http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BB%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5.png');
+    background-image: url('https://esteinturkey.com/ru/wp-content/uploads/2026/06/stato.png');
   }
   .eit-card-bg {
     position: absolute;
@@ -957,7 +959,7 @@
   /* !! Görsel URL'sini buraya ekleyin !! */
   .eit-tourism-img {
     width: 100%; height: 100%;
-    background-image: url('http://esteinru.teset.fun/wp-content/uploads/2026/05/engin-yapici-WA1u0scVLZU-unsplash-scaled.jpg');
+    background-image: url('https://esteinturkey.com/ru/wp-content/uploads/2026/05/engin-yapici-WA1u0scVLZU-unsplash-scaled.jpg');
     background-size: cover;
     background-position: center;
     background-color: var(--eit-primary);
@@ -1554,12 +1556,9 @@
        ============================================================ -->
   <section class="eit-section eit-hero" aria-labelledby="eit-hero-heading">
     <div class="eit-hero-image-bg" aria-hidden="true">
-      <img
-        src="http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%9F%D0%B5%D1%80%D0%B5%D1%81%D0%B0%D0%B4%D0%BA%D0%B0-%D0%B2%D0%BE%D0%BB%D0%BE%D1%81.jpg"
-        alt=""
-        loading="eager"
-        fetchpriority="high"
-      >
+      <video class="eit-hero-video" autoplay muted loop playsinline preload="metadata" poster="https://esteinturkey.com/ru/wp-content/uploads/2026/06/sld-1.jpg">
+        <source src="https://esteinturkey.com/ru/wp-content/uploads/2026/06/hero-v.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="eit-hero-overlay" aria-hidden="true"></div>
     <div class="eit-wrap">
@@ -1577,7 +1576,7 @@
             Команда Este in Turkey  подберёт вам наилучшее решение в сфере трансплантации волос и стоматологии. Наша команда состоит из высококвалифицированных специалистов, которые непрерывно повышают свои знания и следуют мировым стандартам.
           </p>
           <div class="eit-hero-actions">
-            <a href="https://esteinru.teset.fun/%d0%ba%d0%be%d0%bd%d1%82%d0%b0%d0%ba%d1%82%d1%8b/" class="eit-btn-primary eit-btn-arrow">Связаться с нами</a>
+            <a href="https://esteinturkey.com/ru/contact/" class="eit-btn-primary eit-btn-arrow">Связаться с нами</a>
             <a href="tel:+905468189180" class="eit-hero-phone">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               +90 546 818 91 80
@@ -1750,7 +1749,7 @@
               <li class="eit-card-list-item">DHI-Choi метод</li>
               <li class="eit-card-list-item">Пересадка бороды и бровей</li>
             </ul>
-            <a href="https://esteinru.teset.fun/peresadka-volos/" class="eit-card-cta">Подробнее →</a>
+            <a href="https://esteinturkey.com/ru/peresadka-volos/" class="eit-card-cta">Подробнее →</a>
           </div>
         </article>
   
@@ -1766,7 +1765,7 @@
               <li class="eit-card-list-item">Виниры и отбеливание</li>
               <li class="eit-card-list-item">Элайнеры и лечение</li>
             </ul>
-            <a href="https://esteinru.teset.fun/stomatologiya/" class="eit-card-cta">Подробнее →</a>
+            <a href="https://esteinturkey.com/ru/stomatologiya/" class="eit-card-cta">Подробнее →</a>
           </div>
         </article>
   
@@ -1866,14 +1865,14 @@
             </div>
           </div>
   
-          <a href="https://esteinru.teset.fun/o-nas/" class="eit-btn-primary eit-btn-arrow">Узнать больше о нас</a>
+          <a href="https://esteinturkey.com/ru/o-nas/" class="eit-btn-primary eit-btn-arrow">Узнать больше о нас</a>
         </div>
   
         <div class="eit-about-image eit-fade-in eit-fade-in-delay-2">
           <div class="eit-about-deco" aria-hidden="true"></div>
           <div class="eit-about-img-wrap">
             <div class="eit-about-img-bg" role="img" aria-label="Команда врачей Este in Turkey">
-              <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/%D0%9E-%D0%BD%D0%B0%D1%81%E2%80%8B.png" alt="" loading="lazy" aria-hidden="true">
+              <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/06/homepg.png" alt="" loading="lazy" aria-hidden="true">
             </div>
           </div>
           <div class="eit-about-badge">
@@ -1944,18 +1943,18 @@
           </div>
   
           <div class="eit-svc-actions">
-            <a href="https://esteinru.teset.fun/medicinskij-tourism/" class="eit-btn-primary eit-btn-arrow">Медицинский туризм</a>
-            <a href="https://esteinru.teset.fun/contact/" class="eit-btn-outline">Контакт</a>
+            <a href="https://esteinturkey.com/ru/medicinskij-tourism/" class="eit-btn-primary eit-btn-arrow">Медицинский туризм</a>
+            <a href="https://esteinturkey.com/ru/contact/" class="eit-btn-outline">Контакт</a>
           </div>
         </div>
   
         <div class="eit-svc-visual eit-fade-in eit-fade-in-delay-2" aria-hidden="true">
           <div class="eit-svc-slider" id="eitSvcSlider">
             <div class="eit-svc-slider-track" id="eitSvcTrack">
-              <div class="eit-svc-slide" style="background-image:url('http://esteinru.teset.fun/wp-content/uploads/2026/05/IMG-20250818-WA0011.png')"></div>
-              <div class="eit-svc-slide" style="background-image:url('http://esteinru.teset.fun/wp-content/uploads/2026/05/IMG-20250818-WA0012.png')"></div>
-              <div class="eit-svc-slide" style="background-image:url('http://esteinru.teset.fun/wp-content/uploads/2026/05/IMG-20250818-WA0014.png')"></div>
-              <div class="eit-svc-slide" style="background-image:url('http://esteinru.teset.fun/wp-content/uploads/2026/05/IMG-20250818-WA0009.png')"></div>
+              <div class="eit-svc-slide" style="background-image:url('https://esteinturkey.com/ru/wp-content/uploads/2026/05/IMG-20250818-WA0011.png')"></div>
+              <div class="eit-svc-slide" style="background-image:url('https://esteinturkey.com/ru/wp-content/uploads/2026/05/IMG-20250818-WA0012.png')"></div>
+              <div class="eit-svc-slide" style="background-image:url('https://esteinturkey.com/ru/wp-content/uploads/2026/05/IMG-20250818-WA0014.png')"></div>
+              <div class="eit-svc-slide" style="background-image:url('https://esteinturkey.com/ru/wp-content/uploads/2026/05/IMG-20250818-WA0009.png')"></div>
             </div>
             <button class="eit-svc-slider-btn eit-svc-slider-prev" aria-label="Предыдущий">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--eit-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1997,7 +1996,7 @@
           </p>
           <p class="eit-tourism-text">
            Мы берем на себя все организационные вопросы: встречу в аэропорту, размещение в отеле, персональный трансфер и сопровождение на каждом этапе вашего пребывания в Стамбуле.        </p>
-          <a href="https://esteinru.teset.fun/peresadka-volos-2025" class="eit-btn-primary eit-btn-arrow" style="margin-top:24px;">Узнать подробнее</a>
+          <a href="https://esteinturkey.com/ru/peresadka-volos-2025" class="eit-btn-primary eit-btn-arrow" style="margin-top:24px;">Узнать подробнее</a>
         </div>
   
         <div class="eit-tourism-features eit-fade-in eit-fade-in-delay-1">
@@ -2246,16 +2245,16 @@
   
       <div class="eit-ba-slider-wrap eit-fade-in">
         <div class="eit-ba-track" id="eitBaTrack">
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="До и после 1" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.16.38_de7f274f.png" alt="До и после 2" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.07.43_691e03a6.png" alt="До и после 3" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.06.41_d56da3ec.png" alt="До и после 4" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.04.23_0da4bdf3.png" alt="До и после 5" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.00.07_73d33486.png" alt="До и после 6" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-16.48.10_809546e8.png" alt="До и после 7" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-16.45.17_0438bd0d.png" alt="До и после 8" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-15.36.06_d9fc87b7.png" alt="До и после 9" loading="lazy"></div>
-          <div class="eit-ba-slide"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/женщина.png" alt="До и после 10" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="До и после 1" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.16.38_de7f274f.png" alt="До и после 2" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.07.43_691e03a6.png" alt="До и после 3" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.06.41_d56da3ec.png" alt="До и после 4" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.04.23_0da4bdf3.png" alt="До и после 5" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.00.07_73d33486.png" alt="До и после 6" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-16.48.10_809546e8.png" alt="До и после 7" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-16.45.17_0438bd0d.png" alt="До и после 8" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-15.36.06_d9fc87b7.png" alt="До и после 9" loading="lazy"></div>
+          <div class="eit-ba-slide"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/женщина.png" alt="До и после 10" loading="lazy"></div>
         </div>
         <button class="eit-ba-btn eit-ba-prev" aria-label="Предыдущий">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--eit-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -2281,13 +2280,13 @@
       </div>
       <div class="eit-videos-grid">
         <div class="eit-video-item eit-fade-in">
-          <video controls preload="metadata" playsinline poster="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-03-at-16.55.27.jpeg">
-            <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este1.mp4" type="video/mp4">
+          <video controls preload="metadata" playsinline poster="https://esteinturkey.com/ru/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-03-at-16.55.27.jpeg">
+            <source src="http://esteinturkey.com/ru/wp-content/uploads/2026/05/este1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="eit-video-item eit-fade-in eit-fade-in-delay-1">
-          <video controls preload="metadata" playsinline poster="http://esteinru.teset.fun/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-03-at-16.55.27-1.jpeg">
-            <source src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este2.mp4" type="video/mp4">
+          <video controls preload="metadata" playsinline poster="https://esteinturkey.com/ru/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-03-at-16.55.27-1.jpeg">
+            <source src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este2.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -2308,21 +2307,21 @@
       <div class="eit-partners-track-wrap eit-fade-in">
         <div class="eit-partners-track" aria-label="Наши партнёры">
           <!-- set 1 -->
-          <a href="#" class="eit-partner-logo" aria-label="Turkish Airlines" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/turkish-airlines-logo.png" alt="Turkish Airlines" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Straumann" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/straumann-logo.png" alt="Straumann" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Sağlık Bakanlığı" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/saglik-bakanligi.png" alt="Sağlık Bakanlığı" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Pegasus Airlines" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/pegasus-logo.png" alt="Pegasus Airlines" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Motiva" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/motiva-logo.png" alt="Motiva" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Mentor" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/mentor-logo.png" alt="Mentor" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Medentika" target="_blank" rel="noopener noreferrer"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/medentika-logo.png" alt="Medentika" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Turkish Airlines" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/turkish-airlines-logo.png" alt="Turkish Airlines" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Straumann" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/straumann-logo.png" alt="Straumann" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Sağlık Bakanlığı" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/saglik-bakanligi.png" alt="Sağlık Bakanlığı" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Pegasus Airlines" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/pegasus-logo.png" alt="Pegasus Airlines" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Motiva" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/motiva-logo.png" alt="Motiva" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Mentor" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/mentor-logo.png" alt="Mentor" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Medentika" target="_blank" rel="noopener noreferrer"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/medentika-logo.png" alt="Medentika" loading="lazy" /></a>
           <!-- set 2 (duplicate for seamless loop) -->
-          <a href="#" class="eit-partner-logo" aria-label="Turkish Airlines" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/turkish-airlines-logo.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Straumann" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/straumann-logo.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Sağlık Bakanlığı" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/saglik-bakanligi.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Pegasus Airlines" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/pegasus-logo.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Motiva" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/motiva-logo.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Mentor" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/mentor-logo.png" alt="" loading="lazy" /></a>
-          <a href="#" class="eit-partner-logo" aria-label="Medentika" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/medentika-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Turkish Airlines" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/turkish-airlines-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Straumann" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/straumann-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Sağlık Bakanlığı" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/saglik-bakanligi.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Pegasus Airlines" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/pegasus-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Motiva" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/motiva-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Mentor" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/mentor-logo.png" alt="" loading="lazy" /></a>
+          <a href="#" class="eit-partner-logo" aria-label="Medentika" target="_blank" rel="noopener noreferrer" aria-hidden="true"><img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/medentika-logo.png" alt="" loading="lazy" /></a>
         </div>
       </div>
     </div>
@@ -2338,7 +2337,7 @@
         <h2 id="eit-cta-heading">Готовы начать<br>ваш путь к красоте?</h2>
         <p>Свяжитесь с нами сейчас, наши эксперты ответят на все ваши вопросы и составят персональный план лечения.</p>
         <div class="eit-cta-btns">
-          <a href="https://esteinru.teset.fun/contact/" class="eit-btn-accent eit-btn-arrow">Получить консультацию</a>
+          <a href="https://esteinturkey.com/ru/contact/" class="eit-btn-accent eit-btn-arrow">Получить консультацию</a>
           <a href="tel:+905468189180" class="eit-btn-white">+90 546 818 91 80</a>
         </div>
       </div>
@@ -2530,5 +2529,15 @@
       baStartAuto();
     })();
   
+  })();
+
+  /* ── Hero video: sekme değişiminde duraklat / oynat (pil tasarrufu) ── */
+  (function(){
+    var v = document.querySelector('.eit-hero-video');
+    if (!v) return;
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) { v.pause(); }
+      else { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    });
   })();
   </script>
