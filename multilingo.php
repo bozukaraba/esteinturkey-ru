@@ -1117,7 +1117,7 @@ class MultiLingo_Lang_Checker {
        Plugin: belirtilen dilin menüsünü bulur, yoksa default'a düşer.
     ================================================================ */
 
-    public function get_wp_menu_for_lang( string $lang ): ?WP_Post {
+    public function get_wp_menu_for_lang( string $lang ) {
         if ( ! function_exists( 'wp_get_nav_menus' ) && file_exists( ABSPATH . 'wp-admin/includes/nav-menu.php' ) ) {
             require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
         }
