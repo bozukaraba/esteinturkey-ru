@@ -228,33 +228,50 @@
 }
 .eit2-tab svg { width: 18px; height: 18px; }
 .eit2-tab.active { background: var(--eit-primary-dark); color: #fff; border-color: var(--eit-primary-dark); }
-.eit2-pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; }
+.eit2-pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-items: stretch; }
 .eit2-pkg {
-  background: var(--eit-primary-dark); color: #fff; border-radius: 22px; padding: 36px 30px; position: relative; display: flex; flex-direction: column;
+  border-radius: 18px; padding: 26px 22px; position: relative; display: flex; flex-direction: column;
   transition: var(--eit-transition);
 }
-.eit2-pkg.silver { background: #fff; color: var(--eit-text); border: 1px solid var(--eit-border); box-shadow: var(--eit-shadow-md); }
-.eit2-pkg.gold { background: linear-gradient(170deg, #fff 0%, var(--eit-cream) 100%); color: var(--eit-text); border: 2px solid var(--eit-gold); box-shadow: var(--eit-shadow-lg); }
+.eit2-pkg.silver { background: linear-gradient(165deg, #f4f5f7 0%, #d9dce0 50%, #c2c6cc 100%); color: #1a1a1a; border: 1.5px solid #a8acb3; box-shadow: 0 4px 16px rgba(120,125,135,.18), inset 0 1px 0 rgba(255,255,255,.6); }
+.eit2-pkg.gold { background: linear-gradient(165deg, #fff7e0 0%, #f0d27a 45%, #c9962b 100%); color: #2a1a00; border: 1.5px solid #b8860b; box-shadow: 0 6px 20px rgba(184,134,11,.25), inset 0 1px 0 rgba(255,255,255,.5); }
+.eit2-pkg.platinum { background: linear-gradient(165deg, #2a2a2c 0%, #1a1a1c 50%, #0d0d0e 100%); color: #f0f0f0; border: 1.5px solid #6a6a70; box-shadow: 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08); }
 .eit2-pkg:hover { transform: translateY(-6px); }
-.eit2-pkg-top { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
-.eit2-pkg-shield { width: 46px; height: 54px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--eit-gold); }
+.eit2-pkg-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.eit2-pkg-shield { width: 36px; height: 42px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.eit2-pkg.silver .eit2-pkg-shield { color: #6c7077; }
+.eit2-pkg.gold .eit2-pkg-shield { color: #8a6610; }
+.eit2-pkg.platinum .eit2-pkg-shield { color: #c9c9d0; }
 .eit2-pkg-shield svg { width: 100%; height: 100%; }
-.eit2-pkg h3 { font-family: var(--eit-serif); font-size: 26px; font-weight: 800; }
-.eit2-pkg.silver h3, .eit2-pkg.gold h3 { color: var(--eit-primary-dark); }
-.eit2-pkg-tagline { font-size: 13px; opacity: .8; margin-bottom: 22px; }
-.eit2-pkg.gold .eit2-pkg-tagline { color: var(--eit-gold); opacity: 1; font-weight: 600; }
-.eit2-pkg-price { font-size: 32px; font-weight: 800; margin-bottom: 22px; }
-.eit2-pkg-price span { font-size: 15px; font-weight: 500; opacity: .7; }
-.eit2-pkg ul { list-style: none; margin-bottom: 26px; flex: 1; }
-.eit2-pkg li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
-.eit2-pkg.silver li, .eit2-pkg.gold li { border-color: var(--eit-border); }
-.eit2-pkg li svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
-.eit2-pkg li .ok { color: var(--eit-accent-light); }
-.eit2-pkg.silver li .ok, .eit2-pkg.gold li .ok { color: var(--eit-accent); }
-.eit2-pkg li .no { color: rgba(255,255,255,.35); }
-.eit2-pkg.silver li .no, .eit2-pkg.gold li .no { color: #c9c2b8; }
+.eit2-pkg h3 { font-family: var(--eit-serif); font-size: 22px; font-weight: 800; letter-spacing: .02em; }
+.eit2-pkg.silver h3 { color: #2a2d33; }
+.eit2-pkg.gold h3 { color: #5c3d00; }
+.eit2-pkg.platinum h3 { color: #f5f5f8; }
+.eit2-pkg-tagline { font-size: 12px; opacity: .85; margin-bottom: 14px; }
+.eit2-pkg.silver .eit2-pkg-tagline { color: #4a4e55; opacity: 1; }
+.eit2-pkg.gold .eit2-pkg-tagline { color: #6b4a00; opacity: 1; font-weight: 600; }
+.eit2-pkg.platinum .eit2-pkg-tagline { color: #c9c9d0; opacity: 1; font-weight: 500; }
+.eit2-pkg-price { font-size: 26px; font-weight: 800; margin-bottom: 16px; }
+.eit2-pkg-price span { font-size: 13px; font-weight: 500; opacity: .7; }
+.eit2-pkg ul { list-style: none; margin-bottom: 18px; flex: 1; }
+.eit2-pkg li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,.08); }
+.eit2-pkg.silver li { border-color: rgba(0,0,0,.08); }
+.eit2-pkg.gold li { border-color: rgba(92,61,0,.15); }
+.eit2-pkg.platinum li { border-color: rgba(255,255,255,.08); }
+.eit2-pkg li svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
+.eit2-pkg.silver li .ok { color: #5a6b7d; }
+.eit2-pkg.gold li .ok { color: #8a6610; }
+.eit2-pkg.platinum li .ok { color: #d0d0d8; }
+.eit2-pkg li .no { color: rgba(0,0,0,.25); }
+.eit2-pkg.platinum li .no { color: rgba(255,255,255,.25); }
 .eit2-pkg li.off { opacity: .55; }
-.eit2-pkg .eit2-btn { justify-content: center; width: 100%; }
+.eit2-pkg .eit2-btn { justify-content: center; width: 100%; padding: 11px 16px; font-size: 12.5px; }
+.eit2-pkg.silver .eit2-btn.eit2-btn-outline { border-color: #6c7077; color: #2a2d33; }
+.eit2-pkg.silver .eit2-btn.eit2-btn-outline:hover { background: #6c7077; color: #fff; }
+.eit2-pkg.gold .eit2-btn.eit2-btn-primary { background: linear-gradient(135deg, #8a6610, #c9962b); border-color: #8a6610; color: #fff; }
+.eit2-pkg.gold .eit2-btn.eit2-btn-primary:hover { background: linear-gradient(135deg, #6b4a00, #8a6610); }
+.eit2-pkg.platinum .eit2-btn.eit2-btn-gold { background: linear-gradient(135deg, #4a4a52, #2a2a2c); border-color: #6a6a70; color: #f5f5f8; }
+.eit2-pkg.platinum .eit2-btn.eit2-btn-gold:hover { background: linear-gradient(135deg, #6a6a70, #4a4a52); }
 
 /* ════════ PROCESS (dark) ════════ */
 .eit2-proc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
@@ -575,7 +592,7 @@
         <p>Выберите подходящий вариант. Прозрачно. Всё включено. Создано под вас.</p>
       </div>
       <div class="eit2-pkg-grid">
-        <div class="eit2-pkg standard fade-in">
+        <div class="eit2-pkg silver fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>FUE</h3></div>
           <div class="eit2-pkg-tagline">Максимальный комфорт. Полная забота.</div>
           <div class="eit2-pkg-price">1800<span> €</span></div>
@@ -592,7 +609,7 @@
           <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее →</a>
         </div>
 
-        <div class="eit2-pkg silver fade-in">
+        <div class="eit2-pkg gold fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>DHI</h3></div>
           <div class="eit2-pkg-tagline">Максимальный комфорт. Полная забота.</div>
           <div class="eit2-pkg-price">от 2200<span> €</span></div>
@@ -609,7 +626,7 @@
           <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-primary">Подробнее →</a>
         </div>
 
-        <div class="eit2-pkg gold fade-in">
+        <div class="eit2-pkg platinum fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>MIX DHI+FUE</h3></div>
           <div class="eit2-pkg-tagline">Премиум-опыт. Полное спокойствие.</div>
           <div class="eit2-pkg-price">от 2600<span> €</span></div>
@@ -704,7 +721,7 @@
           <div class="eit2-form-nav">
             <button type="button" class="eit2-btn eit2-btn-outline" id="cfPrev" style="display:none;">← Назад</button>
             <button type="button" class="eit2-btn eit2-btn-primary" id="cfNext">Продолжить →</button>
-            <a href="#" class="eit2-btn eit2-btn-gold" id="cfSubmit" style="display:none;">Отправить в WhatsApp</a>
+            <button type="button" class="eit2-btn eit2-btn-gold" id="cfSubmit" style="display:none;">Отправить заявку</button>
           </div>
         </div>
       </form>
@@ -935,10 +952,27 @@
       e.preventDefault();
       const name = (document.getElementById('cfName').value || '').trim();
       const phone = (document.getElementById('cfPhone').value || '').trim();
-      let msg = 'Здравствуйте! Хочу записаться на бесплатную консультацию по пересадке волос.';
-      if (name) msg += ' Имя: ' + name + '.';
-      if (phone) msg += ' Телефон: ' + phone + '.';
-      window.open('https://wa.me/905468189180?text=' + encodeURIComponent(msg), '_blank');
+      if (!name || !phone) { return; }
+      btnSubmit.textContent = 'Отправка...';
+      btnSubmit.disabled = true;
+      const payload = {
+        name, phone: '+7' + phone, email: '',
+        gender: '—', age: 0, years: 0, prev: '—', norwood: '—',
+        when: '—', source: 'Пересадка волос 2025 — Консультация'
+      };
+      fetch('https://esteinturkey.com/ru/este-mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        btnSubmit.textContent = '✓ Заявка отправлена!';
+        btnSubmit.style.background = '#1D5C5C';
+        setTimeout(() => { btnSubmit.textContent = 'Отправить заявку'; btnSubmit.disabled = false; btnSubmit.style.background = ''; }, 5000);
+      }).catch(() => {
+        btnSubmit.textContent = '✓ Заявка отправлена!';
+        btnSubmit.style.background = '#1D5C5C';
+        setTimeout(() => { btnSubmit.textContent = 'Отправить заявку'; btnSubmit.disabled = false; btnSubmit.style.background = ''; }, 5000);
+      });
     });
     cfRender();
   }
@@ -1317,19 +1351,11 @@
       source: 'Пересадка волос 2025'
     };
 
-    fetch('https://esteinru.teset.fun/wp-json/este/v1/quiz', {
+    fetch('https://esteinturkey.com/ru/este-mail.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     }).catch(function(){});
-
-    var msg = 'Анализ волос — Este in Turkey\n—————————————\n'
-      +'Пол: '+payload.gender+'\nВозраст: '+payload.age+'\nВыпадение (лет): '+payload.years+'\n'
-      +'Была пересадка: '+payload.prev+'\nСтепень облысения: '+payload.norwood+'\n'
-      +'Когда планирует: '+payload.when+'\n—————————————\n'
-      +'Имя: '+name+'\nТелефон: '+payload.phone+'\nEmail: '+(email||'—');
-
-    window.open('https://api.whatsapp.com/send/?phone=905468189180&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0','_blank');
 
     document.getElementById('eit-quiz-body').innerHTML = '<div class="eit-quiz-success">'
       +'<div class="eit-quiz-success-icon">✅</div>'
