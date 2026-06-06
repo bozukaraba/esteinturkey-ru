@@ -749,7 +749,13 @@
 
 <script>
 (function(){
-  var MENU_API = (window.location.origin || 'https://esteinturkey.com') + '/wp-json/mllc/v1/menu?lang=ru';
+  var wpBase   = (function(){
+    var p = window.location.pathname;
+    var m = p.match(/^(\/[a-z]{2})(\/|$)/);
+    return (window.location.origin || 'https://esteinturkey.com') + (m ? m[1] : '');
+  })();
+  var _LANG    = (wpBase.match(/\/([a-z]{2})$/) || [])[1] || 'ru';
+  var MENU_API = wpBase + '/wp-json/mllc/v1/menu?lang=' + _LANG;
   var CHEVRON  = '<svg class="eit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
   var CHEVRON_M= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
 
@@ -757,6 +763,7 @@
   function renderDesktop(items) {
     var nav = document.getElementById('eitDesktopNav');
     if (!nav) return;
+    if (!items.length) return;
     var html = '';
     items.forEach(function(item) {
       var hasSub = item.children && item.children.length > 0;
@@ -782,6 +789,7 @@
   function renderMobile(items) {
     var nav = document.getElementById('eitMobileNav');
     if (!nav) return;
+    if (!items.length) return;
     var html = '';
     items.forEach(function(item) {
       var hasSub = item.children && item.children.length > 0;
@@ -812,8 +820,8 @@
 
   /* ── Menüyü fetch et, 5 dk cache ── */
   function loadMenu() {
-    var cacheKey = 'eit_menu_cache_ru';
-    var cacheTs  = 'eit_menu_ts_ru';
+    var cacheKey = 'eit_menu_cache_ru_v2';
+    var cacheTs  = 'eit_menu_ts_ru_v2';
     var now      = Date.now();
     var cached   = sessionStorage.getItem(cacheKey);
     var ts       = parseInt(sessionStorage.getItem(cacheTs) || '0');
@@ -824,17 +832,23 @@
     }
     console.log('[EIT] Fetching menu from', MENU_API);
     fetch(MENU_API)
-      .then(function(r) { console.log('[EIT] Menu response status', r.status); return r.json(); })
+      .then(function(r) {
+        if (!r.ok) throw new Error('Menu API error: ' + r.status);
+        return r.json();
+      })
       .then(function(d) {
-        console.log('[EIT] Menu data (ru):', d);
+        console.log('[EIT] Menu response (ru):', d);
         var items = d.items || [];
+        if (!Array.isArray(items)) { console.warn('[EIT] Bad items type:', items); items = []; }
         if (!items.length) console.warn('[EIT] Menu is empty! WP Admin > Appearance > Menus: "Header RU" adıyla menü oluşturun.');
         sessionStorage.setItem(cacheKey, JSON.stringify(items));
         sessionStorage.setItem(cacheTs, String(now));
+        sessionStorage.removeItem('eit_menu_cache_ru');   // eski cache temizle
+        sessionStorage.removeItem('eit_menu_ts_ru');
         renderDesktop(items);
         renderMobile(items);
       })
-      .catch(function(e) { console.warn('[EIT] Menu fetch failed', e); });
+      .catch(function(e) { console.warn('[EIT] Menu fetch failed:', e); });
   }
 
   loadMenu();
