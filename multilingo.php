@@ -39,6 +39,7 @@ class MultiLingo_Lang_Checker {
         add_shortcode( 'mllc_lang_switch',  [ $this, 'shortcode_lang_switch' ] );
         add_action( 'wp_ajax_mllc_get_menu_json',       [ $this, 'ajax_get_menu_json' ] );
         add_action( 'wp_ajax_nopriv_mllc_get_menu_json',[ $this, 'ajax_get_menu_json' ] );
+        add_action( 'rest_api_init',       [ $this, 'register_rest_routes' ] );
     }
 
     /* ================================================================
@@ -1256,10 +1257,10 @@ class MultiLingo_Lang_Checker {
                 <code>header.html</code> / <code>header-en.html</code> zaten <code>?lang=ru</code> parametresiyle bu endpoint'i çağırıyor. WordPress menüsündeki öğeleri JSON formatında döndürür.
             </p>
             <code style="display:block; background:#1d2327; color:#9ed1ff; padding:10px 12px; border-radius:5px; font-size:12px; word-break:break-all; margin-bottom:8px;">
-                <?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>?action=mllc_get_menu_json&lang=ru
+                <?php echo esc_url( rest_url( 'mllc/v1/menu?lang=ru' ) ); ?>
             </code>
             <p style="font-size:12px; color:#666; margin:0 0 6px;">
-                🔍 <a href="<?php echo esc_url( admin_url( 'admin-ajax.php?action=mllc_get_menu_json&lang=ru' ) ); ?>" target="_blank">Test et (yeni sekme)</a> — Tarayıcıda JSON çıktısını gör.
+                🔍 <a href="<?php echo esc_url( rest_url( 'mllc/v1/menu?lang=ru' ) ); ?>" target="_blank">Test et (yeni sekme)</a> — Tarayıcıda JSON çıktısını gör.
             </p>
         </div>
         <?php
@@ -1362,6 +1363,39 @@ class MultiLingo_Lang_Checker {
         }
         $out .= '</ul>';
         return $out;
+    }
+
+    /* ================================================================
+       REST API — Public menü endpoint (admin-ajax 400 bypass)
+    ================================================================ */
+
+    public function register_rest_routes() {
+        register_rest_route( 'mllc/v1', '/menu', [
+            'methods'             => 'GET',
+            'callback'            => [ $this, 'rest_get_menu' ],
+            'permission_callback' => '__return_true',
+            'args' => [
+                'lang' => [
+                    'required'          => false,
+                    'default'           => '',
+                    'sanitize_callback' => 'sanitize_key',
+                ],
+            ],
+        ] );
+    }
+
+    public function rest_get_menu( \WP_REST_Request $request ) {
+        $lang  = (string) $request->get_param( 'lang' );
+        $menu  = $lang ? $this->get_wp_menu_for_lang( $lang ) : null;
+        $items = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
+
+        return rest_ensure_response( [
+            'lang'      => $lang,
+            'menu_name' => $menu ? $menu->name : null,
+            'menu_id'   => $menu ? (int) $menu->term_id : 0,
+            'count'     => count( $items ),
+            'items'     => $items,
+        ] );
     }
 
     public function ajax_get_menu_json() {
