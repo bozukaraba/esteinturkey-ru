@@ -265,7 +265,8 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all .24s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity .08s ease, visibility .08s ease, transform .12s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
   border: 1px solid var(--eit-border);
   z-index: 9999;
 }
@@ -311,7 +312,8 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all .24s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity .08s ease, visibility .08s ease, transform .12s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
   border: 1px solid var(--eit-border);
   z-index: 9999;
   list-style: none;
@@ -501,10 +503,38 @@
   text-transform: uppercase;
   background: none;
   border: none;
+  border-bottom: 1px solid var(--eit-border);
   width: 100%;
   cursor: pointer;
   text-align: left;
 }
+.eit-mm-link-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--eit-border);
+}
+.eit-mm-link-a {
+  flex: 1;
+  padding: 15px 4px;
+  color: var(--eit-primary);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.eit-mm-chevron {
+  background: none;
+  border: none;
+  padding: 15px 8px;
+  cursor: pointer;
+  color: var(--eit-primary);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.eit-mm-chevron svg { width: 16px; height: 16px; transition: transform .3s; }
+.eit-mm-item.is-open .eit-mm-chevron svg { transform: rotate(180deg); }
 .eit-mm-link svg { width: 16px; height: 16px; color: var(--eit-primary); transition: transform .3s; }
 .eit-mm-item.is-open .eit-mm-link svg { transform: rotate(180deg); }
 .eit-mm-sub {
@@ -585,8 +615,17 @@
 
 /* ── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 1100px) {
-  .eit-nav-link { padding: 8px 9px; font-size: 11.5px; }
+  .eit-nav-link { padding: 7px 8px; font-size: 11px; }
   .eit-hdr-phone .eit-phone-txt { display: none; }
+  .eit-logo img { height: 44px; }
+}
+@media (max-width: 1024px) {
+  .eit-header-main { height: 72px; }
+  .eit-nav-link { padding: 6px 6px; font-size: 10.5px; letter-spacing: .02em; }
+  .eit-nav-list { gap: 0; }
+  .eit-hdr-actions { gap: 8px; }
+  .eit-btn-hdr { padding: 9px 16px; font-size: 11.5px; }
+  .eit-logo img { height: 42px; }
 }
 @media (max-width: 900px) {
   .eit-nav,
@@ -594,7 +633,6 @@
   .eit-hamburger { display: flex; }
   .eit-topbar-left { display: none; }
   .eit-topbar .eit-wrap { justify-content: flex-end; }
-  .eit-logo img { height: 44px; }
 }
 @media (max-width: 480px) {
   .eit-topbar .eit-follow-label { display: none; }
@@ -648,15 +686,15 @@
 
       <!-- LOGO -->
       <!-- !! URL'yi kendi logo yolunuzla değiştirin !! -->
-      <a href="https://esteinru.teset.fun/" class="eit-logo" aria-label="Este in Turkey — На главную">
-        <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
+      <a href="https://esteinturkey.com/ru/" class="eit-logo" aria-label="Este in Turkey — На главную">
+        <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
              alt="Este in Turkey — Трансплантация волос и стоматология в Стамбуле"
              width="160" height="52" loading="eager" />
       </a>
 
       <!-- DESKTOP NAV -->
       <nav class="eit-nav" aria-label="Основная навигация">
-        [eit_nav_menu]
+        <ul class="eit-nav-list" id="eitDesktopNav"></ul>
       </nav>
 
       <!-- ACTIONS -->
@@ -667,7 +705,7 @@
           </svg>
           <span class="eit-phone-txt">+90 546 818 91 80</span>
         </a>
-        <a href="/ru/kontakty/" class="eit-btn-hdr">Записаться</a>
+        <a href="https://esteinturkey.com/ru/contact/" class="eit-btn-hdr">Записаться</a>
       </div>
 
       <!-- HAMBURGER -->
@@ -687,13 +725,13 @@
 <div class="eit-mobile-menu" id="eitMobileMenu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
   <div class="eit-mm-head">
     <a href="/ru/" class="eit-logo">
-      <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="40" style="height:40px;width:auto;" />
+      <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="40" style="height:40px;width:auto;" />
     </a>
     <button class="eit-mm-close" id="eitMmClose" aria-label="Закрыть меню">✕</button>
   </div>
 
   <nav class="eit-mm-nav" aria-label="Мобильная навигация">
-    [eit_mobile_menu]
+    <ul id="eitMobileNav"></ul>
   </nav>
 
   <div class="eit-mm-bottom">
@@ -701,7 +739,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       +90 546 818 91 80
     </a>
-    <a href="/ru/kontakty/" class="eit-mm-cta">Записаться на консультацию</a>
+    <a href="https://esteinturkey.com/ru/contact/" class="eit-mm-cta">Записаться на консультацию</a>
     <div class="eit-mm-lang">
       <a href="/ru/" class="eit-lang-active" hreflang="ru">RU</a>
       <a href="/" hreflang="en">EN</a>
@@ -711,6 +749,92 @@
 
 <script>
 (function(){
+  var MENU_API = 'https://esteinturkey.com/ru/este-menu.php';
+  var CHEVRON  = '<svg class="eit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+  var CHEVRON_M= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+
+  /* ── Desktop menü render ── */
+  function renderDesktop(items) {
+    var nav = document.getElementById('eitDesktopNav');
+    if (!nav) return;
+    var html = '';
+    items.forEach(function(item) {
+      var hasSub = item.children && item.children.length > 0;
+      var hasUrl = item.url && item.url !== '#' && item.url !== '';
+      if (hasSub) {
+        html += '<li class="eit-nav-item eit-has-drop">';
+        html += '<a href="' + (hasUrl ? item.url : 'javascript:void(0)') + '" class="eit-nav-link">' + item.title + CHEVRON + '</a>';
+        html += '<div class="eit-dropdown">';
+        item.children.forEach(function(child) {
+          html += '<a href="' + child.url + '"' + (child.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + child.title + '</a>';
+        });
+        html += '</div></li>';
+      } else {
+        html += '<li class="eit-nav-item">';
+        html += '<a href="' + item.url + '" class="eit-nav-link"' + (item.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + item.title + '</a>';
+        html += '</li>';
+      }
+    });
+    nav.innerHTML = html;
+  }
+
+  /* ── Mobile menü render ── */
+  function renderMobile(items) {
+    var nav = document.getElementById('eitMobileNav');
+    if (!nav) return;
+    var html = '';
+    items.forEach(function(item) {
+      var hasSub = item.children && item.children.length > 0;
+      if (hasSub) {
+        var hasUrl = item.url && item.url !== '#' && item.url !== '';
+        html += '<li class="eit-mm-item eit-has-sub">';
+        if (hasUrl) {
+          html += '<div class="eit-mm-link-row">';
+          html += '<a href="' + item.url + '" class="eit-mm-link-a">' + item.title + '</a>';
+          html += '<button class="eit-mm-chevron" aria-expanded="false">' + CHEVRON_M + '</button>';
+          html += '</div>';
+        } else {
+          html += '<button class="eit-mm-link" aria-expanded="false">' + item.title + CHEVRON_M + '</button>';
+        }
+        html += '<div class="eit-mm-sub">';
+        item.children.forEach(function(child) {
+          html += '<a href="' + child.url + '"' + (child.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + child.title + '</a>';
+        });
+        html += '</div></li>';
+      } else {
+        html += '<li class="eit-mm-item">';
+        html += '<a href="' + item.url + '" class="eit-mm-link"' + (item.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + item.title + '</a>';
+        html += '</li>';
+      }
+    });
+    nav.innerHTML = html;
+  }
+
+  /* ── Menüyü fetch et, 5 dk cache ── */
+  function loadMenu() {
+    var cacheKey = 'eit_menu_cache';
+    var cacheTs  = 'eit_menu_ts';
+    var now      = Date.now();
+    var cached   = sessionStorage.getItem(cacheKey);
+    var ts       = parseInt(sessionStorage.getItem(cacheTs) || '0');
+    if (cached && (now - ts) < 300000) {
+      var data = JSON.parse(cached);
+      renderDesktop(data); renderMobile(data); return;
+    }
+    fetch(MENU_API)
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        var items = d.items || [];
+        sessionStorage.setItem(cacheKey, JSON.stringify(items));
+        sessionStorage.setItem(cacheTs, String(now));
+        renderDesktop(items);
+        renderMobile(items);
+      })
+      .catch(function(e) { console.warn('EIT Menu fetch failed', e); });
+  }
+
+  loadMenu();
+
   var header   = document.getElementById('eitHeader');
   var hamburger= document.getElementById('eitHamburger');
   var menu     = document.getElementById('eitMobileMenu');
@@ -748,16 +872,26 @@
   mmClose.addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
 
-  /* ── Mobile submenus ─ */
-  document.querySelectorAll('.eit-mm-item.eit-has-sub .eit-mm-link').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var item = this.closest('.eit-mm-item');
-      var wasOpen = item.classList.contains('is-open');
-      document.querySelectorAll('.eit-mm-item.is-open').forEach(function(el){ el.classList.remove('is-open'); });
-      if(!wasOpen){ item.classList.add('is-open'); this.setAttribute('aria-expanded','true'); }
-      else { this.setAttribute('aria-expanded','false'); }
+  /* ── Mobile accordion — event delegation ── */
+  function toggleMmItem(item) {
+    var wasOpen = item.classList.contains('is-open');
+    document.querySelectorAll('.eit-mm-item.is-open').forEach(function(el) { el.classList.remove('is-open'); });
+    if (!wasOpen) item.classList.add('is-open');
+  }
+  function bindMobileAccordion() {
+    var nav = document.getElementById('eitMobileNav');
+    if (!nav) return;
+    nav.addEventListener('click', function(e) {
+      /* Chevron butonu veya URL'siz link butonu → accordion toggle */
+      var btn = e.target.closest('.eit-mm-chevron, .eit-mm-item.eit-has-sub > .eit-mm-link');
+      if (btn) {
+        e.preventDefault();
+        toggleMmItem(btn.closest('.eit-mm-item'));
+        return;
+      }
     });
-  });
+  }
+  bindMobileAccordion();
 
   /* ── ESC key ─ */
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
