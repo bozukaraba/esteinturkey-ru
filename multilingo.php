@@ -1120,26 +1120,39 @@ class MultiLingo_Lang_Checker {
         $candidates = [
             'Header ' . strtoupper( $lang ),
             'header-' . $lang,
+            'header ' . $lang,
+            'Header ' . strtoupper( $lang ) . ' Menu',
             'Menu '  . strtoupper( $lang ),
             'menu-'  . $lang,
+            'menu '  . $lang,
         ];
 
-        foreach ( $candidates as $name ) {
-            $menu = wp_get_nav_menu_object( $name );
-            if ( $menu ) return $menu;
+        $all_menus = wp_get_nav_menus();
+        if ( empty( $all_menus ) ) return null;
+
+        foreach ( $all_menus as $m ) {
+            foreach ( $candidates as $needle ) {
+                if ( strcasecmp( $m->name, $needle ) === 0 ) return $m;
+            }
         }
 
-        $menus = wp_get_nav_menus();
-        if ( ! empty( $menus ) ) return $menus[0];
+        $slug_match = null;
+        foreach ( $all_menus as $m ) {
+            if ( strcasecmp( $m->slug, 'header-' . $lang ) === 0 || strcasecmp( $m->slug, 'menu-' . $lang ) === 0 ) {
+                $slug_match = $m;
+                break;
+            }
+        }
+        if ( $slug_match ) return $slug_match;
 
-        return null;
+        return $all_menus[0];
     }
 
     public function get_wp_menu_items_for_lang( string $lang ): array {
         $menu = $this->get_wp_menu_for_lang( $lang );
         if ( ! $menu ) return [];
 
-        $items = wp_get_nav_menu_items( $menu->term_id, [ 'update_post_term_cache' => false ] );
+        $items = wp_get_nav_menu_items( $menu->term_id );
         if ( ! is_array( $items ) ) return [];
 
         return $this->treeify_menu_items( $items );
@@ -1152,7 +1165,7 @@ class MultiLingo_Lang_Checker {
             $node = [
                 'title'    => $it->title,
                 'url'      => $it->url,
-                'target'   => get_post_meta( $it->ID, '_menu_item_target', true ) === '_blank' ? '_blank' : '',
+                'target'   => ( ! empty( $it->target ) && $it->target === '_blank' ) ? '_blank' : '',
                 'classes'  => implode( ' ', array_filter( array_map( 'trim', (array) ( $it->classes ?? [] ) ) ) ),
                 'children' => [],
             ];
@@ -1242,9 +1255,12 @@ class MultiLingo_Lang_Checker {
             <p style="font-size:12px; color:#666; margin:0 0 8px;">
                 <code>header.html</code> / <code>header-en.html</code> zaten <code>?lang=ru</code> parametresiyle bu endpoint'i çağırıyor. WordPress menüsündeki öğeleri JSON formatında döndürür.
             </p>
-            <code style="display:block; background:#1d2327; color:#9ed1ff; padding:10px 12px; border-radius:5px; font-size:12px; word-break:break-all;">
+            <code style="display:block; background:#1d2327; color:#9ed1ff; padding:10px 12px; border-radius:5px; font-size:12px; word-break:break-all; margin-bottom:8px;">
                 <?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>?action=mllc_get_menu_json&lang=ru
             </code>
+            <p style="font-size:12px; color:#666; margin:0 0 6px;">
+                🔍 <a href="<?php echo esc_url( admin_url( 'admin-ajax.php?action=mllc_get_menu_json&lang=ru' ) ); ?>" target="_blank">Test et (yeni sekme)</a> — Tarayıcıda JSON çıktısını gör.
+            </p>
         </div>
         <?php
     }
@@ -1349,13 +1365,34 @@ class MultiLingo_Lang_Checker {
     }
 
     public function ajax_get_menu_json() {
-        $lang  = isset( $_GET['lang'] ) ? sanitize_key( $_GET['lang'] ) : '';
-        $items = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
+        $lang    = isset( $_GET['lang'] ) ? sanitize_key( $_GET['lang'] ) : '';
+        $menu    = $lang ? $this->get_wp_menu_for_lang( $lang ) : null;
+        $items   = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
 
+        nocache_headers();
         header( 'Access-Control-Allow-Origin: *' );
         header( 'Content-Type: application/json; charset=utf-8' );
-        header( 'Cache-Control: public, max-age=300' );
-        echo wp_json_encode( [ 'items' => $items ] );
+        status_header( 200 );
+
+        $debug = [
+            'lang_requested' => $lang,
+            'menu_found'     => $menu ? true : false,
+            'menu_name'      => $menu ? $menu->name : null,
+            'menu_id'        => $menu ? (int) $menu->term_id : 0,
+            'items_count'    => count( $items ),
+            'all_menus'      => array_map( fn( $m ) => $m->name . ' (slug: ' . $m->slug . ')', wp_get_nav_menus() ?: [] ),
+        ];
+
+        $response = $debug;
+        $response['items'] = $items;
+        $response['count'] = count( $items );
+
+        echo wp_json_encode( $response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            error_log( '[MultiLingo] Menu JSON for lang=' . $lang . ' menu=' . ( $menu ? $menu->name : 'NONE' ) . ' items=' . count( $items ) );
+        }
+
         wp_die();
     }
 }

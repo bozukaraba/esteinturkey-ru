@@ -819,18 +819,22 @@
     var ts       = parseInt(sessionStorage.getItem(cacheTs) || '0');
     if (cached && (now - ts) < 300000) {
       var data = JSON.parse(cached);
+      console.log('[EIT] Menu from cache (ru):', data);
       renderDesktop(data); renderMobile(data); return;
     }
+    console.log('[EIT] Fetching menu from', MENU_API);
     fetch(MENU_API)
-      .then(function(r) { return r.json(); })
+      .then(function(r) { console.log('[EIT] Menu response status', r.status); return r.json(); })
       .then(function(d) {
+        console.log('[EIT] Menu data (ru):', d);
         var items = d.items || [];
+        if (!items.length) console.warn('[EIT] Menu is empty! WP Admin > Appearance > Menus: "Header RU" adıyla menü oluşturun.');
         sessionStorage.setItem(cacheKey, JSON.stringify(items));
         sessionStorage.setItem(cacheTs, String(now));
         renderDesktop(items);
         renderMobile(items);
       })
-      .catch(function(e) { console.warn('EIT Menu fetch failed', e); });
+      .catch(function(e) { console.warn('[EIT] Menu fetch failed', e); });
   }
 
   loadMenu();
