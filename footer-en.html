@@ -1,8 +1,8 @@
 <style>
 /* =====================================================
    ESTE IN TURKEY — FOOTER
-   Dil: RU | Elementor HTML Widget
-   Versiyon: 1.0
+   Language: EN | Elementor HTML Widget
+   Version: 1.0
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
@@ -307,48 +307,6 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
 }
 .eit-footer-bottom-links a:hover { color: rgba(255,255,255,.8); }
 
-/* ── Hreflang language switcher ─────────────────── */
-.eit-footer-hreflang {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-right: 16px;
-  flex-wrap: wrap;
-}
-.eit-footer-hreflang a {
-  font-size: 11.5px;
-  color: rgba(255,255,255,.55);
-  font-weight: 600;
-  letter-spacing: .04em;
-  padding: 5px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.1);
-  transition: var(--eit-transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.eit-footer-hreflang a::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.4);
-  transition: var(--eit-transition);
-}
-.eit-footer-hreflang a:hover {
-  color: var(--eit-white);
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.25);
-}
-.eit-footer-hreflang a.eit-hreflang-active {
-  color: var(--eit-white);
-  background: var(--eit-accent);
-  border-color: var(--eit-accent);
-}
-.eit-footer-hreflang a.eit-hreflang-active::before {
-  background: var(--eit-white);
-}
-
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 1100px) {
   .eit-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
@@ -360,7 +318,6 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
   .eit-footer-brand { grid-column: span 2; }
   .eit-footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
   .eit-footer-bottom-links { justify-content: center; flex-wrap: wrap; gap: 14px; }
-  .eit-footer-hreflang { justify-content: center; margin-right: 0; }
 }
 @media (max-width: 480px) {
   .eit-footer-grid { grid-template-columns: 1fr; }
@@ -381,13 +338,13 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
   <div class="eit-prefooter">
     <div class="eit-wrap">
       <div class="eit-prefooter-left">
-        <div class="eit-prefooter-tag">Бесплатная консультация</div>
-        <h3 class="eit-prefooter-title">Начните ваш путь к здоровью и красоте</h3>
-        <p class="eit-prefooter-sub">Свяжитесь с нашими экспертами прямо сейчас — ответим на все вопросы.</p>
+        <div class="eit-prefooter-tag">Free Consultation</div>
+        <h3 class="eit-prefooter-title">Start your journey to health and beauty</h3>
+        <p class="eit-prefooter-sub">Contact our experts right now — we will answer all your questions.</p>
       </div>
       <div class="eit-prefooter-actions">
-        <a href="https://esteinru.teset.fun/contact/" class="eit-btn-pf-primary">Записаться →</a>
-        <a href="tel:+905468189180" class="eit-btn-pf-outline">Позвонить нам</a>
+        <a href="https://esteinturkey.com/en/contact/" class="eit-btn-pf-primary">Book Now →</a>
+        <a href="tel:+905468189180" class="eit-btn-pf-outline">Call us</a>
       </div>
     </div>
   </div>
@@ -400,16 +357,16 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
 
         <!-- Col 1: Brand -->
         <div class="eit-footer-brand">
-          <a href="/ru/" class="eit-footer-logo" aria-label="Este in Turkey — На главную">
-            <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
+          <a href="/en/" class="eit-footer-logo" aria-label="Este in Turkey — Home">
+            <img src="https://esteinturkey.com/en/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
                  alt="Este in Turkey"
                  width="150" height="46" />
           </a>
           <p class="eit-footer-desc">
-            ESTE IN TURKEY — ведущая клиника медицинского туризма в Стамбуле. Трансплантация волос, стоматология и забота о вашем здоровье на международном уровне.
+            ESTE IN TURKEY is a leading medical tourism clinic in Istanbul. Hair transplantation, dentistry, and international-standard care for your health.
           </p>
           <div class="eit-footer-socials">
-            <a href="https://vk.com/esteinturkey" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer">
+            <a href="https://vk.com/esteinturkey" aria-label="VKontakte" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm2.18 13.42h-1.34c-.51 0-.67-.41-1.58-1.34-.8-.78-1.14-.89-1.34-.89-.27 0-.35.08-.35.47v1.22c0 .34-.11.54-1 .54-1.47 0-3.11-.89-4.26-2.55C5.9 10.85 5.5 9.1 5.5 8.73c0-.2.08-.38.47-.38h1.34c.35 0 .48.16.62.54.68 1.96 1.82 3.68 2.3 3.68.18 0 .26-.08.26-.53V9.82c-.06-1-.56-1.09-.56-1.45 0-.18.14-.35.37-.35h2.1c.29 0 .39.15.39.49v2.98c0 .3.13.4.21.4.18 0 .33-.1.66-.43 1.02-1.14 1.75-2.9 1.75-2.9.1-.2.26-.38.62-.38h1.34c.4 0 .49.21.4.49-.17.78-1.81 3.1-1.81 3.1-.14.23-.19.33 0 .59.14.19.59.59.89.94.55.62.97 1.14.97 1.5 0 .28-.14.43-.43.43z"/></svg>
             </a>
             <a href="https://www.instagram.com/este.inturkey" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -424,65 +381,65 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
           </div>
         </div>
 
-        <!-- Col 2: Пересадка волос -->
+        <!-- Col 2: Hair Transplant -->
         <div>
-          <h4 class="eit-footer-col-title">Пересадка волос</h4>
-          <nav aria-label="Меню пересадки волос">
+          <h4 class="eit-footer-col-title">Hair Transplant</h4>
+          <nav aria-label="Hair transplant menu">
             <ul class="eit-footer-links">
-              <li><a href="https://esteinru.teset.fun/%d0%bf%d0%b5%d1%80%d0%b5%d1%81%d0%b0%d0%b4%d0%ba%d0%b0-%d0%b2%d0%be%d0%bb%d0%be%d1%81-fue/">Пересадка волос FUE</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%bf%d0%b5%d1%80%d0%b5%d1%81%d0%b0%d0%b4%d0%ba%d0%b0-%d0%b2%d0%be%d0%bb%d0%be%d1%81-dhi-choi/">Пересадка волос DHI Choi</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%bf%d0%b5%d1%80%d0%b5%d1%81%d0%b0%d0%b4%d0%ba%d0%b0-%d0%b1%d0%be%d1%80%d0%be%d0%b4%d1%8b/">Пересадка бороды</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%bf%d0%b5%d1%80%d0%b5%d1%81%d0%b0%d0%b4%d0%ba%d0%b0-%d0%b1%d1%80%d0%be%d0%b2%d0%b5%d0%b9/">Пересадка бровей</a></li>
+              <li><a href="https://esteinturkey.com/en/fue-hair-transplant/">FUE Hair Transplant</a></li>
+              <li><a href="https://esteinturkey.com/en/dhi-choi-hair-transplant/">DHI-Choi Hair Transplant</a></li>
+              <li><a href="https://esteinturkey.com/en/beard-transplant/">Beard Transplant</a></li>
+              <li><a href="https://esteinturkey.com/en/eyebrow-transplant/">Eyebrow Transplant</a></li>
             </ul>
           </nav>
         </div>
 
-        <!-- Col 3: Стоматология -->
+        <!-- Col 3: Dentistry -->
         <div>
-          <h4 class="eit-footer-col-title">Стоматология</h4>
-          <nav aria-label="Меню стоматологии">
+          <h4 class="eit-footer-col-title">Dentistry</h4>
+          <nav aria-label="Dentistry menu">
             <ul class="eit-footer-links">
-              <li><a href="https://esteinru.teset.fun/%d0%b8%d0%bc%d0%bf%d0%bb%d0%b0%d0%bd%d1%82%d1%8b/">Импланты</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%ba%d0%be%d1%80%d0%be%d0%bd%d0%ba%d0%b8/">Коронки</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%b2%d0%b8%d0%bd%d0%b8%d1%80%d1%8b/">Виниры</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%bb%d0%b5%d1%87%d0%b5%d0%bd%d0%b8%d0%b5/">Лечение</a></li>
-              <li><a href="https://esteinru.teset.fun/%d1%8d%d0%bb%d0%b0%d0%b9%d0%bd%d0%b5%d1%80%d1%8b/">Элайнеры</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%be%d1%82%d0%b1%d0%b5%d0%bb%d0%b8%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5/">Отбеливание</a></li>
+              <li><a href="https://esteinturkey.com/en/dental-implants/">Dental Implants</a></li>
+              <li><a href="https://esteinturkey.com/en/dental-crowns/">Dental Crowns</a></li>
+              <li><a href="https://esteinturkey.com/en/veneers/">Veneers</a></li>
+              <li><a href="https://esteinturkey.com/en/dental-treatment/">Dental Treatment</a></li>
+              <li><a href="https://esteinturkey.com/en/aligners/">Clear Aligners</a></li>
+              <li><a href="https://esteinturkey.com/en/teeth-whitening/">Teeth Whitening</a></li>
             </ul>
           </nav>
         </div>
 
-        <!-- Col 4: До/После + О компании -->
+        <!-- Col 4: Before/After + About -->
         <div>
-          <h4 class="eit-footer-col-title">До / После</h4>
-          <nav aria-label="Меню до после">
+          <h4 class="eit-footer-col-title">Before / After</h4>
+          <nav aria-label="Before after menu">
             <ul class="eit-footer-links">
-              <li><a href="https://esteinru.teset.fun/%d1%81%d1%82%d0%be%d0%bc%d0%b0%d1%82%d0%be%d0%bb%d0%be%d0%b3%d0%b8%d1%8f/">Стоматология</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%bf%d0%b5%d1%80%d0%b5%d1%81%d0%b0%d0%b4%d0%ba%d0%b0-%d0%b2%d0%be%d0%bb%d0%be%d1%81-3/">Пересадка волос</a></li>
+              <li><a href="https://esteinturkey.com/en/dentistry-before-after/">Dentistry</a></li>
+              <li><a href="https://esteinturkey.com/en/hair-transplant-before-after/">Hair Transplant</a></li>
             </ul>
           </nav>
 
-          <h4 class="eit-footer-col-title" style="margin-top: 28px;">О компании</h4>
-          <nav aria-label="Меню о компании">
+          <h4 class="eit-footer-col-title" style="margin-top: 28px;">About</h4>
+          <nav aria-label="About menu">
             <ul class="eit-footer-links">
-              <li><a href="https://esteinru.teset.fun/%d0%be-%d0%bd%d0%b0%d1%81-2/">О нас</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%b1%d0%bb%d0%be%d0%b3/">Блог</a></li>
-              <li><a href="https://esteinru.teset.fun/%d0%ba%d0%be%d0%bd%d1%82%d0%b0%d0%ba%d1%82%d1%8b/">Контакты</a></li>
-              <li><a href="#">Политика конфиденциальности</a></li>
+              <li><a href="https://esteinturkey.com/en/about-us/">About Us</a></li>
+              <li><a href="https://esteinturkey.com/en/blog/">Blog</a></li>
+              <li><a href="https://esteinturkey.com/en/contact/">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
             </ul>
           </nav>
         </div>
 
         <!-- Col 5: Contact -->
         <div>
-          <h4 class="eit-footer-col-title">Свяжитесь с нами</h4>
+          <h4 class="eit-footer-col-title">Contact us</h4>
 
           <a href="tel:+905468189180" class="eit-footer-contact-item" style="display:flex;">
             <div class="eit-footer-contact-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div>
-              <div class="eit-footer-contact-label">Телефон</div>
+              <div class="eit-footer-contact-label">Phone</div>
               <div class="eit-footer-contact-value">+90 546 818 91 80</div>
             </div>
           </a>
@@ -492,7 +449,7 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
-              <div class="eit-footer-contact-label">Электронная почта</div>
+              <div class="eit-footer-contact-label">Email</div>
               <div class="eit-footer-contact-value">info@esteinturkey.com</div>
             </div>
           </a>
@@ -502,7 +459,7 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
-              <div class="eit-footer-contact-label">Адрес</div>
+              <div class="eit-footer-contact-label">Address</div>
               <div class="eit-footer-contact-value">Altunizade, Nuhkuyusu Cd No:94, 34714 Üsküdar / İstanbul</div>
             </div>
           </div>
@@ -510,8 +467,8 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
           <!-- Google Maps embed -->
           <div class="eit-footer-map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.5!2d29.05!3d41.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzEyLjAiTiAyOcKwMDMnMDAuMCJF!5e0!3m2!1str!2str!4v1!5m2!1str!2str"
-              title="Este in Turkey — Местоположение на карте"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.5!2d29.05!3d41.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzEyLjAiTiAyOcKwMDMnMDAuMCJF!5e0!3m2!1sen!2str!4v1!5m2!1sen!2str"
+              title="Este in Turkey — Location on the map"
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade">
@@ -525,15 +482,10 @@ a .eit-footer-contact-value:hover { color: var(--eit-white); }
       <!-- Footer bottom bar -->
       <div class="eit-footer-bottom">
         <p class="eit-footer-copyright">
-          &copy; 2026 <a href="/ru/">Este in Turkey</a>. Все права защищены.
+          &copy; 2026 <a href="/en/">Este in Turkey</a>. All rights reserved.
         </p>
-        <div class="eit-footer-hreflang" aria-label="Dil seçimi">
-          <a href="/ru/" hreflang="ru" lang="ru">RU Русский</a>
-          <a href="/en/" hreflang="en" lang="en" class="eit-hreflang-active">EN English</a>
-          <a href="/" hreflang="x-default">Default</a>
-        </div>
-        <a href="/ru/" class="eit-footer-bottom-logo" aria-label="Este in Turkey">
-          <img src="http://esteinru.teset.fun/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="32" />
+        <a href="/en/" class="eit-footer-bottom-logo" aria-label="Este in Turkey">
+          <img src="https://esteinturkey.com/en/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="32" />
         </a>
       </div>
 
