@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  MultiLingo – Language Pair Checker
  * Description:  Çoklu dil desteği. Sayfalar arası dil eşleşmesi, otomatik parent ayarı, hreflang inject, dashboard widget. Settings sayfasından diller yönetilir.
- * Version:      2.0
+ * Version:      2.2
  * Author:       Uğur KOTBAŞ
  * License:      GPL-2.0
  * Text Domain:  multilingo
@@ -10,15 +10,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'MLLC_VERSION',      '2.0' );
+define( 'MLLC_VERSION',      '2.2' );
 define( 'MLLC_OPT_LANGS',   'mllc_languages' );
 define( 'MLLC_OPT_DEFAULT', 'mllc_default_lang' );
 define( 'MLLC_OPT_LABEL',   'mllc_plugin_label' );
 define( 'MLLC_OPT_FLAGS',   'mllc_lang_flags' );
 define( 'MLLC_OPT_TYPES',   'mllc_post_types' );
-define( 'MLLC_OPT_MENUS',   'mllc_menus' );
 define( 'MLLC_NONCE_KEY',   'mllc_lang_pair_nonce' );
-define( 'MLLC_NONCE_MENU',  'mllc_menu_nonce' );
 define( 'MLLC_NONCE_FIELD', 'mllc_nonce' );
 define( 'MLLC_TRANSIENT',   'mllc_no_pair_' );
 
@@ -37,7 +35,6 @@ class MultiLingo_Lang_Checker {
         add_action( 'wp_head',             [ $this, 'inject_lang_globals' ], 1 );
         add_filter( 'redirect_canonical',  [ $this, 'stop_lang_root_canonical' ], 10, 2 );
         add_action( 'wp_ajax_mllc_search', [ $this, 'ajax_search_posts' ] );
-        add_action( 'admin_post_mllc_save_menu',  [ $this, 'ajax_save_menu' ] );
         add_shortcode( 'mllc_menu',         [ $this, 'shortcode_menu' ] );
         add_shortcode( 'mllc_lang_switch',  [ $this, 'shortcode_lang_switch' ] );
         add_action( 'wp_ajax_mllc_get_menu_json',       [ $this, 'ajax_get_menu_json' ] );
@@ -130,31 +127,6 @@ class MultiLingo_Lang_Checker {
         register_setting( 'mllc_settings_group', MLLC_OPT_DEFAULT, [ 'sanitize_callback' => 'sanitize_key' ] );
         register_setting( 'mllc_settings_group', MLLC_OPT_FLAGS,   [ 'sanitize_callback' => [ $this, 'sanitize_flags' ] ] );
         register_setting( 'mllc_settings_group', MLLC_OPT_TYPES,   [ 'sanitize_callback' => [ $this, 'sanitize_types' ] ] );
-        register_setting( 'mllc_settings_group', MLLC_OPT_MENUS,   [ 'sanitize_callback' => [ $this, 'sanitize_menus' ] ] );
-    }
-
-    public function sanitize_menus( $value ) {
-        if ( is_string( $value ) ) {
-            $decoded = json_decode( $value, true );
-            if ( is_array( $decoded ) ) $value = $decoded;
-        }
-        if ( ! is_array( $value ) ) return '{}';
-        $clean = [];
-        foreach ( $value as $lang => $items ) {
-            $lang = sanitize_key( $lang );
-            if ( ! is_array( $items ) ) continue;
-            $list = [];
-            foreach ( $items as $it ) {
-                if ( ! is_array( $it ) ) continue;
-                $list[] = [
-                    'title'  => sanitize_text_field( $it['title']  ?? '' ),
-                    'url'    => esc_url_raw(      $it['url']    ?? '' ),
-                    'target' => $it['target'] === '_blank' ? '_blank' : '',
-                ];
-            }
-            $clean[ $lang ] = $list;
-        }
-        return wp_json_encode( $clean );
     }
 
     public function sanitize_types( $value ): string {
@@ -1138,152 +1110,141 @@ class MultiLingo_Lang_Checker {
     }
 
     /* ================================================================
-       MENU YÖNETİMİ — Her dil için ayrı menü tanımlama
+       MENU YÖNETİMİ — WordPress Native Menü Kullanımı
+       Her dil için ayrı bir WP menüsü oluşturulur.
+       İsim formatı: "Header RU", "Header EN", "Header DE" vb.
+       Plugin: belirtilen dilin menüsünü bulur, yoksa default'a düşer.
     ================================================================ */
 
-    public function get_menus(): array {
-        $raw = get_option( MLLC_OPT_MENUS, '{}' );
-        $decoded = json_decode( $raw, true );
-        return is_array( $decoded ) ? $decoded : [];
+    public function get_wp_menu_for_lang( string $lang ): ?WP_Post {
+        $candidates = [
+            'Header ' . strtoupper( $lang ),
+            'header-' . $lang,
+            'Menu '  . strtoupper( $lang ),
+            'menu-'  . $lang,
+        ];
+
+        foreach ( $candidates as $name ) {
+            $menu = wp_get_nav_menu_object( $name );
+            if ( $menu ) return $menu;
+        }
+
+        $menus = wp_get_nav_menus();
+        if ( ! empty( $menus ) ) return $menus[0];
+
+        return null;
     }
 
-    public function get_menu_for_lang( string $lang ): array {
-        $menus = $this->get_menus();
-        return $menus[ $lang ] ?? [];
+    public function get_wp_menu_items_for_lang( string $lang ): array {
+        $menu = $this->get_wp_menu_for_lang( $lang );
+        if ( ! $menu ) return [];
+
+        $items = wp_get_nav_menu_items( $menu->term_id, [ 'update_post_term_cache' => false ] );
+        if ( ! is_array( $items ) ) return [];
+
+        return $this->treeify_menu_items( $items );
+    }
+
+    private function treeify_menu_items( array $items ): array {
+        $by_id    = [];
+        $children = [];
+        foreach ( $items as $it ) {
+            $node = [
+                'title'    => $it->title,
+                'url'      => $it->url,
+                'target'   => get_post_meta( $it->ID, '_menu_item_target', true ) === '_blank' ? '_blank' : '',
+                'classes'  => implode( ' ', array_filter( array_map( 'trim', (array) ( $it->classes ?? [] ) ) ) ),
+                'children' => [],
+            ];
+            $by_id[ $it->ID ] = $node;
+            $children[ (int) $it->menu_item_parent ][] = $it->ID;
+        }
+
+        $build = function( $parent_id ) use ( &$build, &$by_id, $children ) {
+            $out = [];
+            foreach ( $children[ $parent_id ] ?? [] as $id ) {
+                if ( ! isset( $by_id[ $id ] ) ) continue;
+                $by_id[ $id ]['children'] = $build( $id );
+                $out[] = &$by_id[ $id ];
+            }
+            return $out;
+        };
+
+        return $build( 0 );
     }
 
     public function render_menus_tab() {
         if ( ! current_user_can( 'manage_options' ) ) return;
         $langs   = $this->get_langs();
         $default = $this->get_default_lang();
-        $menus   = $this->get_menus();
-        $active  = isset( $_GET['menu_lang'] ) ? sanitize_key( $_GET['menu_lang'] ) : ( $langs[0] ?? $default );
-        if ( ! in_array( $active, $langs, true ) ) $active = $default;
-        $items   = $menus[ $active ] ?? [];
-        $nonce   = wp_create_nonce( MLLC_NONCE_MENU );
         ?>
         <div class="mllc-settings-card">
-            <h2>📋 Dil Bazlı Menü Yönetimi</h2>
+            <h2>📋 Dil Bazlı Menü Yönetimi (WordPress Native)</h2>
             <p class="mllc-field" style="color:#555;">
-                Her dil için ayrı menü tanımlayabilirsiniz. <code>[mllc_menu]</code> shortcode'u mevcut sayfanın diline göre doğru menüyü getirir.
+                Her dil için WordPress'te ayrı bir menü oluşturmanız yeterli. Plugin otomatik olarak doğru menüyü seçer. İsimlendirme: <code>Header RU</code>, <code>Header EN</code>, <code>Header DE</code>…
             </p>
 
-            <div class="mllc-menu-lang-tabs">
-                <?php foreach ( $langs as $l ) : ?>
-                    <a href="<?php echo esc_url( admin_url( 'admin.php?page=multilingo-settings&tab=menus&menu_lang=' . $l ) ); ?>"
-                       class="mllc-menu-lang-tab <?php echo $l === $active ? 'active' : ''; ?>">
-                        <?php echo esc_html( $this->lang_label( $l ) ); ?>
-                    </a>
+            <h3 style="font-size:13px; margin:18px 0 8px;">📍 Aktif Diller İçin WP Menü Eşleşmesi</h3>
+            <table class="widefat striped" style="max-width:720px;">
+                <thead>
+                    <tr>
+                        <th>Dil</th>
+                        <th>Beklenen Menü Adı</th>
+                        <th>WP Menüsü</th>
+                        <th>Öğe Sayısı</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ( $langs as $l ) :
+                    $expected = 'Header ' . strtoupper( $l );
+                    $menu     = $this->get_wp_menu_for_lang( $l );
+                    $count    = $menu ? count( wp_get_nav_menu_items( $menu->term_id ) ?: [] ) : 0;
+                    $is_fallback = $menu && strcasecmp( $menu->name, $expected ) !== 0;
+                    ?>
+                    <tr>
+                        <td><code><?php echo esc_html( $l ); ?></code> — <?php echo esc_html( $this->lang_label( $l ) ); ?></td>
+                        <td><code><?php echo esc_html( $expected ); ?></code></td>
+                        <td>
+                            <?php if ( $menu ) : ?>
+                                <strong style="color:#46b450;"><?php echo esc_html( $menu->name ); ?></strong>
+                                <?php if ( $is_fallback ) : ?>
+                                    <br><span style="color:#f0a500; font-size:11px;">⚠️ Fallback menü kullanılıyor</span>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                <span style="color:#E91E8C;">❌ Menü bulunamadı</span>
+                            <?php endif; ?>
+                        </td>
+                        <td><?php echo (int) $count; ?></td>
+                        <td>
+                            <?php if ( $menu ) : ?>
+                                <a href="<?php echo esc_url( admin_url( 'nav-menus.php?action=edit&menu=' . $menu->term_id ) ); ?>" class="button button-small">✏️ Düzenle</a>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url( admin_url( 'nav-menus.php?action=edit&menu=0' ) ); ?>" class="button button-small button-primary">+ Yeni Oluştur</a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <div class="mllc-shortcode-hint" style="margin-top:18px;">
+                <strong>Nasıl Çalışır:</strong><br>
+                1. <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">Görünüm → Menüler</a>'e gidin<br>
+                2. Yukarıdaki tabloda listelenen isimlerle (<code>Header RU</code>, <code>Header EN</code>…) menüler oluşturun<br>
+                3. Menü öğelerini (sayfa, özel link, kategori) ekleyin ve sıralayın<br>
+                4. Plugin <code>header.html</code> / <code>header-en.html</code>'in MENU_API'sine otomatik doğru menüyü döndürür
             </div>
-
-            <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="mllc-menu-form">
-                <input type="hidden" name="action"      value="mllc_save_menu">
-                <input type="hidden" name="mllc_nonce"  value="<?php echo esc_attr( $nonce ); ?>">
-                <input type="hidden" name="mllc_lang"   value="<?php echo esc_attr( $active ); ?>">
-                <input type="hidden" name="mllc_items_json" id="mllc-items-json" value="">
-
-                <div class="mllc-menu-pane active" data-lang="<?php echo esc_attr( $active ); ?>">
-                    <div class="mllc-menu-row" style="font-weight:600; font-size:11px; text-transform:uppercase; color:#666; background:#f9f9f9; padding:6px 4px; border-radius:5px; margin-bottom:8px;">
-                        <div></div>
-                        <div>Başlık</div>
-                        <div>URL</div>
-                        <div>Hedef</div>
-                        <div></div>
-                    </div>
-                    <div id="mllc-menu-rows">
-                        <?php
-                        if ( empty( $items ) ) {
-                            echo '<p style="color:#999; font-size:12px;">Bu dil için henüz menü öğesi yok. Aşağıdaki buton ile ekleyin.</p>';
-                        } else {
-                            foreach ( $items as $i => $it ) {
-                                $this->render_menu_row( $i, $it );
-                            }
-                        }
-                        ?>
-                    </div>
-
-                    <button type="button" id="mllc-add-item" class="button button-secondary" style="margin-top:8px;">+ Menü Öğesi Ekle</button>
-                </div>
-
-                <div class="mllc-shortcode-hint">
-                    <strong>Kullanım:</strong><br>
-                    <code>[mllc_menu lang="auto"]</code> → Mevcut sayfanın diline göre menüyü getirir<br>
-                    <code>[mllc_menu lang="ru"]</code> → Belirli bir dilin menüsünü getirir<br>
-                    <code>[mllc_menu lang="en" wrap="ul" wrap_class="nav"]</code> → Özel sarmalayıcı ile
-                </div>
-
-                <div class="mllc-submit" style="margin-top:14px;">
-                    <?php submit_button( '💾 Menüyü Kaydet', 'primary', 'submit', false ); ?>
-                </div>
-            </form>
 
             <hr style="margin:24px 0; border:none; border-top:1px solid #eee;">
 
             <h3 style="font-size:13px; margin:0 0 10px;">📡 JSON Endpoint (header'ın MENU_API'si için)</h3>
             <p style="font-size:12px; color:#666; margin:0 0 8px;">
-                Bu URL'yi <code>header.html</code> / <code>header-en.html</code> içindeki <code>MENU_API</code>'ye yapıştırın. Sadece <code>?lang=ru</code> parametresi ile istenen dilin menüsünü döndürür.
+                <code>header.html</code> / <code>header-en.html</code> zaten <code>?lang=ru</code> parametresiyle bu endpoint'i çağırıyor. WordPress menüsündeki öğeleri JSON formatında döndürür.
             </p>
             <code style="display:block; background:#1d2327; color:#9ed1ff; padding:10px 12px; border-radius:5px; font-size:12px; word-break:break-all;">
-                <?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>?action=mllc_get_menu_json&lang=<?php echo esc_attr( $active ); ?>&nonce=<?php echo esc_attr( $nonce ); ?>
+                <?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>?action=mllc_get_menu_json&lang=ru
             </code>
-        </div>
-
-        <script>
-        (function(){
-            var rowIdx = <?php echo (int) count( $items ); ?>;
-            var tpl = function(){
-                var i = rowIdx++;
-                return ''
-                  + '<div class="mllc-menu-row" data-idx="'+i+'">'
-                  +   '<div class="mllc-handle">⋮⋮</div>'
-                  +   '<input type="text" name="title_'+i+'"  placeholder="Пересадка волос" required>'
-                  +   '<input type="url"  name="url_'+i+'"    placeholder="https://esteinturkey.com/ru/fue-hair-transplant/" required>'
-                  +   '<select name="target_'+i+'"><option value="_self">_self</option><option value="_blank">_blank</option></select>'
-                  +   '<button type="button" class="mllc-menu-remove" title="Kaldır">×</button>'
-                  + '</div>';
-            };
-            document.getElementById('mllc-add-item').addEventListener('click', function(){
-                document.getElementById('mllc-menu-rows').insertAdjacentHTML('beforeend', tpl());
-                bindRemove();
-            });
-            function bindRemove(){
-                document.querySelectorAll('.mllc-menu-remove').forEach(function(btn){
-                    btn.onclick = function(){ btn.closest('.mllc-menu-row').remove(); };
-                });
-            }
-            bindRemove();
-
-            document.getElementById('mllc-menu-form').addEventListener('submit', function(){
-                var rows = document.querySelectorAll('#mllc-menu-rows .mllc-menu-row');
-                var data = [];
-                rows.forEach(function(r){
-                    var t = r.querySelector('input[type=text]').value.trim();
-                    var u = r.querySelector('input[type=url]').value.trim();
-                    var tg= r.querySelector('select').value;
-                    if (t && u) data.push({ title: t, url: u, target: tg === '_blank' ? '_blank' : '' });
-                });
-                document.getElementById('mllc-items-json').value = JSON.stringify(data);
-            });
-        })();
-        </script>
-        <?php
-    }
-
-    private function render_menu_row( int $i, array $it ) {
-        $title  = esc_attr( $it['title']  ?? '' );
-        $url    = esc_attr( $it['url']    ?? '' );
-        $target = $it['target'] === '_blank' ? '_blank' : '_self';
-        ?>
-        <div class="mllc-menu-row" data-idx="<?php echo $i; ?>">
-            <div class="mllc-handle">⋮⋮</div>
-            <input type="text" name="title_<?php echo $i; ?>"  value="<?php echo $title; ?>" placeholder="Пересадка волос" required>
-            <input type="url"  name="url_<?php echo $i; ?>"    value="<?php echo $url; ?>"   placeholder="https://esteinturkey.com/ru/..." required>
-            <select name="target_<?php echo $i; ?>">
-                <option value="_self"  <?php selected( $target, '_self' ); ?>>_self</option>
-                <option value="_blank" <?php selected( $target, '_blank' ); ?>>_blank</option>
-            </select>
-            <button type="button" class="mllc-menu-remove" title="Kaldır">×</button>
         </div>
         <?php
     }
@@ -1310,52 +1271,19 @@ class MultiLingo_Lang_Checker {
         <?php
     }
 
-    public function ajax_save_menu() {
-        if ( ! current_user_can( 'manage_options' ) ) wp_die( 'Unauthorized', 403 );
-        check_admin_referer( MLLC_NONCE_MENU, 'mllc_nonce' );
-
-        $lang  = sanitize_key( $_POST['mllc_lang'] ?? '' );
-        $items = json_decode( wp_unslash( $_POST['mllc_items_json'] ?? '[]' ), true );
-        if ( ! is_array( $items ) ) $items = [];
-
-        $langs = $this->get_langs();
-        if ( ! in_array( $lang, $langs, true ) ) {
-            wp_redirect( admin_url( 'admin.php?page=multilingo-settings&tab=menus&menu_lang=' . $langs[0] . '&mllc_msg=invalid_lang' ) );
-            exit;
-        }
-
-        $clean = [];
-        foreach ( $items as $it ) {
-            if ( ! is_array( $it ) ) continue;
-            $clean[] = [
-                'title'  => sanitize_text_field( $it['title']  ?? '' ),
-                'url'    => esc_url_raw(      $it['url']    ?? '' ),
-                'target' => ( $it['target'] ?? '' ) === '_blank' ? '_blank' : '',
-            ];
-        }
-
-        $menus        = $this->get_menus();
-        $menus[ $lang ] = array_values( $clean );
-        update_option( MLLC_OPT_MENUS, wp_json_encode( $menus ) );
-
-        wp_redirect( admin_url( 'admin.php?page=multilingo-settings&tab=menus&menu_lang=' . $lang . '&mllc_msg=saved' ) );
-        exit;
-    }
-
     public function shortcode_menu( $atts ) {
         $atts = shortcode_atts( [
             'lang'       => 'auto',
             'wrap'       => 'ul',
             'wrap_class' => 'mllc-menu',
             'item_wrap'  => 'li',
-            'echo'       => '0',
         ], $atts, 'mllc_menu' );
 
         $lang = $atts['lang'];
         if ( $lang === 'auto' ) {
             if ( is_singular() ) {
-                $pid   = get_the_ID();
-                $lang  = $this->get_this_lang( $pid );
+                $pid  = get_the_ID();
+                $lang = $this->get_this_lang( $pid );
             }
             if ( ! $lang ) {
                 $path  = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH ), '/' );
@@ -1365,17 +1293,30 @@ class MultiLingo_Lang_Checker {
         }
         $lang = sanitize_key( $lang );
 
-        $items = $this->get_menu_for_lang( $lang );
+        $items = $this->get_wp_menu_items_for_lang( $lang );
         if ( empty( $items ) ) return '';
 
         $out  = '<' . esc_attr( $atts['wrap'] ) . ' class="' . esc_attr( $atts['wrap_class'] ) . '">';
-        foreach ( $items as $it ) {
-            $title  = esc_html( $it['title'] ?? '' );
-            $url    = esc_url( $it['url']   ?? '#' );
-            $target = ( $it['target'] ?? '' ) === '_blank' ? ' target="_blank" rel="noopener"' : '';
-            $out   .= '<' . esc_attr( $atts['item_wrap'] ) . '><a href="' . $url . '"' . $target . '>' . $title . '</a></' . esc_attr( $atts['item_wrap'] ) . '>';
-        }
+        $out .= $this->render_menu_tree( $items, $atts['item_wrap'] );
         $out .= '</' . esc_attr( $atts['wrap'] ) . '>';
+        return $out;
+    }
+
+    private function render_menu_tree( array $items, string $item_wrap ): string {
+        $out = '';
+        foreach ( $items as $it ) {
+            $title  = esc_html( $it['title'] );
+            $url    = esc_url( $it['url'] );
+            $target = $it['target'] === '_blank' ? ' target="_blank" rel="noopener"' : '';
+            $class  = $it['classes'] ? ' class="' . esc_attr( $it['classes'] ) . '"' : '';
+            $has_kids = ! empty( $it['children'] );
+            $out .= '<' . esc_attr( $item_wrap ) . '>';
+            $out .= '<a href="' . $url . '"' . $target . $class . '>' . $title . '</a>';
+            if ( $has_kids ) {
+                $out .= '<' . esc_attr( $item_wrap ) . ' class="sub-menu">' . $this->render_menu_tree( $it['children'], $item_wrap ) . '</' . esc_attr( $item_wrap ) . '>';
+            }
+            $out .= '</' . esc_attr( $item_wrap ) . '>';
+        }
         return $out;
     }
 
@@ -1408,22 +1349,13 @@ class MultiLingo_Lang_Checker {
     }
 
     public function ajax_get_menu_json() {
-        $lang = isset( $_GET['lang'] ) ? sanitize_key( $_GET['lang'] ) : '';
-        $items = $lang ? $this->get_menu_for_lang( $lang ) : [];
-
-        $out = [ 'items' => [] ];
-        foreach ( $items as $it ) {
-            $out['items'][] = [
-                'title'  => $it['title'] ?? '',
-                'url'    => $it['url']   ?? '#',
-                'target' => ( $it['target'] ?? '' ) === '_blank' ? '_blank' : '',
-            ];
-        }
+        $lang  = isset( $_GET['lang'] ) ? sanitize_key( $_GET['lang'] ) : '';
+        $items = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
 
         header( 'Access-Control-Allow-Origin: *' );
         header( 'Content-Type: application/json; charset=utf-8' );
         header( 'Cache-Control: public, max-age=300' );
-        echo wp_json_encode( $out );
+        echo wp_json_encode( [ 'items' => $items ] );
         wp_die();
     }
 }

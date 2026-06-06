@@ -812,8 +812,8 @@
 
   /* ── Menüyü fetch et, 5 dk cache ── */
   function loadMenu() {
-    var cacheKey = 'eit_menu_cache';
-    var cacheTs  = 'eit_menu_ts';
+    var cacheKey = 'eit_menu_cache_ru';
+    var cacheTs  = 'eit_menu_ts_ru';
     var now      = Date.now();
     var cached   = sessionStorage.getItem(cacheKey);
     var ts       = parseInt(sessionStorage.getItem(cacheTs) || '0');
