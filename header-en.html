@@ -640,7 +640,7 @@
 }
 </style>
 
-<header class="eit-header" id="eitHeader">
+<header class="eit-header" id="eitHeader" lang="en">
 
   <div class="eit-topbar">
     <div class="eit-wrap">
@@ -678,7 +678,7 @@
     <div class="eit-wrap">
 
       <a href="https://esteinturkey.com/en/" class="eit-logo" aria-label="Este in Turkey — Home">
-        <img src="https://esteinturkey.com/en/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
+        <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
              alt="Este in Turkey — Hair Transplant and Dentistry in Istanbul"
              width="160" height="52" loading="eager" />
       </a>
@@ -711,7 +711,7 @@
 <div class="eit-mobile-menu" id="eitMobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu">
   <div class="eit-mm-head">
     <a href="/en/" class="eit-logo">
-      <img src="https://esteinturkey.com/en/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="40" style="height:40px;width:auto;" />
+      <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="40" style="height:40px;width:auto;" />
     </a>
     <button class="eit-mm-close" id="eitMmClose" aria-label="Close menu">✕</button>
   </div>
@@ -735,7 +735,7 @@
 
 <script>
 (function(){
-  var MENU_API = 'https://esteinturkey.com/en/este-menu.php';
+  var MENU_API = (window.location.origin || 'https://esteinturkey.com') + '/wp-admin/admin-ajax.php?action=mllc_get_menu_json&lang=en';
   var CHEVRON  = '<svg class="eit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
   var CHEVRON_M= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
 
