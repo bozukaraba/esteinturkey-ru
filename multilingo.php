@@ -1118,6 +1118,9 @@ class MultiLingo_Lang_Checker {
     ================================================================ */
 
     public function get_wp_menu_for_lang( string $lang ): ?WP_Post {
+        if ( ! function_exists( 'wp_get_nav_menus' ) && file_exists( ABSPATH . 'wp-admin/includes/nav-menu.php' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+        }
         $candidates = [
             'Header ' . strtoupper( $lang ),
             'header-' . $lang,
@@ -1150,6 +1153,9 @@ class MultiLingo_Lang_Checker {
     }
 
     public function get_wp_menu_items_for_lang( string $lang ): array {
+        if ( ! function_exists( 'wp_get_nav_menu_items' ) && file_exists( ABSPATH . 'wp-admin/includes/nav-menu.php' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+        }
         $menu = $this->get_wp_menu_for_lang( $lang );
         if ( ! $menu ) return [];
 
@@ -1191,15 +1197,80 @@ class MultiLingo_Lang_Checker {
         if ( ! current_user_can( 'manage_options' ) ) return;
         $langs   = $this->get_langs();
         $default = $this->get_default_lang();
+
+        if ( ! function_exists( 'wp_get_nav_menus' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+        }
+
+        $rows          = [];
+        $all_menus_safe = [];
+        $fatal_msg     = null;
+
+        try {
+            $all_menus = wp_get_nav_menus();
+            if ( is_array( $all_menus ) ) {
+                foreach ( $all_menus as $m ) {
+                    $all_menus_safe[] = $m->name . ' [' . $m->slug . ']';
+                }
+            }
+            foreach ( $langs as $l ) {
+                $expected = 'Header ' . strtoupper( $l );
+                $menu     = null;
+                $count    = 0;
+                $row_error = null;
+                try {
+                    $menu  = $this->get_wp_menu_for_lang( $l );
+                    if ( $menu && function_exists( 'wp_get_nav_menu_items' ) ) {
+                        $items = wp_get_nav_menu_items( $menu->term_id );
+                        $count = is_array( $items ) ? count( $items ) : 0;
+                    }
+                } catch ( \Throwable $e ) {
+                    $row_error = $e->getMessage();
+                }
+                $rows[] = [
+                    'lang'     => $l,
+                    'expected' => $expected,
+                    'menu'     => $menu,
+                    'count'    => $count,
+                    'error'    => $row_error,
+                ];
+            }
+        } catch ( \Throwable $e ) {
+            $fatal_msg = $e->getMessage() . ' (line: ' . $e->getLine() . ', file: ' . basename( $e->getFile() ) . ')';
+        }
         ?>
         <div class="mllc-settings-card">
             <h2>📋 Dil Bazlı Menü Yönetimi (WordPress Native)</h2>
+
+            <?php if ( $fatal_msg ) : ?>
+                <div class="notice notice-error inline" style="margin:14px 0; padding:10px 14px; border-left:4px solid #E91E8C; background:#fff5f8;">
+                    <p><strong>❌ MultiLingo Menu Tab Hatası:</strong> <?php echo esc_html( $fatal_msg ); ?></p>
+                    <p style="font-size:12px; color:#666;">Bu genelde başka bir eklenti/tema ile çakışma, veya PHP bellek limiti aşımından kaynaklanır.</p>
+                </div>
+            <?php endif; ?>
+
             <p class="mllc-field" style="color:#555;">
                 Her dil için WordPress'te ayrı bir menü oluşturmanız yeterli. Plugin otomatik olarak doğru menüyü seçer. İsimlendirme: <code>Header RU</code>, <code>Header EN</code>, <code>Header DE</code>…
             </p>
 
             <h3 style="font-size:13px; margin:18px 0 8px;">📍 Aktif Diller İçin WP Menü Eşleşmesi</h3>
-            <table class="widefat striped" style="max-width:720px;">
+
+            <?php if ( ! empty( $all_menus_safe ) ) : ?>
+            <details style="margin-bottom:14px; padding:8px 12px; background:#f6f7f7; border:1px solid #ddd; border-radius:5px;">
+                <summary style="cursor:pointer; font-size:12px; color:#666;">🔍 WP'de tanımlı menüler (<?php echo count( $all_menus_safe ); ?>) — görmek için tıkla</summary>
+                <div style="margin-top:8px; font-family:monospace; font-size:12px;">
+                    <?php foreach ( $all_menus_safe as $mn ) : ?>
+                        <div>• <?php echo esc_html( $mn ); ?></div>
+                    <?php endforeach; ?>
+                </div>
+            </details>
+            <?php else : ?>
+            <div class="notice notice-warning inline" style="padding:8px 12px; border-left:4px solid #f0a500; background:#fff8e8; margin-bottom:14px;">
+                <p style="margin:0; font-size:12px;">⚠️ Henüz hiç WP menüsü tanımlanmamış. <a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">Görünüm → Menüler</a>'den en az bir tane oluşturun.</p>
+            </div>
+            <?php endif; ?>
+
+            <table class="widefat striped" style="max-width:780px;">
                 <thead>
                     <tr>
                         <th>Dil</th>
@@ -1210,17 +1281,19 @@ class MultiLingo_Lang_Checker {
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ( $langs as $l ) :
-                    $expected = 'Header ' . strtoupper( $l );
-                    $menu     = $this->get_wp_menu_for_lang( $l );
-                    $count    = $menu ? count( wp_get_nav_menu_items( $menu->term_id ) ?: [] ) : 0;
+                <?php foreach ( $rows as $r ) :
+                    $expected    = $r['expected'];
+                    $menu        = $r['menu'];
+                    $count       = $r['count'];
                     $is_fallback = $menu && strcasecmp( $menu->name, $expected ) !== 0;
                     ?>
                     <tr>
-                        <td><code><?php echo esc_html( $l ); ?></code> — <?php echo esc_html( $this->lang_label( $l ) ); ?></td>
+                        <td><code><?php echo esc_html( $r['lang'] ); ?></code> — <?php echo esc_html( $this->lang_label( $r['lang'] ) ); ?></td>
                         <td><code><?php echo esc_html( $expected ); ?></code></td>
                         <td>
-                            <?php if ( $menu ) : ?>
+                            <?php if ( $r['error'] ) : ?>
+                                <span style="color:#E91E8C;">❌ <?php echo esc_html( $r['error'] ); ?></span>
+                            <?php elseif ( $menu ) : ?>
                                 <strong style="color:#46b450;"><?php echo esc_html( $menu->name ); ?></strong>
                                 <?php if ( $is_fallback ) : ?>
                                     <br><span style="color:#f0a500; font-size:11px;">⚠️ Fallback menü kullanılıyor</span>
@@ -1260,7 +1333,8 @@ class MultiLingo_Lang_Checker {
                 <?php echo esc_url( rest_url( 'mllc/v1/menu?lang=ru' ) ); ?>
             </code>
             <p style="font-size:12px; color:#666; margin:0 0 6px;">
-                🔍 <a href="<?php echo esc_url( rest_url( 'mllc/v1/menu?lang=ru' ) ); ?>" target="_blank">Test et (yeni sekme)</a> — Tarayıcıda JSON çıktısını gör.
+                🔍 <a href="<?php echo esc_url( rest_url( 'mllc/v1/menu?lang=ru' ) ); ?>" target="_blank">Test et (yeni sekme)</a> — Tarayıcıda JSON çıktısını gör.<br>
+                🩺 <a href="<?php echo esc_url( rest_url( 'mllc/v1/menu-ping' ) ); ?>" target="_blank">Sistem kontrol (menu-ping)</a> — Plugin/WordPress sürümünü ve WP fonksiyonlarının yüklü olup olmadığını kontrol eder.
             </p>
         </div>
         <?php
@@ -1382,27 +1456,79 @@ class MultiLingo_Lang_Checker {
                 ],
             ],
         ] );
+
+        register_rest_route( 'mllc/v1', '/menu-ping', [
+            'methods'             => 'GET',
+            'callback'            => [ $this, 'rest_menu_ping' ],
+            'permission_callback' => '__return_true',
+        ] );
+    }
+
+    public function rest_menu_ping() {
+        return rest_ensure_response( [
+            'status'        => 'ok',
+            'plugin'        => 'MultiLingo',
+            'version'       => MLLC_VERSION,
+            'wp_version'    => get_bloginfo( 'version' ),
+            'nav_menu_func' => function_exists( 'wp_get_nav_menus' ) ? 'loaded' : 'not_loaded',
+            'nav_items_func'=> function_exists( 'wp_get_nav_menu_items' ) ? 'loaded' : 'not_loaded',
+        ] );
     }
 
     public function rest_get_menu( \WP_REST_Request $request ) {
-        $lang  = (string) $request->get_param( 'lang' );
-        $menu  = $lang ? $this->get_wp_menu_for_lang( $lang ) : null;
-        $items = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
+        while ( ob_get_level() > 0 ) { ob_end_clean(); }
+
+        if ( ! function_exists( 'wp_get_nav_menus' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
+        }
+
+        $lang      = (string) $request->get_param( 'lang' );
+        $menu      = null;
+        $items     = [];
+        $error     = null;
+        $all_names = [];
+
+        try {
+            $all = wp_get_nav_menus();
+            if ( is_array( $all ) ) {
+                foreach ( $all as $m ) {
+                    $all_names[] = $m->name . ' [' . $m->slug . ']';
+                }
+            }
+            if ( $lang ) {
+                $menu  = $this->get_wp_menu_for_lang( $lang );
+                $items = $this->get_wp_menu_items_for_lang( $lang );
+            }
+        } catch ( \Throwable $e ) {
+            $error = $e->getMessage();
+        }
+
+        nocache_headers();
+        header( 'Content-Type: application/json; charset=utf-8' );
 
         return rest_ensure_response( [
-            'lang'      => $lang,
-            'menu_name' => $menu ? $menu->name : null,
-            'menu_id'   => $menu ? (int) $menu->term_id : 0,
-            'count'     => count( $items ),
-            'items'     => $items,
+            'lang'         => $lang,
+            'menu_name'    => $menu ? $menu->name : null,
+            'menu_id'      => $menu ? (int) $menu->term_id : 0,
+            'count'        => count( $items ),
+            'items'        => $items,
+            'all_menus'    => $all_names,
+            'error'        => $error,
         ] );
     }
 
     public function ajax_get_menu_json() {
+        // Prevent WP from adding extra output
+        if ( ! defined( 'DOING_AJAX' ) ) define( 'DOING_AJAX', true );
+        remove_all_actions( 'wp_footer' );
+        remove_all_actions( 'shutdown' );
+
         $lang    = isset( $_GET['lang'] ) ? sanitize_key( $_GET['lang'] ) : '';
         $menu    = $lang ? $this->get_wp_menu_for_lang( $lang ) : null;
         $items   = $lang ? $this->get_wp_menu_items_for_lang( $lang ) : [];
 
+        @ob_clean();
+        @ob_end_clean();
         nocache_headers();
         header( 'Access-Control-Allow-Origin: *' );
         header( 'Content-Type: application/json; charset=utf-8' );
@@ -1427,7 +1553,7 @@ class MultiLingo_Lang_Checker {
             error_log( '[MultiLingo] Menu JSON for lang=' . $lang . ' menu=' . ( $menu ? $menu->name : 'NONE' ) . ' items=' . count( $items ) );
         }
 
-        wp_die();
+        exit;
     }
 }
 
