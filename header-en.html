@@ -677,7 +677,7 @@
   <div class="eit-header-main">
     <div class="eit-wrap">
 
-      <a href="https://esteinturkey.com/en/" class="eit-logo" aria-label="Este in Turkey — Home">
+      <a href="/" data-eit-home class="eit-logo" aria-label="Este in Turkey — Home">
         <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
              alt="Este in Turkey — Hair Transplant and Dentistry in Istanbul"
              width="160" height="52" loading="eager" />
@@ -710,7 +710,7 @@
 
 <div class="eit-mobile-menu" id="eitMobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu">
   <div class="eit-mm-head">
-    <a href="/en/" class="eit-logo">
+    <a href="/" data-eit-home class="eit-logo">
       <img src="https://esteinturkey.com/ru/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="40" style="height:40px;width:auto;" />
     </a>
     <button class="eit-mm-close" id="eitMmClose" aria-label="Close menu">✕</button>
@@ -742,6 +742,11 @@
   })();
   var _LANG    = (wpBase.match(/\/([a-z]{2})$/) || [])[1] || 'en';
   var MENU_API = wpBase + '/wp-json/mllc/v1/menu?lang=' + _LANG;
+
+  /* ── Logo href'ini mevcut dile göre otomatik ayarla ── */
+  document.querySelectorAll('a[data-eit-home]').forEach(function(a){
+    a.setAttribute('href', wpBase + '/');
+  });
   var CHEVRON  = '<svg class="eit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
   var CHEVRON_M= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
 
