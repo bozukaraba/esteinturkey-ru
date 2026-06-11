@@ -46,7 +46,9 @@ class MultiLingo_Lang_Checker {
         add_action( 'init',                [ $this, 'register_lang_rewrite_rules' ], 5 );
         add_filter( 'query_vars',          [ $this, 'register_lang_query_vars' ] );
         add_filter( 'post_link',           [ $this, 'lang_prefix_post_link' ], 20, 2 );
+        add_filter( 'request',             [ $this, 'fix_lang_request_pagename' ], 1 );
         add_action( 'pre_get_posts',       [ $this, 'handle_lang_rewrite_query' ], 5 );
+        add_filter( 'template_include',    [ $this, 'lang_template_include' ], 99 );
     }
 
     /* ================================================================
@@ -1670,6 +1672,25 @@ class MultiLingo_Lang_Checker {
     }
 
     /**
+     * request filter (priority 1): /ru/slug/ isteğinde mllc_lang_slug varsa
+     * WordPress'in standart page resolution'ını tetiklemek için 'pagename'
+     * ve 'page' query var'larını da set et. Bu olmadan rewrite rule
+     * mllc_lang_slug/mllc_lang_code query var'larını bırakıyor, WP bu yüzden
+     * sayfayı page olarak değil, default 404/index template'i olarak yüklüyor
+     * (Elementor single-page template hiç tetiklenmiyor → default tema çıkıyor).
+     */
+    public function fix_lang_request_pagename( array $query_vars ): array {
+        $lang = isset( $query_vars['mllc_lang_code'] ) ? $query_vars['mllc_lang_code'] : '';
+        $slug = isset( $query_vars['mllc_lang_slug'] ) ? $query_vars['mllc_lang_slug'] : '';
+        if ( ! $lang || ! $slug ) return $query_vars;
+        if ( ! in_array( $lang, $this->get_langs(), true ) ) return $query_vars;
+
+        // Standart WP page resolution için pagename'i set et.
+        $query_vars['pagename'] = $lang . '/' . $slug;
+        return $query_vars;
+    }
+
+    /**
      * pre_get_posts: /ru/slug/ isteğinde doğru dil postunu yükle.
      * Rewrite rule'dan gelen mllc_lang_code + mllc_lang_slug query var'larını kullanır.
      */
@@ -1697,10 +1718,24 @@ class MultiLingo_Lang_Checker {
             }
         }
 
+        // Fallback: root düzeyde veya herhangi bir yerde slug + dil metası eşleşen sayfa
+        if ( ! $existing ) {
+            $meta_pages = get_posts( [
+                'post_type'      => 'page',
+                'post_status'    => [ 'publish', 'draft' ],
+                'name'           => $slug,
+                'numberposts'    => 1,
+                'no_found_rows'  => true,
+                'meta_query'     => [
+                    'relation' => 'OR',
+                    [ 'key' => '_mllc_this_lang', 'value' => $lang, 'compare' => '=' ],
+                    [ 'key' => '_ll_this_lang',   'value' => $lang, 'compare' => '=' ],
+                ],
+            ] );
+            if ( $meta_pages ) $existing = $meta_pages[0];
+        }
+
         if ( $existing ) {
-            // Gerçek WP page — rewrite rule'un bıraktığı yanlış query var'ları temizle,
-            // page_id ile doğrudan yükle. Aksi halde mllc_lang_slug query var'ı WP'yi
-            // karıştırır ve default sayfa gösterilir.
             $query->set( 'page_id',        $existing->ID );
             $query->set( 'post_type',      'page' );
             $query->set( 'name',           '' );
@@ -1717,6 +1752,39 @@ class MultiLingo_Lang_Checker {
             [ 'key' => '_mllc_this_lang', 'value' => $lang, 'compare' => '=' ],
             [ 'key' => '_ll_this_lang',   'value' => $lang, 'compare' => '=' ],
         ] );
+    }
+
+    /**
+     * template_include: /ru/blog/ gibi sayfa URL'lerinde, eğer aktif tema
+     * single page template'i bulamıyorsa (örn. default block tema "Yenilik ve
+     * sürdürülebilirliğe bağlılık" → 404 yerine düşüyor) Elementor/child theme
+     * single page template'ini zorla. Bu olmadan /ru/blog/, /ru/kontakty/ gibi
+     * sayfalar WordPress default temasına düşüyor.
+     */
+    public function lang_template_include( $template ) {
+        if ( is_admin() ) return $template;
+        if ( ! ( get_query_var( 'mllc_lang_code' ) || ( isset( $_SERVER['REQUEST_URI'] ) && preg_match( '#^/[a-z]{2}/#', wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) ) ) {
+            return $template;
+        }
+
+        // Zaten doğru page template yüklendiyse dokunma
+        if ( is_page() || is_singular( 'page' ) ) return $template;
+
+        $candidates = [];
+        if ( is_singular( 'post' ) ) {
+            $candidates[] = 'single.php';
+            $candidates[] = 'index.php';
+        } else {
+            $candidates[] = 'page.php';
+            $candidates[] = 'singular.php';
+            $candidates[] = 'index.php';
+        }
+
+        foreach ( $candidates as $name ) {
+            $t = locate_template( [ $name ] );
+            if ( $t ) return $t;
+        }
+        return $template;
     }
 }
 

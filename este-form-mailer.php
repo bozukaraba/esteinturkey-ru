@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Este in Turkey — Form Mailer
- * Description: Quiz form verilerini HTML e-posta olarak gönderir
- * Version: 1.0.0
+ * Description: Quiz ve iletişim formlarını HTML e-posta olarak gönderir
+ * Version: 1.1.0
  * Author: Este in Turkey
  */
 
@@ -12,6 +12,11 @@ add_action( 'rest_api_init', function () {
     register_rest_route( 'este/v1', '/quiz', [
         'methods'             => 'POST',
         'callback'            => 'este_quiz_handler',
+        'permission_callback' => '__return_true',
+    ] );
+    register_rest_route( 'este/v1', '/contact', [
+        'methods'             => 'POST',
+        'callback'            => 'este_contact_handler',
         'permission_callback' => '__return_true',
     ] );
 } );
@@ -39,12 +44,65 @@ function este_quiz_handler( WP_REST_Request $req ) {
     $subject = "Анализ волос — {$name} | Este in Turkey";
     $headers = [
         'Content-Type: text/html; charset=UTF-8',
-        'From: Este in Turkey <info@esteinturkey.com>',
+        'Content-Type: text/html; charset=UTF-8',
     ];
 
     $body = este_email_html( compact( 'name','phone','email','gender','age','years','prev','norwood','when','source' ) );
     $sent = wp_mail( $to, $subject, $body, $headers );
 
+    return new WP_REST_Response( [ 'success' => $sent ], $sent ? 200 : 500 );
+}
+
+function este_contact_handler( WP_REST_Request $req ) {
+    $data = $req->get_json_params();
+    if ( empty( $data ) ) $data = $req->get_params();
+
+    $name    = sanitize_text_field( $data['name']    ?? '' );
+    $phone   = sanitize_text_field( $data['phone']   ?? '' );
+    $email   = sanitize_email(      $data['email']   ?? '' );
+    $service = sanitize_text_field( $data['when']    ?? $data['service'] ?? '—' );
+    $message = sanitize_textarea_field( $data['message'] ?? '' );
+    $source  = sanitize_text_field( $data['source']  ?? 'İletişim Formu' );
+
+    if ( ! $name || ! $phone ) {
+        return new WP_REST_Response( [ 'success' => false, 'error' => 'name and phone required' ], 400 );
+    }
+
+    $to      = get_option( 'admin_email', 'info@esteinturkey.com' );
+    $subject = "İletişim: {$name} | Este in Turkey";
+    $headers = [ 'Content-Type: text/html; charset=UTF-8' ];
+
+    $date = date_i18n( 'd.m.Y H:i', current_time('timestamp') );
+    $body = <<<HTML
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#eef2f2;font-family:'Segoe UI',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#eef2f2;padding:40px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12);">
+  <tr><td style="background:linear-gradient(135deg,#0d2b2b,#1D5C5C,#2E8B8B);padding:40px 48px 32px;">
+    <div style="font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;">ESTE IN TURKEY · СТАМБУЛ</div>
+    <div style="font-size:28px;font-weight:900;color:#fff;line-height:1.2;">Новая заявка<br>с сайта</div>
+    <div style="margin-top:10px;display:inline-block;background:rgba(255,255,255,.12);border-radius:20px;padding:5px 14px;font-size:13px;color:rgba(255,255,255,.8);">📋 {$source} &nbsp;·&nbsp; {$date}</div>
+  </td></tr>
+  <tr><td style="height:4px;background:linear-gradient(90deg,#2E8B8B,#4AACAC,#2E8B8B);"></td></tr>
+  <tr><td style="padding:36px 48px 0;">
+    <div style="font-size:11px;font-weight:800;color:#2E8B8B;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;">👤 Kontakt</div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #e8e0d8;border-radius:12px;overflow:hidden;">
+      <tr style="background:#faf6f1;"><td style="padding:14px 20px;font-size:12px;color:#888;font-weight:700;width:38%;border-bottom:1px solid #e8e0d8;">ИМЯ</td><td style="padding:14px 20px;font-size:15px;font-weight:800;color:#154444;border-bottom:1px solid #e8e0d8;">{$name}</td></tr>
+      <tr><td style="padding:14px 20px;font-size:12px;color:#888;font-weight:700;border-bottom:1px solid #e8e0d8;">ТЕЛЕФОН</td><td style="padding:14px 20px;"><a href="tel:{$phone}" style="font-size:15px;font-weight:800;color:#1D5C5C;text-decoration:none;">{$phone}</a></td></tr>
+      <tr style="background:#faf6f1;"><td style="padding:14px 20px;font-size:12px;color:#888;font-weight:700;border-bottom:1px solid #e8e0d8;">E-MAIL</td><td style="padding:14px 20px;font-size:14px;color:#154444;">{$email}</td></tr>
+      <tr><td style="padding:14px 20px;font-size:12px;color:#888;font-weight:700;border-bottom:1px solid #e8e0d8;">УСЛУГА</td><td style="padding:14px 20px;font-size:14px;font-weight:700;color:#154444;">{$service}</td></tr>
+      <tr style="background:#faf6f1;"><td style="padding:14px 20px;font-size:12px;color:#888;font-weight:700;">СООБЩЕНИЕ</td><td style="padding:14px 20px;font-size:14px;color:#154444;">{$message}</td></tr>
+    </table>
+  </td></tr>
+  <tr><td style="padding:28px 48px 40px;text-align:center;border-top:1px solid #eee;margin-top:28px;">
+    <div style="font-size:13px;font-weight:900;color:#154444;">ESTE IN TURKEY</div>
+    <div style="font-size:12px;color:#aaa;margin-top:4px;">info@esteinturkey.com · +90 546 818 91 80</div>
+  </td></tr>
+</table></td></tr></table></body></html>
+HTML;
+
+    $sent = wp_mail( $to, $subject, $body, $headers );
     return new WP_REST_Response( [ 'success' => $sent ], $sent ? 200 : 500 );
 }
 

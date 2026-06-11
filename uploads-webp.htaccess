@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Browser WebP destekliyorsa ve aynı isimde .webp varsa onu ver
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} ^(.+)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
+  RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=WEBP:1,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=WEBP
+  Header set Cache-Control "public, max-age=31536000" env=WEBP
+</IfModule>

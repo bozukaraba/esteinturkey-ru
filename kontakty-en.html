@@ -1,0 +1,1372 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --eit-primary: #1D5C5C;
+    --eit-primary-dark: #154444;
+    --eit-primary-mid: #236666;
+    --eit-accent: #2E8B8B;
+    --eit-accent-light: #4AACAC;
+    --eit-cream: #F8F4EF;
+    --eit-text: #1A1A1A;
+    --eit-text-muted: #5A5A5A;
+    --eit-font: 'Montserrat', sans-serif;
+  }
+
+  .eit-kont-page *,
+  .eit-kont-page *::before,
+  .eit-kont-page *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .eit-kont-page {
+    font-family: var(--eit-font);
+    color: var(--eit-text);
+    line-height: 1.6;
+  }
+
+  .eit-kont-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* fade */
+  .eit-kont-fade {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+
+  .eit-kont-fade.eit-kont-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .eit-kont-d1 {
+    transition-delay: .1s;
+  }
+
+  .eit-kont-d2 {
+    transition-delay: .2s;
+  }
+
+  .eit-kont-d3 {
+    transition-delay: .3s;
+  }
+
+  /* tag */
+  .eit-kont-tag {
+    display: inline-block;
+    background: rgba(46, 139, 139, .12);
+    color: var(--eit-accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 40px;
+    margin-bottom: 12px;
+  }
+
+  /* heading */
+  .eit-kont-h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--eit-text);
+    line-height: 1.2;
+  }
+
+  .eit-kont-h2 span {
+    color: var(--eit-accent);
+  }
+
+  /* divider */
+  .eit-kont-divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--eit-accent), var(--eit-accent-light));
+    border-radius: 2px;
+    margin: 16px 0 24px;
+  }
+
+  .eit-kont-divider-c {
+    margin: 16px auto 24px;
+  }
+
+  /* ============================================================
+   1. HERO
+============================================================ */
+  .eit-kont-hero {
+    background: linear-gradient(135deg, var(--eit-primary-dark) 0%, var(--eit-primary) 55%, var(--eit-primary-mid) 100%);
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eit-kont-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .eit-kont-hero-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .eit-kont-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: rgba(255, 255, 255, .9);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 40px;
+    margin-bottom: 18px;
+  }
+
+  .eit-kont-hero-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--eit-accent-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .eit-kont-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+
+  .eit-kont-hero h1 span {
+    color: var(--eit-accent-light);
+  }
+
+  .eit-kont-hero-sub {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+  }
+
+  .eit-kont-hero-chips {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .eit-kont-hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+
+  .eit-kont-hero-chip:hover {
+    background: rgba(255, 255, 255, .2);
+  }
+
+  .eit-kont-hero-chip svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .eit-kont-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: .78rem;
+    color: rgba(255, 255, 255, .45);
+    margin-top: 28px;
+  }
+
+  .eit-kont-breadcrumb a {
+    color: rgba(255, 255, 255, .65);
+    text-decoration: none;
+  }
+
+  .eit-kont-breadcrumb a:hover {
+    color: #fff;
+  }
+
+  .eit-kont-breadcrumb svg {
+    width: 12px;
+    height: 12px;
+    opacity: .45;
+  }
+
+
+
+  /* ============================================================
+   3. FORM + INFO GRID
+============================================================ */
+  .eit-kont-main {
+    padding: 72px 0 88px;
+    background: var(--eit-cream);
+  }
+
+  .eit-kont-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 52px;
+    align-items: start;
+  }
+
+  /* -- Form -- */
+  .eit-kont-form-wrap {
+    background: #fff;
+    border-radius: 22px;
+    padding: 44px 40px;
+    box-shadow: 0 6px 32px rgba(29, 92, 92, .09);
+    border: 1px solid rgba(29, 92, 92, .06);
+  }
+
+  .eit-kont-form-wrap h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--eit-text);
+    margin-bottom: 6px;
+  }
+
+  .eit-kont-form-wrap p {
+    font-size: .875rem;
+    color: var(--eit-text-muted);
+    margin-bottom: 32px;
+    line-height: 1.65;
+  }
+
+  /* form rows */
+  .eit-kont-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .eit-kont-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* field */
+  .eit-kont-field {
+    position: relative;
+  }
+
+  .eit-kont-field-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--eit-accent);
+    opacity: .7;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .eit-kont-field-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .eit-kont-field input,
+  .eit-kont-field select,
+  .eit-kont-field textarea {
+    width: 100%;
+    font-family: var(--eit-font);
+    font-size: .875rem;
+    color: var(--eit-text);
+    background: var(--eit-cream);
+    border: 1.5px solid rgba(29, 92, 92, .12);
+    border-radius: 10px;
+    padding: 13px 16px 13px 42px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .eit-kont-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .eit-kont-field input:focus,
+  .eit-kont-field select:focus,
+  .eit-kont-field textarea:focus {
+    border-color: var(--eit-accent);
+    box-shadow: 0 0 0 3px rgba(46, 139, 139, .12);
+    background: #fff;
+  }
+
+  .eit-kont-field input::placeholder,
+  .eit-kont-field textarea::placeholder {
+    color: #aaa;
+  }
+
+  .eit-kont-field-icon-top {
+    top: 18px;
+    transform: none;
+  }
+
+  /* phone row */
+  .eit-kont-phone-wrap {
+    display: flex;
+    border: 1.5px solid rgba(29, 92, 92, .12);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--eit-cream);
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .eit-kont-phone-wrap:focus-within {
+    border-color: var(--eit-accent);
+    box-shadow: 0 0 0 3px rgba(46, 139, 139, .12);
+    background: #fff;
+  }
+
+  .eit-kont-phone-wrap .eit-kont-country-select {
+    flex: 0 0 auto;
+    max-width: 170px;
+    min-width: 0;
+    font-family: var(--eit-font);
+    font-size: .82rem;
+    color: var(--eit-text);
+    background: transparent;
+    border: none;
+    border-right: 1.5px solid rgba(29, 92, 92, .12);
+    border-radius: 0;
+    padding: 13px 32px 13px 12px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+
+  .eit-kont-phone-wrap .eit-kont-country-select:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .eit-kont-phone-input-wrap {
+    flex: 1;
+    position: relative;
+  }
+
+  .eit-kont-phone-input-wrap .eit-kont-field-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .eit-kont-phone-input-wrap input {
+    width: 100%;
+    font-family: var(--eit-font);
+    font-size: .875rem;
+    color: var(--eit-text);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 13px 16px 13px 42px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .eit-kont-phone-input-wrap input:focus {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .eit-kont-phone-input-wrap input::placeholder {
+    color: #aaa;
+  }
+
+  /* service select */
+  .eit-kont-service-select {
+    width: 100%;
+    font-family: var(--eit-font);
+    font-size: .875rem;
+    color: var(--eit-text);
+    background: var(--eit-cream);
+    border: 1.5px solid rgba(29, 92, 92, .12);
+    border-radius: 10px;
+    padding: 13px 36px 13px 42px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .eit-kont-service-select:focus {
+    border-color: var(--eit-accent);
+    box-shadow: 0 0 0 3px rgba(46, 139, 139, .12);
+    background-color: #fff;
+  }
+
+  /* submit */
+  .eit-kont-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--eit-accent), var(--eit-primary));
+    color: #fff;
+    font-family: var(--eit-font);
+    font-size: .925rem;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(46, 139, 139, .35);
+    transition: transform .2s, box-shadow .2s;
+    margin-top: 6px;
+  }
+
+  .eit-kont-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(46, 139, 139, .45);
+  }
+
+  .eit-kont-submit svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .eit-kont-form-note {
+    text-align: center;
+    font-size: .78rem;
+    color: var(--eit-text-muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* label above field */
+  .eit-kont-label {
+    display: block;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--eit-text-muted);
+    letter-spacing: .05em;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 640px) {
+    .eit-kont-form-wrap {
+      padding: 28px 20px;
+    }
+
+    .eit-kont-form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .eit-kont-phone-wrap .eit-kont-country-select {
+      max-width: 140px;
+      font-size: .78rem;
+    }
+  }
+
+  /* -- Info sidebar -- */
+  .eit-kont-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .eit-kont-info-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 26px;
+    box-shadow: 0 4px 18px rgba(29, 92, 92, .07);
+    border: 1px solid rgba(29, 92, 92, .06);
+  }
+
+  .eit-kont-info-card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--eit-text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eit-kont-info-card h3 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--eit-accent);
+    flex-shrink: 0;
+  }
+
+  .eit-kont-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(29, 92, 92, .06);
+  }
+
+  .eit-kont-info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .eit-kont-info-item-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: rgba(46, 139, 139, .1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--eit-accent);
+  }
+
+  .eit-kont-info-item-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .eit-kont-info-item-lbl {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--eit-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .eit-kont-info-item-val {
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--eit-text);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  .eit-kont-info-item-val a {
+    color: var(--eit-accent);
+    text-decoration: none;
+  }
+
+  .eit-kont-info-item-val a:hover {
+    text-decoration: underline;
+  }
+
+  /* hours */
+  .eit-kont-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .eit-kont-hour-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .875rem;
+  }
+
+  .eit-kont-hour-day {
+    color: var(--eit-text-muted);
+    font-weight: 500;
+  }
+
+  .eit-kont-hour-time {
+    font-weight: 700;
+    color: var(--eit-text);
+  }
+
+  .eit-kont-hour-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(34, 197, 94, .12);
+    color: #16a34a;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .eit-kont-hour-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* messenger links */
+  .eit-kont-messengers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .eit-kont-msg-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: .875rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .eit-kont-msg-link:hover {
+    transform: translateX(3px);
+  }
+
+  .eit-kont-msg-link svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .eit-kont-msg-wa {
+    background: rgba(37, 211, 102, .1);
+    color: #16a34a;
+  }
+
+  .eit-kont-msg-wa:hover {
+    background: rgba(37, 211, 102, .18);
+  }
+
+  .eit-kont-msg-tg {
+    background: rgba(0, 136, 204, .1);
+    color: #0088cc;
+  }
+
+  .eit-kont-msg-tg:hover {
+    background: rgba(0, 136, 204, .18);
+  }
+
+  .eit-kont-msg-tel {
+    background: rgba(46, 139, 139, .1);
+    color: var(--eit-accent);
+  }
+
+  .eit-kont-msg-tel:hover {
+    background: rgba(46, 139, 139, .18);
+  }
+
+  .eit-kont-msg-link-sub {
+    font-size: .75rem;
+    font-weight: 500;
+    opacity: .7;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 1000px) {
+    .eit-kont-main-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .eit-kont-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .eit-kont-info {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============================================================
+   4. MAP SECTION
+============================================================ */
+  .eit-kont-map-section {
+    background: #fff;
+    padding: 0;
+  }
+
+  .eit-kont-map-inner {
+    position: relative;
+  }
+
+  .eit-kont-map-frame {
+    width: 100%;
+    height: 400px;
+    display: block;
+    filter: grayscale(20%) saturate(90%);
+    border: none;
+  }
+
+
+  /* ============================================================
+   5. CTA BAND
+============================================================ */
+  .eit-kont-cta {
+    background: linear-gradient(135deg, var(--eit-primary-dark), var(--eit-accent));
+    padding: 64px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eit-kont-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(74, 172, 172, .2), transparent 60%);
+  }
+
+  .eit-kont-cta-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eit-kont-cta h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .eit-kont-cta p {
+    color: rgba(255, 255, 255, .75);
+    font-size: .975rem;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.65;
+  }
+
+  .eit-kont-cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .eit-kont-cta-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: var(--eit-font);
+    font-size: .875rem;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, .4);
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .eit-kont-cta-wa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, .5);
+  }
+
+  .eit-kont-cta-wa svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eit-kont-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, .12);
+    border: 2px solid rgba(255, 255, 255, .3);
+    color: #fff;
+    font-family: var(--eit-font);
+    font-size: .875rem;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+
+  .eit-kont-cta-ghost:hover {
+    background: rgba(255, 255, 255, .2);
+  }
+
+  .eit-kont-cta-ghost svg {
+    width: 18px;
+    height: 18px;
+  }
+</style>
+
+<div class="eit-kont-page">
+
+  <!-- ===========================================================
+       HERO
+  =========================================================== -->
+  <section class="eit-kont-hero">
+    <div class="eit-kont-wrap">
+      <div class="eit-kont-hero-inner eit-kont-fade">
+        <div class="eit-kont-hero-badge">Get IN Touch</div>
+        <h1>Contact<br><span>Este in Turkey</span></h1>
+        <p class="eit-kont-hero-sub">
+          We are here to answer your questions and help organize your treatment.
+          Write to us &mdash; the initial consultation is free.
+        </p>
+        <div class="eit-kont-hero-chips">
+          <a href="https://wa.me/905468189180" class="eit-kont-hero-chip" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+            </svg>
+            WhatsApp
+          </a>
+          <a href="https://t.me/esteinturkey" class="eit-kont-hero-chip" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            Telegram
+          </a>
+          <a href="tel:+905468189180" class="eit-kont-hero-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span data-nosnippet>+90 546 818 91 80</span>
+          </a>
+        </div>
+        <nav class="eit-kont-breadcrumb" aria-label="Breadcrumb">
+          <a href="/en/">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+          <span>Contact</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===========================================================
+       FORM + INFO
+  =========================================================== -->
+  <section class="eit-kont-main">
+    <div class="eit-kont-wrap">
+      <div class="eit-kont-main-grid">
+
+        <!-- FORM -->
+        <div class="eit-kont-form-wrap eit-kont-fade">
+          <h2>Send a Message</h2>
+          <p>Fill out the form &mdash; our consultant will contact you shortly in English.</p>
+
+          <form class="eit-kont-form" action="/en/contact/" method="post" novalidate>
+
+            <!-- Name + Surname (single field) -->
+            <div>
+              <label class="eit-kont-label" for="kont-fullname">Full Name *</label>
+              <div class="eit-kont-field">
+                <div class="eit-kont-field-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <input type="text" id="kont-fullname" name="fullname" placeholder="John Smith" required
+                  autocomplete="name" />
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label class="eit-kont-label" for="kont-phone">Phone Number *</label>
+              <div class="eit-kont-phone-wrap">
+                <select class="eit-kont-country-select" name="country_code" aria-label="Country code">
+                  <optgroup label=" CIS ">
+                    <option value="+7">🇷🇺 +7 Russia</option>
+                    <option value="+380">🇺🇦 +380 Ukraine</option>
+                    <option value="+375">🇧🇾 +375 Belarus</option>
+                    <option value="+7">🇰🇿 +7 Kazakhstan</option>
+                    <option value="+994">🇦🇿 +994 Azerbaijan</option>
+                    <option value="+995">🇬🇪 +995 Georgia</option>
+                    <option value="+374">🇦🇲 +374 Armenia</option>
+                    <option value="+998">🇺🇿 +998 Uzbekistan</option>
+                    <option value="+992">🇹🇯 +992 Tajikistan</option>
+                    <option value="+993">🇹🇲 +993 Turkmenistan</option>
+                    <option value="+996">🇰🇬 +996 Kyrgyzstan</option>
+                    <option value="+373">🇲🇩 +373 Moldova</option>
+                  </optgroup>
+                  <optgroup label=" Middle East ">
+                    <option value="+90" selected>🇹🇷 +90 Turkey</option>
+                    <option value="+966">🇸🇦 +966 Saudi Arabia</option>
+                    <option value="+971">🇦🇪 +971 UAE</option>
+                    <option value="+972">🇮🇱 +972 Israel</option>
+                    <option value="+98">🇮🇷 +98 Iran</option>
+                    <option value="+964">🇮🇶 +964 Iraq</option>
+                    <option value="+962">🇯🇴 +962 Jordan</option>
+                    <option value="+961">🇱🇧 +961 Lebanon</option>
+                    <option value="+965">🇰🇼 +965 Kuwait</option>
+                    <option value="+974">🇶🇦 +974 Qatar</option>
+                    <option value="+973">🇧🇭 +973 Bahrain</option>
+                    <option value="+968">🇴🇲 +968 Oman</option>
+                  </optgroup>
+                  <optgroup label=" Europe ">
+                    <option value="+49">🇩🇪 +49 Germany</option>
+                    <option value="+44">🇬🇧 +44 United Kingdom</option>
+                    <option value="+33">🇫🇷 +33 France</option>
+                    <option value="+39">🇮🇹 +39 Italy</option>
+                    <option value="+34">🇪🇸 +34 Spain</option>
+                    <option value="+31">🇳🇱 +31 Netherlands</option>
+                    <option value="+32">🇧🇪 +32 Belgium</option>
+                    <option value="+43">🇦🇹 +43 Austria</option>
+                    <option value="+41">🇨🇭 +41 Switzerland</option>
+                    <option value="+46">🇸🇪 +46 Sweden</option>
+                    <option value="+47">🇳🇴 +47 Norway</option>
+                    <option value="+45">🇩🇰 +45 Denmark</option>
+                    <option value="+358">🇫🇮 +358 Finland</option>
+                    <option value="+48">🇵🇱 +48 Poland</option>
+                    <option value="+420">🇨🇿 +420 Czech Republic</option>
+                    <option value="+36">🇭🇺 +36 Hungary</option>
+                    <option value="+40">🇷🇴 +40 Romania</option>
+                    <option value="+359">🇧🇬 +359 Bulgaria</option>
+                    <option value="+381">🇷🇸 +381 Serbia</option>
+                    <option value="+385">🇭🇷 +385 Croatia</option>
+                    <option value="+30">🇬🇷 +30 Greece</option>
+                    <option value="+351">🇵🇹 +351 Portugal</option>
+                    <option value="+353">🇮🇪 +353 Ireland</option>
+                    <option value="+371">🇱🇻 +371 Latvia</option>
+                    <option value="+370">🇱🇹 +370 Lithuania</option>
+                    <option value="+372">🇪🇪 +372 Estonia</option>
+                  </optgroup>
+                  <optgroup label=" Americas ">
+                    <option value="+1">🇺🇸 +1 USA</option>
+                    <option value="+1">🇨🇦 +1 Canada</option>
+                    <option value="+52">🇲🇽 +52 Mexico</option>
+                    <option value="+55">🇧🇷 +55 Brazil</option>
+                    <option value="+54">🇦🇷 +54 Argentina</option>
+                    <option value="+57">🇨🇴 +57 Colombia</option>
+                    <option value="+56">🇨🇱 +56 Chile</option>
+                  </optgroup>
+                  <optgroup label=" Asia ">
+                    <option value="+86">🇨🇳 +86 China</option>
+                    <option value="+81">🇯🇵 +81 Japan</option>
+                    <option value="+82">🇰🇷 +82 South Korea</option>
+                    <option value="+91">🇮🇳 +91 India</option>
+                    <option value="+92">🇵🇰 +92 Pakistan</option>
+                    <option value="+62">🇮🇩 +62 Indonesia</option>
+                    <option value="+63">🇵🇭 +63 Philippines</option>
+                    <option value="+66">🇹🇭 +66 Thailand</option>
+                    <option value="+84">🇻🇳 +84 Vietnam</option>
+                    <option value="+60">🇲🇾 +60 Malaysia</option>
+                  </optgroup>
+                  <optgroup label=" Africa ">
+                    <option value="+20">🇪🇬 +20 Egypt</option>
+                    <option value="+27">🇿🇦 +27 South Africa</option>
+                    <option value="+234">🇳🇬 +234 Nigeria</option>
+                    <option value="+254">🇰🇪 +254 Kenya</option>
+                    <option value="+212">🇲🇦 +212 Morocco</option>
+                  </optgroup>
+                  <optgroup label=" Oceania ">
+                    <option value="+61">🇦🇺 +61 Australia</option>
+                    <option value="+64">🇳🇿 +64 New Zealand</option>
+                  </optgroup>
+                </select>
+                <div class="eit-kont-phone-input-wrap">
+                  <div class="eit-kont-field-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
+                  <input type="tel" id="kont-phone" name="phone" placeholder="501 234 56 78" required
+                    autocomplete="tel" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="eit-kont-label" for="kont-email">Email</label>
+              <div class="eit-kont-field">
+                <div class="eit-kont-field-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <input type="email" id="kont-email" name="email" placeholder="example@mail.com" autocomplete="email" />
+              </div>
+            </div>
+
+            <!-- Service -->
+            <div>
+              <label class="eit-kont-label" for="kont-service">Service of Interest</label>
+              <div class="eit-kont-field">
+                <div class="eit-kont-field-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                </div>
+                <select id="kont-service" name="service" class="eit-kont-service-select">
+                  <option value="">&mdash; Choose a service &mdash;</option>
+                  <option value="hair">Hair Transplant</option>
+                  <option value="dental">Dentistry</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label class="eit-kont-label" for="kont-message">Your Message</label>
+              <div class="eit-kont-field">
+                <div class="eit-kont-field-icon eit-kont-field-icon-top">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <textarea id="kont-message" name="message" placeholder="Describe your request or question..."
+                  rows="5"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="eit-kont-submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Send Message
+            </button>
+            <p class="eit-kont-form-note">
+              By clicking "Send", you agree to the processing of your personal data.<br>
+              We do not share your data with third parties.
+            </p>
+
+          </form>
+        </div>
+
+        <!-- INFO SIDEBAR -->
+        <div class="eit-kont-info">
+
+          <!-- Contact details -->
+          <div class="eit-kont-info-card eit-kont-fade eit-kont-d1">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Contact Information
+            </h3>
+            <div class="eit-kont-info-item">
+              <div class="eit-kont-info-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div>
+                <div class="eit-kont-info-item-lbl">Phone</div>
+                <div class="eit-kont-info-item-val"><a href="tel:+905468189180"><span data-nosnippet>+90 546 818 91 80</span></a></div>
+              </div>
+            </div>
+            <div class="eit-kont-info-item">
+              <div class="eit-kont-info-item-icon" style="background:rgba(37,211,102,.1);color:#16a34a;">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                </svg>
+              </div>
+              <div>
+                <div class="eit-kont-info-item-lbl">WhatsApp</div>
+                <div class="eit-kont-info-item-val"><a href="https://wa.me/905468189180" target="_blank"
+                    rel="noopener"><span data-nosnippet>+90 546 818 91 80</span></a></div>
+              </div>
+            </div>
+            <div class="eit-kont-info-item">
+              <div class="eit-kont-info-item-icon" style="background:rgba(0,136,204,.1);color:#0088cc;">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+              </div>
+              <div>
+                <div class="eit-kont-info-item-lbl">Telegram</div>
+                <div class="eit-kont-info-item-val"><a href="https://t.me/esteinturkey" target="_blank"
+                    rel="noopener">@esteinturkey</a></div>
+              </div>
+            </div>
+            <div class="eit-kont-info-item">
+              <div class="eit-kont-info-item-icon" style="background:rgba(239,68,68,.08);color:#dc2626;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <div class="eit-kont-info-item-lbl">Address</div>
+                <div class="eit-kont-info-item-val">Istanbul, Turkey</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Working hours -->
+          <div class="eit-kont-info-card eit-kont-fade eit-kont-d2">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Working Hours
+            </h3>
+            <div class="eit-kont-hours">
+              <div class="eit-kont-hour-row">
+                <span class="eit-kont-hour-day">Mon &ndash; Fri</span>
+                <span class="eit-kont-hour-time">09:00 &ndash; 21:00</span>
+              </div>
+              <div class="eit-kont-hour-row">
+                <span class="eit-kont-hour-day">Saturday</span>
+                <span class="eit-kont-hour-time">10:00 &ndash; 20:00</span>
+              </div>
+              <div class="eit-kont-hour-row">
+                <span class="eit-kont-hour-day">Sunday</span>
+                <span class="eit-kont-hour-time">By appointment</span>
+              </div>
+              <div style="margin-top:12px;">
+                <div class="eit-kont-hour-badge">Online Consultations 24/7</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Messengers -->
+          <div class="eit-kont-info-card eit-kont-fade eit-kont-d3">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Write Directly
+            </h3>
+            <div class="eit-kont-messengers">
+              <a href="https://wa.me/905468189180" class="eit-kont-msg-link eit-kont-msg-wa" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                </svg>
+                <div>
+                  WhatsApp
+                  <div class="eit-kont-msg-link-sub">Quick reply</div>
+                </div>
+              </a>
+              <a href="https://t.me/esteinturkey" class="eit-kont-msg-link eit-kont-msg-tg" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+                <div>
+                  Telegram
+                  <div class="eit-kont-msg-link-sub">@esteinturkey</div>
+                </div>
+              </a>
+              <a href="tel:+905468189180" class="eit-kont-msg-link eit-kont-msg-tel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <div>
+                  Call
+                  <div class="eit-kont-msg-link-sub" data-nosnippet>+90 546 818 91 80</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       MAP
+  =========================================================== -->
+  <section class="eit-kont-map-section">
+    <div class="eit-kont-map-inner">
+      <iframe class="eit-kont-map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.93879454944!2d28.847665!3d41.005499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2z0KHRgtCw0LzQsdGD0Ls!5e0!3m2!1sen!2str!4v1716000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Istanbul — Este in Turkey"></iframe>
+
+    </div>
+  </section>
+
+  <!-- ===========================================================
+       CTA BAND
+  =========================================================== -->
+  <section class="eit-kont-cta">
+    <div class="eit-kont-wrap">
+      <div class="eit-kont-cta-inner eit-kont-fade">
+        <h2>Initial Consultation &mdash; Free</h2>
+        <p>
+          Write to us right now &mdash; our specialist will answer all your questions
+          and help you plan your trip to Istanbul.
+        </p>
+        <div class="eit-kont-cta-btns">
+          <a href="https://wa.me/905468189180" class="eit-kont-cta-wa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.849L.058 23.5l5.793-1.448A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.5-5.2-1.375l-.373-.222-3.437.859.892-3.348-.244-.385A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+            </svg>
+            WhatsApp
+          </a>
+          <a href="tel:+905468189180" class="eit-kont-cta-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <span data-nosnippet>+90 546 818 91 80</span>
+          </a>
+          <a href="https://t.me/esteinturkey" class="eit-kont-cta-ghost" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    /* -- Scroll fade-in -- */
+    var els = document.querySelectorAll('.eit-kont-fade');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('eit-kont-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('eit-kont-visible'); });
+    }
+
+    /* -- Contact form -- WP REST API -- */
+    var kForm = document.querySelector('.eit-kont-form');
+    if (kForm) {
+      kForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = kForm.querySelector('button[type="submit"]');
+        var name = (kForm.querySelector('[name="fullname"]') || {}).value || '';
+        var countryCode = (kForm.querySelector('[name="country_code"]') || {}).value || '';
+        var phone = (kForm.querySelector('[name="phone"]') || {}).value || '';
+        var email = (kForm.querySelector('[name="email"]') || {}).value || '';
+        var service = (kForm.querySelector('[name="service"]') || {}).value || '';
+        var message = (kForm.querySelector('[name="message"]') || {}).value || '';
+        if (!name.trim() || !phone.trim()) {
+          (kForm.querySelector('[name="fullname"]') || kForm.querySelector('[name="phone"]')).focus();
+          return;
+        }
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        var payload = {
+          name: name.trim(),
+          phone: (countryCode + phone).trim(),
+          email: email.trim(),
+          message: message.trim(),
+          gender: '—', age: 0, years: 0, prev: '—', norwood: '—',
+          when: service || '—',
+          source: 'Contact'
+        };
+        fetch('/wp-json/este/v1/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function (r) { return r.json(); }).then(function (res) {
+          if (res.success) {
+            btn.textContent = '\u2713 Message sent!';
+            btn.style.background = 'linear-gradient(135deg,#1D5C5C,#2E8B8B)';
+            kForm.reset();
+          } else {
+            btn.textContent = 'Error. Please try again.';
+            btn.style.background = '#c0392b';
+            btn.disabled = false;
+          }
+          setTimeout(function () { btn.textContent = 'Send Message'; btn.disabled = false; btn.style.background = ''; }, 5000);
+        }).catch(function () {
+          btn.textContent = 'Error. Write to us on WhatsApp.';
+          btn.style.background = '#c0392b';
+          setTimeout(function () { btn.textContent = 'Send Message'; btn.disabled = false; btn.style.background = ''; }, 5000);
+        });
+      });
+    }
+
+  })();
+
+</script>

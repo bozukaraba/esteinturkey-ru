@@ -1,0 +1,408 @@
+<style>
+/* =====================================================
+   ESTE IN TURKEY — UNIVERSAL FOOTER
+   Lang: EN / RU / DE / RO — auto-detect from URL
+   Version: 3.0
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --eit-primary:      #1D5C5C;
+  --eit-primary-dark: #154444;
+  --eit-primary-mid:  #236666;
+  --eit-accent:       #2E8B8B;
+  --eit-accent-light: #4AACAC;
+  --eit-cream:        #F8F4EF;
+  --eit-text:         #1A1A1A;
+  --eit-text-muted:   #5A5A5A;
+  --eit-white:        #FFFFFF;
+  --eit-border:       rgba(29,92,92,.12);
+  --eit-transition:   all .3s cubic-bezier(.4,0,.2,1);
+  --eit-font:         'Montserrat', sans-serif;
+}
+
+.eit-footer,.eit-footer * { box-sizing:border-box; font-family:var(--eit-font) !important; margin:0; padding:0; }
+.eit-footer a { text-decoration:none; color:inherit; }
+.eit-footer ul { list-style:none; }
+
+.eit-prefooter { background:var(--eit-cream); padding:52px 0; border-top:1px solid var(--eit-border); }
+.eit-prefooter .eit-wrap {
+  max-width:1240px; margin:0 auto; padding:0 28px; display:flex;
+  align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+}
+.eit-prefooter-tag {
+  display:inline-flex; align-items:center; gap:7px; background:rgba(46,139,139,.12);
+  color:var(--eit-accent); padding:5px 14px; border-radius:30px; font-size:11px;
+  font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;
+}
+.eit-prefooter-title {
+  font-size:clamp(22px,3vw,32px); font-weight:300; color:var(--eit-primary);
+  line-height:1.2; letter-spacing:-.02em;
+}
+.eit-prefooter-sub { font-size:14px; color:var(--eit-text-muted); margin-top:8px; line-height:1.6; }
+.eit-prefooter-actions { display:flex; align-items:center; gap:14px; flex-wrap:wrap; flex-shrink:0; }
+.eit-btn-pf-primary {
+  display:inline-flex; align-items:center; gap:8px; background:var(--eit-primary);
+  color:var(--eit-white) !important; padding:13px 30px; border-radius:50px; font-size:13px;
+  font-weight:700; letter-spacing:.04em; transition:var(--eit-transition); border:2px solid var(--eit-primary);
+}
+.eit-btn-pf-primary:hover { background:var(--eit-primary-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(29,92,92,.25); }
+.eit-btn-pf-outline {
+  display:inline-flex; align-items:center; gap:8px; background:transparent;
+  color:var(--eit-primary) !important; padding:12px 28px; border-radius:50px; font-size:13px;
+  font-weight:700; letter-spacing:.04em; transition:var(--eit-transition); border:2px solid var(--eit-primary);
+}
+.eit-btn-pf-outline:hover { background:var(--eit-primary); color:var(--eit-white) !important; }
+
+.eit-footer-main { background:var(--eit-primary-dark); color:rgba(255,255,255,.85); padding:72px 0 0; }
+.eit-footer-main .eit-wrap { max-width:1240px; margin:0 auto; padding:0 28px; }
+.eit-footer-grid {
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr 1.3fr; gap:40px;
+  padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.eit-footer-logo { display:inline-block; margin-bottom:20px; }
+.eit-footer-logo img { height:46px; width:auto; filter:invert(1) brightness(10); mix-blend-mode:screen; }
+.eit-footer-desc { font-size:13px; color:rgba(255,255,255,.6); line-height:1.75; margin-bottom:24px; }
+.eit-footer-socials { display:flex; gap:10px; }
+.eit-footer-socials a {
+  width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.08);
+  display:flex; align-items:center; justify-content:center;
+  transition:var(--eit-transition); color:rgba(255,255,255,.7);
+}
+.eit-footer-socials a svg { width:14px; height:14px; fill:currentColor; }
+.eit-footer-socials a:hover { background:var(--eit-accent); color:white; transform:translateY(-3px); }
+
+.eit-footer-col-title {
+  font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--eit-white); margin-bottom:20px; padding-bottom:12px;
+  border-bottom:2px solid var(--eit-accent); display:inline-block;
+}
+.eit-footer-links { display:flex; flex-direction:column; gap:10px; }
+.eit-footer-links a {
+  font-size:13px; color:rgba(255,255,255,.6); transition:var(--eit-transition);
+  display:flex; align-items:center; gap:7px;
+}
+.eit-footer-links a::before {
+  content:''; width:4px; height:4px; border-radius:50%; background:var(--eit-accent);
+  opacity:.5; flex-shrink:0; transition:var(--eit-transition);
+}
+.eit-footer-links a:hover { color:var(--eit-white); padding-left:4px; }
+.eit-footer-links a:hover::before { opacity:1; }
+
+.eit-footer-contact-item { display:flex; align-items:flex-start; gap:12px; margin-bottom:16px; }
+.eit-footer-contact-icon {
+  width:32px; height:32px; background:rgba(255,255,255,.06); border-radius:8px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.eit-footer-contact-icon svg { width:14px; height:14px; color:var(--eit-accent); }
+.eit-footer-contact-label { font-size:10px; color:rgba(255,255,255,.4); text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px; }
+.eit-footer-contact-value { font-size:13px; color:rgba(255,255,255,.8); font-weight:600; line-height:1.4; transition:var(--eit-transition); }
+a .eit-footer-contact-value:hover { color:var(--eit-white); }
+
+.eit-footer-map { border-radius:12px; overflow:hidden; margin-top:16px; border:1px solid rgba(255,255,255,.08); }
+.eit-footer-map iframe { width:100%; height:140px; display:block; border:none; filter:grayscale(30%) brightness(.85); }
+
+.eit-footer-bottom {
+  padding:24px 0; display:flex; align-items:center;
+  justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+.eit-footer-copyright { font-size:12px; color:rgba(255,255,255,.4); }
+.eit-footer-copyright a { color:rgba(255,255,255,.6); transition:var(--eit-transition); }
+.eit-footer-copyright a:hover { color:var(--eit-accent); }
+.eit-footer-bottom-logo img { height:32px; width:auto; opacity:.7; transition:var(--eit-transition); filter:invert(1) brightness(10); mix-blend-mode:screen; }
+.eit-footer-bottom-logo:hover img { opacity:1; }
+
+.eit-footer-hreflang { display:flex; align-items:center; gap:6px; margin-right:16px; flex-wrap:wrap; }
+.eit-footer-hreflang a {
+  font-size:11.5px; color:rgba(255,255,255,.55); font-weight:600; letter-spacing:.04em;
+  padding:5px 12px; border-radius:20px; border:1px solid rgba(255,255,255,.1);
+  transition:var(--eit-transition); display:inline-flex; align-items:center; gap:5px;
+}
+.eit-footer-hreflang a::before { content:''; width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.4); transition:var(--eit-transition); }
+.eit-footer-hreflang a:hover { color:var(--eit-white); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.25); }
+.eit-footer-hreflang a.eit-hreflang-active { color:var(--eit-white); background:var(--eit-accent); border-color:var(--eit-accent); }
+.eit-footer-hreflang a.eit-hreflang-active::before { background:var(--eit-white); }
+
+@media (max-width:1100px) {
+  .eit-footer-grid { grid-template-columns:repeat(3,1fr); gap:28px; }
+  .eit-footer-brand { grid-column:span 3; }
+}
+@media (max-width:768px) {
+  .eit-prefooter .eit-wrap { flex-direction:column; align-items:flex-start; }
+  .eit-footer-grid { grid-template-columns:1fr 1fr; gap:24px; }
+  .eit-footer-brand { grid-column:span 2; }
+  .eit-footer-bottom { flex-direction:column; text-align:center; gap:12px; }
+  .eit-footer-hreflang { justify-content:center; margin-right:0; }
+}
+@media (max-width:480px) {
+  .eit-footer-grid { grid-template-columns:1fr; }
+  .eit-footer-brand { grid-column:span 1; }
+  .eit-prefooter-actions { flex-direction:column; width:100%; }
+  .eit-btn-pf-primary,.eit-btn-pf-outline { text-align:center; justify-content:center; }
+}
+</style>
+
+<!-- ESTE IN TURKEY — UNIVERSAL FOOTER v3.0 (EN/RU/DE/RO) -->
+
+<footer class="eit-footer" role="contentinfo">
+
+  <div class="eit-prefooter">
+    <div class="eit-wrap">
+      <div class="eit-prefooter-left">
+        <div class="eit-prefooter-tag" id="eitPfTag">Free Consultation</div>
+        <h3 class="eit-prefooter-title" id="eitPfTitle">Start your journey to health and beauty</h3>
+        <p class="eit-prefooter-sub" id="eitPfSub">Contact our experts right now — we'll answer all your questions.</p>
+      </div>
+      <div class="eit-prefooter-actions">
+        <a href="#" id="eitPfCta" class="eit-btn-pf-primary">Book Now →</a>
+        <a href="tel:+905468189180" id="eitPfCall" class="eit-btn-pf-outline">Call us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="eit-footer-main">
+    <div class="eit-wrap">
+      <div class="eit-footer-grid">
+
+        <!-- Col 1: Brand -->
+        <div class="eit-footer-brand">
+          <a href="/" id="eitFooterLogoLink" class="eit-footer-logo" aria-label="Este in Turkey">
+            <img src="https://esteinturkey.com/wp-content/uploads/2026/05/este-logo-white-300x87-1.png"
+                 alt="Este in Turkey" width="150" height="46" />
+          </a>
+          <p class="eit-footer-desc" id="eitFooterDesc">
+            ESTE IN TURKEY — leading medical tourism clinic in Istanbul. Hair transplant, dentistry and world-class healthcare.
+          </p>
+          <div class="eit-footer-socials">
+            <a href="https://vk.com/esteinturkey" aria-label="VKontakte" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm2.18 13.42h-1.34c-.51 0-.67-.41-1.58-1.34-.8-.78-1.14-.89-1.34-.89-.27 0-.35.08-.35.47v1.22c0 .34-.11.54-1 .54-1.47 0-3.11-.89-4.26-2.55C5.9 10.85 5.5 9.1 5.5 8.73c0-.2.08-.38.47-.38h1.34c.35 0 .48.16.62.54.68 1.96 1.82 3.68 2.3 3.68.18 0 .26-.08.26-.53V9.82c-.06-1-.56-1.09-.56-1.45 0-.18.14-.35.37-.35h2.1c.29 0 .39.15.39.49v2.98c0 .3.13.4.21.4.18 0 .33-.1.66-.43 1.02-1.14 1.75-2.9 1.75-2.9.1-.2.26-.38.62-.38h1.34c.4 0 .49.21.4.49-.17.78-1.81 3.1-1.81 3.1-.14.23-.19.33 0 .59.14.19.59.59.89.94.55.62.97 1.14.97 1.5 0 .28-.14.43-.43.43z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/este.inturkey" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/esteinturkey" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@esteinturkey" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dynamic menu columns (filled by JS) -->
+        <div id="eitFMCol0" class="eit-footer-menu-col"></div>
+        <div id="eitFMCol1" class="eit-footer-menu-col"></div>
+        <div id="eitFMCol2" class="eit-footer-menu-col"></div>
+        <div id="eitFMCol3" class="eit-footer-menu-col"></div>
+
+        <!-- Col 5: Contact -->
+        <div>
+          <h4 class="eit-footer-col-title" id="eitFContactTitle">Contact Us</h4>
+
+          <a href="tel:+905468189180" class="eit-footer-contact-item" style="display:flex;">
+            <div class="eit-footer-contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.06 6.06l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="eit-footer-contact-label" id="eitFLabelPhone">Phone</div>
+              <div class="eit-footer-contact-value" data-nosnippet>+90 546 818 91 80</div>
+            </div>
+          </a>
+
+          <a href="mailto:info@esteinturkey.com" class="eit-footer-contact-item" style="display:flex;">
+            <div class="eit-footer-contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="eit-footer-contact-label" id="eitFLabelEmail">Email</div>
+              <div class="eit-footer-contact-value">info@esteinturkey.com</div>
+            </div>
+          </a>
+
+          <div class="eit-footer-contact-item">
+            <div class="eit-footer-contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="eit-footer-contact-label" id="eitFLabelAddr">Address</div>
+              <div class="eit-footer-contact-value">Altunizade, Nuhkuyusu Cd No:94, 34714 Üsküdar / İstanbul</div>
+            </div>
+          </div>
+
+          <div class="eit-footer-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.5!2d29.05!3d41.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzEyLjAiTiAyOcKwMDMnMDAuMCJF!5e0!3m2!1str!2str!4v1!5m2!1str!2str"
+              id="eitMapTitle"
+              title="Este in Turkey — Location"
+              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="eit-footer-bottom">
+        <p class="eit-footer-copyright">
+          &copy; 2026 <a href="/" id="eitCopyLink">Este in Turkey</a>. <span id="eitCopyText">All rights reserved.</span>
+        </p>
+        <div class="eit-footer-hreflang" id="eitFooterLangSwitch" aria-label="Language selection"></div>
+        <a href="/" id="eitFooterBottomLogo" class="eit-footer-bottom-logo" aria-label="Este in Turkey">
+          <img src="https://esteinturkey.com/wp-content/uploads/2026/05/este-logo-white-300x87-1.png" alt="Este in Turkey" height="32" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+
+  var LANGS = [
+    { code:'en', label:'EN English',  hreflang:'en' },
+    { code:'ru', label:'RU Русский',  hreflang:'ru' },
+    { code:'de', label:'DE Deutsch',  hreflang:'de' },
+    { code:'ro', label:'RO Română',   hreflang:'ro' }
+  ];
+
+  var UI = {
+    en: { pfTag:'Free Consultation', pfTitle:'Start your journey to health and beauty', pfSub:'Contact our experts right now — we\'ll answer all your questions.', pfCta:'Book Now →', pfCall:'Call us', desc:'ESTE IN TURKEY — leading medical tourism clinic in Istanbul. Hair transplant, dentistry and world-class healthcare.', contact:'Contact Us', phone:'Phone', email:'Email', address:'Address', mapTitle:'Este in Turkey — Location on map', copy:'All rights reserved.' },
+    ru: { pfTag:'Бесплатная консультация', pfTitle:'Начните ваш путь к здоровью и красоте', pfSub:'Свяжитесь с нашими экспертами прямо сейчас — ответим на все вопросы.', pfCta:'Записаться →', pfCall:'Позвонить нам', desc:'ESTE IN TURKEY — ведущая клиника медицинского туризма в Стамбуле. Трансплантация волос, стоматология и забота о вашем здоровье.', contact:'Связаться с нами', phone:'Телефон', email:'Электронная почта', address:'Адрес', mapTitle:'Este in Turkey — Местоположение на карте', copy:'Все права защищены.' },
+    de: { pfTag:'Kostenlose Beratung', pfTitle:'Starten Sie Ihre Reise zu Gesundheit und Schönheit', pfSub:'Kontaktieren Sie unsere Experten jetzt — wir beantworten alle Ihre Fragen.', pfCta:'Jetzt buchen →', pfCall:'Uns anrufen', desc:'ESTE IN TURKEY — führende Klinik für Medizintourismus in Istanbul. Haartransplantation, Zahnmedizin und erstklassige Gesundheitsversorgung.', contact:'Kontakt', phone:'Telefon', email:'E-Mail', address:'Adresse', mapTitle:'Este in Turkey — Standort auf der Karte', copy:'Alle Rechte vorbehalten.' },
+    ro: { pfTag:'Consultație gratuită', pfTitle:'Începeți călătoria dvs. spre sănătate şi frumusețe', pfSub:'Contactați experții noştri acum — vom răspunde la toate întrebările dvs.', pfCta:'Rezervați acum →', pfCall:'Sunați-ne', desc:'ESTE IN TURKEY — clinică de frunte în turismul medical din Istanbul. Transplant de păr, stomatologie şi îngrijire medicală de clasă mondială.', contact:'Contactați-ne', phone:'Telefon', email:'E-mail', address:'Adresă', mapTitle:'Este in Turkey — Locație pe hartă', copy:'Toate drepturile rezervate.' }
+  };
+
+  var p       = window.location.pathname;
+  var m       = p.match(/^\/([a-z]{2})(\/|$)/);
+  var _LANG   = (m && UI[m[1]]) ? m[1] : 'en';
+  var _ORIGIN = window.location.origin;
+  var _BASE   = _LANG === 'en' ? _ORIGIN : _ORIGIN + '/' + _LANG;
+  var t       = UI[_LANG];
+
+  function applyTexts() {
+    var homeHref    = _LANG === 'en' ? _ORIGIN + '/' : _BASE + '/';
+    var contactSlug = { en: 'contact', ru: 'kontakty', de: 'kontakt', ro: 'contact' };
+    var contactHref = _BASE + '/' + (contactSlug[_LANG] || 'contact') + '/';
+
+    var el = function(id){ return document.getElementById(id); };
+    var setText = function(id, v){ var e = el(id); if(e) e.textContent = v; };
+
+    setText('eitPfTag',        t.pfTag);
+    setText('eitPfTitle',      t.pfTitle);
+    setText('eitPfSub',        t.pfSub);
+    setText('eitFooterDesc',   t.desc);
+    setText('eitFContactTitle',t.contact);
+    setText('eitFLabelPhone',  t.phone);
+    setText('eitFLabelEmail',  t.email);
+    setText('eitFLabelAddr',   t.address);
+    setText('eitCopyText',     t.copy);
+
+    var pfCta = el('eitPfCta');
+    if (pfCta) { pfCta.textContent = t.pfCta; pfCta.href = contactHref; }
+    var pfCall = el('eitPfCall');
+    if (pfCall) pfCall.textContent = t.pfCall;
+    var mapFrame = el('eitMapTitle');
+    if (mapFrame) mapFrame.title = t.mapTitle;
+    var copyLink = el('eitCopyLink');
+    if (copyLink) copyLink.href = homeHref;
+    var footerLogo = el('eitFooterLogoLink');
+    if (footerLogo) footerLogo.href = homeHref;
+    var bottomLogo = el('eitFooterBottomLogo');
+    if (bottomLogo) bottomLogo.href = homeHref;
+  }
+
+  function renderMenuCols(items) {
+    var slots = [
+      document.getElementById('eitFMCol0'),
+      document.getElementById('eitFMCol1'),
+      document.getElementById('eitFMCol2'),
+      document.getElementById('eitFMCol3')
+    ];
+
+    if (!items || !items.length) return;
+
+    items.forEach(function(topItem, idx) {
+      var col = slots[idx];
+      if (!col) return;
+      col.innerHTML = '';
+
+      var title = document.createElement('h4');
+      title.className = 'eit-footer-col-title';
+      if (topItem.url && topItem.url !== '#' && topItem.url !== '') {
+        var titleA = document.createElement('a');
+        titleA.href = topItem.url;
+        titleA.textContent = topItem.title;
+        titleA.style.cssText = 'color:inherit;text-decoration:none;';
+        title.appendChild(titleA);
+      } else {
+        title.textContent = topItem.title;
+      }
+      col.appendChild(title);
+
+      if (topItem.children && topItem.children.length) {
+        var nav = document.createElement('nav');
+        var ul  = document.createElement('ul');
+        ul.className = 'eit-footer-links';
+        topItem.children.forEach(function(child) {
+          var li = document.createElement('li');
+          var a  = document.createElement('a');
+          a.href = child.url || '#';
+          a.textContent = child.title;
+          if (child.target === '_blank') { a.target = '_blank'; a.rel = 'noopener'; }
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        nav.appendChild(ul);
+        col.appendChild(nav);
+      }
+    });
+  }
+
+  function loadMenu() {
+    var apiBase = _ORIGIN + '/wp-json/mllc/v1/menu?lang=' + _LANG;
+    fetch(apiBase)
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        if (data && data.items && data.items.length) {
+          renderMenuCols(data.items);
+        }
+      })
+      .catch(function(){});
+  }
+
+  function buildLangSwitch() {
+    var alts = window.mllcAlternateLangs || {};
+    var cur  = window.mllcCurrentLang || _LANG;
+    var wrap = document.getElementById('eitFooterLangSwitch');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    LANGS.forEach(function(l) {
+      var href;
+      if (l.code === cur) {
+        href = window.mllcCurrentPermalink || (_ORIGIN + p);
+      } else if (alts[l.code]) {
+        href = /^https?:\/\//.test(alts[l.code]) ? alts[l.code] : _ORIGIN + alts[l.code];
+      } else {
+        var stripped = p.replace(/^\/[a-z]{2}(\/|$)/, '/');
+        href = l.code === 'en' ? _ORIGIN + stripped : _ORIGIN + '/' + l.code + stripped;
+      }
+      var a = document.createElement('a');
+      a.href = href;
+      a.textContent = l.label;
+      a.setAttribute('hreflang', l.hreflang);
+      a.setAttribute('lang', l.code);
+      if (l.code === cur) { a.classList.add('eit-hreflang-active'); }
+      wrap.appendChild(a);
+    });
+  }
+
+  applyTexts();
+  loadMenu();
+  buildLangSwitch();
+  document.addEventListener('DOMContentLoaded', function() { buildLangSwitch(); });
+  window.addEventListener('load', function() { buildLangSwitch(); });
+
+})();
+</script>

@@ -1,0 +1,109 @@
+<style>
+.eit-thanks {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F8F4EF 0%, #ffffff 100%);
+  padding: 80px 24px;
+  box-sizing: border-box;
+}
+.eit-thanks-inner {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid rgba(29, 92, 92, .12);
+  border-radius: 20px;
+  padding: 64px 40px;
+  box-shadow: 0 20px 60px rgba(29, 92, 92, .08);
+}
+.eit-thanks-icon {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2E8B8B, #1D5C5C);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 32px rgba(46, 139, 139, .35);
+}
+.eit-thanks-icon svg {
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eit-thanks-title {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  color: #1D5C5C;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.eit-thanks-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5A5A5A;
+  margin-bottom: 32px;
+}
+.eit-thanks-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.eit-thanks-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+.eit-thanks-btn-primary {
+  background: #1D5C5C;
+  color: #fff !important;
+}
+.eit-thanks-btn-primary:hover {
+  background: #154444;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 92, 92, .25);
+}
+.eit-thanks-btn-ghost {
+  background: transparent;
+  color: #1D5C5C !important;
+  border: 2px solid #1D5C5C;
+}
+.eit-thanks-btn-ghost:hover {
+  background: #1D5C5C;
+  color: #fff !important;
+}
+</style>
+
+<section class="eit-thanks">
+  <div class="eit-thanks-inner">
+    <div class="eit-thanks-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1 class="eit-thanks-title">Благодарим за заявку!</h1>
+    <p class="eit-thanks-text">
+      Ваша заявка успешно отправлена.<br>
+      Наши специалисты свяжутся с вами в ближайшее время.
+    </p>
+    <div class="eit-thanks-actions">
+      <a href="/ru/" class="eit-thanks-btn eit-thanks-btn-primary">На главную</a>
+      <a href="https://wa.me/905468189180" class="eit-thanks-btn eit-thanks-btn-ghost" target="_blank" rel="noopener">Связаться в WhatsApp</a>
+    </div>
+  </div>
+</section>

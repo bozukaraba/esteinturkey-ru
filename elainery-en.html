@@ -1,7 +1,7 @@
 <style>
 /* =====================================================
-   ESTE IN TURKEY — ЭЛАЙНЕРЫ
-   Dil: RU | Elementor HTML Widget | Prefix: eit-al-
+   ESTE IN TURKEY — ALIGNERS
+   Lang: EN | Elementor HTML Widget | Prefix: eit-al-
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
@@ -208,7 +208,8 @@
   background: var(--eit-accent-light); flex-shrink: 0;
 }
 .eit-al-hero-card-divider {
-  height: 1px; background: rgba(255,255,255,.15);
+  height: 1px;
+  background: rgba(255,255,255,.15);
 }
 .eit-al-hero-card-cta {
   display: flex; flex-direction: column; gap: 10px;
@@ -260,26 +261,34 @@
   line-height: 1.85; margin-bottom: 18px;
 }
 .eit-al-about-text p strong { color: var(--eit-primary); font-weight: 700; }
+
+/* About features */
 .eit-al-about-features {
-  margin-top: 28px;
-  display: flex; flex-direction: column; gap: 12px;
+  display: flex; flex-direction: column; gap: 14px;
+  margin-top: 26px;
 }
 .eit-al-about-feature {
-  background: var(--eit-cream); border-radius: 12px;
-  padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px;
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px;
+  background: var(--eit-cream);
+  border-radius: 14px;
+  border: 1px solid var(--eit-border);
 }
 .eit-al-about-feature-icon {
-  width: 38px; height: 38px;
-  background: rgba(46,139,139,.12); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: rgba(46,139,139,.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
-.eit-al-about-feature-icon svg { width: 16px; height: 16px; color: var(--eit-accent); }
+.eit-al-about-feature-icon svg { width: 20px; height: 20px; color: var(--eit-accent); }
 .eit-al-about-feature-title {
-  font-size: 13px; font-weight: 700;
-  color: var(--eit-primary); margin-bottom: 3px;
+  font-size: 14px; font-weight: 700;
+  color: var(--eit-primary); margin-bottom: 4px;
 }
 .eit-al-about-feature-text {
-  font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.5;
+  font-size: 13px; color: var(--eit-text-muted);
+  line-height: 1.6;
 }
 
 /* ════════════════════════════════════════════════
@@ -314,7 +323,8 @@
 .eit-al-indication-card {
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.1);
-  border-radius: 20px; padding: 28px 24px;
+  border-radius: 20px;
+  padding: 28px 24px;
   transition: var(--eit-transition);
 }
 .eit-al-indication-card:hover {
@@ -352,7 +362,8 @@
 }
 .eit-al-type-card {
   background: var(--eit-white);
-  border-radius: 20px; overflow: hidden;
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow: 0 4px 24px rgba(29,92,92,.08);
   transition: var(--eit-transition);
   display: flex; flex-direction: column;
@@ -371,17 +382,18 @@
   margin-bottom: 18px;
 }
 .eit-al-type-icon svg { width: 22px; height: 22px; color: var(--eit-accent); }
-.eit-al-type-name {
-  font-size: 16px; font-weight: 800;
-  color: var(--eit-primary); margin-bottom: 8px;
-}
 .eit-al-type-badge {
   display: inline-block;
-  background: rgba(46,139,139,.1); color: var(--eit-accent);
+  background: rgba(46,139,139,.1);
+  color: var(--eit-accent);
   font-size: 10px; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase;
   padding: 4px 12px; border-radius: 20px;
   margin-bottom: 14px;
+}
+.eit-al-type-name {
+  font-size: 16px; font-weight: 800;
+  color: var(--eit-primary); margin-bottom: 8px;
 }
 .eit-al-type-desc {
   font-size: 13.5px; color: var(--eit-text-muted); line-height: 1.75;
@@ -416,43 +428,46 @@
 .eit-al-adv-dot svg { width: 13px; height: 13px; color: var(--eit-accent); }
 .eit-al-adv-item strong { color: var(--eit-primary); font-weight: 700; }
 
+/* Compare table */
 .eit-al-compare {
   background: var(--eit-primary);
-  border-radius: 22px; padding: 36px 32px;
+  border-radius: 22px; padding: 32px 28px;
 }
 .eit-al-compare-title {
-  font-size: 18px; font-weight: 800;
+  font-size: 20px; font-weight: 800;
   color: var(--eit-white); margin-bottom: 8px;
 }
 .eit-al-compare-sub {
   font-size: 13px; color: rgba(255,255,255,.65);
-  line-height: 1.7; margin-bottom: 24px;
+  line-height: 1.7; margin-bottom: 22px;
 }
 .eit-al-compare-table {
-  display: flex; flex-direction: column; gap: 0;
-  border-radius: 14px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 1px;
+  background: rgba(255,255,255,.1);
+  border-radius: 12px; overflow: hidden;
 }
 .eit-al-compare-row {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
-  padding: 12px 16px; gap: 8px;
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  background: rgba(255,255,255,.05);
   font-size: 12.5px;
 }
-.eit-al-compare-row:nth-child(odd) { background: rgba(255,255,255,.05); }
-.eit-al-compare-row:nth-child(even) { background: rgba(255,255,255,.09); }
 .eit-al-compare-row--head {
-  background: rgba(46,139,139,.3) !important;
-  font-weight: 700; font-size: 11px;
-  text-transform: uppercase; letter-spacing: .06em;
+  background: rgba(255,255,255,.1);
+  font-weight: 700; color: var(--eit-white);
+  text-transform: uppercase; letter-spacing: .05em; font-size: 10.5px;
 }
-.eit-al-compare-row--head span { color: rgba(255,255,255,.7); }
-.eit-al-compare-row--head span:first-child { color: rgba(255,255,255,.5); }
-.eit-al-compare-cell { color: rgba(255,255,255,.8); align-self: center; }
-.eit-al-compare-cell--label { color: rgba(255,255,255,.55); font-size: 12px; }
-.eit-al-compare-cell--yes { color: var(--eit-accent-light); font-weight: 700; }
-.eit-al-compare-cell--no { color: rgba(255,255,255,.35); }
-.eit-al-compare-divider { height: 1px; background: rgba(255,255,255,.12); margin: 20px 0; }
+.eit-al-compare-row--head span { padding: 12px 14px; }
+.eit-al-compare-cell {
+  padding: 12px 14px;
+  color: rgba(255,255,255,.85);
+  display: flex; align-items: center; gap: 6px;
+}
+.eit-al-compare-cell--label { font-weight: 600; color: var(--eit-white); }
+.eit-al-compare-cell--yes::before { content: '✓'; color: var(--eit-accent-light); font-weight: 700; }
+.eit-al-compare-cell--no::before { content: '–'; color: rgba(255,255,255,.5); font-weight: 700; }
+.eit-al-compare-divider { height: 1px; background: rgba(255,255,255,.12); margin: 18px 0; }
 .eit-al-compare-note {
-  font-size: 12.5px; color: rgba(255,255,255,.6); line-height: 1.65; text-align: center;
+  font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.6;
 }
 
 /* ════════════════════════════════════════════════
@@ -473,7 +488,8 @@
   gap: 24px; margin-bottom: 48px;
 }
 .eit-al-step {
-  background: var(--eit-white); border-radius: 18px; padding: 28px 22px;
+  background: var(--eit-white);
+  border-radius: 18px; padding: 28px 22px;
   position: relative; overflow: hidden;
   box-shadow: 0 2px 16px rgba(29,92,92,.07);
   transition: var(--eit-transition); text-align: center;
@@ -502,6 +518,7 @@
   font-size: 12.5px; color: var(--eit-text-muted); line-height: 1.65;
 }
 
+/* Care block */
 .eit-al-care {
   background: var(--eit-primary);
   border-radius: 22px; padding: 40px 44px;
@@ -527,14 +544,16 @@
   content: '✓'; font-size: 12px; font-weight: 700;
   color: var(--eit-accent-light); flex-shrink: 0; margin-top: 2px;
 }
-.eit-al-care-right { display: flex; flex-direction: column; gap: 14px; }
+.eit-al-care-right {
+  display: flex; flex-direction: column; gap: 14px;
+}
 .eit-al-care-stat {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 16px; padding: 24px; text-align: center;
 }
 .eit-al-care-stat-value {
-  font-size: 38px; font-weight: 900; color: var(--eit-white); line-height: 1;
+  font-size: 42px; font-weight: 900; color: var(--eit-white); line-height: 1;
 }
 .eit-al-care-stat-label {
   font-size: 11px; color: rgba(255,255,255,.6);
@@ -690,37 +709,37 @@
       <!-- Left -->
       <div class="eit-al-hero-left">
         <nav class="eit-al-hero-breadcrumb" aria-label="Breadcrumb">
-          <a href="/ru/">Главная</a>
+          <a href="/en/">Home</a>
           <span>›</span>
-          <a href="/ru/stomatologiya/">Стоматология</a>
+          <a href="/en/stomatologiya/">Dentistry</a>
           <span>›</span>
-          <span style="color:rgba(255,255,255,.7);">Элайнеры</span>
+          <span style="color:rgba(255,255,255,.7);">Aligners</span>
         </nav>
 
-        <div class="eit-al-tag eit-al-tag--light eit-al-fade">Ортодонтия</div>
+        <div class="eit-al-tag eit-al-tag--light eit-al-fade">Orthodontics</div>
         <h1 id="eit-al-hero-title" class="eit-al-hero-title eit-al-fade eit-al-fade-d1">
-          Элайнеры<br><span>в Стамбуле</span>
+          Invisible Aligners<br><span>in Istanbul</span>
         </h1>
         <p class="eit-al-hero-desc eit-al-fade eit-al-fade-d2">
-          В клинике <strong style="color:#fff;">ESTE IN TURKEY</strong> мы выравниваем зубы с помощью прозрачных съёмных элайнеров. Никаких металлических скоб — только комфортное и незаметное выравнивание на основе цифрового 3D-планирования.
+          At <strong style="color:#fff;">ESTE IN TURKEY</strong> we straighten teeth with clear, removable aligners. No metal brackets — just a comfortable, virtually invisible treatment powered by digital 3D planning.
         </p>
 
         <div class="eit-al-hero-stats eit-al-fade eit-al-fade-d2">
           <div>
             <div class="eit-al-stat-value">6–18</div>
-            <div class="eit-al-stat-label">месяцев курса</div>
+            <div class="eit-al-stat-label">months of treatment</div>
           </div>
           <div>
             <div class="eit-al-stat-value">3D</div>
-            <div class="eit-al-stat-label">планирование</div>
+            <div class="eit-al-stat-label">treatment planning</div>
           </div>
           <div>
-            <div class="eit-al-stat-value">0.75 мм</div>
-            <div class="eit-al-stat-label">толщина капп</div>
+            <div class="eit-al-stat-value">0.75 mm</div>
+            <div class="eit-al-stat-label">aligner thickness</div>
           </div>
           <div>
-            <div class="eit-al-stat-value">Гарантия</div>
-            <div class="eit-al-stat-label">на результат</div>
+            <div class="eit-al-stat-value">Warranty</div>
+            <div class="eit-al-stat-label">on the result</div>
           </div>
         </div>
 
@@ -731,7 +750,7 @@
           </a>
           <a href="tel:+905468189180" class="eit-al-btn eit-al-btn--outline">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            Позвонить
+            Call Us
           </a>
         </div>
       </div>
@@ -739,19 +758,19 @@
       <!-- Right: CTA card -->
       <div class="eit-al-hero-right">
         <div class="eit-al-hero-card">
-          <span class="eit-al-hero-card-badge">Стоматология Турции</span>
-          <div class="eit-al-hero-card-title">Бесплатная консультация по элайнерам</div>
+          <span class="eit-al-hero-card-badge">Dentistry in Turkey</span>
+          <div class="eit-al-hero-card-title">Free Aligner Consultation</div>
           <ul class="eit-al-hero-card-list">
-            <li>3D-сканирование и моделирование улыбки</li>
-            <li>Прозрачные съёмные каппы</li>
-            <li>Лечение без металлических брекетов</li>
-            <li>Русскоязычное сопровождение</li>
+            <li>3D scan and digital smile preview</li>
+            <li>Clear, removable aligners</li>
+            <li>Treatment without metal brackets</li>
+            <li>English-speaking coordinator</li>
           </ul>
           <div class="eit-al-hero-card-divider"></div>
           <div class="eit-al-hero-card-cta">
             <a href="https://wa.me/905468189180" class="eit-al-hero-card-btn eit-al-hero-card-btn--wa">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-              Написать в WhatsApp
+              Message on WhatsApp
             </a>
             <a href="tel:+905468189180" class="eit-al-hero-card-btn eit-al-hero-card-btn--tel">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -776,7 +795,7 @@
         <div class="eit-al-about-deco"></div>
         <img
           src="https://esteinturkey.com/wp-content/uploads/2026/05/Orthodontics.webp"
-          alt="Элайнеры — прозрачные каппы для выравнивания зубов"
+          alt="Clear aligners for teeth straightening"
           class="eit-al-about-img-main"
           loading="lazy"
           onerror="this.parentElement.style.background='rgba(29,92,92,.07)'; this.style.display='none'"
@@ -784,18 +803,18 @@
       </div>
 
       <div class="eit-al-about-text">
-        <div class="eit-al-tag eit-al-fade">О процедуре</div>
+        <div class="eit-al-tag eit-al-fade">About the treatment</div>
         <h2 id="eit-al-about-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
-          Что такое<br><span>элайнеры?</span>
+          What are<br><span>aligners?</span>
         </h2>
         <div class="eit-al-divider eit-al-fade eit-al-fade-d1"></div>
 
         <div class="eit-al-fade eit-al-fade-d2">
           <p>
-            <strong>Элайнеры</strong> — это прозрачные съёмные каппы из медицинского пластика, которые постепенно перемещают зубы в нужное положение. В отличие от брекетов, они практически <strong>не заметны</strong> в повседневной жизни.
+            <strong>Aligners</strong> are clear, removable trays made of medical-grade plastic that gradually move your teeth into the right position. Unlike braces, they're virtually <strong>invisible</strong> in everyday life.
           </p>
           <p>
-            Каждый набор изготавливается индивидуально по <strong>цифровому 3D-слепку</strong> зубов. Вы заранее видите, как будет выглядеть ваша улыбка через 6, 12, 18 месяцев — ещё до начала лечения.
+            Every set is custom-made from a <strong>digital 3D scan</strong> of your teeth. You'll see how your smile will look in 6, 12, or 18 months — even before treatment begins.
           </p>
         </div>
 
@@ -805,8 +824,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
             <div>
-              <div class="eit-al-about-feature-title">Абсолютно прозрачные</div>
-              <div class="eit-al-about-feature-text">Практически незаметны при разговоре и улыбке — никто не догадается, что вы проходите лечение</div>
+              <div class="eit-al-about-feature-title">Completely clear</div>
+              <div class="eit-al-about-feature-text">Virtually invisible when you talk and smile — nobody will notice you're undergoing treatment</div>
             </div>
           </div>
           <div class="eit-al-about-feature">
@@ -814,8 +833,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
             </div>
             <div>
-              <div class="eit-al-about-feature-title">Съёмные и комфортные</div>
-              <div class="eit-al-about-feature-text">Снимаются во время еды и чистки зубов — никаких ограничений в питании и гигиене полости рта</div>
+              <div class="eit-al-about-feature-title">Removable &amp; comfortable</div>
+              <div class="eit-al-about-feature-text">Take them out for meals and brushing — no food restrictions or complicated oral hygiene</div>
             </div>
           </div>
           <div class="eit-al-about-feature">
@@ -823,8 +842,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
             <div>
-              <div class="eit-al-about-feature-title">Цифровое 3D-планирование</div>
-              <div class="eit-al-about-feature-text">Вы видите финальный результат на экране ещё до изготовления первой каппы — полная предсказуемость лечения</div>
+              <div class="eit-al-about-feature-title">Digital 3D planning</div>
+              <div class="eit-al-about-feature-text">See your final result on screen before the first aligner is made — fully predictable treatment</div>
             </div>
           </div>
         </div>
@@ -840,12 +859,12 @@
 <section class="eit-al-indications" aria-labelledby="eit-al-indications-heading">
   <div class="eit-al-wrap">
     <div class="eit-al-indications-head">
-      <div class="eit-al-tag eit-al-tag--light eit-al-fade">Показания</div>
+      <div class="eit-al-tag eit-al-tag--light eit-al-fade">Indications</div>
       <h2 id="eit-al-indications-heading" class="eit-al-indications-title eit-al-fade eit-al-fade-d1">
-        В каких случаях<br><span>подходят элайнеры?</span>
+        Which cases are<br><span>suitable for aligners?</span>
       </h2>
       <p class="eit-al-indications-sub eit-al-fade eit-al-fade-d2">
-        Элайнеры эффективны при большинстве проблем с прикусом и положением зубов:
+        Aligners are effective for most bite and tooth-position issues:
       </p>
     </div>
 
@@ -854,43 +873,43 @@
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </div>
-        <div class="eit-al-indication-title">Кривые и скученные зубы</div>
-        <p class="eit-al-indication-text">Элайнеры постепенно выравнивают зубы, устраняя скученность и неправильное положение без болезненных брекетов.</p>
+        <div class="eit-al-indication-title">Crooked &amp; crowded teeth</div>
+        <p class="eit-al-indication-text">Aligners gradually straighten teeth, fixing crowding and misalignment — no painful braces needed.</p>
       </div>
       <div class="eit-al-indication-card eit-al-fade eit-al-fade-d1">
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m10 0h3a2 2 0 002-2v-3"/></svg>
         </div>
-        <div class="eit-al-indication-title">Промежутки между зубами</div>
-        <p class="eit-al-indication-text">Диастемы и тремы — промежутки между зубами — закрываются без хирургического вмешательства за несколько месяцев.</p>
+        <div class="eit-al-indication-title">Gaps between teeth</div>
+        <p class="eit-al-indication-text">Diastemas and gaps are closed in a few months — no surgery required.</p>
       </div>
       <div class="eit-al-indication-card eit-al-fade eit-al-fade-d2">
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <div class="eit-al-indication-title">Неправильный прикус</div>
-        <p class="eit-al-indication-text">Глубокий, открытый, перекрёстный прикус — элайнеры корректируют положение обеих челюстей и нормализуют смыкание зубов.</p>
+        <div class="eit-al-indication-title">Bite problems</div>
+        <p class="eit-al-indication-text">Deep, open, or cross bite — aligners correct the position of both jaws and normalize how teeth meet.</p>
       </div>
       <div class="eit-al-indication-card eit-al-fade eit-al-fade-d1">
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
-        <div class="eit-al-indication-title">Подготовка к протезированию</div>
-        <p class="eit-al-indication-text">Перед установкой виниров, коронок или имплантов элайнеры помогают правильно расставить зубы для оптимального результата.</p>
+        <div class="eit-al-indication-title">Pre-prosthetic prep</div>
+        <p class="eit-al-indication-text">Before veneers, crowns, or implants, aligners help position your teeth for the best result.</p>
       </div>
       <div class="eit-al-indication-card eit-al-fade eit-al-fade-d2">
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <div class="eit-al-indication-title">Рецидив после брекетов</div>
-        <p class="eit-al-indication-text">Зубы снова сдвинулись после снятия брекетов? Элайнеры мягко возвращают их в правильное положение без повторного длительного лечения.</p>
+        <div class="eit-al-indication-title">Relapse after braces</div>
+        <p class="eit-al-indication-text">Teeth shifted again after braces? Aligners gently bring them back into place — no need for a full retreatment.</p>
       </div>
       <div class="eit-al-indication-card eit-al-fade eit-al-fade-d3">
         <div class="eit-al-indication-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
-        <div class="eit-al-indication-title">Стремление к незаметному лечению</div>
-        <p class="eit-al-indication-text">Идеальный выбор для взрослых пациентов, которые хотят выровнять зубы, не привлекая внимания к своей улыбке во время лечения.</p>
+        <div class="eit-al-indication-title">Discreet treatment</div>
+        <p class="eit-al-indication-text">The perfect choice for adult patients who want straighter teeth without drawing attention to their smile during treatment.</p>
       </div>
     </div>
   </div>
@@ -902,12 +921,12 @@
 <section class="eit-al-types" aria-labelledby="eit-al-types-heading">
   <div class="eit-al-wrap">
     <div class="eit-al-types-head">
-      <div class="eit-al-tag eit-al-fade">Виды элайнеров</div>
+      <div class="eit-al-tag eit-al-fade">Types of aligners</div>
       <h2 id="eit-al-types-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
-        Какие элайнеры<br><span>мы используем?</span>
+        Which aligners<br><span>do we use?</span>
       </h2>
       <p style="font-size:14px;color:var(--eit-text-muted);max-width:560px;margin:0 auto;line-height:1.7;" class="eit-al-fade eit-al-fade-d2">
-        Мы предлагаем несколько систем — врач подберёт оптимальный вариант под ваш случай и бюджет.
+        We offer several systems — the doctor will choose the best option for your case and budget.
       </p>
     </div>
 
@@ -917,9 +936,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <div class="eit-al-type-badge">Премиум</div>
+          <div class="eit-al-type-badge">Premium</div>
           <div class="eit-al-type-name">Invisalign</div>
-          <p class="eit-al-type-desc">Самая известная в мире система прозрачных элайнеров. Изготавливается из запатентованного материала SmartTrack® — мягкого, прочного и максимально прозрачного. Подходит для сложных случаев.</p>
+          <p class="eit-al-type-desc">The world's most recognized clear-aligner system. Made from patented SmartTrack® material — soft, durable, and exceptionally clear. Suitable for complex cases.</p>
         </div>
       </div>
       <div class="eit-al-type-card eit-al-fade eit-al-fade-d1">
@@ -927,9 +946,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="eit-al-type-badge">Оптимальный выбор</div>
-          <div class="eit-al-type-name">Clear Correct</div>
-          <p class="eit-al-type-desc">Американская система элайнеров с более гибкими каппами. Отличное соотношение цены и качества. Эффективна при лечении лёгких и средних случаев.</p>
+          <div class="eit-al-type-badge">Best value</div>
+          <div class="eit-al-type-name">ClearCorrect</div>
+          <p class="eit-al-type-desc">An American aligner system with more flexible trays. Excellent price-to-quality ratio. Effective for mild to moderate cases.</p>
         </div>
       </div>
       <div class="eit-al-type-card eit-al-fade eit-al-fade-d2">
@@ -937,9 +956,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           </div>
-          <div class="eit-al-type-badge">Экономичный</div>
-          <div class="eit-al-type-name">Местные системы</div>
-          <p class="eit-al-type-desc">Турецкие и европейские системы цифровых элайнеров — изготавливаются в собственных лабораториях. Доступная цена при высоком качестве материалов и точности изготовления.</p>
+          <div class="eit-al-type-badge">Affordable</div>
+          <div class="eit-al-type-name">Local systems</div>
+          <p class="eit-al-type-desc">Turkish and European digital aligner systems — manufactured in in-house labs. Affordable price with high material quality and precision.</p>
         </div>
       </div>
       <div class="eit-al-type-card eit-al-fade eit-al-fade-d1">
@@ -947,9 +966,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           </div>
-          <div class="eit-al-type-badge">Быстрый результат</div>
-          <div class="eit-al-type-name">Ретейнеры и фиксаторы</div>
-          <p class="eit-al-type-desc">После завершения курса элайнеров изготавливаются удерживающие ретейнеры, которые фиксируют результат и не дают зубам вернуться на прежние позиции.</p>
+          <div class="eit-al-type-badge">Lasting result</div>
+          <div class="eit-al-type-name">Retainers &amp; fixators</div>
+          <p class="eit-al-type-desc">After your aligner course, custom retainers are made to lock in the result and keep your teeth from drifting back.</p>
         </div>
       </div>
       <div class="eit-al-type-card eit-al-fade eit-al-fade-d2">
@@ -957,9 +976,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
-          <div class="eit-al-type-badge">Цифровые технологии</div>
-          <div class="eit-al-type-name">3D-моделирование улыбки</div>
-          <p class="eit-al-type-desc">Независимо от системы мы используем цифровое 3D-сканирование и программное моделирование — вы видите результат до начала лечения и можете скорректировать план.</p>
+          <div class="eit-al-type-badge">Digital tech</div>
+          <div class="eit-al-type-name">3D smile simulation</div>
+          <p class="eit-al-type-desc">Regardless of the system, we use 3D scanning and software simulation — you see the result before treatment and can adjust the plan.</p>
         </div>
       </div>
       <div class="eit-al-type-card eit-al-fade eit-al-fade-d3">
@@ -967,9 +986,9 @@
           <div class="eit-al-type-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div class="eit-al-type-badge">Дистанционно</div>
-          <div class="eit-al-type-name">Удалённое наблюдение</div>
-          <p class="eit-al-type-desc">После получения набора капп вы меняете их самостоятельно каждые 1–2 недели. Плановые визиты к врачу минимальны — идеально для пациентов из других стран.</p>
+          <div class="eit-al-type-badge">Remote</div>
+          <div class="eit-al-type-name">Remote monitoring</div>
+          <p class="eit-al-type-desc">After receiving your aligners, you swap them yourself every 1–2 weeks. Routine in-clinic visits are minimal — perfect for patients from abroad.</p>
         </div>
       </div>
     </div>
@@ -984,9 +1003,9 @@
     <div class="eit-al-advantages-inner">
 
       <div>
-        <div class="eit-al-tag eit-al-fade">Преимущества</div>
+        <div class="eit-al-tag eit-al-fade">Advantages</div>
         <h2 id="eit-al-advantages-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
-          Почему выбирают<br><span>элайнеры?</span>
+          Why patients choose<br><span>aligners</span>
         </h2>
         <div class="eit-al-divider eit-al-fade eit-al-fade-d1"></div>
 
@@ -995,84 +1014,84 @@
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Незаметность</strong> — прозрачные каппы практически не видны; можно улыбаться и говорить без стеснения</span>
+            <span><strong>Discreet</strong> — clear trays are virtually invisible; smile and talk without self-consciousness</span>
           </li>
           <li class="eit-al-adv-item">
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Съёмность</strong> — снимаются на время еды, спорта, особых мероприятий; нет ограничений в питании</span>
+            <span><strong>Removable</strong> — take them out for meals, sports, or special events; no food restrictions</span>
           </li>
           <li class="eit-al-adv-item">
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Комфорт</strong> — нет острых металлических деталей, которые травмируют дёсны и щёки</span>
+            <span><strong>Comfortable</strong> — no sharp metal parts to cut your gums or cheeks</span>
           </li>
           <li class="eit-al-adv-item">
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Предсказуемость</strong> — 3D-моделирование показывает финальный результат ещё до начала лечения</span>
+            <span><strong>Predictable</strong> — 3D simulation shows the final result before treatment starts</span>
           </li>
           <li class="eit-al-adv-item">
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Гигиена</strong> — зубы чистятся в обычном режиме; каппы моются отдельно под проточной водой</span>
+            <span><strong>Easy hygiene</strong> — brush normally; rinse the aligners under running water</span>
           </li>
           <li class="eit-al-adv-item">
             <span class="eit-al-adv-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
-            <span><strong>Минимум визитов к врачу</strong> — удобно для пациентов, приехавших из другой страны</span>
+            <span><strong>Fewer clinic visits</strong> — ideal for patients traveling from another country</span>
           </li>
         </ul>
       </div>
 
       <div class="eit-al-fade eit-al-fade-d2">
         <div class="eit-al-compare">
-          <div class="eit-al-compare-title">Элайнеры vs Брекеты</div>
-          <p class="eit-al-compare-sub">Сравнение двух основных методов ортодонтического лечения:</p>
+          <div class="eit-al-compare-title">Aligners vs Braces</div>
+          <p class="eit-al-compare-sub">A side-by-side look at the two main orthodontic approaches:</p>
           <div class="eit-al-compare-table">
             <div class="eit-al-compare-row eit-al-compare-row--head">
-              <span>Параметр</span>
-              <span>Элайнеры</span>
-              <span>Брекеты</span>
+              <span>Feature</span>
+              <span>Aligners</span>
+              <span>Braces</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Заметность</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Незаметны</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--no">Заметны</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Visibility</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Invisible</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Visible</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Съёмность</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Снимаются</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--no">Несъёмные</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Removable</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Yes</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">No</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Ограничения в еде</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Нет</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--no">Есть</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Food restrictions</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">None</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Some</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Гигиена</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Обычная</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--no">Сложнее</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Oral hygiene</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Normal</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Harder</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Комфорт</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Высокий</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--no">Средний</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Comfort</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">High</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--no">Moderate</span>
             </div>
             <div class="eit-al-compare-row">
-              <span class="eit-al-compare-cell eit-al-compare-cell--label">Сложные случаи</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Частично</span>
-              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Да</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--label">Complex cases</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Partly</span>
+              <span class="eit-al-compare-cell eit-al-compare-cell--yes">Yes</span>
             </div>
           </div>
           <div class="eit-al-compare-divider"></div>
-          <p class="eit-al-compare-note">Наш ортодонт поможет выбрать оптимальный метод на бесплатной консультации.</p>
+          <p class="eit-al-compare-note">Our orthodontist will help you pick the best method during a free consultation.</p>
         </div>
       </div>
 
@@ -1086,12 +1105,12 @@
 <section class="eit-al-process" aria-labelledby="eit-al-process-heading">
   <div class="eit-al-wrap">
     <div class="eit-al-process-head">
-      <div class="eit-al-tag eit-al-fade">Этапы лечения</div>
+      <div class="eit-al-tag eit-al-fade">Treatment steps</div>
       <h2 id="eit-al-process-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
-        Как проходит лечение<br><span>элайнерами?</span>
+        How aligner treatment<br><span>works at our clinic</span>
       </h2>
       <p class="eit-al-process-sub eit-al-fade eit-al-fade-d2">
-        Весь процесс чётко организован — от первой консультации до финального результата.
+        The whole process is well organized — from your first consultation to the final result.
       </p>
     </div>
 
@@ -1101,54 +1120,54 @@
         <div class="eit-al-step-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <div class="eit-al-step-title">Консультация и 3D-сканирование</div>
-        <p class="eit-al-step-text">Ортодонт осматривает зубы, делает цифровой 3D-слепок и оценивает прикус. Составляется предварительный план лечения с визуализацией результата.</p>
+        <div class="eit-al-step-title">Consultation &amp; 3D scan</div>
+        <p class="eit-al-step-text">The orthodontist examines your teeth, takes a 3D digital scan, and evaluates your bite. A preliminary plan is built with a result preview.</p>
       </div>
       <div class="eit-al-step eit-al-fade eit-al-fade-d1">
         <div class="eit-al-step-num">02</div>
         <div class="eit-al-step-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <div class="eit-al-step-title">Утверждение плана и заказ капп</div>
-        <p class="eit-al-step-text">Вы видите финальный результат на экране и утверждаете план. После этого изготавливается индивидуальный набор элайнеров на весь курс лечения.</p>
+        <div class="eit-al-step-title">Plan approval &amp; aligner order</div>
+        <p class="eit-al-step-text">You see the final result on screen and approve the plan. Your custom set of aligners for the entire course is then manufactured.</p>
       </div>
       <div class="eit-al-step eit-al-fade eit-al-fade-d2">
         <div class="eit-al-step-num">03</div>
         <div class="eit-al-step-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <div class="eit-al-step-title">Получение элайнеров</div>
-        <p class="eit-al-step-text">Вы получаете весь набор капп с инструкцией. Каппы меняются самостоятельно каждые 1–2 недели. Контрольные визиты к врачу — раз в 2–3 месяца.</p>
+        <div class="eit-al-step-title">Receiving your aligners</div>
+        <p class="eit-al-step-text">You receive the full set of aligners with instructions. Switch them yourself every 1–2 weeks. Check-up visits are every 2–3 months.</p>
       </div>
       <div class="eit-al-step eit-al-fade eit-al-fade-d3">
         <div class="eit-al-step-num">04</div>
         <div class="eit-al-step-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <div class="eit-al-step-title">Финальный результат</div>
-        <p class="eit-al-step-text">После завершения курса изготавливается ретейнер для фиксации результата. Ваши зубы надёжно удерживаются в новом положении.</p>
+        <div class="eit-al-step-title">Final result</div>
+        <p class="eit-al-step-text">Once your course is complete, a retainer is made to lock in the result. Your teeth stay securely in their new position.</p>
       </div>
     </div>
 
     <!-- Care block -->
     <div class="eit-al-care eit-al-fade">
       <div>
-        <div class="eit-al-care-title">Как носить и ухаживать за элайнерами?</div>
-        <p class="eit-al-care-text">Правильный уход за каппами — залог комфорта и быстрого результата. Следуйте простым правилам:</p>
+        <div class="eit-al-care-title">How to wear and care for your aligners</div>
+        <p class="eit-al-care-text">Taking care of your aligners is key to comfort and a fast result. Follow these simple rules:</p>
         <ul class="eit-al-care-list">
-          <li>Носить каппы не менее <strong style="color:#fff;">20–22 часов в сутки</strong></li>
-          <li>Снимать только во время еды и чистки зубов</li>
-          <li>Промывать каппы под прохладной водой (не горячей!)</li>
-          <li>Чистить мягкой щёткой без зубной пасты</li>
-          <li>Хранить в прилагаемом футляре при снятии</li>
+          <li>Wear the aligners for at least <strong style="color:#fff;">20–22 hours a day</strong></li>
+          <li>Remove only when eating and brushing</li>
+          <li>Rinse with cool water (never hot!)</li>
+          <li>Clean with a soft brush — no toothpaste</li>
+          <li>Store in the provided case when removed</li>
         </ul>
       </div>
       <div class="eit-al-care-right">
         <div class="eit-al-care-stat">
-          <div class="eit-al-care-stat-value">20–22ч</div>
-          <div class="eit-al-care-stat-label">в сутки — время ношения</div>
+          <div class="eit-al-care-stat-value">20–22h</div>
+          <div class="eit-al-care-stat-label">per day — recommended wear time</div>
         </div>
-        <p class="eit-al-care-note">Смена каппы <strong style="color:#fff;">каждые 1–2 недели</strong> — именно с такой скоростью зубы мягко перемещаются в нужное положение.</p>
+        <p class="eit-al-care-note">Switch to a new aligner <strong style="color:#fff;">every 1–2 weeks</strong> — that's the gentle pace at which your teeth move into position.</p>
       </div>
     </div>
   </div>
@@ -1159,17 +1178,17 @@
      ════════════════════════════════════════════════ -->
 <section class="eit-al-cta" aria-labelledby="eit-al-cta-heading">
   <div class="eit-al-wrap eit-al-cta-inner">
-    <div class="eit-al-cta-tag">Записаться на консультацию</div>
+    <div class="eit-al-cta-tag">Book a consultation</div>
     <h2 id="eit-al-cta-heading" class="eit-al-cta-title">
-      Начните путь к ровным зубам уже сегодня
+      Start your journey to a straight smile today
     </h2>
     <p class="eit-al-cta-sub">
-      Свяжитесь с нами — мы проведём <strong>бесплатную консультацию</strong> и покажем, как будет выглядеть ваша улыбка после лечения элайнерами в ESTE IN TURKEY.
+      Get in touch with us — we'll schedule a <strong>free consultation</strong> and show you how your smile will look after aligner treatment at ESTE IN TURKEY.
     </p>
     <div class="eit-al-cta-btns">
       <a href="https://wa.me/905468189180" class="eit-al-cta-btn eit-al-cta-btn--wa">
         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-        Написать в WhatsApp
+        Message on WhatsApp
       </a>
       <a href="tel:+905468189180" class="eit-al-cta-btn eit-al-cta-btn--tel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1185,9 +1204,9 @@
 <section class="eit-al-faq" aria-labelledby="eit-al-faq-heading">
   <div class="eit-al-wrap">
     <div class="eit-al-faq-head">
-      <div class="eit-al-tag eit-al-fade">Вопросы и ответы</div>
+      <div class="eit-al-tag eit-al-fade">Q&amp;A</div>
       <h2 id="eit-al-faq-heading" class="eit-al-heading eit-al-fade eit-al-fade-d1">
-        Часто задаваемые <span>вопросы</span>
+        Frequently asked <span>questions</span>
       </h2>
     </div>
 
@@ -1196,61 +1215,61 @@
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Больно ли носить элайнеры?
+            Is it painful to wear aligners?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Первые дни после смены каппы может ощущаться лёгкое давление — это нормально и означает, что зубы двигаются. Болью это назвать нельзя. В отличие от брекетов, элайнеры не травмируют дёсны и щёки острыми металлическими деталями.
+            You may feel light pressure for a few days after switching to a new aligner — that's normal and means your teeth are moving. It can't really be called pain. Unlike braces, aligners don't have sharp metal parts to cut your gums or cheeks.
           </div>
         </div>
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Сколько времени занимает лечение элайнерами?
+            How long does aligner treatment take?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Зависит от сложности случая. Лёгкое выравнивание занимает <strong>3–6 месяцев</strong>, средние случаи — 6–12 месяцев, сложные — до 18 месяцев и более. Точные сроки определяются на консультации после 3D-сканирования.
+            It depends on the case. Mild alignment takes <strong>3–6 months</strong>, moderate cases 6–12 months, complex ones up to 18 months or more. Exact timelines are determined after your consultation and 3D scan.
           </div>
         </div>
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Как начать лечение, если я живу в другой стране?
+            How do I start treatment if I live abroad?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Всё просто: сначала онлайн-консультация, затем один визит в Стамбул — 3D-сканирование и утверждение плана. Готовые каппы отправляются вам курьером, и вы меняете их самостоятельно дома каждые 1–2 недели. Плановые проверки — онлайн или редкие визиты.
+            It's simple: first an online consultation, then one visit to Istanbul for a 3D scan and plan approval. The finished aligners are shipped to you, and you swap them at home every 1–2 weeks. Routine check-ins are online or occasional visits.
           </div>
         </div>
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Насколько заметны элайнеры?
+            How visible are aligners?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Практически незаметны. Материал капп обладает высокой прозрачностью — при обычном разговоре и улыбке их не видно. Большинство пациентов отмечают, что коллеги и знакомые не замечали лечение до тех пор, пока им не говорили об этом.
+            Virtually invisible. The aligner material is highly transparent — in normal conversation and smiles, they can't be seen. Most patients say their colleagues and friends didn't notice they were in treatment until they were told.
           </div>
         </div>
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Что будет, если не носить каппы достаточно долго?
+            What happens if I don't wear the aligners long enough?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Элайнеры работают только при ношении <strong>минимум 20–22 часа в сутки</strong>. Если носить меньше — зубы не успевают перемещаться, план сбивается, и лечение затягивается. Текущая каппа просто не будет садиться на зубы при следующей смене.
+            Aligners only work when worn <strong>at least 20–22 hours a day</strong>. Wear them less and your teeth won't move on schedule, the plan will get off track, and treatment will drag on. The next aligner simply won't fit your teeth.
           </div>
         </div>
 
         <div class="eit-al-faq-item">
           <button class="eit-al-faq-q" aria-expanded="false">
-            Сколько стоят элайнеры в Турции?
+            How much do aligners cost in Turkey?
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="eit-al-faq-a">
-            Стоимость зависит от выбранной системы (Invisalign, ClearCorrect, местные бренды) и сложности случая. В Турции лечение обходится значительно дешевле, чем в Европе или России — при сопоставимом качестве. Точную цену мы называем после консультации и 3D-анализа прикуса. Свяжитесь с нами для расчёта.
+            The cost depends on the system you choose (Invisalign, ClearCorrect, local brands) and the complexity of your case. In Turkey, treatment is significantly more affordable than in Europe or the US — with comparable quality. We give an exact quote after the consultation and 3D bite analysis. Get in touch for a personalized estimate.
           </div>
         </div>
 
@@ -1258,8 +1277,8 @@
 
       <!-- FAQ aside -->
       <div class="eit-al-faq-aside eit-al-fade eit-al-fade-d2">
-        <div class="eit-al-faq-aside-title">Остались вопросы?</div>
-        <p class="eit-al-faq-aside-sub">Напишите нам — ответим быстро и бесплатно проконсультируем по вашей ситуации.</p>
+        <div class="eit-al-faq-aside-title">Still have questions?</div>
+        <p class="eit-al-faq-aside-sub">Drop us a message — we'll reply fast and give you a free consultation tailored to your case.</p>
         <div class="eit-al-faq-aside-btns">
           <a href="https://wa.me/905468189180" class="eit-al-faq-aside-btn eit-al-faq-aside-btn--wa">
             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
@@ -1272,10 +1291,10 @@
         </div>
         <div class="eit-al-faq-aside-divider"></div>
         <ul class="eit-al-faq-aside-list">
-          <li>Бесплатная консультация онлайн</li>
-          <li>3D-моделирование улыбки</li>
-          <li>Русскоязычный переводчик</li>
-          <li>Доставка капп курьером</li>
+          <li>Free online consultation</li>
+          <li>3D smile simulation</li>
+          <li>English-speaking coordinator</li>
+          <li>Courier delivery of aligners</li>
         </ul>
       </div>
     </div>
