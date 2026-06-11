@@ -1628,15 +1628,17 @@ class MultiLingo_Lang_Checker {
 
         foreach ( $langs as $lang ) {
             if ( $lang === $default ) continue;
+            // 'top' priority: WordPress'in page hierarchy kurallarından ÖNCE çalışır.
+            // Aksi halde /ru/slug/ → 'ru' page'inin child'ı olarak aranır → bulunamaz → 404.
             add_rewrite_rule(
                 '^' . preg_quote( $lang, '/' ) . '/([^/]+)/?$',
                 'index.php?mllc_lang_slug=$matches[1]&mllc_lang_code=' . $lang,
-                'bottom'
+                'top'
             );
         }
 
-        // Dil konfigürasyonu değiştiğinde rewrite rules'u bir kez flush et
-        $hash = md5( implode( ',', $langs ) . $default );
+        // Priority 'top' olarak değiştirildi — hash'e bunu da yansıt
+        $hash = 'top-' . md5( implode( ',', $langs ) . $default );
         if ( get_option( 'mllc_rewrite_hash' ) !== $hash ) {
             flush_rewrite_rules( false );
             update_option( 'mllc_rewrite_hash', $hash );
