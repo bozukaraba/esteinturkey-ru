@@ -40,6 +40,8 @@ class MultiLingo_Lang_Checker {
         add_action( 'wp_ajax_mllc_get_menu_json',       [ $this, 'ajax_get_menu_json' ] );
         add_action( 'wp_ajax_nopriv_mllc_get_menu_json',[ $this, 'ajax_get_menu_json' ] );
         add_action( 'rest_api_init',       [ $this, 'register_rest_routes' ] );
+        add_filter( 'rest_post_query',     [ $this, 'filter_rest_post_query_by_lang' ], 10, 2 );
+        add_filter( 'rest_page_query',     [ $this, 'filter_rest_post_query_by_lang' ], 10, 2 );
     }
 
     /* ================================================================
@@ -106,6 +108,61 @@ class MultiLingo_Lang_Checker {
         return get_post_meta( $post_id, '_mllc_this_lang', true )
             ?: get_post_meta( $post_id, '_ll_this_lang',   true )
             ?: '';
+    }
+
+    /* ================================================================
+       REST API: eşleştirilmiş dile ait permalink'i döndür
+       ?mllc_lang=ru ile gelen isteklerde post.link eşleştirilmiş
+       postun permalink'i olur. Yalnızca REST isteklerinde çalışır;
+       admin tarafı ve frontend normal istekler etkilenmez.
+    ================================================================ */
+
+    public function filter_post_link_for_lang( $permalink, $post ) {
+        if ( ! ( $post instanceof WP_Post ) ) return $permalink;
+        if ( is_admin() && ! wp_doing_ajax() ) return $permalink;
+        if ( ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) return $permalink;
+
+        $lang = isset( $_GET['mllc_lang'] ) ? sanitize_key( wp_unslash( $_GET['mllc_lang'] ) ) : '';
+        if ( ! $lang ) return $permalink;
+        if ( ! in_array( $lang, $this->get_langs(), true ) ) return $permalink;
+
+        $this_lang = $this->get_this_lang( $post->ID );
+        if ( $this_lang === $lang ) return $permalink;
+
+        $pair_id = $this->get_pair_id( $post->ID, $lang );
+        if ( ! $pair_id ) return $permalink;
+
+        $pair_permalink = get_permalink( $pair_id );
+        return $pair_permalink ? $pair_permalink : $permalink;
+    }
+
+    /* ================================================================
+       REST API: ?mllc_lang=ru ile gelen istekleri ilgili dile filtrele
+       _mllc_this_lang meta'sı eşleşen postlar döner; eşleşmeyenler gizlenir.
+    ================================================================ */
+
+    public function filter_rest_post_query_by_lang( $args, $request ) {
+        $lang = isset( $_GET['mllc_lang'] ) ? sanitize_key( wp_unslash( $_GET['mllc_lang'] ) ) : '';
+        if ( ! $lang ) return $args;
+        if ( ! in_array( $lang, $this->get_langs(), true ) ) return $args;
+
+        $meta_query = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : [];
+        $meta_query[] = [
+            'relation' => 'OR',
+            [
+                'key'     => '_mllc_this_lang',
+                'value'   => $lang,
+                'compare' => '=',
+            ],
+            [
+                'key'     => '_ll_this_lang',
+                'value'   => $lang,
+                'compare' => '=',
+            ],
+        ];
+        $args['meta_query'] = $meta_query;
+
+        return $args;
     }
 
     /* ================================================================
@@ -323,7 +380,10 @@ class MultiLingo_Lang_Checker {
 
             $path = parse_url( $raw, PHP_URL_PATH ) ?? '';
 
-            if ( strpos( $path, '/' . $lang . '/' ) !== false ) {
+            if ( $lang === $default ) {
+                // Varsayılan dil (EN) → prefix olmadan, permalink olduğu gibi kullan
+                $alt_path = $path;
+            } elseif ( strpos( $path, '/' . $lang . '/' ) !== false ) {
                 $alt_path = $path;
             } else {
                 $alt_slug = get_post_field( 'post_name', $alt_id );
@@ -884,6 +944,9 @@ class MultiLingo_Lang_Checker {
     ================================================================ */
 
     private function auto_set_parent( int $post_id, string $lang ) {
+        // Varsayılan dil için parent ayarlanmaz — URL prefix'i olmamalı (örn. EN → /slug/, /en/slug/ değil)
+        if ( $lang === $this->get_default_lang() ) return;
+
         $active = $this->get_langs();
         if ( ! in_array( $lang, $active, true ) ) return;
 
