@@ -42,6 +42,11 @@ class MultiLingo_Lang_Checker {
         add_action( 'rest_api_init',       [ $this, 'register_rest_routes' ] );
         add_filter( 'rest_post_query',     [ $this, 'filter_rest_post_query_by_lang' ], 10, 2 );
         add_filter( 'rest_page_query',     [ $this, 'filter_rest_post_query_by_lang' ], 10, 2 );
+        // URL Routing: /ru/slug/ → RU post, /de/slug/ → DE post vb.
+        add_action( 'init',                [ $this, 'register_lang_rewrite_rules' ], 5 );
+        add_filter( 'query_vars',          [ $this, 'register_lang_query_vars' ] );
+        add_filter( 'post_link',           [ $this, 'lang_prefix_post_link' ], 20, 2 );
+        add_action( 'pre_get_posts',       [ $this, 'handle_lang_rewrite_query' ], 5 );
     }
 
     /* ================================================================
@@ -379,16 +384,8 @@ class MultiLingo_Lang_Checker {
             if ( ! $raw ) continue;
 
             $path = parse_url( $raw, PHP_URL_PATH ) ?? '';
-
-            if ( $lang === $default ) {
-                // Varsayılan dil (EN) → prefix olmadan, permalink olduğu gibi kullan
-                $alt_path = $path;
-            } elseif ( strpos( $path, '/' . $lang . '/' ) !== false ) {
-                $alt_path = $path;
-            } else {
-                $alt_slug = get_post_field( 'post_name', $alt_id );
-                $alt_path = '/' . $lang . '/' . $alt_slug . '/';
-            }
+            // lang_prefix_post_link filtresi WP permalink'ini zaten doğru prefix'le döndürüyor
+            $alt_path = $path ?: ( '/' . $lang . '/' . get_post_field( 'post_name', $alt_id ) . '/' );
 
             $hreflang_map[ $lang ] = $home . $alt_path;
             $alt_urls[ $lang ]     = $alt_path;
@@ -1617,6 +1614,79 @@ class MultiLingo_Lang_Checker {
         }
 
         exit;
+    }
+
+    /* ================================================================
+       URL ROUTING — Non-default dil blog postları için /lang/slug/ yapısı
+       Örn: /ru/process-zajivleniya/ → 301 yok, direkt RU post yükler
+       get_permalink() RU post için /ru/slug/ döndürür → blog.html + hreflang doğru
+    ================================================================ */
+
+    public function register_lang_rewrite_rules() {
+        $default = $this->get_default_lang();
+        $langs   = $this->get_langs();
+
+        foreach ( $langs as $lang ) {
+            if ( $lang === $default ) continue;
+            add_rewrite_rule(
+                '^' . preg_quote( $lang, '/' ) . '/([^/]+)/?$',
+                'index.php?mllc_lang_slug=$matches[1]&mllc_lang_code=' . $lang,
+                'bottom'
+            );
+        }
+
+        // Dil konfigürasyonu değiştiğinde rewrite rules'u bir kez flush et
+        $hash = md5( implode( ',', $langs ) . $default );
+        if ( get_option( 'mllc_rewrite_hash' ) !== $hash ) {
+            flush_rewrite_rules( false );
+            update_option( 'mllc_rewrite_hash', $hash );
+        }
+    }
+
+    public function register_lang_query_vars( array $vars ): array {
+        $vars[] = 'mllc_lang_slug';
+        $vars[] = 'mllc_lang_code';
+        return $vars;
+    }
+
+    /**
+     * post_link filtresi: RU/DE/RO postların permalink'ini /lang/slug/ formatında döndürür.
+     * Admin paneli ve REST API dahil her yerde çalışır — blog.html API yanıtları da doğru URL alır.
+     */
+    public function lang_prefix_post_link( $permalink, $post ): string {
+        if ( is_admin() && ! wp_doing_ajax() ) return $permalink;
+        if ( ! ( $post instanceof WP_Post ) ) return $permalink;
+
+        $lang    = $this->get_this_lang( $post->ID );
+        $default = $this->get_default_lang();
+        if ( ! $lang || $lang === $default ) return $permalink;
+
+        $slug = get_post_field( 'post_name', $post->ID );
+        if ( ! $slug ) return $permalink;
+
+        return home_url( '/' . $lang . '/' . $slug . '/' );
+    }
+
+    /**
+     * pre_get_posts: /ru/slug/ isteğinde doğru dil postunu yükle.
+     * Rewrite rule'dan gelen mllc_lang_code + mllc_lang_slug query var'larını kullanır.
+     */
+    public function handle_lang_rewrite_query( \WP_Query $query ) {
+        if ( ! $query->is_main_query() ) return;
+        if ( is_admin() ) return;
+
+        $lang = get_query_var( 'mllc_lang_code' );
+        $slug = get_query_var( 'mllc_lang_slug' );
+        if ( ! $lang || ! $slug ) return;
+
+        $supported = $this->get_supported_post_types();
+        $query->set( 'post_type', $supported );
+        $query->set( 'name', $slug );
+        $query->set( 'meta_query', [
+            'relation' => 'OR',
+            [ 'key' => '_mllc_this_lang', 'value' => $lang, 'compare' => '=' ],
+            [ 'key' => '_ll_this_lang',   'value' => $lang, 'compare' => '=' ],
+        ] );
     }
 }
 
