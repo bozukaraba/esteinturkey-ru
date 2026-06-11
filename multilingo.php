@@ -1681,11 +1681,9 @@ class MultiLingo_Lang_Checker {
         $slug = get_query_var( 'mllc_lang_slug' );
         if ( ! $lang || ! $slug ) return;
 
-        // Gerçek bir WP page varsa (ör: /ru/blog/ → 'ru/blog' path'li child page)
-        // müdahale etme — WordPress kendi page routing'ini halleder.
+        // Gerçek bir WP page var mı kontrol et
         $existing = get_page_by_path( $lang . '/' . $slug );
         if ( ! $existing ) {
-            // 'ru' parent page'inin doğrudan child'ı olarak da dene
             $lang_parent = get_page_by_path( $lang );
             if ( $lang_parent ) {
                 $child = get_posts( [
@@ -1698,9 +1696,20 @@ class MultiLingo_Lang_Checker {
                 if ( $child ) $existing = $child[0];
             }
         }
-        if ( $existing ) return;
 
-        // Gerçek page yok → bu /lang/slug/ bir blog post URL'i, routing'i uygula
+        if ( $existing ) {
+            // Gerçek WP page — rewrite rule'un bıraktığı yanlış query var'ları temizle,
+            // page_id ile doğrudan yükle. Aksi halde mllc_lang_slug query var'ı WP'yi
+            // karıştırır ve default sayfa gösterilir.
+            $query->set( 'page_id',        $existing->ID );
+            $query->set( 'post_type',      'page' );
+            $query->set( 'name',           '' );
+            $query->set( 'mllc_lang_slug', '' );
+            $query->set( 'mllc_lang_code', '' );
+            return;
+        }
+
+        // Gerçek page yok → blog post URL'i, routing'i uygula
         $query->set( 'post_type', 'post' );
         $query->set( 'name', $slug );
         $query->set( 'meta_query', [
