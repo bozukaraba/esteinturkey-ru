@@ -1739,6 +1739,9 @@ class MultiLingo_Lang_Checker {
             $query->set( 'page_id',        $existing->ID );
             $query->set( 'post_type',      'page' );
             $query->set( 'name',           '' );
+            $query->set( 'pagename',       '' ); // fix_lang_request_pagename'in set ettiği pagename'i temizle;
+                                                // aksi halde WP get_posts() içinde get_page_by_path('ru/slug')
+                                                // çağırır, null döner ve page_id'yi override ederek anasayfaya düşer.
             $query->set( 'mllc_lang_slug', '' );
             $query->set( 'mllc_lang_code', '' );
             return;
@@ -1747,6 +1750,7 @@ class MultiLingo_Lang_Checker {
         // Gerçek page yok → blog post URL'i, routing'i uygula
         $query->set( 'post_type', 'post' );
         $query->set( 'name', $slug );
+        $query->set( 'pagename',  '' ); // pagename kalırsa WP post routing'i bozar
         $query->set( 'meta_query', [
             'relation' => 'OR',
             [ 'key' => '_mllc_this_lang', 'value' => $lang, 'compare' => '=' ],

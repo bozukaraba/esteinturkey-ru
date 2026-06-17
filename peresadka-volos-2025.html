@@ -15,6 +15,18 @@
   <meta property="og:url" content="https://esteinturkey.com/peresadka-volos-2025/">
   <meta property="og:locale" content="ru_RU">
 
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109857689', 'ym');
+      ym(109857689, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109857689" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <!--
   ░░ ПЛЕЙСХОЛДЕРЫ ИЗОБРАЖЕНИЙ (замените на ссылки) ░░
   __HERO_IMG__   — фото команды врачей (hero, справа)
@@ -22,7 +34,37 @@
   Остальные изображения/видео уже подключены реальными ссылками.
   -->
 
-  <style>
+  <style id="eit-vis-fix">
+.elementor-invisible{visibility:visible!important;opacity:1!important}
+.elementor-section:has(#eitHeader),.elementor-column:has(#eitHeader),
+.e-con:has(#eitHeader),.e-child:has(#eitHeader),
+.elementor-widget-container:has(#eitHeader){visibility:visible!important;opacity:1!important;padding:0!important;margin:0!important;}
+#eitHeader,#eitHeader *{visibility:visible!important;opacity:1!important}
+.eit-fue-fade{opacity:1!important;transform:none!important;transition:none!important}
+.eit-fue-fade.eit-anim-ready{opacity:0!important;transform:translateY(28px)!important;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)!important}
+.eit-fue-fade.eit-anim-ready.eit-fue-visible{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.eit-fue-fade.eit-anim-ready{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
+<script id="eit-vis-fix-js">
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  function init(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    document.querySelectorAll('.eit-fue-fade').forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top>vh+60){
+        el.classList.add('eit-anim-ready');
+        new IntersectionObserver(function(en,ob){
+          en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('eit-fue-visible');ob.unobserve(e.target);}});
+        },{threshold:0.05}).observe(el);
+      }
+    });
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
+</script>
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
 
 .elementor-section:has(.eit2-hero),
@@ -315,6 +357,48 @@
 .eit2-form-secure svg { width: 16px; height: 16px; color: var(--eit-accent); }
 .eit2-form-nav { display: flex; gap: 12px; }
 
+/* ════════ PHONE WRAP (consultation form) ════════ */
+.eit2-phone-wrap {
+  display: flex;
+  border: 1px solid var(--eit-border);
+  border-radius: 11px;
+  overflow: hidden;
+  background: var(--eit-soft);
+  transition: var(--eit-transition);
+}
+.eit2-phone-wrap:focus-within {
+  border-color: var(--eit-accent);
+  background: #fff;
+}
+.eit2-phone-wrap .eit2-country-select {
+  flex: 0 0 auto; max-width: 160px; min-width: 0;
+  font-family: var(--eit-font); font-size: 13px; color: var(--eit-text);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--eit-border);
+  border-radius: 0;
+  padding: 13px 26px 13px 12px;
+  outline: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+.eit2-phone-wrap .eit2-country-select:focus { outline: none; box-shadow: none; }
+.eit2-phone-wrap input[type="tel"] {
+  flex: 1; width: auto;
+  font-family: var(--eit-font); font-size: 15px; color: var(--eit-text);
+  background: transparent;
+  border: none; border-radius: 0;
+  padding: 13px 15px;
+  outline: none;
+}
+.eit2-phone-wrap input[type="tel"]:focus { outline: none; background: transparent; border-color: transparent; }
+.eit2-phone-wrap input[type="tel"]::placeholder { color: #aab8b8; }
+@media (max-width: 620px) {
+  .eit2-phone-wrap .eit2-country-select { max-width: 130px; font-size: 12px; }
+}
+
 /* ════════ SUCCESS STORIES ════════ */
 .eit2-story-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
 .eit2-story { background: #fff; border: 1px solid var(--eit-border); border-radius: var(--eit-radius); overflow: hidden; transition: var(--eit-transition); }
@@ -401,6 +485,11 @@
 /* fade */
 .fade-in { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .fade-in.visible { opacity: 1; transform: none; }
+/* JS yoksa / kapalıysa içerik yine de görünür kalsın */
+.no-js .fade-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 
 /* ════════ RESPONSIVE ════════ */
 @media (max-width: 1040px) {
@@ -445,7 +534,7 @@
             Медицинский туризм в Турции
           </span>
           <h1>Надёжная пересадка волос<span>в Турции</span></h1>
-          <p class="eit2-hero-sub">Мировой уровень медицины. Передовые технологии. Доступное качество. Нам доверяют тысячи пациентов со всего мира.</p>
+          <p class="eit2-hero-sub">Высокий уровень медицины. Передовые технологии. Доступное качество. Нам доверяют тысячи пациентов со всего мира.</p>
           <div class="eit2-hero-cta">
             <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-primary">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -522,9 +611,9 @@
       </div>
 
       <div class="eit2-feat-row fade-in">
-        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><div><div class="eit2-feat-t">Безопасно и сертифицировано</div><div class="eit2-feat-d">Ваша безопасность — приоритет</div></div></div>
-        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><div class="eit2-feat-t">Опытная команда</div><div class="eit2-feat-d">Высококлассные специалисты</div></div></div>
-        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/></svg><div><div class="eit2-feat-t">Премиум-качество</div><div class="eit2-feat-d">Передовые технологии</div></div></div>
+        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><div><div class="eit2-feat-t">Безопасно</div><div class="eit2-feat-d">Лицензированная клиника</div></div></div>
+        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><div class="eit2-feat-t">Опытная команда</div><div class="eit2-feat-d">Специалисты с опытом 5+ лет</div></div></div>
+        <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3 8 9l4 13 4-13-3-6"/></svg><div><div class="eit2-feat-t">Премиум-качество</div><div class="eit2-feat-d">Усовершенствованные техники</div></div></div>
         <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><div><div class="eit2-feat-t">Довольные пациенты</div><div class="eit2-feat-d">Рейтинг 4.9/5</div></div></div>
         <div class="eit2-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><div class="eit2-feat-t">Поддержка 24/7</div><div class="eit2-feat-d">Всегда на связи</div></div></div>
       </div>
@@ -550,7 +639,7 @@
           <div class="eit2-reason-num">02</div>
           <div class="eit2-reason-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 22h14M5 2h14M17 22v-4.2a2 2 0 0 0-.6-1.4L12 12l-4.4 4.4a2 2 0 0 0-.6 1.4V22M7 2v4.2a2 2 0 0 0 .6 1.4L12 12l4.4-4.4A2 2 0 0 0 17 6.2V2"/></svg></div>
           <h3>Возрастные изменения</h3>
-          <p>С возрастом рост волос замедляется, и они становятся тоньше. Пересадка помогает вернуть более молодой и густой вид.</p>
+          <p>С возрастом рост волос замедляется и они становятся тоньше. Пересадка помогает вернуть более молодой и густой образ.</p>
         </div>
         <div class="eit2-reason fade-in">
           <div class="eit2-reason-num">03</div>
@@ -562,7 +651,7 @@
           <div class="eit2-reason-num">04</div>
           <div class="eit2-reason-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
           <h3>Гормональные причины</h3>
-          <p>Гормональные изменения, заболевания или стресс могут приводить к выпадению. Трансплантация предлагает устойчивое решение.</p>
+          <p>Гормональные изменения, заболевания или стресс могут приводить к выпадению. Пересаженные волосы не подверженны гормональным изменениям.</p>
         </div>
       </div>
 
@@ -572,11 +661,11 @@
           <h2>6 причин выбрать нас</h2>
         </div>
         <div class="eit2-clinic-grid">
-          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><h4>1. 12 150+ пациентов</h4><p>Тысячи пациентов со всего мира доверились нам и получили результат, изменивший жизнь.</p></div>
-          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 5v6c0 5 3.4 7.8 8 10 4.6-2.2 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg><h4>2. Экспертная команда</h4><p>Наши хирурги сертифицированы и специализируются на восстановлении волос.</p></div>
-          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><h4>3. Пакеты «всё включено»</h4><p>Перелёт, отель, трансфер, лечение и уход — всё включено для спокойствия.</p></div>
+          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><h4>1. 12 150+ пациентов</h4><p>Тысячи пациентов со всего мира доверились нам и получили результат, изменивших их жизнь.</p></div>
+          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 5v6c0 5 3.4 7.8 8 10 4.6-2.2 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg><h4>2. Экспертная команда</h4><p>Наши хирурги сертифицированы и регулярно повышают квалификацию.</p></div>
+          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><h4>3. Пакеты «всё включено»</h4><p>Отель, трансфер, лечение и уход — всё включено для комфортного лечения.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h4>4. Локация в Стамбуле</h4><p>Лечение в сердце Стамбула, где современная медицина встречается с богатой культурой.</p></div>
-          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg><h4>5. Передовые методы</h4><p>Используем новейшие техники FUE и DHI для естественного и густого результата.</p></div>
+          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg><h4>5. Передовые методы</h4><p>Используем новейшие техники FUE Sapphire и DHI Choi для естественного и густого результата.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><h4>6. Поддержка 24/7</h4><p>Наша команда заботы доступна круглосуточно — до, во время и после поездки.</p></div>
         </div>
       </div>
@@ -589,7 +678,7 @@
       <div class="eit2-head">
         <span class="eit2-eyebrow">Пакеты</span>
         <h2>Ваш персональный <span>пакет лечения</span></h2>
-        <p>Выберите подходящий вариант. Прозрачно. Всё включено. Создано под вас.</p>
+        <p>Выберите подходящий вариант. Гибкие пакеты под ваш запрос. Прозрачные условия. Всё включено.</p>
       </div>
       <div class="eit2-pkg-grid">
         <div class="eit2-pkg silver fade-in">
@@ -598,13 +687,13 @@
           <div class="eit2-pkg-price">1800<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Предоперационная консультация</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночи в отеле 5★</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночи в отеле</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP-трансфер аэропорт (туда-обратно)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Трансфер клиника-отель-клиника</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Поддержка переводчика</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Набор для ухода после операции</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Сопровождение и контроль результата</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Пожизненная гарантия и поддержка 12 мес.</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Гарантия и поддержка 12 мес.</li>
           </ul>
           <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-outline">Подробнее →</a>
         </div>
@@ -612,16 +701,16 @@
         <div class="eit2-pkg gold fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>DHI</h3></div>
           <div class="eit2-pkg-tagline">Максимальный комфорт. Полная забота.</div>
-          <div class="eit2-pkg-price">от 2200<span> €</span></div>
+          <div class="eit2-pkg-price">2200<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Предоперационная консультация</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночи в отеле 5★</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночи в отеле</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP-трансфер аэропорт (туда-обратно)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Трансфер клиника-отель-клиника</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Поддержка переводчика</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Набор для ухода после операции</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Сопровождение и контроль результата</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Пожизненная гарантия и поддержка 12 мес.</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Гарантия и поддержка 12 мес.</li>
           </ul>
           <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-primary">Подробнее →</a>
         </div>
@@ -629,16 +718,16 @@
         <div class="eit2-pkg platinum fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>MIX DHI+FUE</h3></div>
           <div class="eit2-pkg-tagline">Премиум-опыт. Полное спокойствие.</div>
-          <div class="eit2-pkg-price">от 2600<span> €</span></div>
+          <div class="eit2-pkg-price">2600<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Предоперационная консультация</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночей в отеле 5★</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 ночи в отеле</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP-трансфер аэропорт (туда-обратно)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Трансфер клиника-отель-клиника</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Поддержка переводчика</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Набор для ухода после операции</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Сопровождение и контроль результата</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Пожизненная гарантия и поддержка 12 мес.</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Гарантия и поддержка 12 мес.</li>
           </ul>
           <a href="https://wa.me/905468189180" class="eit2-btn eit2-btn-gold">Подробнее →</a>
         </div>
@@ -677,51 +766,253 @@
       </div>
       <form class="eit2-form-card" id="eit2ConsultForm" onsubmit="return false;">
         <div class="eit2-steps">
-          <div class="eit2-step active" data-step="1"><div class="eit2-step-line"></div><div class="eit2-step-dot">1</div><div class="eit2-step-lbl">Контакты</div></div>
-          <div class="eit2-step" data-step="2"><div class="eit2-step-line"></div><div class="eit2-step-dot">2</div><div class="eit2-step-lbl">Анализ волос</div></div>
-          <div class="eit2-step" data-step="3"><div class="eit2-step-dot">3</div><div class="eit2-step-lbl">Консультация</div></div>
+          <div class="eit2-step active" data-step="1"><div class="eit2-step-dot">1</div><div class="eit2-step-lbl">Контакты</div></div>
         </div>
 
         <div class="eit2-form-pane active" data-pane="1">
           <div class="eit2-field-grid">
             <div class="eit2-field"><label>Имя и фамилия</label><input type="text" id="cfName" placeholder="Введите ваше имя"></div>
+            <div class="eit2-field">
+              <label>Телефон</label>
+              <div class="eit2-phone-wrap">
+                <select class="eit2-country-select" id="cfPhoneCode" aria-label="Код страны">
+                  <optgroup label="── СНГ ──">
+                    <option value="+7" selected>🇷🇺 +7 Россия</option>
+                    <option value="+380">🇺🇦 +380 Украина</option>
+                    <option value="+375">🇧🇾 +375 Беларусь</option>
+                    <option value="+7">🇰🇿 +7 Казахстан</option>
+                    <option value="+994">🇦🇿 +994 Азербайджан</option>
+                    <option value="+995">🇬🇪 +995 Грузия</option>
+                    <option value="+374">🇦🇲 +374 Армения</option>
+                    <option value="+998">🇺🇿 +998 Узбекистан</option>
+                    <option value="+992">🇹🇯 +992 Таджикистан</option>
+                    <option value="+993">🇹🇲 +993 Туркменистан</option>
+                    <option value="+996">🇰🇬 +996 Кыргызстан</option>
+                    <option value="+373">🇲🇩 +373 Молдова</option>
+                  </optgroup>
+                  <optgroup label="── Ближний Восток ──">
+                    <option value="+90">🇹🇷 +90 Турция</option>
+                    <option value="+966">🇸🇦 +966 Саудовская Аравия</option>
+                    <option value="+971">🇦🇪 +971 ОАЭ</option>
+                    <option value="+972">🇮🇱 +972 Израиль</option>
+                    <option value="+98">🇮🇷 +98 Иран</option>
+                    <option value="+964">🇮🇶 +964 Ирак</option>
+                    <option value="+962">🇯🇴 +962 Иордания</option>
+                    <option value="+961">🇱🇧 +961 Ливан</option>
+                    <option value="+965">🇰🇼 +965 Кувейт</option>
+                    <option value="+974">🇶🇦 +974 Катар</option>
+                    <option value="+973">🇧🇭 +973 Бахрейн</option>
+                    <option value="+968">🇴🇲 +968 Оман</option>
+                    <option value="+967">🇾🇪 +967 Йемен</option>
+                    <option value="+963">🇸🇾 +963 Сирия</option>
+                    <option value="+970">🇵🇸 +970 Палестина</option>
+                  </optgroup>
+                  <optgroup label="── Европа ──">
+                    <option value="+49">🇩🇪 +49 Германия</option>
+                    <option value="+44">🇬🇧 +44 Великобритания</option>
+                    <option value="+33">🇫🇷 +33 Франция</option>
+                    <option value="+39">🇮🇹 +39 Италия</option>
+                    <option value="+34">🇪🇸 +34 Испания</option>
+                    <option value="+31">🇳🇱 +31 Нидерланды</option>
+                    <option value="+32">🇧🇪 +32 Бельгия</option>
+                    <option value="+43">🇦🇹 +43 Австрия</option>
+                    <option value="+41">🇨🇭 +41 Швейцария</option>
+                    <option value="+46">🇸🇪 +46 Швеция</option>
+                    <option value="+47">🇳🇴 +47 Норвегия</option>
+                    <option value="+45">🇩🇰 +45 Дания</option>
+                    <option value="+358">🇫🇮 +358 Финляндия</option>
+                    <option value="+48">🇵🇱 +48 Польша</option>
+                    <option value="+420">🇨🇿 +420 Чехия</option>
+                    <option value="+36">🇭🇺 +36 Венгрия</option>
+                    <option value="+40">🇷🇴 +40 Румыния</option>
+                    <option value="+359">🇧🇬 +359 Болгария</option>
+                    <option value="+381">🇷🇸 +381 Сербия</option>
+                    <option value="+385">🇭🇷 +385 Хорватия</option>
+                    <option value="+30">🇬🇷 +30 Греция</option>
+                    <option value="+351">🇵🇹 +351 Португалия</option>
+                    <option value="+353">🇮🇪 +353 Ирландия</option>
+                    <option value="+371">🇱🇻 +371 Латвия</option>
+                    <option value="+370">🇱🇹 +370 Литва</option>
+                    <option value="+372">🇪🇪 +372 Эстония</option>
+                    <option value="+421">🇸🇰 +421 Словакия</option>
+                    <option value="+386">🇸🇮 +386 Словения</option>
+                    <option value="+355">🇦🇱 +355 Албания</option>
+                    <option value="+389">🇲🇰 +389 С. Македония</option>
+                    <option value="+387">🇧🇦 +387 Босния и Герц.</option>
+                    <option value="+382">🇲🇪 +382 Черногория</option>
+                    <option value="+383">🇽🇰 +383 Косово</option>
+                    <option value="+352">🇱🇺 +352 Люксембург</option>
+                    <option value="+354">🇮🇸 +354 Исландия</option>
+                    <option value="+356">🇲🇹 +356 Мальта</option>
+                    <option value="+357">🇨🇾 +357 Кипр</option>
+                    <option value="+376">🇦🇩 +376 Андорра</option>
+                    <option value="+377">🇲🇨 +377 Монако</option>
+                    <option value="+378">🇸🇲 +378 Сан-Марино</option>
+                    <option value="+423">🇱🇮 +423 Лихтенштейн</option>
+                    <option value="+298">🇫🇴 +298 Фарерские о-ва</option>
+                    <option value="+350">🇬🇮 +350 Гибралтар</option>
+                  </optgroup>
+                  <optgroup label="── Америка ──">
+                    <option value="+1">🇺🇸 +1 США</option>
+                    <option value="+1">🇨🇦 +1 Канада</option>
+                    <option value="+52">🇲🇽 +52 Мексика</option>
+                    <option value="+55">🇧🇷 +55 Бразилия</option>
+                    <option value="+54">🇦🇷 +54 Аргентина</option>
+                    <option value="+57">🇨🇴 +57 Колумбия</option>
+                    <option value="+56">🇨🇱 +56 Чили</option>
+                    <option value="+51">🇵🇪 +51 Перу</option>
+                    <option value="+58">🇻🇪 +58 Венесуэла</option>
+                    <option value="+593">🇪🇨 +593 Эквадор</option>
+                    <option value="+591">🇧🇴 +591 Боливия</option>
+                    <option value="+595">🇵🇾 +595 Парагвай</option>
+                    <option value="+598">🇺🇾 +598 Уругвай</option>
+                    <option value="+507">🇵🇦 +507 Панама</option>
+                    <option value="+506">🇨🇷 +506 Коста-Рика</option>
+                    <option value="+502">🇬🇹 +502 Гватемала</option>
+                    <option value="+504">🇭🇳 +504 Гондурас</option>
+                    <option value="+503">🇸🇻 +503 Сальвадор</option>
+                    <option value="+505">🇳🇮 +505 Никарагуа</option>
+                    <option value="+501">🇧🇿 +501 Белиз</option>
+                    <option value="+53">🇨🇺 +53 Куба</option>
+                    <option value="+1">🇩🇴 +1 Доминикана</option>
+                    <option value="+509">🇭🇹 +509 Гаити</option>
+                    <option value="+1">🇯🇲 +1 Ямайка</option>
+                    <option value="+1">🇹🇹 +1 Тринидад и Тобаго</option>
+                    <option value="+1">🇧🇧 +1 Барбадос</option>
+                    <option value="+1">🇧🇸 +1 Багамы</option>
+                    <option value="+592">🇬🇾 +592 Гайана</option>
+                    <option value="+597">🇸🇷 +597 Суринам</option>
+                    <option value="+594">🇬🇫 +594 Фр. Гвиана</option>
+                    <option value="+1">🇵🇷 +1 Пуэрто-Рико</option>
+                    <option value="+1">🇬🇩 +1 Гренада</option>
+                    <option value="+1">🇱🇨 +1 Сент-Люсия</option>
+                    <option value="+1">🇻🇨 +1 Сент-Винсент</option>
+                    <option value="+1">🇦🇬 +1 Антигуа и Барбуда</option>
+                    <option value="+1">🇩🇲 +1 Доминика</option>
+                    <option value="+1">🇰🇳 +1 Сент-Китс и Невис</option>
+                    <option value="+297">🇦🇼 +297 Аруба</option>
+                    <option value="+599">🇨🇼 +599 Кюрасао</option>
+                    <option value="+596">🇲🇶 +596 Мартиника</option>
+                    <option value="+590">🇬🇵 +590 Гваделупа</option>
+                    <option value="+1">🇧🇲 +1 Бермуды</option>
+                    <option value="+1">🇰🇾 +1 Острова Кайман</option>
+                  </optgroup>
+                  <optgroup label="── Азия ──">
+                    <option value="+86">🇨🇳 +86 Китай</option>
+                    <option value="+81">🇯🇵 +81 Япония</option>
+                    <option value="+82">🇰🇷 +82 Ю. Корея</option>
+                    <option value="+91">🇮🇳 +91 Индия</option>
+                    <option value="+92">🇵🇰 +92 Пакистан</option>
+                    <option value="+62">🇮🇩 +62 Индонезия</option>
+                    <option value="+66">🇹🇭 +66 Таиланд</option>
+                    <option value="+84">🇻🇳 +84 Вьетнам</option>
+                    <option value="+60">🇲🇾 +60 Малайзия</option>
+                    <option value="+63">🇵🇭 +63 Филиппины</option>
+                    <option value="+880">🇧🇩 +880 Бангладеш</option>
+                    <option value="+94">🇱🇰 +94 Шри-Ланка</option>
+                    <option value="+977">🇳🇵 +977 Непал</option>
+                    <option value="+95">🇲🇲 +95 Мьянма</option>
+                    <option value="+855">🇰🇭 +855 Камбоджа</option>
+                    <option value="+856">🇱🇦 +856 Лаос</option>
+                    <option value="+976">🇲🇳 +976 Монголия</option>
+                    <option value="+65">🇸🇬 +65 Сингапур</option>
+                    <option value="+673">🇧🇳 +673 Бруней</option>
+                    <option value="+670">🇹🇱 +670 Тимор-Лесте</option>
+                    <option value="+886">🇹🇼 +886 Тайвань</option>
+                    <option value="+852">🇭🇰 +852 Гонконг</option>
+                    <option value="+853">🇲🇴 +853 Макао</option>
+                    <option value="+93">🇦🇫 +93 Афганистан</option>
+                    <option value="+960">🇲🇻 +960 Мальдивы</option>
+                    <option value="+975">🇧🇹 +975 Бутан</option>
+                    <option value="+850">🇰🇵 +850 С. Корея</option>
+                  </optgroup>
+                  <optgroup label="── Африка ──">
+                    <option value="+20">🇪🇬 +20 Египет</option>
+                    <option value="+27">🇿🇦 +27 ЮАР</option>
+                    <option value="+212">🇲🇦 +212 Марокко</option>
+                    <option value="+213">🇩🇿 +213 Алжир</option>
+                    <option value="+216">🇹🇳 +216 Тунис</option>
+                    <option value="+218">🇱🇾 +218 Ливия</option>
+                    <option value="+234">🇳🇬 +234 Нигерия</option>
+                    <option value="+254">🇰🇪 +254 Кения</option>
+                    <option value="+251">🇪🇹 +251 Эфиопия</option>
+                    <option value="+255">🇹🇿 +255 Танзания</option>
+                    <option value="+233">🇬🇭 +233 Гана</option>
+                    <option value="+256">🇺🇬 +256 Уганда</option>
+                    <option value="+237">🇨🇲 +237 Камерун</option>
+                    <option value="+225">🇨🇮 +225 Кот-д'Ивуар</option>
+                    <option value="+221">🇸🇳 +221 Сенегал</option>
+                    <option value="+250">🇷🇼 +250 Руанда</option>
+                    <option value="+258">🇲🇿 +258 Мозамбик</option>
+                    <option value="+263">🇿🇼 +263 Зимбабве</option>
+                    <option value="+244">🇦🇴 +244 Ангола</option>
+                    <option value="+249">🇸🇩 +249 Судан</option>
+                    <option value="+211">🇸🇸 +211 Южный Судан</option>
+                    <option value="+252">🇸🇴 +252 Сомали</option>
+                    <option value="+261">🇲🇬 +261 Мадагаскар</option>
+                    <option value="+260">🇿🇲 +260 Замбия</option>
+                    <option value="+223">🇲🇱 +223 Мали</option>
+                    <option value="+227">🇳🇪 +227 Нигер</option>
+                    <option value="+226">🇧🇫 +226 Буркина-Фасо</option>
+                    <option value="+235">🇹🇩 +235 Чад</option>
+                    <option value="+224">🇬🇳 +224 Гвинея</option>
+                    <option value="+229">🇧🇯 +229 Бенин</option>
+                    <option value="+228">🇹🇬 +228 Того</option>
+                    <option value="+232">🇸🇱 +232 Сьерра-Леоне</option>
+                    <option value="+231">🇱🇷 +231 Либерия</option>
+                    <option value="+222">🇲🇷 +222 Мавритания</option>
+                    <option value="+220">🇬🇲 +220 Гамбия</option>
+                    <option value="+242">🇨🇬 +242 Конго</option>
+                    <option value="+243">🇨🇩 +243 ДР Конго</option>
+                    <option value="+236">🇨🇫 +236 ЦАР</option>
+                    <option value="+241">🇬🇦 +241 Габон</option>
+                    <option value="+240">🇬🇶 +240 Экв. Гвинея</option>
+                    <option value="+239">🇸🇹 +239 Сан-Томе и Принсипи</option>
+                    <option value="+238">🇨🇻 +238 Кабо-Верде</option>
+                    <option value="+269">🇰🇲 +269 Коморы</option>
+                    <option value="+253">🇩🇯 +253 Джибути</option>
+                    <option value="+291">🇪🇷 +291 Эритрея</option>
+                    <option value="+267">🇧🇼 +267 Ботсвана</option>
+                    <option value="+264">🇳🇦 +264 Намибия</option>
+                    <option value="+266">🇱🇸 +266 Лесото</option>
+                    <option value="+268">🇸🇿 +268 Эсватини</option>
+                    <option value="+265">🇲🇼 +265 Малави</option>
+                    <option value="+248">🇸🇨 +248 Сейшелы</option>
+                    <option value="+230">🇲🇺 +230 Маврикий</option>
+                    <option value="+257">🇧🇮 +257 Бурунди</option>
+                    <option value="+245">🇬🇼 +245 Гвинея-Бисау</option>
+                  </optgroup>
+                  <optgroup label="── Океания ──">
+                    <option value="+61">🇦🇺 +61 Австралия</option>
+                    <option value="+64">🇳🇿 +64 Нов. Зеландия</option>
+                    <option value="+675">🇵🇬 +675 Папуа Н. Гвинея</option>
+                    <option value="+679">🇫🇯 +679 Фиджи</option>
+                    <option value="+677">🇸🇧 +677 Соломоновы о-ва</option>
+                    <option value="+678">🇻🇺 +678 Вануату</option>
+                    <option value="+685">🇼🇸 +685 Самоа</option>
+                    <option value="+676">🇹🇴 +676 Тонга</option>
+                    <option value="+686">🇰🇮 +686 Кирибати</option>
+                    <option value="+691">🇫🇲 +691 Микронезия</option>
+                    <option value="+692">🇲🇭 +692 Маршалловы о-ва</option>
+                    <option value="+680">🇵🇼 +680 Палау</option>
+                    <option value="+674">🇳🇷 +674 Науру</option>
+                    <option value="+688">🇹🇻 +688 Тувалу</option>
+                  </optgroup>
+                </select>
+                <input type="tel" id="cfPhone" placeholder="900 000 00 00">
+              </div>
+            </div>
             <div class="eit2-field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-            <div class="eit2-field"><label>Телефон</label><input type="tel" id="cfPhone" placeholder="+7 ___ ___ __ __"></div>
-            <div class="eit2-field"><label>Страна</label><input type="text" placeholder="Ваша страна"></div>
-            <div class="eit2-field full"><label>Интересующая услуга</label>
+            <div class="eit2-field"><label>Интересующая услуга</label>
               <select><option>Пересадка волос</option></select>
             </div>
-          </div>
-        </div>
-
-        <div class="eit2-form-pane" data-pane="2">
-          <div class="eit2-field-grid">
-            <div class="eit2-field"><label>Степень выпадения</label><select><option>Начальная</option><option>Средняя</option><option>Выраженная</option></select></div>
-            <div class="eit2-field"><label>Возраст</label><input type="number" placeholder="Например, 35"></div>
-            <div class="eit2-field full"><label>Опишите вашу ситуацию</label><textarea rows="3" placeholder="Когда началось выпадение, делали ли пересадку ранее и т.д."></textarea></div>
-            <div class="eit2-upload">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <div><strong>Загрузите фото</strong> (по желанию) — спереди, сверху, по бокам</div>
-              <div style="font-size:12px;margin-top:6px;">JPG, PNG до 10 МБ</div>
-              <input type="file" multiple accept="image/*" style="margin-top:12px;">
-            </div>
-          </div>
-        </div>
-
-        <div class="eit2-form-pane" data-pane="3">
-          <div class="eit2-field-grid">
-            <div class="eit2-field"><label>Удобный способ связи</label><select><option>WhatsApp</option><option>Telegram</option><option>Звонок</option><option>Email</option></select></div>
-            <div class="eit2-field"><label>Удобное время</label><select><option>Утро</option><option>День</option><option>Вечер</option></select></div>
-            <div class="eit2-field full"><label>Дополнительно</label><textarea rows="3" placeholder="Ваши вопросы и пожелания"></textarea></div>
           </div>
         </div>
 
         <div class="eit2-form-foot">
           <span class="eit2-form-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ваши данные на 100% конфиденциальны.</span>
           <div class="eit2-form-nav">
-            <button type="button" class="eit2-btn eit2-btn-outline" id="cfPrev" style="display:none;">← Назад</button>
-            <button type="button" class="eit2-btn eit2-btn-primary" id="cfNext">Продолжить →</button>
-            <button type="button" class="eit2-btn eit2-btn-gold" id="cfSubmit" style="display:none;">Отправить заявку</button>
+            <button type="button" class="eit2-btn eit2-btn-primary" id="cfSubmit">Отправить заявку</button>
           </div>
         </div>
       </form>
@@ -779,7 +1070,7 @@
             <img src="https://esteinturkey.com/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="История пациента — пересадка волос">
           </div>
           <div class="eit2-story-body">
-            <div class="eit2-story-name">Тимур</div>
+            <div class="eit2-story-name">Абдулхаким</div>
             <div class="eit2-story-role">Германия · Пересадка волос</div>
             <div class="eit2-story-quote">«Результат превзошёл все ожидания! Волосы выглядят абсолютно естественно, клиника на высшем уровне.»</div>
             <div class="eit2-story-foot"><span style="color:var(--eit-text-muted)">🇩🇪 Германия</span><span class="eit2-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> 5.0</span></div>
@@ -931,32 +1222,35 @@
     });
   });
 
-  /* ── Multi-step form ── */
-  let cfStep = 1; const cfMax = 3;
-  const panes = root.querySelectorAll('.eit2-form-pane');
-  const steps = root.querySelectorAll('.eit2-step');
-  const btnPrev = document.getElementById('cfPrev');
-  const btnNext = document.getElementById('cfNext');
+  /* ── Single-step consultation form ── */
   const btnSubmit = document.getElementById('cfSubmit');
-  function cfRender(){
-    panes.forEach(p => p.classList.toggle('active', +p.dataset.pane === cfStep));
-    steps.forEach(s => s.classList.toggle('active', +s.dataset.step <= cfStep));
-    btnPrev.style.display = cfStep > 1 ? 'inline-flex' : 'none';
-    btnNext.style.display = cfStep < cfMax ? 'inline-flex' : 'none';
-    btnSubmit.style.display = cfStep === cfMax ? 'inline-flex' : 'none';
-  }
-  if (btnNext) {
-    btnNext.addEventListener('click', () => { if (cfStep < cfMax) { cfStep++; cfRender(); } });
-    btnPrev.addEventListener('click', () => { if (cfStep > 1) { cfStep--; cfRender(); } });
+  if (btnSubmit) {
     btnSubmit.addEventListener('click', (e) => {
       e.preventDefault();
-      const name = (document.getElementById('cfName').value || '').trim();
-      const phone = (document.getElementById('cfPhone').value || '').trim();
-      if (!name || !phone) { return; }
+      const nameEl  = document.getElementById('cfName');
+      const phoneEl = document.getElementById('cfPhone');
+      const phoneCodeEl = document.getElementById('cfPhoneCode');
+      const name  = (nameEl  ? nameEl.value  : '').trim();
+      const phoneRaw = (phoneEl ? phoneEl.value : '').trim();
+      const phone = (phoneCodeEl ? phoneCodeEl.value : '') + phoneRaw;
+      if (!name) {
+        if (nameEl) { nameEl.style.border = '2px solid #E91E8C'; nameEl.focus(); }
+        return;
+      }
+      if (!phoneRaw) {
+        if (phoneEl) { phoneEl.style.border = '2px solid #E91E8C'; phoneEl.focus(); }
+        return;
+      }
+      if (nameEl)  nameEl.style.border  = '';
+      if (phoneEl) phoneEl.style.border = '';
+      if (phoneCodeEl) phoneCodeEl.style.border = '';
       btnSubmit.textContent = 'Отправка...';
       btnSubmit.disabled = true;
+      const doRedirect = function() { window.location.href = '/ru/thank-you-for-your-application-este-in-turkey/'; };
+      // Fetch başarılı olsun ya da olmasın 2 saniye içinde yönlendir
+      const fallback = setTimeout(doRedirect, 2000);
       const payload = {
-        name, phone: '+7' + phone, email: '',
+        name, phone: phone, email: '',
         gender: '—', age: 0, years: 0, prev: '—', norwood: '—',
         when: '—', source: 'Пересадка волос 2025 — Консультация'
       };
@@ -964,19 +1258,16 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-      }).then(() => {
+      }).then(function() {
+        clearTimeout(fallback);
         btnSubmit.textContent = '✓ Заявка отправлена!';
         btnSubmit.style.background = '#1D5C5C';
-        setTimeout(function(){ window.location.href = '/ru/spasibo/'; }, 800);
-        setTimeout(() => { btnSubmit.textContent = 'Отправить заявку'; btnSubmit.disabled = false; btnSubmit.style.background = ''; }, 5000);
-      }).catch(() => {
-        btnSubmit.textContent = '✓ Заявка отправлена!';
-        btnSubmit.style.background = '#1D5C5C';
-        setTimeout(function(){ window.location.href = '/ru/spasibo/'; }, 800);
-        setTimeout(() => { btnSubmit.textContent = 'Отправить заявку'; btnSubmit.disabled = false; btnSubmit.style.background = ''; }, 5000);
+        doRedirect();
+      }).catch(function() {
+        clearTimeout(fallback);
+        doRedirect();
       });
     });
-    cfRender();
   }
 
   /* ── FAQ ── */
@@ -989,10 +1280,36 @@
   });
 
   /* ── Fade-in ── */
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  root.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  const fadeEls = root.querySelectorAll('.fade-in');
+  const revealAll = () => fadeEls.forEach(el => el.classList.add('visible'));
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+    let _observed = false;
+    const showInView = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      fadeEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        /* Elementor lazy-render: koordinatlar 0 döndüğünde viewport'ta varsay */
+        if (r.top < vh + 50 && r.bottom >= 0) el.classList.add('visible');
+        else if (!_observed) obs.observe(el);
+      });
+      _observed = true;
+    };
+    /* Birden fazla noktada dene */
+    requestAnimationFrame(showInView);
+    [50, 200, 500].forEach(d => setTimeout(showInView, d));
+    if (document.readyState === 'complete') {
+      showInView();
+    } else {
+      window.addEventListener('load', () => { showInView(); setTimeout(showInView, 200); });
+    }
+    /* Kesin fallback — 600ms'de hepsini aç */
+    setTimeout(revealAll, 600);
+  } else {
+    revealAll();
+  }
 
   /* ── Smooth scroll ── */
   root.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1117,12 +1434,20 @@
 .eit-quiz-input:focus { border-color: #2E8B8B; background: #fff; }
 .eit-quiz-input::placeholder { color: #aab8b8; }
 .eit-quiz-phone-wrap { display: flex; gap: 0; }
-.eit-quiz-phone-flag {
-  display: flex; align-items: center; gap: 6px; padding: 14px 12px;
+.eit-quiz-phone-code {
+  flex: 0 0 auto; max-width: 155px; min-width: 0;
+  padding: 14px 26px 14px 12px;
   border: 1.5px solid rgba(29,92,92,.18); border-right: none;
-  border-radius: 10px 0 0 10px; background: #F8F4EF; font-size: 14px; white-space: nowrap;
+  border-radius: 10px 0 0 10px; background: #F8F4EF;
+  font-size: 13px; font-family: 'Montserrat', sans-serif; color: #1A2A2A;
+  outline: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
 }
-.eit-quiz-phone-wrap .eit-quiz-input { border-radius: 0 10px 10px 0; }
+.eit-quiz-phone-code:focus { outline: none; }
+.eit-quiz-phone-wrap .eit-quiz-input { border-radius: 0 10px 10px 0; border-left: none; }
 
 .eit-quiz-send {
   background: linear-gradient(135deg, #1D5C5C, #2E8B8B);
@@ -1275,7 +1600,230 @@
         +'<div class="eit-quiz-form" id="eit-qcontact">'
         +'<input class="eit-quiz-input" id="eq-name" type="text" placeholder="Имя и фамилия">'
         +'<div class="eit-quiz-phone-wrap">'
-        +'<span class="eit-quiz-phone-flag">🇷🇺 +7</span>'
+        +'<select class="eit-quiz-phone-code" id="eq-phone-code" aria-label="Код страны">'
+        +'<optgroup label="── СНГ ──">'
+        +'<option value="+7" selected>🇷🇺 +7 Россия</option>'
+        +'<option value="+380">🇺🇦 +380 Украина</option>'
+        +'<option value="+375">🇧🇾 +375 Беларусь</option>'
+        +'<option value="+7">🇰🇿 +7 Казахстан</option>'
+        +'<option value="+994">🇦🇿 +994 Азербайджан</option>'
+        +'<option value="+995">🇬🇪 +995 Грузия</option>'
+        +'<option value="+374">🇦🇲 +374 Армения</option>'
+        +'<option value="+998">🇺🇿 +998 Узбекистан</option>'
+        +'<option value="+992">🇹🇯 +992 Таджикистан</option>'
+        +'<option value="+993">🇹🇲 +993 Туркменистан</option>'
+        +'<option value="+996">🇰🇬 +996 Кыргызстан</option>'
+        +'<option value="+373">🇲🇩 +373 Молдова</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Ближний Восток ──">'
+        +'<option value="+90">🇹🇷 +90 Турция</option>'
+        +'<option value="+966">🇸🇦 +966 Саудовская Аравия</option>'
+        +'<option value="+971">🇦🇪 +971 ОАЭ</option>'
+        +'<option value="+972">🇮🇱 +972 Израиль</option>'
+        +'<option value="+98">🇮🇷 +98 Иран</option>'
+        +'<option value="+964">🇮🇶 +964 Ирак</option>'
+        +'<option value="+962">🇯🇴 +962 Иордания</option>'
+        +'<option value="+961">🇱🇧 +961 Ливан</option>'
+        +'<option value="+965">🇰🇼 +965 Кувейт</option>'
+        +'<option value="+974">🇶🇦 +974 Катар</option>'
+        +'<option value="+973">🇧🇭 +973 Бахрейн</option>'
+        +'<option value="+968">🇴🇲 +968 Оман</option>'
+        +'<option value="+967">🇾🇪 +967 Йемен</option>'
+        +'<option value="+963">🇸🇾 +963 Сирия</option>'
+        +'<option value="+970">🇵🇸 +970 Палестина</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Европа ──">'
+        +'<option value="+49">🇩🇪 +49 Германия</option>'
+        +'<option value="+44">🇬🇧 +44 Великобритания</option>'
+        +'<option value="+33">🇫🇷 +33 Франция</option>'
+        +'<option value="+39">🇮🇹 +39 Италия</option>'
+        +'<option value="+34">🇪🇸 +34 Испания</option>'
+        +'<option value="+31">🇳🇱 +31 Нидерланды</option>'
+        +'<option value="+32">🇧🇪 +32 Бельгия</option>'
+        +'<option value="+43">🇦🇹 +43 Австрия</option>'
+        +'<option value="+41">🇨🇭 +41 Швейцария</option>'
+        +'<option value="+46">🇸🇪 +46 Швеция</option>'
+        +'<option value="+47">🇳🇴 +47 Норвегия</option>'
+        +'<option value="+45">🇩🇰 +45 Дания</option>'
+        +'<option value="+358">🇫🇮 +358 Финляндия</option>'
+        +'<option value="+48">🇵🇱 +48 Польша</option>'
+        +'<option value="+420">🇨🇿 +420 Чехия</option>'
+        +'<option value="+36">🇭🇺 +36 Венгрия</option>'
+        +'<option value="+40">🇷🇴 +40 Румыния</option>'
+        +'<option value="+359">🇧🇬 +359 Болгария</option>'
+        +'<option value="+381">🇷🇸 +381 Сербия</option>'
+        +'<option value="+385">🇭🇷 +385 Хорватия</option>'
+        +'<option value="+30">🇬🇷 +30 Греция</option>'
+        +'<option value="+351">🇵🇹 +351 Португалия</option>'
+        +'<option value="+353">🇮🇪 +353 Ирландия</option>'
+        +'<option value="+371">🇱🇻 +371 Латвия</option>'
+        +'<option value="+370">🇱🇹 +370 Литва</option>'
+        +'<option value="+372">🇪🇪 +372 Эстония</option>'
+        +'<option value="+421">🇸🇰 +421 Словакия</option>'
+        +'<option value="+386">🇸🇮 +386 Словения</option>'
+        +'<option value="+355">🇦🇱 +355 Албания</option>'
+        +'<option value="+389">🇲🇰 +389 С. Македония</option>'
+        +'<option value="+387">🇧🇦 +387 Босния и Герц.</option>'
+        +'<option value="+382">🇲🇪 +382 Черногория</option>'
+        +'<option value="+383">🇽🇰 +383 Косово</option>'
+        +'<option value="+352">🇱🇺 +352 Люксембург</option>'
+        +'<option value="+354">🇮🇸 +354 Исландия</option>'
+        +'<option value="+356">🇲🇹 +356 Мальта</option>'
+        +'<option value="+357">🇨🇾 +357 Кипр</option>'
+        +'<option value="+376">🇦🇩 +376 Андорра</option>'
+        +'<option value="+377">🇲🇨 +377 Монако</option>'
+        +'<option value="+378">🇸🇲 +378 Сан-Марино</option>'
+        +'<option value="+423">🇱🇮 +423 Лихтенштейн</option>'
+        +'<option value="+298">🇫🇴 +298 Фарерские о-ва</option>'
+        +'<option value="+350">🇬🇮 +350 Гибралтар</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Америка ──">'
+        +'<option value="+1">🇺🇸 +1 США</option>'
+        +'<option value="+1">🇨🇦 +1 Канада</option>'
+        +'<option value="+52">🇲🇽 +52 Мексика</option>'
+        +'<option value="+55">🇧🇷 +55 Бразилия</option>'
+        +'<option value="+54">🇦🇷 +54 Аргентина</option>'
+        +'<option value="+57">🇨🇴 +57 Колумбия</option>'
+        +'<option value="+56">🇨🇱 +56 Чили</option>'
+        +'<option value="+51">🇵🇪 +51 Перу</option>'
+        +'<option value="+58">🇻🇪 +58 Венесуэла</option>'
+        +'<option value="+593">🇪🇨 +593 Эквадор</option>'
+        +'<option value="+591">🇧🇴 +591 Боливия</option>'
+        +'<option value="+595">🇵🇾 +595 Парагвай</option>'
+        +'<option value="+598">🇺🇾 +598 Уругвай</option>'
+        +'<option value="+507">🇵🇦 +507 Панама</option>'
+        +'<option value="+506">🇨🇷 +506 Коста-Рика</option>'
+        +'<option value="+502">🇬🇹 +502 Гватемала</option>'
+        +'<option value="+504">🇭🇳 +504 Гондурас</option>'
+        +'<option value="+503">🇸🇻 +503 Сальвадор</option>'
+        +'<option value="+505">🇳🇮 +505 Никарагуа</option>'
+        +'<option value="+501">🇧🇿 +501 Белиз</option>'
+        +'<option value="+53">🇨🇺 +53 Куба</option>'
+        +'<option value="+1">🇩🇴 +1 Доминикана</option>'
+        +'<option value="+509">🇭🇹 +509 Гаити</option>'
+        +'<option value="+1">🇯🇲 +1 Ямайка</option>'
+        +'<option value="+1">🇹🇹 +1 Тринидад и Тобаго</option>'
+        +'<option value="+1">🇧🇧 +1 Барбадос</option>'
+        +'<option value="+1">🇧🇸 +1 Багамы</option>'
+        +'<option value="+592">🇬🇾 +592 Гайана</option>'
+        +'<option value="+597">🇸🇷 +597 Суринам</option>'
+        +'<option value="+594">🇬🇫 +594 Фр. Гвиана</option>'
+        +'<option value="+1">🇵🇷 +1 Пуэрто-Рико</option>'
+        +'<option value="+1">🇬🇩 +1 Гренада</option>'
+        +'<option value="+1">🇱🇨 +1 Сент-Люсия</option>'
+        +'<option value="+1">🇻🇨 +1 Сент-Винсент</option>'
+        +'<option value="+1">🇦🇬 +1 Антигуа и Барбуда</option>'
+        +'<option value="+1">🇩🇲 +1 Доминика</option>'
+        +'<option value="+1">🇰🇳 +1 Сент-Китс и Невис</option>'
+        +'<option value="+297">🇦🇼 +297 Аруба</option>'
+        +'<option value="+599">🇨🇼 +599 Кюрасао</option>'
+        +'<option value="+596">🇲🇶 +596 Мартиника</option>'
+        +'<option value="+590">🇬🇵 +590 Гваделупа</option>'
+        +'<option value="+1">🇧🇲 +1 Бермуды</option>'
+        +'<option value="+1">🇰🇾 +1 Острова Кайман</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Азия ──">'
+        +'<option value="+86">🇨🇳 +86 Китай</option>'
+        +'<option value="+81">🇯🇵 +81 Япония</option>'
+        +'<option value="+82">🇰🇷 +82 Ю. Корея</option>'
+        +'<option value="+91">🇮🇳 +91 Индия</option>'
+        +'<option value="+92">🇵🇰 +92 Пакистан</option>'
+        +'<option value="+62">🇮🇩 +62 Индонезия</option>'
+        +'<option value="+66">🇹🇭 +66 Таиланд</option>'
+        +'<option value="+84">🇻🇳 +84 Вьетнам</option>'
+        +'<option value="+60">🇲🇾 +60 Малайзия</option>'
+        +'<option value="+63">🇵🇭 +63 Филиппины</option>'
+        +'<option value="+880">🇧🇩 +880 Бангладеш</option>'
+        +'<option value="+94">🇱🇰 +94 Шри-Ланка</option>'
+        +'<option value="+977">🇳🇵 +977 Непал</option>'
+        +'<option value="+95">🇲🇲 +95 Мьянма</option>'
+        +'<option value="+855">🇰🇭 +855 Камбоджа</option>'
+        +'<option value="+856">🇱🇦 +856 Лаос</option>'
+        +'<option value="+976">🇲🇳 +976 Монголия</option>'
+        +'<option value="+65">🇸🇬 +65 Сингапур</option>'
+        +'<option value="+673">🇧🇳 +673 Бруней</option>'
+        +'<option value="+670">🇹🇱 +670 Тимор-Лесте</option>'
+        +'<option value="+886">🇹🇼 +886 Тайвань</option>'
+        +'<option value="+852">🇭🇰 +852 Гонконг</option>'
+        +'<option value="+853">🇲🇴 +853 Макао</option>'
+        +'<option value="+93">🇦🇫 +93 Афганистан</option>'
+        +'<option value="+960">🇲🇻 +960 Мальдивы</option>'
+        +'<option value="+975">🇧🇹 +975 Бутан</option>'
+        +'<option value="+850">🇰🇵 +850 С. Корея</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Африка ──">'
+        +'<option value="+20">🇪🇬 +20 Египет</option>'
+        +'<option value="+27">🇿🇦 +27 ЮАР</option>'
+        +'<option value="+212">🇲🇦 +212 Марокко</option>'
+        +'<option value="+213">🇩🇿 +213 Алжир</option>'
+        +'<option value="+216">🇹🇳 +216 Тунис</option>'
+        +'<option value="+218">🇱🇾 +218 Ливия</option>'
+        +'<option value="+234">🇳🇬 +234 Нигерия</option>'
+        +'<option value="+254">🇰🇪 +254 Кения</option>'
+        +'<option value="+251">🇪🇹 +251 Эфиопия</option>'
+        +'<option value="+255">🇹🇿 +255 Танзания</option>'
+        +'<option value="+233">🇬🇭 +233 Гана</option>'
+        +'<option value="+256">🇺🇬 +256 Уганда</option>'
+        +'<option value="+237">🇨🇲 +237 Камерун</option>'
+        +'<option value="+225">🇨🇮 +225 Кот-д\'Ивуар</option>'
+        +'<option value="+221">🇸🇳 +221 Сенегал</option>'
+        +'<option value="+250">🇷🇼 +250 Руанда</option>'
+        +'<option value="+258">🇲🇿 +258 Мозамбик</option>'
+        +'<option value="+263">🇿🇼 +263 Зимбабве</option>'
+        +'<option value="+244">🇦🇴 +244 Ангола</option>'
+        +'<option value="+249">🇸🇩 +249 Судан</option>'
+        +'<option value="+211">🇸🇸 +211 Южный Судан</option>'
+        +'<option value="+252">🇸🇴 +252 Сомали</option>'
+        +'<option value="+261">🇲🇬 +261 Мадагаскар</option>'
+        +'<option value="+260">🇿🇲 +260 Замбия</option>'
+        +'<option value="+223">🇲🇱 +223 Мали</option>'
+        +'<option value="+227">🇳🇪 +227 Нигер</option>'
+        +'<option value="+226">🇧🇫 +226 Буркина-Фасо</option>'
+        +'<option value="+235">🇹🇩 +235 Чад</option>'
+        +'<option value="+224">🇬🇳 +224 Гвинея</option>'
+        +'<option value="+229">🇧🇯 +229 Бенин</option>'
+        +'<option value="+228">🇹🇬 +228 Того</option>'
+        +'<option value="+232">🇸🇱 +232 Сьерра-Леоне</option>'
+        +'<option value="+231">🇱🇷 +231 Либерия</option>'
+        +'<option value="+222">🇲🇷 +222 Мавритания</option>'
+        +'<option value="+220">🇬🇲 +220 Гамбия</option>'
+        +'<option value="+242">🇨🇬 +242 Конго</option>'
+        +'<option value="+243">🇨🇩 +243 ДР Конго</option>'
+        +'<option value="+236">🇨🇫 +236 ЦАР</option>'
+        +'<option value="+241">🇬🇦 +241 Габон</option>'
+        +'<option value="+240">🇬🇶 +240 Экв. Гвинея</option>'
+        +'<option value="+239">🇸🇹 +239 Сан-Томе и Принсипи</option>'
+        +'<option value="+238">🇨🇻 +238 Кабо-Верде</option>'
+        +'<option value="+269">🇰🇲 +269 Коморы</option>'
+        +'<option value="+253">🇩🇯 +253 Джибути</option>'
+        +'<option value="+291">🇪🇷 +291 Эритрея</option>'
+        +'<option value="+267">🇧🇼 +267 Ботсвана</option>'
+        +'<option value="+264">🇳🇦 +264 Намибия</option>'
+        +'<option value="+266">🇱🇸 +266 Лесото</option>'
+        +'<option value="+268">🇸🇿 +268 Эсватини</option>'
+        +'<option value="+265">🇲🇼 +265 Малави</option>'
+        +'<option value="+248">🇸🇨 +248 Сейшелы</option>'
+        +'<option value="+230">🇲🇺 +230 Маврикий</option>'
+        +'<option value="+257">🇧🇮 +257 Бурунди</option>'
+        +'<option value="+245">🇬🇼 +245 Гвинея-Бисау</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Океания ──">'
+        +'<option value="+61">🇦🇺 +61 Австралия</option>'
+        +'<option value="+64">🇳🇿 +64 Нов. Зеландия</option>'
+        +'<option value="+675">🇵🇬 +675 Папуа Н. Гвинея</option>'
+        +'<option value="+679">🇫🇯 +679 Фиджи</option>'
+        +'<option value="+677">🇸🇧 +677 Соломоновы о-ва</option>'
+        +'<option value="+678">🇻🇺 +678 Вануату</option>'
+        +'<option value="+685">🇼🇸 +685 Самоа</option>'
+        +'<option value="+676">🇹🇴 +676 Тонга</option>'
+        +'<option value="+686">🇰🇮 +686 Кирибати</option>'
+        +'<option value="+691">🇫🇲 +691 Микронезия</option>'
+        +'<option value="+692">🇲🇭 +692 Маршалловы о-ва</option>'
+        +'<option value="+680">🇵🇼 +680 Палау</option>'
+        +'<option value="+674">🇳🇷 +674 Науру</option>'
+        +'<option value="+688">🇹🇻 +688 Тувалу</option>'
+        +'</optgroup>'
+        +'</select>'
         +'<input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="900 000 00 00">'
         +'</div>'
         +'<input class="eit-quiz-input" id="eq-email" type="email" placeholder="E-mail">'
@@ -1342,12 +1890,14 @@
 
   window.eitQuizSend = function(){
     var name = document.getElementById('eq-name').value.trim();
+    var phoneCodeEl = document.getElementById('eq-phone-code');
+    var phoneCode = phoneCodeEl ? phoneCodeEl.value : '+7';
     var phone = document.getElementById('eq-phone').value.trim();
     var email = document.getElementById('eq-email').value.trim();
     if(!name || !phone){ document.getElementById('eq-name').focus(); return; }
 
     var payload = {
-      name: name, phone: '+7'+phone, email: email,
+      name: name, phone: phoneCode + phone, email: email,
       gender: answers.gender||'—', age: answers.age||0, years: answers.years||0,
       prev: answers.prev||'—', norwood: answers.norwood||'—', when: answers.when||'—',
       source: 'Пересадка волос 2025'
@@ -1359,14 +1909,7 @@
       body: JSON.stringify(payload)
     }).catch(function(){});
 
-    document.getElementById('eit-quiz-body').innerHTML = '<div class="eit-quiz-success">'
-      +'<div class="eit-quiz-success-icon">✅</div>'
-      +'<h3>Спасибо, '+name+'!</h3>'
-      +'<p>Ваш анализ волос отправлен. Наши эксперты свяжутся с вами в течение 30 минут.</p>'
-      +'</div>';
-    document.getElementById('eit-qprogress').style.width = '100%';
-    document.getElementById('eit-qstep-label').textContent = 'Анализ завершён';
-    setTimeout(eitQuizClose, 4000);
+    window.location.href = '/ru/thank-you-for-your-application-este-in-turkey/';
   };
 
   document.getElementById('eit-quiz-overlay').addEventListener('click', function(e){
@@ -1375,5 +1918,131 @@
 })();
 </script>
 
+<script>
+(function(){
+  var h1 = document.querySelector('.eit2-hero h1');
+  if(h1){
+    var orig1 = h1.innerHTML;
+    var mq1 = window.matchMedia('(max-width: 620px)');
+    function apply1(e){
+      h1.innerHTML = e.matches
+        ? 'Надёжная<br>пересадка волос<span>в Турции</span>'
+        : orig1;
+    }
+    apply1(mq1);
+    mq1.addEventListener('change', apply1);
+  }
+  var h2 = document.querySelector('.eit2-sec-cream .eit2-head h2');
+  if(h2){
+    var orig2 = h2.innerHTML;
+    var mq2 = window.matchMedia('(max-width: 620px)');
+    function apply2(e){
+      h2.innerHTML = e.matches
+        ? 'Почему делают<br><span>пересадку волос</span>'
+        : orig2;
+    }
+    apply2(mq2);
+    mq2.addEventListener('change', apply2);
+  }
+  var heads = document.querySelectorAll('.eit2-head');
+  for(var i=0;i<heads.length;i++){
+    var eb = heads[i].querySelector('.eit2-eyebrow');
+    if(!eb || eb.textContent.trim() !== 'Пакеты') continue;
+    var h3 = heads[i].querySelector('h2');
+    if(!h3) continue;
+    var orig3 = h3.innerHTML;
+    var mq3 = window.matchMedia('(max-width: 620px)');
+    (function(el,orig){
+      function apply(e){
+        el.innerHTML = e.matches
+          ? 'Ваш персональный<br><span>пакет лечения</span>'
+          : orig;
+      }
+      apply(mq3);
+      mq3.addEventListener('change', apply);
+    })(h3, orig3);
+    break;
+  }
+  var heads2 = document.querySelectorAll('.eit2-head');
+  for(var j=0;j<heads2.length;j++){
+    var eb2 = heads2[j].querySelector('.eit2-eyebrow');
+    if(!eb2 || eb2.textContent.trim() !== 'Наш процесс') continue;
+    var h4 = heads2[j].querySelector('h2');
+    if(!h4) continue;
+    var orig4 = h4.innerHTML;
+    var mq4 = window.matchMedia('(max-width: 620px)');
+    (function(el,orig){
+      function apply(e){
+        el.innerHTML = e.matches
+          ? 'Пересадка волос<br><span>шаг за шагом</span>'
+          : orig;
+      }
+      apply(mq4);
+      mq4.addEventListener('change', apply);
+    })(h4, orig4);
+    break;
+  }
+  var heads3 = document.querySelectorAll('.eit2-head');
+  for(var k2=0;k2<heads3.length;k2++){
+    var eb3 = heads3[k2].querySelector('.eit2-eyebrow');
+    if(!eb3 || eb3.textContent.trim() !== 'Истории пациентов') continue;
+    var h6 = heads3[k2].querySelector('h2');
+    if(!h6) continue;
+    var orig6 = h6.innerHTML;
+    var mq6 = window.matchMedia('(max-width: 620px)');
+    (function(el,orig){
+      function apply(e){
+        el.innerHTML = e.matches
+          ? 'Истории успеха <span>наших пациентов</span>'
+          : orig;
+      }
+      apply(mq6);
+      mq6.addEventListener('change', apply);
+    })(h6, orig6);
+    break;
+  }
+  var heads4 = document.querySelectorAll('.eit2-head');
+  for(var k=0;k<heads3.length;k++){
+    var eb3 = heads3[k].querySelector('.eit2-eyebrow');
+    if(!eb3 || eb3.textContent.trim() !== 'Бесплатная консультация') continue;
+    var h5 = heads3[k].querySelector('h2');
+    if(!h5) continue;
+    var orig5 = h5.innerHTML;
+    var mq5 = window.matchMedia('(max-width: 620px)');
+    (function(el,orig){
+      function apply(e){
+        el.innerHTML = e.matches
+          ? 'Бесплатный анализ<br><span>и консультация</span>'
+          : orig;
+      }
+      apply(mq5);
+      mq5.addEventListener('change', apply);
+    })(h5, orig5);
+    break;
+  }
+})();
+</script>
+
+
+
+
 </body>
 </html>
+
+<!-- ── Floating WhatsApp + Telegram (global) ── -->
+<style id="eit-float-style">
+.eit-float-btns{position:fixed;bottom:28px;left:24px;display:flex;flex-direction:column;gap:10px;z-index:9000;}
+.eit-float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(0,0,0,.22);transition:transform .25s ease,box-shadow .25s ease;text-decoration:none;}
+.eit-float-btn:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 12px 30px rgba(0,0,0,.28);}
+.eit-float-btn svg{width:26px;height:26px;fill:#fff;}
+.eit-float-tg{background:#26A5E4;}
+.eit-float-wa{background:#25D366;}
+</style>
+<div class="eit-float-btns" id="eitFloatBtns">
+  <a href="https://t.me/esteinturkey" class="eit-float-btn eit-float-tg" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+  </a>
+  <a href="https://wa.me/905468189180" class="eit-float-btn eit-float-wa" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>

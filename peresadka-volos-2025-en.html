@@ -22,7 +22,37 @@
   Other images/videos are already connected with real links.
   -->
 
-  <style>
+  <style id="eit-vis-fix">
+.elementor-invisible{visibility:visible!important;opacity:1!important}
+.elementor-section:has(#eitHeader),.elementor-column:has(#eitHeader),
+.e-con:has(#eitHeader),.e-child:has(#eitHeader),
+.elementor-widget-container:has(#eitHeader){visibility:visible!important;opacity:1!important;padding:0!important;margin:0!important;}
+#eitHeader,#eitHeader *{visibility:visible!important;opacity:1!important}
+.eit-fue-fade{opacity:1!important;transform:none!important;transition:none!important}
+.eit-fue-fade.eit-anim-ready{opacity:0!important;transform:translateY(28px)!important;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)!important}
+.eit-fue-fade.eit-anim-ready.eit-fue-visible{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.eit-fue-fade.eit-anim-ready{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
+<script id="eit-vis-fix-js">
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  function init(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    document.querySelectorAll('.eit-fue-fade').forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top>vh+60){
+        el.classList.add('eit-anim-ready');
+        new IntersectionObserver(function(en,ob){
+          en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('eit-fue-visible');ob.unobserve(e.target);}});
+        },{threshold:0.05}).observe(el);
+      }
+    });
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
+</script>
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
 
 .elementor-section:has(.eit2-hero),
@@ -315,6 +345,48 @@
 .eit2-form-secure svg { width: 16px; height: 16px; color: var(--eit-accent); }
 .eit2-form-nav { display: flex; gap: 12px; }
 
+/* ════════ PHONE WRAP (consultation form) ════════ */
+.eit2-phone-wrap {
+  display: flex;
+  border: 1px solid var(--eit-border);
+  border-radius: 11px;
+  overflow: hidden;
+  background: var(--eit-soft);
+  transition: var(--eit-transition);
+}
+.eit2-phone-wrap:focus-within {
+  border-color: var(--eit-accent);
+  background: #fff;
+}
+.eit2-phone-wrap .eit2-country-select {
+  flex: 0 0 auto; max-width: 160px; min-width: 0;
+  font-family: var(--eit-font); font-size: 13px; color: var(--eit-text);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--eit-border);
+  border-radius: 0;
+  padding: 13px 26px 13px 12px;
+  outline: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+.eit2-phone-wrap .eit2-country-select:focus { outline: none; box-shadow: none; }
+.eit2-phone-wrap input[type="tel"] {
+  flex: 1; width: auto;
+  font-family: var(--eit-font); font-size: 15px; color: var(--eit-text);
+  background: transparent;
+  border: none; border-radius: 0;
+  padding: 13px 15px;
+  outline: none;
+}
+.eit2-phone-wrap input[type="tel"]:focus { outline: none; background: transparent; }
+.eit2-phone-wrap input[type="tel"]::placeholder { color: #aab8b8; }
+@media (max-width: 620px) {
+  .eit2-phone-wrap .eit2-country-select { max-width: 130px; font-size: 12px; }
+}
+
 /* ════════ SUCCESS STORIES ════════ */
 .eit2-story-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
 .eit2-story { background: #fff; border: 1px solid var(--eit-border); border-radius: var(--eit-radius); overflow: hidden; transition: var(--eit-transition); }
@@ -401,6 +473,11 @@
 /* fade */
 .fade-in { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .fade-in.visible { opacity: 1; transform: none; }
+/* Keep content visible if JS is disabled or fails */
+.no-js .fade-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 
 /* ════════ RESPONSIVE ════════ */
 @media (max-width: 1040px) {
@@ -492,7 +569,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Licensed clinic meeting international standards</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Experienced surgeons and hair-restoration specialists</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Personalised treatment plan for every patient</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Russian-language support at every step</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>English-language support at every step</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>VIP transfer, hotel, and full all-inclusive support</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Transparent pricing with no hidden fees and a lifetime guarantee</li>
           </ul>
@@ -574,7 +651,7 @@
         <div class="eit2-clinic-grid">
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><h4>1. 12,150+ patients</h4><p>Thousands of patients from around the world have trusted us and received life-changing results.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L4 5v6c0 5 3.4 7.8 8 10 4.6-2.2 8-5 8-10V5z"/><polyline points="9 12 11 14 15 10"/></svg><h4>2. Expert team</h4><p>Our surgeons are certified and specialised in hair restoration.</p></div>
-          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><h4>3. All-inclusive packages</h4><p>Flight, hotel, transfers, treatment, and aftercare — everything is included for total peace of mind.</p></div>
+          <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><h4>3. All-inclusive packages</h4><p>Hotel, transfers, treatment, and aftercare — everything is included for total peace of mind.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h4>4. Istanbul location</h4><p>Treatment in the heart of Istanbul, where modern medicine meets rich culture.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg><h4>5. Advanced methods</h4><p>We use the latest FUE and DHI techniques for a natural, dense result.</p></div>
           <div class="eit2-clinic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><h4>6. 24/7 support</h4><p>Our care team is on hand around the clock — before, during, and after your trip.</p></div>
@@ -598,7 +675,7 @@
           <div class="eit2-pkg-price">1,800<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Pre-op consultation</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a 5★ hotel</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a hotel</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP airport transfer (round trip)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Clinic–hotel–clinic transfers</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Translator support</li>
@@ -612,10 +689,10 @@
         <div class="eit2-pkg gold fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>DHI</h3></div>
           <div class="eit2-pkg-tagline">Maximum comfort. Complete care.</div>
-          <div class="eit2-pkg-price">from 2,200<span> €</span></div>
+          <div class="eit2-pkg-price">2,200<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Pre-op consultation</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a 5★ hotel</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a hotel</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP airport transfer (round trip)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Clinic–hotel–clinic transfers</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Translator support</li>
@@ -629,10 +706,10 @@
         <div class="eit2-pkg platinum fade-in">
           <div class="eit2-pkg-top"><div class="eit2-pkg-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><h3>MIX DHI+FUE</h3></div>
           <div class="eit2-pkg-tagline">Premium experience. Total peace of mind.</div>
-          <div class="eit2-pkg-price">from 2,600<span> €</span></div>
+          <div class="eit2-pkg-price">2,600<span> €</span></div>
           <ul>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Pre-op consultation</li>
-            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a 5★ hotel</li>
+            <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>2 nights at a hotel</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>VIP airport transfer (round trip)</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Clinic–hotel–clinic transfers</li>
             <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Translator support</li>
@@ -677,51 +754,253 @@
       </div>
       <form class="eit2-form-card" id="eit2ConsultForm" onsubmit="return false;">
         <div class="eit2-steps">
-          <div class="eit2-step active" data-step="1"><div class="eit2-step-line"></div><div class="eit2-step-dot">1</div><div class="eit2-step-lbl">Contacts</div></div>
-          <div class="eit2-step" data-step="2"><div class="eit2-step-line"></div><div class="eit2-step-dot">2</div><div class="eit2-step-lbl">Hair analysis</div></div>
-          <div class="eit2-step" data-step="3"><div class="eit2-step-dot">3</div><div class="eit2-step-lbl">Consultation</div></div>
+          <div class="eit2-step active" data-step="1"><div class="eit2-step-dot">1</div><div class="eit2-step-lbl">Contacts</div></div>
         </div>
 
         <div class="eit2-form-pane active" data-pane="1">
           <div class="eit2-field-grid">
             <div class="eit2-field"><label>Full name</label><input type="text" id="cfName" placeholder="Enter your name"></div>
+            <div class="eit2-field">
+              <label>Phone</label>
+              <div class="eit2-phone-wrap">
+                <select class="eit2-country-select" id="cfPhoneCode" aria-label="Country code">
+                  <optgroup label="── Americas ──">
+                    <option value="+1" selected>🇺🇸 +1 USA</option>
+                    <option value="+1">🇨🇦 +1 Canada</option>
+                    <option value="+52">🇲🇽 +52 Mexico</option>
+                    <option value="+55">🇧🇷 +55 Brazil</option>
+                    <option value="+54">🇦🇷 +54 Argentina</option>
+                    <option value="+57">🇨🇴 +57 Colombia</option>
+                    <option value="+56">🇨🇱 +56 Chile</option>
+                    <option value="+51">🇵🇪 +51 Peru</option>
+                    <option value="+58">🇻🇪 +58 Venezuela</option>
+                    <option value="+593">🇪🇨 +593 Ecuador</option>
+                    <option value="+591">🇧🇴 +591 Bolivia</option>
+                    <option value="+595">🇵🇾 +595 Paraguay</option>
+                    <option value="+598">🇺🇾 +598 Uruguay</option>
+                    <option value="+507">🇵🇦 +507 Panama</option>
+                    <option value="+506">🇨🇷 +506 Costa Rica</option>
+                    <option value="+502">🇬🇹 +502 Guatemala</option>
+                    <option value="+504">🇭🇳 +504 Honduras</option>
+                    <option value="+503">🇸🇻 +503 El Salvador</option>
+                    <option value="+505">🇳🇮 +505 Nicaragua</option>
+                    <option value="+501">🇧🇿 +501 Belize</option>
+                    <option value="+53">🇨🇺 +53 Cuba</option>
+                    <option value="+1">🇩🇴 +1 Dominican Rep.</option>
+                    <option value="+509">🇭🇹 +509 Haiti</option>
+                    <option value="+1">🇯🇲 +1 Jamaica</option>
+                    <option value="+1">🇹🇹 +1 Trinidad & Tobago</option>
+                    <option value="+1">🇧🇧 +1 Barbados</option>
+                    <option value="+1">🇧🇸 +1 Bahamas</option>
+                    <option value="+592">🇬🇾 +592 Guyana</option>
+                    <option value="+597">🇸🇷 +597 Suriname</option>
+                    <option value="+594">🇬🇫 +594 Fr. Guiana</option>
+                    <option value="+1">🇵🇷 +1 Puerto Rico</option>
+                    <option value="+1">🇬🇩 +1 Grenada</option>
+                    <option value="+1">🇱🇨 +1 Saint Lucia</option>
+                    <option value="+1">🇻🇨 +1 Saint Vincent</option>
+                    <option value="+1">🇦🇬 +1 Antigua & Barbuda</option>
+                    <option value="+1">🇩🇲 +1 Dominica</option>
+                    <option value="+1">🇰🇳 +1 St. Kitts & Nevis</option>
+                    <option value="+297">🇦🇼 +297 Aruba</option>
+                    <option value="+599">🇨🇼 +599 Curaçao</option>
+                    <option value="+596">🇲🇶 +596 Martinique</option>
+                    <option value="+590">🇬🇵 +590 Guadeloupe</option>
+                    <option value="+1">🇧🇲 +1 Bermuda</option>
+                    <option value="+1">🇰🇾 +1 Cayman Islands</option>
+                  </optgroup>
+                  <optgroup label="── Europe ──">
+                    <option value="+44">🇬🇧 +44 UK</option>
+                    <option value="+49">🇩🇪 +49 Germany</option>
+                    <option value="+33">🇫🇷 +33 France</option>
+                    <option value="+39">🇮🇹 +39 Italy</option>
+                    <option value="+34">🇪🇸 +34 Spain</option>
+                    <option value="+31">🇳🇱 +31 Netherlands</option>
+                    <option value="+32">🇧🇪 +32 Belgium</option>
+                    <option value="+43">🇦🇹 +43 Austria</option>
+                    <option value="+41">🇨🇭 +41 Switzerland</option>
+                    <option value="+46">🇸🇪 +46 Sweden</option>
+                    <option value="+47">🇳🇴 +47 Norway</option>
+                    <option value="+45">🇩🇰 +45 Denmark</option>
+                    <option value="+358">🇫🇮 +358 Finland</option>
+                    <option value="+48">🇵🇱 +48 Poland</option>
+                    <option value="+420">🇨🇿 +420 Czech Rep.</option>
+                    <option value="+36">🇭🇺 +36 Hungary</option>
+                    <option value="+40">🇷🇴 +40 Romania</option>
+                    <option value="+359">🇧🇬 +359 Bulgaria</option>
+                    <option value="+381">🇷🇸 +381 Serbia</option>
+                    <option value="+385">🇭🇷 +385 Croatia</option>
+                    <option value="+30">🇬🇷 +30 Greece</option>
+                    <option value="+351">🇵🇹 +351 Portugal</option>
+                    <option value="+353">🇮🇪 +353 Ireland</option>
+                    <option value="+371">🇱🇻 +371 Latvia</option>
+                    <option value="+370">🇱🇹 +370 Lithuania</option>
+                    <option value="+372">🇪🇪 +372 Estonia</option>
+                    <option value="+421">🇸🇰 +421 Slovakia</option>
+                    <option value="+386">🇸🇮 +386 Slovenia</option>
+                    <option value="+355">🇦🇱 +355 Albania</option>
+                    <option value="+389">🇲🇰 +389 N. Macedonia</option>
+                    <option value="+387">🇧🇦 +387 Bosnia & Herz.</option>
+                    <option value="+382">🇲🇪 +382 Montenegro</option>
+                    <option value="+383">🇽🇰 +383 Kosovo</option>
+                    <option value="+352">🇱🇺 +352 Luxembourg</option>
+                    <option value="+354">🇮🇸 +354 Iceland</option>
+                    <option value="+356">🇲🇹 +356 Malta</option>
+                    <option value="+357">🇨🇾 +357 Cyprus</option>
+                    <option value="+376">🇦🇩 +376 Andorra</option>
+                    <option value="+377">🇲🇨 +377 Monaco</option>
+                    <option value="+378">🇸🇲 +378 San Marino</option>
+                    <option value="+423">🇱🇮 +423 Liechtenstein</option>
+                    <option value="+298">🇫🇴 +298 Faroe Islands</option>
+                    <option value="+350">🇬🇮 +350 Gibraltar</option>
+                  </optgroup>
+                  <optgroup label="── Middle East ──">
+                    <option value="+90">🇹🇷 +90 Turkey</option>
+                    <option value="+966">🇸🇦 +966 Saudi Arabia</option>
+                    <option value="+971">🇦🇪 +971 UAE</option>
+                    <option value="+972">🇮🇱 +972 Israel</option>
+                    <option value="+98">🇮🇷 +98 Iran</option>
+                    <option value="+964">🇮🇶 +964 Iraq</option>
+                    <option value="+962">🇯🇴 +962 Jordan</option>
+                    <option value="+961">🇱🇧 +961 Lebanon</option>
+                    <option value="+965">🇰🇼 +965 Kuwait</option>
+                    <option value="+974">🇶🇦 +974 Qatar</option>
+                    <option value="+973">🇧🇭 +973 Bahrain</option>
+                    <option value="+968">🇴🇲 +968 Oman</option>
+                    <option value="+967">🇾🇪 +967 Yemen</option>
+                    <option value="+963">🇸🇾 +963 Syria</option>
+                    <option value="+970">🇵🇸 +970 Palestine</option>
+                  </optgroup>
+                  <optgroup label="── CIS ──">
+                    <option value="+7">🇷🇺 +7 Russia</option>
+                    <option value="+380">🇺🇦 +380 Ukraine</option>
+                    <option value="+375">🇧🇾 +375 Belarus</option>
+                    <option value="+7">🇰🇿 +7 Kazakhstan</option>
+                    <option value="+994">🇦🇿 +994 Azerbaijan</option>
+                    <option value="+995">🇬🇪 +995 Georgia</option>
+                    <option value="+374">🇦🇲 +374 Armenia</option>
+                    <option value="+998">🇺🇿 +998 Uzbekistan</option>
+                    <option value="+992">🇹🇯 +992 Tajikistan</option>
+                    <option value="+993">🇹🇲 +993 Turkmenistan</option>
+                    <option value="+996">🇰🇬 +996 Kyrgyzstan</option>
+                    <option value="+373">🇲🇩 +373 Moldova</option>
+                  </optgroup>
+                  <optgroup label="── Asia ──">
+                    <option value="+86">🇨🇳 +86 China</option>
+                    <option value="+81">🇯🇵 +81 Japan</option>
+                    <option value="+82">🇰🇷 +82 South Korea</option>
+                    <option value="+91">🇮🇳 +91 India</option>
+                    <option value="+92">🇵🇰 +92 Pakistan</option>
+                    <option value="+62">🇮🇩 +62 Indonesia</option>
+                    <option value="+66">🇹🇭 +66 Thailand</option>
+                    <option value="+84">🇻🇳 +84 Vietnam</option>
+                    <option value="+60">🇲🇾 +60 Malaysia</option>
+                    <option value="+63">🇵🇭 +63 Philippines</option>
+                    <option value="+880">🇧🇩 +880 Bangladesh</option>
+                    <option value="+94">🇱🇰 +94 Sri Lanka</option>
+                    <option value="+977">🇳🇵 +977 Nepal</option>
+                    <option value="+95">🇲🇲 +95 Myanmar</option>
+                    <option value="+855">🇰🇭 +855 Cambodia</option>
+                    <option value="+856">🇱🇦 +856 Laos</option>
+                    <option value="+976">🇲🇳 +976 Mongolia</option>
+                    <option value="+65">🇸🇬 +65 Singapore</option>
+                    <option value="+673">🇧🇳 +673 Brunei</option>
+                    <option value="+670">🇹🇱 +670 Timor-Leste</option>
+                    <option value="+886">🇹🇼 +886 Taiwan</option>
+                    <option value="+852">🇭🇰 +852 Hong Kong</option>
+                    <option value="+853">🇲🇴 +853 Macao</option>
+                    <option value="+93">🇦🇫 +93 Afghanistan</option>
+                    <option value="+960">🇲🇻 +960 Maldives</option>
+                    <option value="+975">🇧🇹 +975 Bhutan</option>
+                    <option value="+850">🇰🇵 +850 North Korea</option>
+                  </optgroup>
+                  <optgroup label="── Africa ──">
+                    <option value="+20">🇪🇬 +20 Egypt</option>
+                    <option value="+27">🇿🇦 +27 South Africa</option>
+                    <option value="+212">🇲🇦 +212 Morocco</option>
+                    <option value="+213">🇩🇿 +213 Algeria</option>
+                    <option value="+216">🇹🇳 +216 Tunisia</option>
+                    <option value="+218">🇱🇾 +218 Libya</option>
+                    <option value="+234">🇳🇬 +234 Nigeria</option>
+                    <option value="+254">🇰🇪 +254 Kenya</option>
+                    <option value="+251">🇪🇹 +251 Ethiopia</option>
+                    <option value="+255">🇹🇿 +255 Tanzania</option>
+                    <option value="+233">🇬🇭 +233 Ghana</option>
+                    <option value="+256">🇺🇬 +256 Uganda</option>
+                    <option value="+237">🇨🇲 +237 Cameroon</option>
+                    <option value="+225">🇨🇮 +225 Ivory Coast</option>
+                    <option value="+221">🇸🇳 +221 Senegal</option>
+                    <option value="+250">🇷🇼 +250 Rwanda</option>
+                    <option value="+258">🇲🇿 +258 Mozambique</option>
+                    <option value="+263">🇿🇼 +263 Zimbabwe</option>
+                    <option value="+244">🇦🇴 +244 Angola</option>
+                    <option value="+249">🇸🇩 +249 Sudan</option>
+                    <option value="+211">🇸🇸 +211 South Sudan</option>
+                    <option value="+252">🇸🇴 +252 Somalia</option>
+                    <option value="+261">🇲🇬 +261 Madagascar</option>
+                    <option value="+260">🇿🇲 +260 Zambia</option>
+                    <option value="+223">🇲🇱 +223 Mali</option>
+                    <option value="+227">🇳🇪 +227 Niger</option>
+                    <option value="+226">🇧🇫 +226 Burkina Faso</option>
+                    <option value="+235">🇹🇩 +235 Chad</option>
+                    <option value="+224">🇬🇳 +224 Guinea</option>
+                    <option value="+229">🇧🇯 +229 Benin</option>
+                    <option value="+228">🇹🇬 +228 Togo</option>
+                    <option value="+232">🇸🇱 +232 Sierra Leone</option>
+                    <option value="+231">🇱🇷 +231 Liberia</option>
+                    <option value="+222">🇲🇷 +222 Mauritania</option>
+                    <option value="+220">🇬🇲 +220 Gambia</option>
+                    <option value="+242">🇨🇬 +242 Congo</option>
+                    <option value="+243">🇨🇩 +243 DR Congo</option>
+                    <option value="+236">🇨🇫 +236 CAR</option>
+                    <option value="+241">🇬🇦 +241 Gabon</option>
+                    <option value="+240">🇬🇶 +240 Equatorial Guinea</option>
+                    <option value="+239">🇸🇹 +239 São Tomé & Príncipe</option>
+                    <option value="+238">🇨🇻 +238 Cape Verde</option>
+                    <option value="+269">🇰🇲 +269 Comoros</option>
+                    <option value="+253">🇩🇯 +253 Djibouti</option>
+                    <option value="+291">🇪🇷 +291 Eritrea</option>
+                    <option value="+267">🇧🇼 +267 Botswana</option>
+                    <option value="+264">🇳🇦 +264 Namibia</option>
+                    <option value="+266">🇱🇸 +266 Lesotho</option>
+                    <option value="+268">🇸🇿 +268 Eswatini</option>
+                    <option value="+265">🇲🇼 +265 Malawi</option>
+                    <option value="+248">🇸🇨 +248 Seychelles</option>
+                    <option value="+230">🇲🇺 +230 Mauritius</option>
+                    <option value="+257">🇧🇮 +257 Burundi</option>
+                    <option value="+245">🇬🇼 +245 Guinea-Bissau</option>
+                  </optgroup>
+                  <optgroup label="── Oceania ──">
+                    <option value="+61">🇦🇺 +61 Australia</option>
+                    <option value="+64">🇳🇿 +64 New Zealand</option>
+                    <option value="+675">🇵🇬 +675 Papua New Guinea</option>
+                    <option value="+679">🇫🇯 +679 Fiji</option>
+                    <option value="+677">🇸🇧 +677 Solomon Islands</option>
+                    <option value="+678">🇻🇺 +678 Vanuatu</option>
+                    <option value="+685">🇼🇸 +685 Samoa</option>
+                    <option value="+676">🇹🇴 +676 Tonga</option>
+                    <option value="+686">🇰🇮 +686 Kiribati</option>
+                    <option value="+691">🇫🇲 +691 Micronesia</option>
+                    <option value="+692">🇲🇭 +692 Marshall Islands</option>
+                    <option value="+680">🇵🇼 +680 Palau</option>
+                    <option value="+674">🇳🇷 +674 Nauru</option>
+                    <option value="+688">🇹🇻 +688 Tuvalu</option>
+                  </optgroup>
+                </select>
+                <input type="tel" id="cfPhone" placeholder="201 234 5678">
+              </div>
+            </div>
             <div class="eit2-field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-            <div class="eit2-field"><label>Phone</label><input type="tel" id="cfPhone" placeholder="+1 ___ ___ ____"></div>
-            <div class="eit2-field"><label>Country</label><input type="text" placeholder="Your country"></div>
-            <div class="eit2-field full"><label>Service of interest</label>
+            <div class="eit2-field"><label>Service of interest</label>
               <select><option>Hair transplant</option></select>
             </div>
-          </div>
-        </div>
-
-        <div class="eit2-form-pane" data-pane="2">
-          <div class="eit2-field-grid">
-            <div class="eit2-field"><label>Degree of hair loss</label><select><option>Early</option><option>Moderate</option><option>Advanced</option></select></div>
-            <div class="eit2-field"><label>Age</label><input type="number" placeholder="e.g. 35"></div>
-            <div class="eit2-field full"><label>Describe your situation</label><textarea rows="3" placeholder="When did hair loss start, have you had a transplant before, etc."></textarea></div>
-            <div class="eit2-upload">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <div><strong>Upload photos</strong> (optional) — front, top, and sides</div>
-              <div style="font-size:12px;margin-top:6px;">JPG, PNG up to 10 MB</div>
-              <input type="file" multiple accept="image/*" style="margin-top:12px;">
-            </div>
-          </div>
-        </div>
-
-        <div class="eit2-form-pane" data-pane="3">
-          <div class="eit2-field-grid">
-            <div class="eit2-field"><label>Preferred contact method</label><select><option>WhatsApp</option><option>Telegram</option><option>Call</option><option>Email</option></select></div>
-            <div class="eit2-field"><label>Preferred time</label><select><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
-            <div class="eit2-field full"><label>Additional notes</label><textarea rows="3" placeholder="Your questions and wishes"></textarea></div>
           </div>
         </div>
 
         <div class="eit2-form-foot">
           <span class="eit2-form-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Your data is 100% confidential.</span>
           <div class="eit2-form-nav">
-            <button type="button" class="eit2-btn eit2-btn-outline" id="cfPrev" style="display:none;">← Back</button>
-            <button type="button" class="eit2-btn eit2-btn-primary" id="cfNext">Continue →</button>
-            <button type="button" class="eit2-btn eit2-btn-gold" id="cfSubmit" style="display:none;">Submit request</button>
+            <button type="button" class="eit2-btn eit2-btn-primary" id="cfSubmit">Submit request</button>
           </div>
         </div>
       </form>
@@ -779,7 +1058,7 @@
             <img src="https://esteinturkey.com/wp-content/uploads/2026/05/Изображение-WhatsApp-2025-08-13-в-17.18.25_f812032b.png" alt="Patient story — hair transplant">
           </div>
           <div class="eit2-story-body">
-            <div class="eit2-story-name">Timur</div>
+            <div class="eit2-story-name">Abdulhakim</div>
             <div class="eit2-story-role">Germany · Hair transplant</div>
             <div class="eit2-story-quote">«The result exceeded all expectations! The hair looks completely natural and the clinic is top class.»</div>
             <div class="eit2-story-foot"><span style="color:var(--eit-text-muted)">🇩🇪 Germany</span><span class="eit2-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> 5.0</span></div>
@@ -931,36 +1210,24 @@
     });
   });
 
-  /* ── Multi-step form ── */
-  let cfStep = 1; const cfMax = 3;
-  const panes = root.querySelectorAll('.eit2-form-pane');
-  const steps = root.querySelectorAll('.eit2-step');
-  const btnPrev = document.getElementById('cfPrev');
-  const btnNext = document.getElementById('cfNext');
+  /* ── Single-step consultation form ── */
   const btnSubmit = document.getElementById('cfSubmit');
-  function cfRender(){
-    panes.forEach(p => p.classList.toggle('active', +p.dataset.pane === cfStep));
-    steps.forEach(s => s.classList.toggle('active', +s.dataset.step <= cfStep));
-    btnPrev.style.display = cfStep > 1 ? 'inline-flex' : 'none';
-    btnNext.style.display = cfStep < cfMax ? 'inline-flex' : 'none';
-    btnSubmit.style.display = cfStep === cfMax ? 'inline-flex' : 'none';
-  }
-  if (btnNext) {
-    btnNext.addEventListener('click', () => { if (cfStep < cfMax) { cfStep++; cfRender(); } });
-    btnPrev.addEventListener('click', () => { if (cfStep > 1) { cfStep--; cfRender(); } });
+  if (btnSubmit) {
     btnSubmit.addEventListener('click', (e) => {
       e.preventDefault();
       const name = (document.getElementById('cfName').value || '').trim();
-      const phone = (document.getElementById('cfPhone').value || '').trim();
-      if (!name || !phone) { return; }
+      const phoneRaw = (document.getElementById('cfPhone').value || '').trim();
+      const cfPhoneCode = document.getElementById('cfPhoneCode');
+      const phone = (cfPhoneCode ? cfPhoneCode.value : window.eitGeoCode || '+1') + phoneRaw;
+      if (!name || !phoneRaw) { return; }
       btnSubmit.textContent = 'Sending...';
       btnSubmit.disabled = true;
       const payload = {
-        name, phone: '+7' + phone, email: '',
+        name, phone: phone, email: '',
         gender: '—', age: 0, years: 0, prev: '—', norwood: '—',
         when: '—', source: 'Hair transplant 2025 — Consultation'
       };
-      fetch('/wp-json/este/v1/quiz', {
+      fetch('https://esteinturkey.com/ru/este-mail.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -974,7 +1241,6 @@
         setTimeout(() => { btnSubmit.textContent = 'Submit request'; btnSubmit.disabled = false; btnSubmit.style.background = ''; }, 5000);
       });
     });
-    cfRender();
   }
 
   /* ── FAQ ── */
@@ -987,10 +1253,36 @@
   });
 
   /* ── Fade-in ── */
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  root.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  const fadeEls = root.querySelectorAll('.fade-in');
+  const revealAll = () => fadeEls.forEach(el => el.classList.add('visible'));
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+    let _observed = false;
+    const showInView = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      fadeEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        /* Elementor lazy-render: koordinatlar 0 döndüğünde viewport'ta varsay */
+        if (r.top < vh + 50 && r.bottom >= 0) el.classList.add('visible');
+        else if (!_observed) obs.observe(el);
+      });
+      _observed = true;
+    };
+    /* Birden fazla noktada dene */
+    requestAnimationFrame(showInView);
+    [50, 200, 500].forEach(d => setTimeout(showInView, d));
+    if (document.readyState === 'complete') {
+      showInView();
+    } else {
+      window.addEventListener('load', () => { showInView(); setTimeout(showInView, 200); });
+    }
+    /* Kesin fallback — 600ms'de hepsini aç */
+    setTimeout(revealAll, 600);
+  } else {
+    revealAll();
+  }
 
   /* ── Smooth scroll ── */
   root.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1115,12 +1407,20 @@
 .eit-quiz-input:focus { border-color: #2E8B8B; background: #fff; }
 .eit-quiz-input::placeholder { color: #aab8b8; }
 .eit-quiz-phone-wrap { display: flex; gap: 0; }
-.eit-quiz-phone-flag {
-  display: flex; align-items: center; gap: 6px; padding: 14px 12px;
+.eit-quiz-phone-code {
+  flex: 0 0 auto; max-width: 155px; min-width: 0;
+  padding: 14px 26px 14px 12px;
   border: 1.5px solid rgba(29,92,92,.18); border-right: none;
-  border-radius: 10px 0 0 10px; background: #F8F4EF; font-size: 14px; white-space: nowrap;
+  border-radius: 10px 0 0 10px; background: #F8F4EF;
+  font-size: 13px; font-family: 'Montserrat', sans-serif; color: #1A2A2A;
+  outline: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E8B8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
 }
-.eit-quiz-phone-wrap .eit-quiz-input { border-radius: 0 10px 10px 0; }
+.eit-quiz-phone-code:focus { outline: none; }
+.eit-quiz-phone-wrap .eit-quiz-input { border-radius: 0 10px 10px 0; border-left: none; }
 
 .eit-quiz-send {
   background: linear-gradient(135deg, #1D5C5C, #2E8B8B);
@@ -1273,8 +1573,231 @@
         +'<div class="eit-quiz-form" id="eit-qcontact">'
         +'<input class="eit-quiz-input" id="eq-name" type="text" placeholder="Full name">'
         +'<div class="eit-quiz-phone-wrap">'
-        +'<span class="eit-quiz-phone-flag">🇷🇺 +7</span>'
-        +'<input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="900 000 0000">'
+        +'<select class="eit-quiz-phone-code" id="eq-phone-code" aria-label="Country code">'
+        +'<optgroup label="── Americas ──">'
+        +'<option value="+1" selected>🇺🇸 +1 USA</option>'
+        +'<option value="+1">🇨🇦 +1 Canada</option>'
+        +'<option value="+52">🇲🇽 +52 Mexico</option>'
+        +'<option value="+55">🇧🇷 +55 Brazil</option>'
+        +'<option value="+54">🇦🇷 +54 Argentina</option>'
+        +'<option value="+57">🇨🇴 +57 Colombia</option>'
+        +'<option value="+56">🇨🇱 +56 Chile</option>'
+        +'<option value="+51">🇵🇪 +51 Peru</option>'
+        +'<option value="+58">🇻🇪 +58 Venezuela</option>'
+        +'<option value="+593">🇪🇨 +593 Ecuador</option>'
+        +'<option value="+591">🇧🇴 +591 Bolivia</option>'
+        +'<option value="+595">🇵🇾 +595 Paraguay</option>'
+        +'<option value="+598">🇺🇾 +598 Uruguay</option>'
+        +'<option value="+507">🇵🇦 +507 Panama</option>'
+        +'<option value="+506">🇨🇷 +506 Costa Rica</option>'
+        +'<option value="+502">🇬🇹 +502 Guatemala</option>'
+        +'<option value="+504">🇭🇳 +504 Honduras</option>'
+        +'<option value="+503">🇸🇻 +503 El Salvador</option>'
+        +'<option value="+505">🇳🇮 +505 Nicaragua</option>'
+        +'<option value="+501">🇧🇿 +501 Belize</option>'
+        +'<option value="+53">🇨🇺 +53 Cuba</option>'
+        +'<option value="+1">🇩🇴 +1 Dominican Rep.</option>'
+        +'<option value="+509">🇭🇹 +509 Haiti</option>'
+        +'<option value="+1">🇯🇲 +1 Jamaica</option>'
+        +'<option value="+1">🇹🇹 +1 Trinidad & Tobago</option>'
+        +'<option value="+1">🇧🇧 +1 Barbados</option>'
+        +'<option value="+1">🇧🇸 +1 Bahamas</option>'
+        +'<option value="+592">🇬🇾 +592 Guyana</option>'
+        +'<option value="+597">🇸🇷 +597 Suriname</option>'
+        +'<option value="+594">🇬🇫 +594 Fr. Guiana</option>'
+        +'<option value="+1">🇵🇷 +1 Puerto Rico</option>'
+        +'<option value="+1">🇬🇩 +1 Grenada</option>'
+        +'<option value="+1">🇱🇨 +1 Saint Lucia</option>'
+        +'<option value="+1">🇻🇨 +1 Saint Vincent</option>'
+        +'<option value="+1">🇦🇬 +1 Antigua & Barbuda</option>'
+        +'<option value="+1">🇩🇲 +1 Dominica</option>'
+        +'<option value="+1">🇰🇳 +1 St. Kitts & Nevis</option>'
+        +'<option value="+297">🇦🇼 +297 Aruba</option>'
+        +'<option value="+599">🇨🇼 +599 Curaçao</option>'
+        +'<option value="+596">🇲🇶 +596 Martinique</option>'
+        +'<option value="+590">🇬🇵 +590 Guadeloupe</option>'
+        +'<option value="+1">🇧🇲 +1 Bermuda</option>'
+        +'<option value="+1">🇰🇾 +1 Cayman Islands</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Europe ──">'
+        +'<option value="+44">🇬🇧 +44 UK</option>'
+        +'<option value="+49">🇩🇪 +49 Germany</option>'
+        +'<option value="+33">🇫🇷 +33 France</option>'
+        +'<option value="+39">🇮🇹 +39 Italy</option>'
+        +'<option value="+34">🇪🇸 +34 Spain</option>'
+        +'<option value="+31">🇳🇱 +31 Netherlands</option>'
+        +'<option value="+32">🇧🇪 +32 Belgium</option>'
+        +'<option value="+43">🇦🇹 +43 Austria</option>'
+        +'<option value="+41">🇨🇭 +41 Switzerland</option>'
+        +'<option value="+46">🇸🇪 +46 Sweden</option>'
+        +'<option value="+47">🇳🇴 +47 Norway</option>'
+        +'<option value="+45">🇩🇰 +45 Denmark</option>'
+        +'<option value="+358">🇫🇮 +358 Finland</option>'
+        +'<option value="+48">🇵🇱 +48 Poland</option>'
+        +'<option value="+420">🇨🇿 +420 Czech Rep.</option>'
+        +'<option value="+36">🇭🇺 +36 Hungary</option>'
+        +'<option value="+40">🇷🇴 +40 Romania</option>'
+        +'<option value="+359">🇧🇬 +359 Bulgaria</option>'
+        +'<option value="+381">🇷🇸 +381 Serbia</option>'
+        +'<option value="+385">🇭🇷 +385 Croatia</option>'
+        +'<option value="+30">🇬🇷 +30 Greece</option>'
+        +'<option value="+351">🇵🇹 +351 Portugal</option>'
+        +'<option value="+353">🇮🇪 +353 Ireland</option>'
+        +'<option value="+371">🇱🇻 +371 Latvia</option>'
+        +'<option value="+370">🇱🇹 +370 Lithuania</option>'
+        +'<option value="+372">🇪🇪 +372 Estonia</option>'
+        +'<option value="+421">🇸🇰 +421 Slovakia</option>'
+        +'<option value="+386">🇸🇮 +386 Slovenia</option>'
+        +'<option value="+355">🇦🇱 +355 Albania</option>'
+        +'<option value="+389">🇲🇰 +389 N. Macedonia</option>'
+        +'<option value="+387">🇧🇦 +387 Bosnia & Herz.</option>'
+        +'<option value="+382">🇲🇪 +382 Montenegro</option>'
+        +'<option value="+383">🇽🇰 +383 Kosovo</option>'
+        +'<option value="+352">🇱🇺 +352 Luxembourg</option>'
+        +'<option value="+354">🇮🇸 +354 Iceland</option>'
+        +'<option value="+356">🇲🇹 +356 Malta</option>'
+        +'<option value="+357">🇨🇾 +357 Cyprus</option>'
+        +'<option value="+376">🇦🇩 +376 Andorra</option>'
+        +'<option value="+377">🇲🇨 +377 Monaco</option>'
+        +'<option value="+378">🇸🇲 +378 San Marino</option>'
+        +'<option value="+423">🇱🇮 +423 Liechtenstein</option>'
+        +'<option value="+298">🇫🇴 +298 Faroe Islands</option>'
+        +'<option value="+350">🇬🇮 +350 Gibraltar</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Middle East ──">'
+        +'<option value="+90">🇹🇷 +90 Turkey</option>'
+        +'<option value="+966">🇸🇦 +966 Saudi Arabia</option>'
+        +'<option value="+971">🇦🇪 +971 UAE</option>'
+        +'<option value="+972">🇮🇱 +972 Israel</option>'
+        +'<option value="+98">🇮🇷 +98 Iran</option>'
+        +'<option value="+964">🇮🇶 +964 Iraq</option>'
+        +'<option value="+962">🇯🇴 +962 Jordan</option>'
+        +'<option value="+961">🇱🇧 +961 Lebanon</option>'
+        +'<option value="+965">🇰🇼 +965 Kuwait</option>'
+        +'<option value="+974">🇶🇦 +974 Qatar</option>'
+        +'<option value="+973">🇧🇭 +973 Bahrain</option>'
+        +'<option value="+968">🇴🇲 +968 Oman</option>'
+        +'<option value="+967">🇾🇪 +967 Yemen</option>'
+        +'<option value="+963">🇸🇾 +963 Syria</option>'
+        +'<option value="+970">🇵🇸 +970 Palestine</option>'
+        +'</optgroup>'
+        +'<optgroup label="── CIS ──">'
+        +'<option value="+7">🇷🇺 +7 Russia</option>'
+        +'<option value="+380">🇺🇦 +380 Ukraine</option>'
+        +'<option value="+375">🇧🇾 +375 Belarus</option>'
+        +'<option value="+7">🇰🇿 +7 Kazakhstan</option>'
+        +'<option value="+994">🇦🇿 +994 Azerbaijan</option>'
+        +'<option value="+995">🇬🇪 +995 Georgia</option>'
+        +'<option value="+374">🇦🇲 +374 Armenia</option>'
+        +'<option value="+998">🇺🇿 +998 Uzbekistan</option>'
+        +'<option value="+992">🇹🇯 +992 Tajikistan</option>'
+        +'<option value="+993">🇹🇲 +993 Turkmenistan</option>'
+        +'<option value="+996">🇰🇬 +996 Kyrgyzstan</option>'
+        +'<option value="+373">🇲🇩 +373 Moldova</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Asia ──">'
+        +'<option value="+86">🇨🇳 +86 China</option>'
+        +'<option value="+81">🇯🇵 +81 Japan</option>'
+        +'<option value="+82">🇰🇷 +82 South Korea</option>'
+        +'<option value="+91">🇮🇳 +91 India</option>'
+        +'<option value="+92">🇵🇰 +92 Pakistan</option>'
+        +'<option value="+62">🇮🇩 +62 Indonesia</option>'
+        +'<option value="+66">🇹🇭 +66 Thailand</option>'
+        +'<option value="+84">🇻🇳 +84 Vietnam</option>'
+        +'<option value="+60">🇲🇾 +60 Malaysia</option>'
+        +'<option value="+63">🇵🇭 +63 Philippines</option>'
+        +'<option value="+880">🇧🇩 +880 Bangladesh</option>'
+        +'<option value="+94">🇱🇰 +94 Sri Lanka</option>'
+        +'<option value="+977">🇳🇵 +977 Nepal</option>'
+        +'<option value="+95">🇲🇲 +95 Myanmar</option>'
+        +'<option value="+855">🇰🇭 +855 Cambodia</option>'
+        +'<option value="+856">🇱🇦 +856 Laos</option>'
+        +'<option value="+976">🇲🇳 +976 Mongolia</option>'
+        +'<option value="+65">🇸🇬 +65 Singapore</option>'
+        +'<option value="+673">🇧🇳 +673 Brunei</option>'
+        +'<option value="+670">🇹🇱 +670 Timor-Leste</option>'
+        +'<option value="+886">🇹🇼 +886 Taiwan</option>'
+        +'<option value="+852">🇭🇰 +852 Hong Kong</option>'
+        +'<option value="+853">🇲🇴 +853 Macao</option>'
+        +'<option value="+93">🇦🇫 +93 Afghanistan</option>'
+        +'<option value="+960">🇲🇻 +960 Maldives</option>'
+        +'<option value="+975">🇧🇹 +975 Bhutan</option>'
+        +'<option value="+850">🇰🇵 +850 North Korea</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Africa ──">'
+        +'<option value="+20">🇪🇬 +20 Egypt</option>'
+        +'<option value="+27">🇿🇦 +27 South Africa</option>'
+        +'<option value="+212">🇲🇦 +212 Morocco</option>'
+        +'<option value="+213">🇩🇿 +213 Algeria</option>'
+        +'<option value="+216">🇹🇳 +216 Tunisia</option>'
+        +'<option value="+218">🇱🇾 +218 Libya</option>'
+        +'<option value="+234">🇳🇬 +234 Nigeria</option>'
+        +'<option value="+254">🇰🇪 +254 Kenya</option>'
+        +'<option value="+251">🇪🇹 +251 Ethiopia</option>'
+        +'<option value="+255">🇹🇿 +255 Tanzania</option>'
+        +'<option value="+233">🇬🇭 +233 Ghana</option>'
+        +'<option value="+256">🇺🇬 +256 Uganda</option>'
+        +'<option value="+237">🇨🇲 +237 Cameroon</option>'
+        +'<option value="+225">🇨🇮 +225 Ivory Coast</option>'
+        +'<option value="+221">🇸🇳 +221 Senegal</option>'
+        +'<option value="+250">🇷🇼 +250 Rwanda</option>'
+        +'<option value="+258">🇲🇿 +258 Mozambique</option>'
+        +'<option value="+263">🇿🇼 +263 Zimbabwe</option>'
+        +'<option value="+244">🇦🇴 +244 Angola</option>'
+        +'<option value="+249">🇸🇩 +249 Sudan</option>'
+        +'<option value="+211">🇸🇸 +211 South Sudan</option>'
+        +'<option value="+252">🇸🇴 +252 Somalia</option>'
+        +'<option value="+261">🇲🇬 +261 Madagascar</option>'
+        +'<option value="+260">🇿🇲 +260 Zambia</option>'
+        +'<option value="+223">🇲🇱 +223 Mali</option>'
+        +'<option value="+227">🇳🇪 +227 Niger</option>'
+        +'<option value="+226">🇧🇫 +226 Burkina Faso</option>'
+        +'<option value="+235">🇹🇩 +235 Chad</option>'
+        +'<option value="+224">🇬🇳 +224 Guinea</option>'
+        +'<option value="+229">🇧🇯 +229 Benin</option>'
+        +'<option value="+228">🇹🇬 +228 Togo</option>'
+        +'<option value="+232">🇸🇱 +232 Sierra Leone</option>'
+        +'<option value="+231">🇱🇷 +231 Liberia</option>'
+        +'<option value="+222">🇲🇷 +222 Mauritania</option>'
+        +'<option value="+220">🇬🇲 +220 Gambia</option>'
+        +'<option value="+242">🇨🇬 +242 Congo</option>'
+        +'<option value="+243">🇨🇩 +243 DR Congo</option>'
+        +'<option value="+236">🇨🇫 +236 CAR</option>'
+        +'<option value="+241">🇬🇦 +241 Gabon</option>'
+        +'<option value="+240">🇬🇶 +240 Equatorial Guinea</option>'
+        +'<option value="+239">🇸🇹 +239 São Tomé & Príncipe</option>'
+        +'<option value="+238">🇨🇻 +238 Cape Verde</option>'
+        +'<option value="+269">🇰🇲 +269 Comoros</option>'
+        +'<option value="+253">🇩🇯 +253 Djibouti</option>'
+        +'<option value="+291">🇪🇷 +291 Eritrea</option>'
+        +'<option value="+267">🇧🇼 +267 Botswana</option>'
+        +'<option value="+264">🇳🇦 +264 Namibia</option>'
+        +'<option value="+266">🇱🇸 +266 Lesotho</option>'
+        +'<option value="+268">🇸🇿 +268 Eswatini</option>'
+        +'<option value="+265">🇲🇼 +265 Malawi</option>'
+        +'<option value="+248">🇸🇨 +248 Seychelles</option>'
+        +'<option value="+230">🇲🇺 +230 Mauritius</option>'
+        +'<option value="+257">🇧🇮 +257 Burundi</option>'
+        +'<option value="+245">🇬🇼 +245 Guinea-Bissau</option>'
+        +'</optgroup>'
+        +'<optgroup label="── Oceania ──">'
+        +'<option value="+61">🇦🇺 +61 Australia</option>'
+        +'<option value="+64">🇳🇿 +64 New Zealand</option>'
+        +'<option value="+675">🇵🇬 +675 Papua New Guinea</option>'
+        +'<option value="+679">🇫🇯 +679 Fiji</option>'
+        +'<option value="+677">🇸🇧 +677 Solomon Islands</option>'
+        +'<option value="+678">🇻🇺 +678 Vanuatu</option>'
+        +'<option value="+685">🇼🇸 +685 Samoa</option>'
+        +'<option value="+676">🇹🇴 +676 Tonga</option>'
+        +'<option value="+686">🇰🇮 +686 Kiribati</option>'
+        +'<option value="+691">🇫🇲 +691 Micronesia</option>'
+        +'<option value="+692">🇲🇭 +692 Marshall Islands</option>'
+        +'<option value="+680">🇵🇼 +680 Palau</option>'
+        +'<option value="+674">🇳🇷 +674 Nauru</option>'
+        +'<option value="+688">🇹🇻 +688 Tuvalu</option>'
+        +'</optgroup>'
+        +'</select>'
+        +'<input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="201 234 5678">'
         +'</div>'
         +'<input class="eit-quiz-input" id="eq-email" type="email" placeholder="E-mail">'
         +'</div>'
@@ -1340,18 +1863,20 @@
 
   window.eitQuizSend = function(){
     var name = document.getElementById('eq-name').value.trim();
+    var phoneCodeEl = document.getElementById('eq-phone-code');
+    var phoneCode = phoneCodeEl ? phoneCodeEl.value : (window.eitGeoCode || '+1');
     var phone = document.getElementById('eq-phone').value.trim();
     var email = document.getElementById('eq-email').value.trim();
     if(!name || !phone){ document.getElementById('eq-name').focus(); return; }
 
     var payload = {
-      name: name, phone: '+7'+phone, email: email,
+      name: name, phone: phoneCode + phone, email: email,
       gender: answers.gender||'—', age: answers.age||0, years: answers.years||0,
       prev: answers.prev||'—', norwood: answers.norwood||'—', when: answers.when||'—',
       source: 'Hair transplant 2025'
     };
 
-    fetch('/wp-json/este/v1/quiz', {
+    fetch('https://esteinturkey.com/ru/este-mail.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -1373,5 +1898,65 @@
 })();
 </script>
 
+<script>
+/* ── Geo-detect country code ── */
+(function(){
+  window.eitGeoCode = '+1'; // default for EN page
+
+  function applyCode(code){
+    window.eitGeoCode = code;
+    // Consultation form select
+    var cfSel = document.getElementById('cfPhoneCode');
+    if(cfSel){ setSelectByValue(cfSel, code); }
+    // Quiz select (rendered dynamically — apply via MutationObserver below)
+    var eqSel = document.getElementById('eq-phone-code');
+    if(eqSel){ setSelectByValue(eqSel, code); }
+  }
+
+  function setSelectByValue(sel, val){
+    for(var i = 0; i < sel.options.length; i++){
+      if(sel.options[i].value === val){ sel.selectedIndex = i; return; }
+    }
+  }
+
+  // Watch for dynamically-created quiz select
+  var observer = new MutationObserver(function(){
+    var eqSel = document.getElementById('eq-phone-code');
+    if(eqSel){ setSelectByValue(eqSel, window.eitGeoCode); }
+  });
+  var quizBody = document.getElementById('eit-quiz-body');
+  if(quizBody){ observer.observe(quizBody, { childList: true, subtree: true }); }
+
+  // Fetch geo data
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && d.country_calling_code){ applyCode(d.country_calling_code); }
+    })
+    .catch(function(){/* fallback stays +1 */});
+})();
+</script>
+
+
+
+
 </body>
 </html>
+
+<!-- ── Floating WhatsApp + Telegram (global) ── -->
+<style id="eit-float-style">
+.eit-float-btns{position:fixed;bottom:28px;left:24px;display:flex;flex-direction:column;gap:10px;z-index:9000;}
+.eit-float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(0,0,0,.22);transition:transform .25s ease,box-shadow .25s ease;text-decoration:none;}
+.eit-float-btn:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 12px 30px rgba(0,0,0,.28);}
+.eit-float-btn svg{width:26px;height:26px;fill:#fff;}
+.eit-float-tg{background:#26A5E4;}
+.eit-float-wa{background:#25D366;}
+</style>
+<div class="eit-float-btns" id="eitFloatBtns">
+  <a href="https://t.me/esteinturkey" class="eit-float-btn eit-float-tg" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+  </a>
+  <a href="https://wa.me/905468189180" class="eit-float-btn eit-float-wa" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
