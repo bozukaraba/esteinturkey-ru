@@ -7,7 +7,9 @@
 .elementor-section:has(#eitHeader),.elementor-column:has(#eitHeader),
 .e-con:has(#eitHeader),.e-child:has(#eitHeader),
 .elementor-widget-container:has(#eitHeader){visibility:visible!important;opacity:1!important;padding:0!important;margin:0!important;}
-#eitHeader,#eitHeader *{visibility:visible!important;opacity:1!important}
+#eitHeader{visibility:visible!important;opacity:1!important}
+.eit-dropdown,.eit-nav .sub-menu{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.eit-nav-item:hover>.eit-dropdown,.eit-nav .menu-item-has-children:hover>.sub-menu{opacity:1!important;visibility:visible!important;pointer-events:all!important}
 .eit-fue-fade{opacity:1!important;transform:none!important;transition:none!important}
 .eit-fue-fade.eit-anim-ready{opacity:0!important;transform:translateY(28px)!important;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)!important}
 .eit-fue-fade.eit-anim-ready.eit-fue-visible{opacity:1!important;transform:none!important}
