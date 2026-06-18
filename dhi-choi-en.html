@@ -2413,6 +2413,7 @@
 
 <script>
   (function () {
+    try {
     var answers = {}, step = 0;
     var steps = [
       { type: 'choice', q: 'Your gender', key: 'gender', opts: [{ icon: '\u2642', bg: '#d4e8ff', val: 'Male', lbl: 'Male' }, { icon: '\u2640', bg: '#ffd4e8', val: 'Female', lbl: 'Female' }] },
@@ -2551,9 +2552,24 @@
     document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) panel.classList.remove('open'); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('open'); });
   };
-  document.querySelectorAll('.eit-dhi-country-select').forEach(function(s){ window.eitInitCD(s,'Search country...'); });
     document.getElementById('eit-quiz-overlay').addEventListener('click', function (e) { if (e.target === this) eitQuizClose(); });
+    } catch(e) { console.error('[DHI quiz]', e); }
   })();
+</script>
+
+<script>
+(function(){
+  function initCD(){
+    document.querySelectorAll('.eit-dhi-country-select').forEach(function(s){
+      if(window.eitInitCD) window.eitInitCD(s,'Search country...');
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initCD);
+  } else {
+    initCD();
+  }
+})();
 </script>
 
 <script>

@@ -2415,6 +2415,7 @@
 
 <script>
   (function () {
+    try {
     var answers = {}, step = 0;
     var steps = [
       { type: 'choice', q: 'Ваш пол', key: 'gender', opts: [{ icon: '♂', bg: '#d4e8ff', val: 'Мужской', lbl: 'Мужской' }, { icon: '♀', bg: '#ffd4e8', val: 'Женский', lbl: 'Женский' }] },
@@ -2550,9 +2551,24 @@
       document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) panel.classList.remove('open'); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('open'); });
     };
-    document.querySelectorAll('.eit-dhi-country-select').forEach(function(s){ window.eitInitCD(s,'Поиск страны...'); });
     document.getElementById('eit-quiz-overlay').addEventListener('click', function (e) { if (e.target === this) eitQuizClose(); });
+    } catch(e) { console.error('[DHI quiz]', e); }
   })();
+</script>
+
+<script>
+(function(){
+  function initCD(){
+    document.querySelectorAll('.eit-dhi-country-select').forEach(function(s){
+      if(window.eitInitCD) window.eitInitCD(s,'Поиск страны...');
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initCD);
+  } else {
+    initCD();
+  }
+})();
 </script>
 
 <script>
