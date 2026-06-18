@@ -1,28 +1,13 @@
 <style id="eit-vis-fix">
+/* WPCode snippet (head) tarafından yönetilir — bu blok yalnızca Elementor yedek kuralı */
 .elementor-invisible{visibility:visible!important}
-.eit-fue-fade{opacity:1!important;transform:none!important;transition:none!important}
-.eit-fue-fade.eit-anim-ready{opacity:0!important;transform:translateY(28px)!important;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)!important}
-.eit-fue-fade.eit-anim-ready.eit-fue-visible{opacity:1!important;transform:none!important}
-@media(prefers-reduced-motion:reduce){.eit-fue-fade.eit-anim-ready{opacity:1!important;transform:none!important;transition:none!important}}
+/* NAV güvenlik: hiçbir sistem menü listesini gizleyemesin */
+#eitDesktopNav{opacity:1!important;visibility:visible!important;display:flex!important}
+#eitMobileNav{opacity:1!important;visibility:visible!important;display:block!important}
+#eitDesktopNav>li{opacity:1!important;visibility:visible!important}
+#eitMobileNav>li{opacity:1!important;visibility:visible!important}
 </style>
-<script id="eit-vis-fix-js">
-(function(){
-  if(!('IntersectionObserver' in window))return;
-  function init(){
-    var vh=window.innerHeight||document.documentElement.clientHeight;
-    document.querySelectorAll('.eit-fue-fade').forEach(function(el){
-      var r=el.getBoundingClientRect();
-      if(r.top>vh+60){
-        el.classList.add('eit-anim-ready');
-        new IntersectionObserver(function(en,ob){
-          en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('eit-fue-visible');ob.unobserve(e.target);}});
-        },{threshold:0.05}).observe(el);
-      }
-    });
-  }
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-})();
-</script>
+<script id="eit-vis-fix-js">/* WPCode global snippet tarafından yönetilir */</script>
 
 <style>
 /* =====================================================
@@ -485,12 +470,100 @@
   /* wpBase: dil prefix dahil kök (ör: https://site.com/ru) — sadece sayfa linkleri için */
   var _ORIGIN = window.location.origin;
   var wpBase  = _ORIGIN + (m ? '/' + m[1] : '');
-  /* REST API her zaman site root'undan çağrılır — dil prefix'i OLMADAN */
-  var MENU_API = _ORIGIN + '/wp-json/mllc/v1/menu?lang=' + _LANG;
-  var CACHE_KEY = 'eit_menu_v3_' + _LANG;
-  var CACHE_TS  = 'eit_menu_v3_ts_' + _LANG;
 
   var t = T[_LANG] || T['en'];
+
+  /* ── Menü render: WordPress REST endpoint'inden header + mobile nav render ── */
+  function loadMenu() {
+    var api = _ORIGIN + '/wp-json/mllc/v1/menu?lang=' + _LANG;
+    if (window.console && console.log) console.log('[EIT] loadMenu start:', api);
+    fetch(api)
+      .then(function(r){
+        if (window.console && console.log) console.log('[EIT] loadMenu response status:', r.status);
+        return r.ok ? r.json() : null;
+      })
+      .then(function(data){
+        if (window.console && console.log) console.log('[EIT] loadMenu data:', data);
+        if (!data || !data.items) { console.warn('[EIT] loadMenu no items'); return; }
+        renderDesktopNav(data.items);
+        renderMobileNav(data.items);
+        if (window.console && console.log) console.log('[EIT] loadMenu rendered. Desktop children:', document.getElementById('eitDesktopNav')?.children.length);
+      })
+      .catch(function(err){
+        if (window.console && console.error) console.error('[EIT] loadMenu error:', err);
+      });
+  }
+
+  function renderDesktopNav(items) {
+    var ul = document.getElementById('eitDesktopNav');
+    if (!ul) { console.warn('[EIT] renderDesktopNav: #eitDesktopNav not found'); return; }
+    ul.innerHTML = '';
+    items.forEach(function(it){
+      var li = document.createElement('li');
+      li.className = 'eit-nav-item' + (it.children && it.children.length ? ' eit-has-sub' : '');
+      var a = document.createElement('a');
+      a.href = it.url || '#';
+      a.className = 'eit-nav-link';
+      a.textContent = it.title;
+      if (it.target === '_blank') a.target = '_blank';
+      li.appendChild(a);
+      if (it.children && it.children.length) {
+        var dd = document.createElement('div');
+        dd.className = 'eit-dropdown';
+        it.children.forEach(function(c){
+          var ca = document.createElement('a');
+          ca.href = c.url || '#';
+          ca.textContent = c.title;
+          if (c.target === '_blank') ca.target = '_blank';
+          dd.appendChild(ca);
+        });
+        li.appendChild(dd);
+      }
+      ul.appendChild(li);
+    });
+  }
+
+  function renderMobileNav(items) {
+    var ul = document.getElementById('eitMobileNav');
+    if (!ul) { console.warn('[EIT] renderMobileNav: #eitMobileNav not found'); return; }
+    ul.innerHTML = '';
+    items.forEach(function(it){
+      var li = document.createElement('li');
+      li.className = 'eit-mm-item' + (it.children && it.children.length ? ' eit-has-sub' : '');
+      if (it.children && it.children.length) {
+        var btn = document.createElement('button');
+        btn.className = 'eit-mm-link';
+        btn.type = 'button';
+        btn.textContent = it.title;
+        var chev = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        chev.setAttribute('viewBox','0 0 24 24');
+        chev.setAttribute('fill','none');
+        chev.setAttribute('stroke','currentColor');
+        chev.setAttribute('stroke-width','2');
+        var path = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+        path.setAttribute('points','6 9 12 15 18 9');
+        chev.appendChild(path);
+        btn.appendChild(chev);
+        li.appendChild(btn);
+        var sub = document.createElement('div');
+        sub.className = 'eit-mm-sub';
+        it.children.forEach(function(c){
+          var sa = document.createElement('a');
+          sa.href = c.url || '#';
+          sa.textContent = c.title;
+          sub.appendChild(sa);
+        });
+        li.appendChild(sub);
+      } else {
+        var a = document.createElement('a');
+        a.href = it.url || '#';
+        a.className = 'eit-mm-link-a';
+        a.textContent = it.title;
+        li.appendChild(a);
+      }
+      ul.appendChild(li);
+    });
+  }
 
   /* ── İçerikleri dile göre güncelle ── */
   function applyLang() {
@@ -570,87 +643,30 @@
     });
   }
 
-  /* ── Menü render ── */
-  var CHEVRON   = '<svg class="eit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
-  var CHEVRON_M = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
-
-  function renderDesktop(items) {
-    var nav = document.getElementById('eitDesktopNav');
-    if (!nav || !items.length) return;
-    var html = '';
-    items.forEach(function(item) {
-      var hasSub = item.children && item.children.length > 0;
-      var hasUrl = item.url && item.url !== '#' && item.url !== '';
-      if (hasSub) {
-        html += '<li class="eit-nav-item eit-has-drop">';
-        html += '<a href="' + (hasUrl ? item.url : 'javascript:void(0)') + '" class="eit-nav-link">' + item.title + CHEVRON + '</a>';
-        html += '<div class="eit-dropdown">';
-        item.children.forEach(function(c) {
-          html += '<a href="' + c.url + '"' + (c.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + c.title + '</a>';
-        });
-        html += '</div></li>';
-      } else {
-        html += '<li class="eit-nav-item"><a href="' + item.url + '" class="eit-nav-link"' + (item.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + item.title + '</a></li>';
-      }
-    });
-    nav.innerHTML = html;
-  }
-
-  function renderMobile(items) {
-    var nav = document.getElementById('eitMobileNav');
-    if (!nav || !items.length) return;
-    var html = '';
-    items.forEach(function(item) {
-      var hasSub = item.children && item.children.length > 0;
-      if (hasSub) {
-        var hasUrl = item.url && item.url !== '#' && item.url !== '';
-        html += '<li class="eit-mm-item eit-has-sub">';
-        if (hasUrl) {
-          html += '<div class="eit-mm-link-row"><a href="' + item.url + '" class="eit-mm-link-a">' + item.title + '</a><button class="eit-mm-chevron" aria-expanded="false">' + CHEVRON_M + '</button></div>';
-        } else {
-          html += '<button class="eit-mm-link" aria-expanded="false">' + item.title + CHEVRON_M + '</button>';
-        }
-        html += '<div class="eit-mm-sub">';
-        item.children.forEach(function(c) {
-          html += '<a href="' + c.url + '"' + (c.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + c.title + '</a>';
-        });
-        html += '</div></li>';
-      } else {
-        html += '<li class="eit-mm-item"><a href="' + item.url + '" class="eit-mm-link"' + (item.target === '_blank' ? ' target="_blank" rel="noopener"' : '') + '>' + item.title + '</a></li>';
-      }
-    });
-    nav.innerHTML = html;
-  }
-
-  function loadMenu() {
-    var now    = Date.now();
-    var cached = sessionStorage.getItem(CACHE_KEY);
-    var ts     = parseInt(sessionStorage.getItem(CACHE_TS) || '0');
-    if (cached && (now - ts) < 300000) {
-      var data = JSON.parse(cached);
-      renderDesktop(data); renderMobile(data); return;
-    }
-    fetch(MENU_API)
-      .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(d) {
-        var items = Array.isArray(d.items) ? d.items : [];
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify(items));
-        sessionStorage.setItem(CACHE_TS, String(now));
-        renderDesktop(items); renderMobile(items);
-      })
-      .catch(function(e) { console.warn('[EIT] Menu fetch failed:', e); });
-  }
-
-  /* ── Tüm eski cache'leri temizle ── */
-  ['eit_menu_cache_en','eit_menu_cache_ru','eit_menu_cache_en_v2','eit_menu_cache_ru_v2',
-   'eit_menu_v3_en','eit_menu_v3_ru','eit_menu_v3_de','eit_menu_v3_ro',
-   'eit_menu_v3_ts_en','eit_menu_v3_ts_ru','eit_menu_v3_ts_de','eit_menu_v3_ts_ro'
-  ].forEach(function(k) { sessionStorage.removeItem(k); });
-
   /* ── Init ── */
   applyLang();
   buildLangSwitch();
-  loadMenu();
+
+  /* ── loadMenu: DOM hazır olunca çalıştır (header snippet farklı zamanlarda inject edilmiş olabilir) ── */
+  var _eitMenuTries = 0;
+  function _eitRunMenu() {
+    var d = document.getElementById('eitDesktopNav');
+    var m = document.getElementById('eitMobileNav');
+    if (d && m) {
+      loadMenu();
+      return;
+    }
+    if (_eitMenuTries++ < 100) {
+      setTimeout(_eitRunMenu, 100);
+    } else if (window.console && console.warn) {
+      console.warn('[EIT] loadMenu: header nav targets not found after 10s, giving up');
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _eitRunMenu);
+  } else {
+    _eitRunMenu();
+  }
 
   /* ── mllcCurrentLang inject edildikten sonra switch'i güncelle ── */
   document.addEventListener('DOMContentLoaded', function() {
