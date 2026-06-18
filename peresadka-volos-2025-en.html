@@ -497,25 +497,25 @@
 .eit2-phone-wrap .eit-cd-trigger {
   flex: 0 0 auto; min-width: 130px; max-width: 160px;
   font-family: var(--eit-font); font-size: 13px; font-weight: 700;
-  color: var(--eit-primary-dark);
-  background: var(--eit-soft);
+  color: var(--eit-text, #1A2A2A);
+  background: #F8F4EF;
   border: 1.5px solid rgba(29, 92, 92, .18);
-  border-right: 1px solid rgba(29, 92, 92, .18);
+  border-right: none;
   border-radius: 10px 0 0 10px;
-  padding: 0 30px 0 14px;
-  display: flex; align-items: center; justify-content: flex-start;
+  padding: 14px 30px 14px 14px;
   cursor: pointer; transition: border-color .2s, background-color .2s;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%231D5C5C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 8px center;
   background-size: 11px 11px;
+  white-space: nowrap;
 }
-.eit2-phone-wrap .eit-cd-trigger:hover { background-color: rgba(29, 92, 92, .04); }
+.eit2-phone-wrap .eit-cd-trigger:hover { background-color: #f0ece6; }
 .eit2-phone-wrap .eit-cd-trigger:focus { outline: none; border-color: #2E8B8B; }
 .eit2-phone-wrap .eit2-country-select { display: none; }
 .eit2-phone-wrap input[type="tel"] {
   flex: 1; width: 100%;
-  font-family: var(--eit-font); font-size: 15px; color: var(--eit-text);
-  background: var(--eit-soft);
+  font-family: var(--eit-font); font-size: 15px; color: #1A2A2A;
+  background: #F8F4EF;
   border: 1.5px solid rgba(29, 92, 92, .18);
   border-left: none; border-radius: 0 10px 10px 0;
   padding: 14px 15px;
