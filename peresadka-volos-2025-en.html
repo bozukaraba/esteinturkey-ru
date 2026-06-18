@@ -9,6 +9,9 @@
   <link rel="canonical" href="https://esteinturkey.com/hair-transplant-2025/">
   <link rel="alternate" hreflang="en" href="https://esteinturkey.com/hair-transplant-2025/">
   <link rel="alternate" hreflang="x-default" href="https://esteinturkey.com/hair-transplant-2025/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="https://esteinturkey.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-01-at-11.44.32.jpeg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Reliable Hair Transplant in Turkey — All Inclusive | Este in Turkey">
   <meta property="og:description" content="Hair transplant and dentistry in Turkey. World-class medicine, cutting-edge technology, affordable prices.">
@@ -99,13 +102,14 @@
   if(!('IntersectionObserver' in window))return;
   function init(){
     var vh=window.innerHeight||document.documentElement.clientHeight;
+    var io=new IntersectionObserver(function(en,ob){
+      en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('eit-fue-visible');ob.unobserve(e.target);}});
+    },{threshold:0.05, rootMargin:'0px 0px 60px 0px'});
     document.querySelectorAll('.eit-fue-fade').forEach(function(el){
       var r=el.getBoundingClientRect();
-      if(r.top>vh+60){
+      if(r.top>vh+60 && r.bottom>0){
         el.classList.add('eit-anim-ready');
-        new IntersectionObserver(function(en,ob){
-          en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('eit-fue-visible');ob.unobserve(e.target);}});
-        },{threshold:0.05}).observe(el);
+        io.observe(el);
       }
     });
   }
@@ -193,7 +197,7 @@
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&display=swap');
 
 .elementor-section:has(.eit2-hero),
 .elementor-column:has(.eit2-hero),
@@ -692,7 +696,7 @@
           </div>
         </div>
         <div class="eit2-hero-media">
-          <img src="https://esteinturkey.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-01-at-11.44.32.jpeg" alt="ESTE IN TURKEY team of doctors" onerror="this.outerHTML='<div class=&quot;eit2-hero-ph&quot;>__HERO_IMG__</div>'">
+          <img src="https://esteinturkey.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-01-at-11.44.32.jpeg" alt="ESTE IN TURKEY team of doctors" fetchpriority="high" decoding="async" onerror="this.outerHTML='<div class=&quot;eit2-hero-ph&quot;>__HERO_IMG__</div>'">
         </div>
       </div>
     </div>
