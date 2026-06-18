@@ -4,6 +4,80 @@
 .eit-fue-fade.eit-anim-ready{opacity:0!important;transform:translateY(28px)!important;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)!important}
 .eit-fue-fade.eit-anim-ready.eit-fue-visible{opacity:1!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){.eit-fue-fade.eit-anim-ready{opacity:1!important;transform:none!important;transition:none!important}}
+
+  /* ── Country Dropdown Picker (.eit-cd-*) ── */
+  .eit-cd { position: relative; flex-shrink: 0; }
+  .eit-cd-trigger {
+    display: flex; align-items: center; gap: 6px;
+    background: transparent; border: none;
+    cursor: pointer; outline: none; white-space: nowrap;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.65)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 8px center;
+    transition: background .2s;
+  }
+  .eit-cd-trigger:hover { background-color: rgba(255,255,255,.06); }
+  .eit-cd-panel {
+    position: absolute; top: calc(100% + 6px); left: 0;
+    width: 280px; max-height: 340px;
+    background: rgba(16,52,52,.97); backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+    z-index: 99999; display: none; flex-direction: column; overflow: hidden;
+    animation: eitCdIn .18s ease-out;
+  }
+  @keyframes eitCdIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+  .eit-cd-panel.open { display: flex; }
+  .eit-cd-search { padding: 10px 10px 8px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .eit-cd-search input {
+    width: 100%; background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12); border-radius: 8px;
+    padding: 9px 12px 9px 34px; color: #fff;
+    font-size: 13px; font-family: 'Montserrat', sans-serif !important;
+    outline: none; transition: border-color .2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: 10px center;
+  }
+  .eit-cd-search input::placeholder { color: rgba(255,255,255,.35); }
+  .eit-cd-search input:focus { border-color: rgba(74,172,172,.5); }
+  .eit-cd-list {
+    overflow-y: auto; max-height: 268px; padding: 4px 4px 6px;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+  }
+  .eit-cd-list::-webkit-scrollbar { width: 5px; }
+  .eit-cd-list::-webkit-scrollbar-track { background: transparent; }
+  .eit-cd-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 10px; }
+  .eit-cd-group { padding: 10px 10px 4px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .1em; }
+  .eit-cd-item { padding: 9px 10px; font-size: 13px; color: rgba(255,255,255,.8); border-radius: 8px; cursor: pointer; transition: background .12s, color .12s; font-family: 'Montserrat', sans-serif !important; }
+  .eit-cd-item:hover { background: rgba(74,172,172,.18); color: #fff; }
+  .eit-cd-item.sel { background: rgba(74,172,172,.25); color: #fff; font-weight: 600; }
+  .eit-cd-empty { padding: 20px 10px; text-align: center; color: rgba(255,255,255,.35); font-size: 13px; }
+  /* ── Country trigger: quiz popup (.eit-quiz-phone-wrap) ── */
+  .eit-quiz-phone-wrap .eit-cd { flex-shrink: 0; }
+  .eit-quiz-phone-wrap .eit-cd-trigger {
+    border: 1.5px solid rgba(29,92,92,.18); border-right: none;
+    border-radius: 10px 0 0 10px;
+    padding: 14px 30px 14px 14px;
+    font-size: 13px; font-weight: 700; font-family: 'Montserrat', sans-serif !important;
+    color: #1A2A2A; background-color: #F8F4EF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%231D5C5C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 8px center;
+    white-space: nowrap;
+  }
+  .eit-quiz-phone-wrap .eit-cd-trigger:hover { background-color: #f0ece6; }
+  /* ── Country trigger: dhi static form (.eit-dhi-phone-row) ── */
+  .eit-dhi-phone-row { overflow: visible !important; }
+  .eit-dhi-phone-row .eit-cd { flex-shrink: 0; }
+  .eit-dhi-phone-row .eit-cd-trigger {
+    border: none; border-right: 1.5px solid var(--eit-border);
+    border-radius: 0; padding: 13px 32px 13px 12px;
+    font-size: 13px; font-weight: 600; color: var(--eit-primary);
+    background-color: rgba(248,244,239,.6);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%231D5C5C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 8px center;
+    white-space: nowrap; font-family: var(--eit-font);
+  }
+  .eit-dhi-phone-row .eit-cd-trigger:hover { background-color: rgba(248,244,239,.9); }
 </style>
 <script id="eit-vis-fix-js">
 (function(){
@@ -1763,10 +1837,7 @@
               required />
 
             <div class="eit-dhi-phone-row">
-              <div class="eit-dhi-phone-prefix">
-                <img src="https://flagcdn.com/w20/tr.png" alt="TR" width="20" height="14" loading="lazy" />
-                +90
-              </div>
+              <select class="eit-dhi-country-select" name="phone_code" style="display:none"><optgroup label="── СНГ ──"><option value="+7" selected>🇷🇺 +7 Россия</option><option value="+380">🇺🇦 +380 Украина</option><option value="+375">🇧🇾 +375 Беларусь</option><option value="+7">🇰🇿 +7 Казахстан</option><option value="+994">🇦🇿 +994 Азербайджан</option><option value="+995">🇬🇪 +995 Грузия</option><option value="+374">🇦🇲 +374 Армения</option><option value="+998">🇺🇿 +998 Узбекистан</option><option value="+992">🇹🇯 +992 Таджикистан</option><option value="+993">🇹🇲 +993 Туркменистан</option><option value="+996">🇰🇬 +996 Кыргызстан</option><option value="+373">🇲🇩 +373 Молдова</option></optgroup><optgroup label="── Европа ──"><option value="+90">🇹🇷 +90 Турция</option><option value="+49">🇩🇪 +49 Германия</option><option value="+44">🇬🇧 +44 Великобритания</option><option value="+33">🇫🇷 +33 Франция</option><option value="+39">🇮🇹 +39 Италия</option><option value="+34">🇪🇸 +34 Испания</option><option value="+31">🇳🇱 +31 Нидерланды</option><option value="+43">🇦🇹 +43 Австрия</option><option value="+41">🇨🇭 +41 Швейцария</option><option value="+46">🇸🇪 +46 Швеция</option><option value="+47">🇳🇴 +47 Норвегия</option><option value="+45">🇩🇰 +45 Дания</option><option value="+48">🇵🇱 +48 Польша</option><option value="+30">🇬🇷 +30 Греция</option><option value="+351">🇵🇹 +351 Португалия</option></optgroup><optgroup label="── Ближний Восток ──"><option value="+966">🇸🇦 +966 Саудовская Аравия</option><option value="+971">🇦🇪 +971 ОАЭ</option><option value="+972">🇮🇱 +972 Израиль</option><option value="+964">🇮🇶 +964 Ирак</option><option value="+962">🇯🇴 +962 Иордания</option><option value="+961">🇱🇧 +961 Ливан</option></optgroup><optgroup label="── Америка ──"><option value="+1">🇺🇸 +1 США</option><option value="+1">🇨🇦 +1 Канада</option><option value="+55">🇧🇷 +55 Бразилия</option><option value="+52">🇲🇽 +52 Мексика</option><option value="+54">🇦🇷 +54 Аргентина</option></optgroup><optgroup label="── Азия и Тихоокеан ──"><option value="+86">🇨🇳 +86 Китай</option><option value="+81">🇯🇵 +81 Япония</option><option value="+82">🇰🇷 +82 Ю. Корея</option><option value="+91">🇮🇳 +91 Индия</option><option value="+61">🇦🇺 +61 Австралия</option><option value="+64">🇳🇿 +64 Нов. Зеландия</option></optgroup></select>
               <input type="tel" name="phone" class="eit-dhi-phone-input" placeholder="501 234 56 78"
                 autocomplete="tel" />
             </div>
@@ -2376,7 +2447,8 @@
         body.innerHTML = '<div class="eit-quiz-q">Ваша степень облысения</div><div class="eit-quiz-nw-grid" style="grid-template-columns:repeat(5,1fr)">' + gridHtml + '</div><div class="eit-quiz-nav"><button class="eit-quiz-next" id="eit-qnext" onclick="eitQuizNext()"' + (sel ? '' : ' disabled') + '>Далее →</button></div>';
       }
       if (s.type === 'contact') {
-        body.innerHTML = '<p class="eit-quiz-form-sub">Почти готово! Оставьте контакты — мы составим <strong>персональный план бесплатно</strong>.</p><div class="eit-quiz-form"><input class="eit-quiz-input" id="eq-name" type="text" placeholder="Имя и фамилия"><div class="eit-quiz-phone-wrap"><span class="eit-quiz-phone-flag">🇷🇺 +7</span><input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="900 000 00 00"></div><input class="eit-quiz-input" id="eq-email" type="email" placeholder="E-mail"></div><button class="eit-quiz-send" onclick="eitQuizSend()">Отправить анализ →</button>';
+        body.innerHTML = '<p class="eit-quiz-form-sub">Почти готово! Оставьте контакты — мы составим <strong>персональный план бесплатно</strong>.</p><div class="eit-quiz-form"><input class="eit-quiz-input" id="eq-name" type="text" placeholder="Имя и фамилия"><div class="eit-quiz-phone-wrap"><select id="eq-pcode" style="display:none"><optgroup label="── СНГ ──"><option value="+7" selected>🇷🇺 +7 Россия</option><option value="+380">🇺🇦 +380 Украина</option><option value="+375">🇧🇾 +375 Беларусь</option><option value="+7">🇰🇿 +7 Казахстан</option><option value="+994">🇦🇿 +994 Азербайджан</option><option value="+995">🇬🇪 +995 Грузия</option><option value="+374">🇦🇲 +374 Армения</option><option value="+998">🇺🇿 +998 Узбекистан</option><option value="+992">🇹🇯 +992 Таджикистан</option><option value="+993">🇹🇲 +993 Туркменистан</option><option value="+996">🇰🇬 +996 Кыргызстан</option><option value="+373">🇲🇩 +373 Молдова</option></optgroup><optgroup label="── Европа ──"><option value="+90">🇹🇷 +90 Турция</option><option value="+49">🇩🇪 +49 Германия</option><option value="+44">🇬🇧 +44 Великобритания</option><option value="+33">🇫🇷 +33 Франция</option><option value="+39">🇮🇹 +39 Италия</option><option value="+34">🇪🇸 +34 Испания</option><option value="+31">🇳🇱 +31 Нидерланды</option><option value="+41">🇨🇭 +41 Швейцария</option><option value="+46">🇸🇪 +46 Швеция</option><option value="+47">🇳🇴 +47 Норвегия</option><option value="+48">🇵🇱 +48 Польша</option><option value="+30">🇬🇷 +30 Греция</option></optgroup><optgroup label="── Ближний Восток ──"><option value="+966">🇸🇦 +966 Саудовская Аравия</option><option value="+971">🇦🇪 +971 ОАЭ</option><option value="+972">🇮🇱 +972 Израиль</option><option value="+964">🇮🇶 +964 Ирак</option></optgroup><optgroup label="── Америка ──"><option value="+1">🇺🇸 +1 США</option><option value="+1">🇨🇦 +1 Канада</option><option value="+55">🇧🇷 +55 Бразилия</option><option value="+52">🇲🇽 +52 Мексика</option></optgroup><optgroup label="── Азия ──"><option value="+86">🇨🇳 +86 Китай</option><option value="+81">🇯🇵 +81 Япония</option><option value="+91">🇮🇳 +91 Индия</option><option value="+61">🇦🇺 +61 Австралия</option></optgroup></select><input class="eit-quiz-input" id="eq-phone" type="tel" placeholder="900 000 00 00"></div><input class="eit-quiz-input" id="eq-email" type="email" placeholder="E-mail"></div><button class="eit-quiz-send" onclick="eitQuizSend()">Отправить анализ →</button>';
+        setTimeout(function(){ var s=document.getElementById('eq-pcode'); if(s) window.eitInitCD(s,'Поиск страны...'); }, 0);
       }
     }
     function nwSvg(n) {
@@ -2395,14 +2467,139 @@
       var phone = document.getElementById('eq-phone').value.trim();
       var email = document.getElementById('eq-email').value.trim();
       if (!name || !phone) { document.getElementById('eq-name').focus(); return; }
-      var payload = { name: name, phone: '+7' + phone, email: email, gender: answers.gender || '—', age: answers.age || 0, years: answers.years || 0, prev: answers.prev || '—', norwood: answers.norwood || '—', when: answers.when || '—', source: 'DHI-Choi' };
+      var pcode = (document.getElementById('eq-pcode') ? document.getElementById('eq-pcode').value : '+7');
+      var payload = { name: name, phone: pcode + phone, email: email, gender: answers.gender || '—', age: answers.age || 0, years: answers.years || 0, prev: answers.prev || '—', norwood: answers.norwood || '—', when: answers.when || '—', source: 'DHI-Choi' };
       fetch('/wp-json/este/v1/quiz', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(function () { });
       var msg = 'Анализ волос — Este in Turkey\n—————————————\nПол: ' + payload.gender + '\nВозраст: ' + payload.age + '\nВыпадение (лет): ' + payload.years + '\nБыла пересадка: ' + payload.prev + '\nСтепень облысения: ' + payload.norwood + '\nКогда планирует: ' + payload.when + '\n—————————————\nИмя: ' + name + '\nТелефон: ' + payload.phone + '\nEmail: ' + (email || '—');
       window.open('https://api.whatsapp.com/send/?phone=905468189180&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0', '_blank');
       window.location.href = '/ru/thank-you-for-your-application-este-in-turkey/';
     };
+
+    /* ── Country Dropdown initialiser ── */
+    window.eitInitCD = function(sel, placeholder) {
+      if (!sel || sel.dataset.cdInit) return;
+      sel.dataset.cdInit = '1';
+      sel.style.display = 'none';
+      var wrap = document.createElement('div');
+      wrap.className = 'eit-cd';
+      sel.parentNode.insertBefore(wrap, sel);
+      wrap.appendChild(sel);
+      var trig = document.createElement('button');
+      trig.type = 'button'; trig.className = 'eit-cd-trigger';
+      var so = sel.options[sel.selectedIndex];
+      trig.textContent = so ? so.textContent.replace(/^(\S+\s+\S+).*$/, '$1') : '';
+      wrap.insertBefore(trig, sel);
+      var panel = document.createElement('div');
+      panel.className = 'eit-cd-panel';
+      var sh = document.createElement('div'); sh.className = 'eit-cd-search';
+      var si = document.createElement('input');
+      si.type = 'text'; si.placeholder = placeholder || 'Поиск страны...'; si.autocomplete = 'off';
+      sh.appendChild(si); panel.appendChild(sh);
+      var list = document.createElement('div'); list.className = 'eit-cd-list';
+      function addItem(opt) {
+        var d = document.createElement('div');
+        d.className = 'eit-cd-item' + (opt.selected ? ' sel' : '');
+        d.textContent = opt.textContent;
+        d.dataset.val = opt.value; d.dataset.idx = opt.index;
+        d.dataset.s = opt.textContent.toLowerCase();
+        d.addEventListener('click', function () {
+          sel.selectedIndex = parseInt(d.dataset.idx);
+          sel.dispatchEvent(new Event('change'));
+          trig.textContent = opt.textContent.replace(/^(\S+\s+\S+).*$/, '$1');
+          panel.classList.remove('open');
+          list.querySelectorAll('.eit-cd-item').forEach(function (x) { x.classList.remove('sel'); });
+          d.classList.add('sel');
+        });
+        list.appendChild(d);
+      }
+      for (var i = 0; i < sel.children.length; i++) {
+        var ch = sel.children[i];
+        if (ch.tagName === 'OPTGROUP') {
+          var g = document.createElement('div');
+          g.className = 'eit-cd-group'; g.textContent = ch.label; g.dataset.g = '1';
+          list.appendChild(g);
+          for (var j = 0; j < ch.children.length; j++) addItem(ch.children[j]);
+        } else if (ch.tagName === 'OPTION') addItem(ch);
+      }
+      panel.appendChild(list); wrap.appendChild(panel);
+      trig.addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var open = panel.classList.contains('open');
+        document.querySelectorAll('.eit-cd-panel.open').forEach(function (p) { p.classList.remove('open'); });
+        if (!open) {
+          panel.classList.add('open'); si.value = ''; si.focus();
+          list.querySelectorAll('.eit-cd-item,.eit-cd-group').forEach(function (x) { x.style.display = ''; });
+          var em = list.querySelector('.eit-cd-empty'); if (em) em.remove();
+        }
+      });
+      si.addEventListener('input', function () {
+        var q = this.value.toLowerCase().trim();
+        var items = list.querySelectorAll('.eit-cd-item');
+        var groups = list.querySelectorAll('.eit-cd-group');
+        var em = list.querySelector('.eit-cd-empty'); if (em) em.remove();
+        if (!q) { items.forEach(function (x) { x.style.display = ''; }); groups.forEach(function (x) { x.style.display = ''; }); return; }
+        var anyVisible = false;
+        items.forEach(function (x) { var m = x.dataset.s.indexOf(q) !== -1; x.style.display = m ? '' : 'none'; if (m) anyVisible = true; });
+        groups.forEach(function (g) {
+          var nx = g.nextElementSibling, has = false;
+          while (nx && !nx.classList.contains('eit-cd-group')) { if (nx.style.display !== 'none') has = true; nx = nx.nextElementSibling; }
+          g.style.display = has ? '' : 'none';
+        });
+        if (!anyVisible) { var ne = document.createElement('div'); ne.className = 'eit-cd-empty'; ne.textContent = placeholder && placeholder.indexOf('Search') !== -1 ? 'Nothing found' : 'Ничего не найдено'; list.appendChild(ne); }
+      });
+      document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) panel.classList.remove('open'); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('open'); });
+    };
+    document.querySelectorAll('.eit-dhi-country-select').forEach(function(s){ window.eitInitCD(s,'Поиск страны...'); });
     document.getElementById('eit-quiz-overlay').addEventListener('click', function (e) { if (e.target === this) eitQuizClose(); });
   })();
+</script>
+
+<script>
+/* ── Geo-detect country code ── */
+(function(){
+  var navLang = (navigator.language || navigator.userLanguage || 'ru').toLowerCase();
+  var defaultCode = navLang.indexOf('ru') === 0 ? '+7'
+                  : navLang.indexOf('de') === 0 ? '+49'
+                  : navLang.indexOf('ro') === 0 ? '+373'
+                  : navLang.indexOf('tr') === 0 ? '+90'
+                  : navLang.indexOf('en') === 0 ? '+1'
+                  : '+7';
+  window.eitGeoCode = defaultCode;
+
+  function setSelectByValue(sel, val){
+    if(!sel) return;
+    for(var i = 0; i < sel.options.length; i++){
+      if(sel.options[i].value === val){ sel.selectedIndex = i; break; }
+    }
+  }
+
+  function applyCode(code){
+    window.eitGeoCode = code;
+    document.querySelectorAll('.eit-dhi-country-select').forEach(function(sel){
+      setSelectByValue(sel, code);
+      var trig = sel.parentElement && sel.parentElement.querySelector('.eit-cd-trigger');
+      if(trig){
+        var so = sel.options[sel.selectedIndex];
+        if(so) trig.textContent = so.textContent.replace(/^(\S+\s+\S+).*$/, '$1');
+      }
+    });
+    var eqSel = document.getElementById('eq-pcode');
+    if(eqSel) setSelectByValue(eqSel, code);
+  }
+
+  var observer = new MutationObserver(function(){
+    var eqSel = document.getElementById('eq-pcode');
+    if(eqSel){ setSelectByValue(eqSel, window.eitGeoCode); }
+  });
+  var quizBody = document.getElementById('eit-quiz-body');
+  if(quizBody){ observer.observe(quizBody, { childList: true, subtree: true }); }
+
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if(d && d.country_calling_code) applyCode(d.country_calling_code); })
+    .catch(function(){ /* fallback defaultCode kalır */ });
+})();
 </script>
 
 <!-- ── Floating WhatsApp + Telegram (global) ── -->
